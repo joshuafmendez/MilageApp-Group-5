@@ -11,4 +11,5 @@ https://trip-app-pursuit.herokuapp.com/
 
 Trello
 ```
+https://trello.com/b/04dS9nlf/capstone
 ```
