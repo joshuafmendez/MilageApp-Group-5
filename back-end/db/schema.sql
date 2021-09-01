@@ -10,10 +10,8 @@ CREATE TABLE
         make TEXT,
         model TEXT,
         year INT not null,
-        odometer INT,
-        vin TEXT,
-        doors INT,     
-        automatic_trans BOOLEAN
+        odometer INT, 
+        doors INT
     );
 
  CREATE TABLE

@@ -1,20 +1,21 @@
 \c mileage_db;
 
 INSERT INTO
-    cars(make, model, year, odometer, vin, doors, automatic_trans)
+    cars(make, model, year, odometer, doors)
 VALUES 
-    ('Dodge','Charger',1999,1000,123,4,TRUE),
-    ('Chevy','Impala',2999,2000,234,2,FALSE),
-    ('Ford','Mustang',1899,2000,345,2,TRUE);
+    ('Dodge','Charger',1999,1000,4),
+    ('Chevy','Impala',2999,2000,2),
+    ('Ford','Mustang',1899,2000,2);
 
 
  -- seed gas
 INSERT INTO
     gas( car_id,business_use, gas_spent, date)
 VALUES 
-(1,TRUE,100,2008-11-11),
-(2,TRUE,700,2009-01-11),
-(3,false,700,2011-14-11);
+(1,TRUE,100,'2008-11-12'),
+(2,TRUE,700,'2009-01-10'),
+(2,FALSE,700,'2011-12-21'),
+(3,TRUE,700,'2020-10-15');
 
 
  -- seed trips

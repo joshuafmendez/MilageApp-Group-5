@@ -20,7 +20,8 @@ cars.get("/", async (req, res) => {
 });
 
 cars.get("/:id", async (req, res) => {
-  const car = await getCar();
+  const {id} =req.params
+  const car = await getCar(id);
   res.json(car);
 });
 
