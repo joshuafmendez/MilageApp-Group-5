@@ -28,13 +28,13 @@ CREATE TABLE
 CREATE TABLE
     trips(
         id SERIAL PRIMARY key,
-        business_use	BOOLEAN	not null,
-        car_id	 INT REFERENCES cars (id) ON DELETE CASCADE,
-        miles	INT	NOT null,
+        car_id INT REFERENCES cars (id) ON DELETE CASCADE,
+        business_use BOOLEAN not null,
+        miles INT NOT null,
         date TEXT,
-        reason	TEXT,	
-        start_odometer	INT	,
-        stop_odometer	INT	,
+        reason TEXT,	
+        start_odometer INT,
+        stop_odometer INT,
         favorite BOOLEAN NOT NULL
     );
 
@@ -72,4 +72,3 @@ CREATE TABLE
 
 
 
-\
