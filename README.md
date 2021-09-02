@@ -1,7 +1,5 @@
 # Capstone Projects Template Repo 
 
-- Write a production README.md
-
 ## Important Links
 
 Heroku
