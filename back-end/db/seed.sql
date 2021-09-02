@@ -3,9 +3,9 @@
 INSERT INTO
     cars(make, model, year, odometer, doors)
 VALUES 
-    ('Dodge','Charger',1999,1000,4),
-    ('Chevy','Impala',1999,2000,2),
-    ('Ford','Mustang',1999,2000,2);
+    ('Dodge','Charger',2005,90000,4),
+    ('Chevy','Impala',2010,50000,4),
+    ('Ford','Mustang',2015,30000,4);
 
 
  -- seed gas
@@ -14,17 +14,40 @@ INSERT INTO
 VALUES 
 (1,'Gas',TRUE,100,'2021-01-12'),
 (2,'Repairs',TRUE,700,'2021-02-10'),
-(2,'Car Insurance',FALSE,700,'2021-08-21'),
-(3,'Oil Change',TRUE,40,'2021-05-15');
+(2,'Car Insurance',FALSE,150,'2021-08-21'),
+(1,'Oil Change',TRUE,40,'2021-05-15'),
+(1,'Car Insurance',TRUE,150,'2021-05-15'),
+(1,'Repairs',TRUE,400,'2021-05-15'),
+(1,'Depreciation',FALSE,40,'2021-05-15'),
+(1,'Registration fees',TRUE,120,'2021-05-15'),
+(2,'Oil Change',FALSE,40,'2021-05-15'),
+(3,'Car Insurance',TRUE,150,'2021-05-15'),
+(2,'Gas',TRUE,100,'2021-01-12'),
+(3,'Repairs',TRUE,500,'2021-05-15'),
+(2,'Depreciation',FALSE,40,'2021-05-15'),
+(2,'Registration fees',TRUE,130,'2021-05-15'),
+(3,'Oil Change',TRUE,40,'2021-05-15'),
+(3,'Registration fees',FALSE,130,'2021-05-15'),
+(3,'Gas',TRUE,100,'2021-01-12'),
+(3,'Depreciation',TRUE,100,'2021-01-12');
 
 
  -- seed trips
 INSERT INTO
     trips(car_id,business_use,miles,date,reason,start_odometer,stop_odometer,favorite)
 VALUES 
-(1,TRUE,10000,2008-11-11,'deliver',500,5000, false),
-(2,TRUE,10000,2009-01-14,'date night',800,7000,TRUE),
-(3,TRUE,10000,2011-14-11,'deliver',500,5000, false);
+(1,TRUE,120,'2021-11-11','delivery',0,0,false),
+(2,TRUE,150,'2021-01-14','date night',0,0,TRUE),
+(3,FALSE,110,'2021-12-11','delivery',0,0,false),
+(1,TRUE,200,'2021-11-11','delivery',0,0,false),
+(2,TRUE,90,'2021-01-14','date night',0,0,TRUE),
+(3,FALSE,50,'2021-12-11','delivery',0,0,false),
+(1,TRUE,100,'2021-11-11','delivery',0,0,false),
+(2,TRUE,60,'2021-01-14','date night',0,0,TRUE),
+(3,TRUE,120,'2021-12-11','delivery',0,0,false),
+(1,FALSE,190,'2021-11-11','delivery',0,0,false),
+(2,TRUE,200,'2021-01-14','date night',0,0,TRUE),
+(3,TRUE,250,'2021-12-11','delivery',0,0,false);
 
 
 
@@ -33,7 +56,7 @@ VALUES
 -- INSERT INTO
 --     connected_tables(user_id,car_id)
 -- VALUES 
--- ((SELECT id FROM users WHERE vin = 123),(SELECT id FROM cars WHERE email = farrahrios@pursuit.org));
+-- ((SELECT id FROM users WHERE vin = 123),(SELECT id FROM cars WHERE email = farrahrios@pursuit.org)),
 -- ((SELECT id FROM users WHERE vin = 234),(SELECT id FROM cars WHERE email = damienyule@pursuit.org));
 -- ((SELECT id FROM users WHERE vin = 567),(SELECT id FROM cars WHERE email = durdonadjalilova@pursuit.org));
 
@@ -41,9 +64,9 @@ VALUES
 -- INSERT INTO
 --     receipts(gas_id,receipt_url)
 -- VALUES 
--- ((SELECT id FROM gas WHERE vin = 123),TRUE,100,2008-11-11)
--- ((SELECT id FROM cars WHERE vin = 456),TRUE,700,2009-01-11)
--- ((SELECT id FROM cars WHERE vin = 789),false,700,2011-14-11);
+-- ((SELECT id FROM gas WHERE vin = 123),TRUE,100,2021-11-11)
+-- ((SELECT id FROM cars WHERE vin = 456),TRUE,700,2021-01-11)
+-- ((SELECT id FROM cars WHERE vin = 789),false,700,2021-14-11);
 
 -- users
 -- INSERT INTO
