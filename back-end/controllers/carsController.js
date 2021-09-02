@@ -8,10 +8,10 @@ const {
   updateCar,
 } = require("../queries/cars");
 
-const gasController = require("./gasController");
+const expenseController = require("./expenseController");
 const tripsController = require("./tripsController");
 
-cars.use("/:car_id/gas", gasController);
+cars.use("/:car_id/expenses", expenseController);
 cars.use("/:car_id/trips", tripsController);
 
 cars.get("/", async (req, res) => {
@@ -20,7 +20,7 @@ cars.get("/", async (req, res) => {
 });
 
 cars.get("/:id", async (req, res) => {
-  const {id} =req.params
+  const { id } = req.params;
   const car = await getCar(id);
   res.json(car);
 });

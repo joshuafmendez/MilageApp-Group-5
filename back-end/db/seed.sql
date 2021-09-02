@@ -4,18 +4,18 @@ INSERT INTO
     cars(make, model, year, odometer, doors)
 VALUES 
     ('Dodge','Charger',1999,1000,4),
-    ('Chevy','Impala',2999,2000,2),
-    ('Ford','Mustang',1899,2000,2);
+    ('Chevy','Impala',1999,2000,2),
+    ('Ford','Mustang',1999,2000,2);
 
 
  -- seed gas
 INSERT INTO
-    gas( car_id,business_use, gas_spent, date)
+    expenses( car_id,expense_type, business_use, amount_spent, date)
 VALUES 
-(1,TRUE,100,'2008-11-12'),
-(2,TRUE,700,'2009-01-10'),
-(2,FALSE,700,'2011-12-21'),
-(3,TRUE,700,'2020-10-15');
+(1,'Gas',TRUE,100,'2021-01-12'),
+(2,'Repairs',TRUE,700,'2021-02-10'),
+(2,'Car Insurance',FALSE,700,'2021-08-21'),
+(3,'Oil Change',TRUE,40,'2021-05-15');
 
 
  -- seed trips
