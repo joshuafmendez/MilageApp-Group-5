@@ -11,12 +11,12 @@ const {
 } = require("../queries/gas");
 
 gas.get("/", async (req, res) => {
-  const allGas = await getAllGas();
+  const allGas = await getAllGas(req.params.car_id);
   res.json(allGas);
 });
 
 gas.get("/:id", async (req, res) => {
-  const gas = await getGas();
+  const gas = await getGas(req.params.id);
   res.json(gas);
 });
 

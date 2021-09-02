@@ -1,16 +1,17 @@
 const db = require("../db/config");
 
-const getAllGas = async () => {
+const getAllGas = async (car_id) => {
   try {
-    const query = "SELECT * FROM gas";
-    const allGas = await db.any(query);
+    const query = "SELECT * FROM gas WHERE car_id=$1";
+    const allGas = await db.any(query, car_id);
     return { status: true, payload: allGas };
   } catch (error) {
     return { status: false, payload: error };
   }
 };
 
-const getGas = async (id) => {
+const getGas = async (id,) => {
+  //add car_id maybe. On second thought I dont think it is nessasary and I think Mashu said it wasn't nessasary
   try {
     const query = "SELECT * FROM gas WHERE id=$1";
     const gas = await db.one(query, id);
@@ -21,11 +22,12 @@ const getGas = async (id) => {
 };
 
 const addGas = async (gas) => {
-  const { make, model, year, odometer, doors } = gas;
+  const { car_id, business_use, gas_spent, date } = gas;
   try {
+
     const query =
-      "INSERT INTO gas (make, model, year, odometer, doors) VALUES ($1, $2, $3, $4, $5) RETURNING *";
-    const newGas = await db.one(query, [make, model, year, odometer, doors]);
+      "INSERT INTO gas (car_id,business_use, gas_spent, date) VALUES ($1, $2, $3, $4) RETURNING *";
+    const newGas = await db.one(query, [car_id, business_use, gas_spent, date]);
     return { status: true, payload: newGas };
   } catch (error) {
     return { status: false, payload: error };
@@ -43,16 +45,16 @@ const deleteGas = async (id) => {
 };
 
 const updateGas = async (id, car) => {
-  const { make, model, year, odometer, doors } = car;
+  const { car_id, business_use, gas_spent, date } = car;
   try {
     const query =
-      "UPDATE gas SET make=$1, model=$2, year=$3, odometer=$4, doors=$5 WHERE id=$6 RETURNING *";
+
+      "UPDATE gas SET car_id,=$1, business_use=$2, gas_spent=$3, date=$4 WHERE id=$5 RETURNING *";
     const updatedGas = await db.one(query, [
-      make,
-      model,
-      year,
-      odometer,
-      doors,
+      car_id,
+      business_use,
+      gas_spent,
+      date,
       id,
     ]);
     return { status: true, payload: updatedGas };
