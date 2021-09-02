@@ -8,13 +8,13 @@ const NavBar = () => {
       </NavLink>
       <div>
         <NavLink to="/cars">
-          <h4>Car(s)</h4>
+          <h2>Car(s)</h2>
         </NavLink>
         <NavLink to="/cars/:car_id/trips/new">
-          <h4>Mileage</h4>
+          <h2>Mileage</h2>
         </NavLink>
         <NavLink to="/cars/:car_id/expenses/new">
-          <h4>Car Expenses</h4>
+          <h2>Car Expenses</h2>
         </NavLink>
       </div>
     </nav>
