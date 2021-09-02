@@ -1,4 +1,4 @@
-# Capstone Projects Template Repo 
+# TripApp Capstone Project
 
 ## Important Links
 
