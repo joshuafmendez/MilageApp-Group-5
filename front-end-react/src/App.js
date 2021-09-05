@@ -1,24 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NavBar from "./Components/NavBar";
 import FourOFour from "./Pages/FourOFour";
 import Home from "./Pages/Home";
 import CarsIndex from "./Pages/CarsIndex";
-import CarsEdit from "./Pages/CarsEdit";
-import CarsNew from "./Pages/CarsNew";
-import CarsShow from "./Pages/CarsShow";
-import TripsIndex from "./Pages/TripsIndex";
-import TripsEdit from "./Pages/TripsEdit";
-import TripsNew from "./Pages/TripsNew";
-import TripsShow from "./Pages/TripsShow";
-import ExpensesIndex from "./Pages/ExpensesIndex";
-import ExpensesEdit from "./Pages/ExpensesEdit";
-import ExpensesNew from "./Pages/ExpensesNew";
-import ExpensesShow from "./Pages/ExpensesShow";
+import CarEdit from "./Pages/CarEdit";
+import CarNew from "./Pages/CarNew";
+import CarShow from "./Pages/CarShow";
+// import TripsIndex from "./Pages/TripsIndex";
+// import TripsEdit from "./Pages/TripsEdit";
+// import TripsNew from "./Pages/TripsNew";
+// import TripsShow from "./Pages/TripsShow";
+// import ExpensesIndex from "./Pages/ExpensesIndex";
+// import ExpensesEdit from "./Pages/ExpensesEdit";
+// import ExpensesNew from "./Pages/ExpensesNew";
+// import ExpensesShow from "./Pages/ExpensesShow";
 import "./App.css";
-import { apiURL } from "./util/apiURL";
+// import { apiURL } from "./util/apiURL";
 
-const API = apiURL();
+// const API = apiURL();
 
 function App() {
   return (
@@ -33,15 +33,15 @@ function App() {
             <CarsIndex />
           </Route>
           <Route path="/cars/new">
-            <CarsNew />
+            <CarNew />
           </Route>
           <Route exact path="/cars/:id">
-            <CarsShow />
+            <CarShow />
           </Route>
           <Route path="/cars/:id/edit">
-            <CarsEdit />
+            <CarEdit />
           </Route>
-          <Route exact path="/cars/:car_id/trips">
+          {/* <Route exact path="/cars/:car_id/trips">
             <TripsIndex />
           </Route>
           <Route path="/cars/:car_id/trips/new">
@@ -64,7 +64,7 @@ function App() {
           </Route>
           <Route path="/cars/:car_id/expenses/:id/edit">
             <ExpensesEdit />
-          </Route>
+          </Route> */}
           <Route path="*">
             <FourOFour />
           </Route>
