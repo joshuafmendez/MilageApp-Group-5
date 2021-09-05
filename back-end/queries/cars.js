@@ -21,11 +21,18 @@ const getCar = async (id) => {
 };
 
 const addCar = async (car) => {
-  const { make, model, year, odometer, doors } = car;
+  const { make, model, vin, year, odometer, doors } = car;
   try {
     const query =
-      "INSERT INTO cars (make, model, year, odometer, doors) VALUES ($1, $2, $3, $4, $5) RETURNING *";
-    const newCar = await db.one(query, [make, model, year, odometer, doors]);
+      "INSERT INTO cars (make, model, vin, year, odometer, doors) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *";
+    const newCar = await db.one(query, [
+      make,
+      model,
+      vin,
+      year,
+      odometer,
+      doors,
+    ]);
     return { status: true, payload: newCar };
   } catch (error) {
     return { status: false, payload: error };
@@ -43,13 +50,14 @@ const deleteCar = async (id) => {
 };
 
 const updateCar = async (id, car) => {
-  const { make, model, year, odometer, doors } = car;
+  const { make, model, vin, year, odometer, doors } = car;
   try {
     const query =
-      "UPDATE cars SET make=$1, model=$2, year=$3, odometer=$4, doors=$5 WHERE id=$6 RETURNING *";
+      "UPDATE cars SET make=$1, model=$2, vin=$3, year=$4, odometer=$5, doors=$6 WHERE id=$7 RETURNING *";
     const updatedCar = await db.one(query, [
       make,
       model,
+      vin,
       year,
       odometer,
       doors,

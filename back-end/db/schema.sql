@@ -7,8 +7,9 @@ CREATE DATABASE mileage_db;
 CREATE TABLE
     cars(
         id SERIAL PRIMARY key,
-        make TEXT,
-        model TEXT,
+        make TEXT not null,
+        model TEXT not null,
+        vin TEXT not null,
         year INT not null,
         odometer INT, 
         doors INT
