@@ -10,24 +10,24 @@ const getAllTrips = async (car_id) => {
   }
 };
 
-const getTrips = async (id) => {
-  //add car_id maybe. On second thought I dont think it is nessasary and I think Mashu said it wasn't nessasary
+const getTrip = async (id) => {
   try {
     const query = "SELECT * FROM trips WHERE id=$1";
-    const trips = await db.one(query, id);
-    return { status: true, payload: trips };
+    const trip = await db.one(query, id);
+    return { status: true, payload: trip };
   } catch (error) {
     return { status: false, payload: error };
   }
 };
 
-const addTrip = async (trips) => {
-  const { car_id, business_use, trips_spent, date } = trips;
+const addTrip = async (body, car_id) => {
+  const { business_use,miles,date,reason,start_odometer,stop_odometer,favorite} = body;
   try {
+
     const query =
-      "INSERT INTO trips (car_id,business_use, trips_spent, date) VALUES ($1, $2, $3, $4) RETURNING *";
-    const newTrips = await db.one(query, [car_id, business_use, trips_spent, date]);
-    return { status: true, payload: newTrips };
+      "INSERT INTO trips ( car_id,business_use,miles,date,reason,start_odometer,stop_odometer,favorite) VALUES ($1, $2, $3, $4,$5,$6,$7,$8) RETURNING *";
+    const newTrip = await db.one(query, [ car_id,business_use,miles,date,reason,start_odometer,stop_odometer,favorite]);
+    return { status: true, payload: newTrip };
   } catch (error) {
     return { status: false, payload: error };
   }
@@ -36,23 +36,28 @@ const addTrip = async (trips) => {
 const deleteTrip = async (id) => {
   try {
     const query = "DELETE FROM trips WHERE id=$1 RETURNING *";
-    const deleteTrip = await db.one(query, id);
-    return { status: true, payload: deleteTrip };
+    const deletedTrip = await db.one(query, id);
+    return { status: true, payload: deletedTrip };
   } catch (error) {
     return { status: false, payload: error };
   }
 };
 
-const updateTrip = async (id, car) => {
-  const { car_id, business_use, trips_spent, date } = car;
+const updateTrip = async (id, body) => {
+  const { car_id,business_use,miles,date,reason,start_odometer,stop_odometer,favorite } = body;
   try {
     const query =
-      "UPDATE trips SET car_id,=$1, business_use=$2, trips_spent=$3, date=$4 WHERE id=$5 RETURNING *";
+
+      "UPDATE trips SET car_id=$1, business_use=$2, miles=$3, date=$4,reason=$5,start_odometer=$6,stop_odometer=$7,favorite=$8 WHERE id=$9 RETURNING *";
     const updatedTrip = await db.one(query, [
-      car_id,
-      business_use,
-      trips_spent,
-      date,
+        car_id,
+        business_use,
+        miles,
+        date,
+        reason,
+        start_odometer,
+        stop_odometer,
+        favorite,
       id,
     ]);
     return { status: true, payload: updatedTrip };
@@ -61,4 +66,4 @@ const updateTrip = async (id, car) => {
   }
 };
 
-module.exports = { getAllTrips, getTrips, addTrip, deleteTrip, updateTrip };
+module.exports = { getAllTrips, getTrip, addTrip, deleteTrip, updateTrip };

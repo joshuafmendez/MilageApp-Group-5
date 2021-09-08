@@ -7,20 +7,22 @@ CREATE DATABASE mileage_db;
 CREATE TABLE
     cars(
         id SERIAL PRIMARY key,
-        make TEXT,
-        model TEXT,
+        make TEXT not null,
+        model TEXT not null,
+        vin TEXT not null,
         year INT not null,
         odometer INT, 
         doors INT
     );
 
  CREATE TABLE
-    gas(
+    expenses(
         id SERIAL PRIMARY key,
+        expense_type TEXT NOT NULL,
         business_use BOOLEAN NOT NULL,
         car_id INT REFERENCES cars (id) ON DELETE CASCADE,
-        gas_spent INT NOT NULL,
-        date TEXT
+        amount_spent INT NOT NULL,
+        date TEXT NOT NULL
     );
 
 CREATE TABLE

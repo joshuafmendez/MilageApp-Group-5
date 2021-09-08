@@ -12,12 +12,12 @@ const {
 } = require("../queries/trips");
 
 trips.get("/", async (req, res) => {
-  const allTrips = await getAllTrips();
+  const allTrips = await getAllTrips(req.params.car_id);
   res.json(allTrips);
 });
 
 trips.get("/:id", async (req, res) => {
-  const trip = await getTrip();
+  const trip = await getTrip(req.params.id);
   res.json(trip);
 });
 
