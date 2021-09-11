@@ -7,6 +7,9 @@ import CarsIndex from "./Pages/CarsIndex";
 import CarEdit from "./Pages/CarEdit";
 import CarNew from "./Pages/CarNew";
 import CarShow from "./Pages/CarShow";
+import "firebase/auth";
+import UserProvider from "./Providers/UserProvider";
+import { LoggedInPage } from "./Pages/LoggedInPage";
 // import TripsIndex from "./Pages/TripsIndex";
 // import TripsEdit from "./Pages/TripsEdit";
 // import TripsNew from "./Pages/TripsNew";
@@ -23,53 +26,58 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <Router>
-        <NavBar />
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/cars">
-            <CarsIndex />
-          </Route>
-          <Route path="/cars/new">
-            <CarNew />
-          </Route>
-          <Route exact path="/cars/:id">
-            <CarShow />
-          </Route>
-          <Route path="/cars/:id/edit">
-            <CarEdit />
-          </Route>
-          {/* <Route exact path="/cars/:car_id/trips">
+      <UserProvider>
+        <Router>
+          <NavBar />
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/loggedInPage">
+              <LoggedInPage />
+            </Route>
+            <Route exact path="/cars">
+              <CarsIndex />
+            </Route>
+            <Route path="/cars/new">
+              <CarNew />
+            </Route>
+            <Route exact path="/cars/:id">
+              <CarShow />
+            </Route>
+            <Route path="/cars/:id/edit">
+              <CarEdit />
+            </Route>
+            {/* <Route exact path="/cars/:car_id/trips">
             <TripsIndex />
-          </Route>
-          <Route path="/cars/:car_id/trips/new">
+            </Route>
+            <Route path="/cars/:car_id/trips/new">
             <TripsNew />
-          </Route>
-          <Route exact path="/cars/:car_id/trips/:id">
+            </Route>
+            <Route exact path="/cars/:car_id/trips/:id">
             <TripsShow />
-          </Route>
-          <Route path="/cars/:car_id/trips/:id/edit">
+            </Route>
+            <Route path="/cars/:car_id/trips/:id/edit">
             <TripsEdit />
-          </Route>
-          <Route exact path="/cars/:car_id/expenses">
+            </Route>
+            <Route exact path="/cars/:car_id/expenses">
             <ExpensesIndex />
-          </Route>
-          <Route path="/cars/:car_id/expenses/new">
+            </Route>
+            <Route path="/cars/:car_id/expenses/new">
             <ExpensesNew />
-          </Route>
-          <Route exact path="/cars/:car_id/expenses/:id">
+            </Route>
+            <Route exact path="/cars/:car_id/expenses/:id">
             <ExpensesShow />
-          </Route>
-          <Route path="/cars/:car_id/expenses/:id/edit">
+            </Route>
+            <Route path="/cars/:car_id/expenses/:id/edit">
             <ExpensesEdit />
           </Route> */}
-          <Route path="*">
-            <FourOFour />
-          </Route>
-        </Switch>
-      </Router>
+            <Route path="*">
+              <FourOFour />
+            </Route>
+          </Switch>
+        </Router>
+      </UserProvider>
     </div>
   );
 }
