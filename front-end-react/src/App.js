@@ -14,10 +14,10 @@ import { LoggedInPage } from "./Pages/LoggedInPage";
 // import TripsEdit from "./Pages/TripsEdit";
 // import TripsNew from "./Pages/TripsNew";
 // import TripsShow from "./Pages/TripsShow";
-// import ExpensesIndex from "./Pages/ExpensesIndex";
-// import ExpensesEdit from "./Pages/ExpensesEdit";
-// import ExpensesNew from "./Pages/ExpensesNew";
-// import ExpensesShow from "./Pages/ExpensesShow";
+import ExpensesIndex from "./Pages/ExpensesIndex";
+import ExpenseEdit from "./Pages/ExpenseEdit";
+import ExpenseNew from "./Pages/ExpenseNew";
+import ExpenseShow from "./Pages/ExpenseShow";
 import "./App.css";
 // import { apiURL } from "./util/apiURL";
 
