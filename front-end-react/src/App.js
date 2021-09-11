@@ -11,10 +11,10 @@ import CarShow from "./Pages/CarShow";
 // import TripsEdit from "./Pages/TripsEdit";
 // import TripsNew from "./Pages/TripsNew";
 // import TripsShow from "./Pages/TripsShow";
-// import ExpensesIndex from "./Pages/ExpensesIndex";
-// import ExpensesEdit from "./Pages/ExpensesEdit";
-// import ExpensesNew from "./Pages/ExpensesNew";
-// import ExpensesShow from "./Pages/ExpensesShow";
+import ExpensesIndex from "./Pages/ExpensesIndex";
+import ExpenseEdit from "./Pages/ExpenseEdit";
+import ExpenseNew from "./Pages/ExpenseNew";
+import ExpenseShow from "./Pages/ExpenseShow";
 import "./App.css";
 // import { apiURL } from "./util/apiURL";
 
@@ -52,19 +52,19 @@ function App() {
           </Route>
           <Route path="/cars/:car_id/trips/:id/edit">
             <TripsEdit />
-          </Route>
+          </Route> */}
           <Route exact path="/cars/:car_id/expenses">
             <ExpensesIndex />
           </Route>
           <Route path="/cars/:car_id/expenses/new">
-            <ExpensesNew />
+            <ExpenseNew />
           </Route>
           <Route exact path="/cars/:car_id/expenses/:id">
-            <ExpensesShow />
+            <ExpenseShow />
           </Route>
           <Route path="/cars/:car_id/expenses/:id/edit">
-            <ExpensesEdit />
-          </Route> */}
+            <ExpenseEdit />
+          </Route>
           <Route path="*">
             <FourOFour />
           </Route>
