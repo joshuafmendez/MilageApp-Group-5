@@ -7,10 +7,10 @@ import CarsIndex from "./Pages/CarsIndex";
 import CarEdit from "./Pages/CarEdit";
 import CarNew from "./Pages/CarNew";
 import CarShow from "./Pages/CarShow";
-// import TripsIndex from "./Pages/TripsIndex";
-// import TripsEdit from "./Pages/TripsEdit";
-// import TripsNew from "./Pages/TripsNew";
-// import TripsShow from "./Pages/TripsShow";
+import TripsIndex from "./Pages/Trips/TripsIndex.js";
+import TripsEdit from "./Pages/Trips/TripsEdit.js";
+import TripsNew from "./Pages/Trips/TripsNew.js";
+import TripsShow from "./Pages/Trips/TripsShow.js";
 // import ExpensesIndex from "./Pages/ExpensesIndex";
 // import ExpensesEdit from "./Pages/ExpensesEdit";
 // import ExpensesNew from "./Pages/ExpensesNew";
@@ -41,28 +41,28 @@ function App() {
           <Route path="/cars/:id/edit">
             <CarEdit />
           </Route>
-          {/* <Route exact path="/cars/:car_id/trips">
+          <Route exact path="/cars/:id/trips">
             <TripsIndex />
           </Route>
-          <Route path="/cars/:car_id/trips/new">
+          <Route path="/cars/:id/trips/new">
             <TripsNew />
           </Route>
-          <Route exact path="/cars/:car_id/trips/:id">
+          <Route exact path="/cars/:id/trips/:trip_id">
             <TripsShow />
           </Route>
-          <Route path="/cars/:car_id/trips/:id/edit">
+          <Route path="/cars/:id/trips/:trip_id/edit">
             <TripsEdit />
           </Route>
-          <Route exact path="/cars/:car_id/expenses">
+          {/* <Route exact path="/cars/:id/expenses">
             <ExpensesIndex />
-          </Route>
-          <Route path="/cars/:car_id/expenses/new">
+          </Route> */}
+          {/* <Route path="/cars/:id/expenses/new">
             <ExpensesNew />
-          </Route>
-          <Route exact path="/cars/:car_id/expenses/:id">
+          </Route> */}
+          {/* <Route exact path="/cars/:id/expenses/:expense_id">
             <ExpensesShow />
-          </Route>
-          <Route path="/cars/:car_id/expenses/:id/edit">
+          </Route> */}
+          {/* <Route path="/cars/:id/expenses/:expense_id/edit">
             <ExpensesEdit />
           </Route> */}
           <Route path="*">

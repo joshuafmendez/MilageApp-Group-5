@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useHistory, Link } from "react-router-dom";
 import axios from "axios";
 import { apiURL } from "../util/apiURL";
+import TripsIndex from "../Pages/Trips/TripsIndex";
 
 const API = apiURL();
 
@@ -54,6 +55,8 @@ function CarDetails() {
         <Link to={`/cars/${id}/edit`}>
           <button>EDIT</button>
         </Link>
+
+        <TripsIndex />
       </div>
     </div>
   );

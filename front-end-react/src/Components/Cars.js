@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { apiURL } from "../util/apiURL";
 import CarsListItem from "./CarsListItem";
 import { Link } from "react-router-dom";
-import("../App.css");
+import "../App.css";
 
 const API = apiURL();
 
