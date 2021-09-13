@@ -2,6 +2,10 @@ import axios from "axios";
 import { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { apiURL } from "../util/apiURL";
+// import'bootstrap-css-only/css/bootstrap.min.css';
+import 'mdbreact/dist/css/mdb.css';
+import { MDBInput } from "mdbreact";
+import "../Components/Style/CarNewForm.css"
 
 const API = apiURL();
 
@@ -40,6 +44,11 @@ function CarNewForm() {
   return (
     <div>
       <form onSubmit={handleSubmit}>
+
+
+
+
+
         <label htmlFor="make">Make:</label>
         <input
           value={make}
@@ -49,6 +58,12 @@ function CarNewForm() {
           placeholder="Enter make of the car"
           required
         />
+
+
+
+
+   
+  
         <label htmlFor="model">Model:</label>
         <input
           id="model"
@@ -58,15 +73,46 @@ function CarNewForm() {
           placeholder="Enter model of the car"
           required
         />
-        <label htmlFor="vin">VIN:</label>
-        <input
+        {/* <label htmlFor="vin">VIN:</label> */}
+
+        {/* <MDBInput    
+         id="vin"
+          type="text"
+          value={vin}
+          onChange={handleChange}
+          placeholder="Enter VIN of the car"
+          required 
+          label="Vin"
+          className="vin" 
+   
+          /> */}
+
+
+<MDBInput    
+         id="vin"
+          type="text"
+          value={vin}
+          onChange={handleChange}
+          placeholder="Enter VIN of the car"
+          required 
+          label="Vin"
+          className="vin" 
+   
+          />
+
+
+
+
+
+
+        {/* <input
           id="vin"
           type="text"
           value={vin}
           onChange={handleChange}
           placeholder="Enter VIN of the car"
           required
-        />
+        /> */}
         <label htmlFor="year">year:</label>
         <input
           id="year"

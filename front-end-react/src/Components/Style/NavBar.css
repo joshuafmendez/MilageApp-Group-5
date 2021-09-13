@@ -1,0 +1,174 @@
+.navbar{
+    background-color: black;
+}
+
+.title-logo{
+    font-size: 40px;
+    color:white;
+    margin-left: 48%;
+    height: 190px;
+}
+.navbar-toggler-icon{
+ color: white;
+}
+.navbar-toggler{
+    background-color: white;
+    color:white;
+    margin-right: 11%;
+    height: 80px;
+    width: 90px;
+    border:solid rgb(238 ,13 ,118) 1px;
+
+}
+
+
+
+
+
+
+.logo{
+    height: 100px;
+    width:100px;
+}
+.box-logo{
+    /* background-color: magenta; */
+    margin-left:83%;
+}
+
+
+
+
+
+span.navbar-toggler-icon{
+
+    height: 70px;
+    width:70px;
+    margin-right: 2px;
+}
+/* button{
+    border:solid pink 1px;
+    background-color: magenta;
+    color:pink;
+}
+.navbar-toggler{
+    background-color: yellow;
+    color:green;
+}
+navbar > .navbar-toggler-icon{
+    background-image: none;
+} */
+
+
+button .navbar-toggler-icon{
+ /* background-image: none;  */
+    /* background-color: yellow;; */
+    border:solid pink 2px;
+display: flex;
+align-self: center;
+}
+/* button{
+
+} */
+/* button > .navbar-toggler collapsed{
+    color:pink;
+    background-color:pink;
+    border: pink solid 3px;
+
+} */
+button.navbar-toggler.collapsed{
+    /* color:rgb(235, 26, 186); */
+    /* background-image: url("https://icon-library.com/images/white-hamburger-icon/white-hamburger-icon-8.jpg"); */
+    /* border: green solid 3px; */
+    /* background-color:orange; */
+display:flex;
+flex-direction: column;
+align-content: center;
+
+}
+
+
+button.navbar-toggler{
+    display:flex;
+    flex-direction: column;
+    align-content: center;
+    /* color:rgb(235, 26, 186); */
+    /* border: magenta solid 3px; */
+
+}
+
+button.navbar-toggler-icon {
+    background-image: none;
+    background-color:purple;
+}
+span.navbar-toggler.icon {
+    background-image: none;
+    background-color:purple;
+}
+
+
+
+
+
+/* .navbar-light .navbar-toggler-icon {
+    background-image: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e);
+} */
+
+.navbar-light .navbar-toggler-icon {
+    background-image: none ;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");}
+
+
+    .burger{
+        height: 80px;
+      width: 80px;
+    }
+    /* div.navbar-nav{
+        display:flex;
+        background-color:yellow;
+        
+    } */
+    .navi navbar-nav{
+        display:flex;
+        color:white;
+    }
+
+    /* responsive-navbar-nav navbar-collapse */
+
+    a{
+        color:white;
+    }
+    a:link {
+        text-decoration-line: none;
+        color:white;
+        display:flex;
+        align-items: center;
+
+        
+    }
+    a:active{
+        color:white;
+        text-decoration-line: none;
+    }
+    h2{
+        color:black;
+        text-decoration-line: none;
+    }
+
+    .responsive-navbar-nav{
+        background-color:white;
+    }
+    a.active{text-decoration-line: none;}
+
+    a:link:nth-child(2){
+        height: 90px;
+        
+    }
+
+
+    svg.icon-small{
+    
+        height:60px;
+    }
