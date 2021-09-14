@@ -64,7 +64,6 @@ const Expenses = () => {
           </option>
         </select>
       </div>
-      {/* car_id,expense_type, business_use, amount_spent, date */}
       <table>
         <thead>
           <tr>

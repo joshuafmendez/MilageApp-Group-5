@@ -34,7 +34,7 @@ const Cars = () => {
     const sortProperty = sortTypes[type];
 
     const sorted = sortedCars.sort((a, b) => {
-      if (sortProperty === "make" || sortProperty === "model") {
+      if (sortProperty === "make") {
         return a[sortProperty].localeCompare(b[sortProperty]);
       } else if (sortProperty === "id") {
         return a[sortProperty] - b[sortProperty];
@@ -57,9 +57,9 @@ const Cars = () => {
           <option name="make" value="make">
             make
           </option>
-          <option name="model" value="model">
+          {/* <option name="model" value="model">
             model
-          </option>
+          </option> */}
         </select>
       </div>
       <table>
@@ -71,9 +71,9 @@ const Cars = () => {
             <th>
               <h2>Make</h2>
             </th>
-            <th>
+            {/* <th>
               <h2>Model</h2>
-            </th>
+            </th> */}
             <th>
               <h2>Total Mileage</h2>
             </th>

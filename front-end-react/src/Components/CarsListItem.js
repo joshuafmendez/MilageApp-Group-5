@@ -11,14 +11,17 @@ function CarsListItem({ car }) {
       </td>
       <td>
         <Link to={`/cars/${id}`}>
-          <h2> {make}</h2>
+          <h2>
+            {" "}
+            {make} {model}
+          </h2>
         </Link>
       </td>
-      <td>
+      {/* <td>
         <Link to={`/cars/${id}`}>
           <h2> {model}</h2>
         </Link>
-      </td>
+      </td> */}
       <td>
         <h2> total mileage</h2>
       </td>

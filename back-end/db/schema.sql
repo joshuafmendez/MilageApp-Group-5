@@ -13,6 +13,7 @@ CREATE TABLE
         year INT not null,
         odometer INT, 
         doors INT
+        user_id TEXT not null
     );
 
  CREATE TABLE
