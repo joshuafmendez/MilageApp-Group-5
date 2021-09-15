@@ -21,9 +21,7 @@ const Cars = () => {
       make: "make",
       model: "model",
     };
-
     const sortProperty = sortTypes[type];
-
     sorted = Object.values(cars).sort((a, b) => {
       if (sortProperty === "make" || sortProperty === "model") {
         return a[sortProperty].localeCompare(b[sortProperty]);
