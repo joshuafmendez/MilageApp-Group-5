@@ -8,19 +8,24 @@ import { FcHome } from 'react-icons/fc';
 import { FcAutomotive } from 'react-icons/fc';
 import { FcCurrencyExchange} from 'react-icons/fc';
 import { ImRoad} from 'react-icons/im';
+import { signOut } from "../Services/Firebase";
 
 export default function NavBar() {
+  const handleLogout = async () => {
+    signOut()
+    alert("you've been logged out")
+  };
+
   return (
-    // <nav>
+
     <ReactBootStrap.Navbar
         collapseOnSelect
         expand="xxxl"
-        // bg="dark"
-        // variant="dark"
+    
        
       >
         <ReactBootStrap.Navbar.Brand id="brand" href="/">
-{/* <h1 className="title-logo">Trip App</h1> */}
+
 <div className="box-logo"><img className="logo" src={logo}/></div>
         </ReactBootStrap.Navbar.Brand>
        
@@ -28,7 +33,7 @@ export default function NavBar() {
        
        
        
-        {/* <ReactBootStrap.Navbar.Toggle className="pink-box" /> */}
+
 
         <ReactBootStrap.Navbar.Toggle aria-controls="basic-navbar-nav">
     <span>
@@ -55,10 +60,15 @@ export default function NavBar() {
       <NavLink to="/cars/:car_id/expenses/new">
         <h2>Car Expenses</h2><FcCurrencyExchange size="36px"/>
       </NavLink>
-
+      <button onClick={handleLogout}> LOG OUT</button>
   
         </nav>
         </ReactBootStrap.Navbar.Collapse>
       </ReactBootStrap.Navbar>
   );
 }
+
+
+
+
+

@@ -1,15 +1,24 @@
-import React from "react";
+// import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { UserContext } from "../Providers/UserProvider";
+import { useHistory } from "react-router-dom";
+import { signOut } from "../Services/Firebase";
 import axios from "axios";
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 import { apiURL } from "../util/apiURL";
-import CarsListItem from "./CarsListItem";
+ import CarsListItem from "./CarsListItem";
+import "../Components/Style/Cars.css"
 import { Link } from "react-router-dom";
 import("../App.css");
+
 
 const API = apiURL();
 
 const Cars = () => {
   const [cars, setCars] = useState([]);
+
+  const history = useHistory()
+  const user = useContext(UserContext)
 
   const fetchAllCars = async () => {
     try {
@@ -45,9 +54,26 @@ const Cars = () => {
     setCars(sorted);
   };
 
+
+  useEffect(() => { 
+    if(!user){
+      history.push("/")
+      }
+    }, [user, history]);
+
+
+
   return (
     <div>
-      <div className="sorting">
+<ul className="cars-list">
+{cars.map((car) => {
+            const { id } = car;
+            return <CarsListItem key={id} car={car} />;
+          })}
+</ul>
+
+
+      {/* <div className="sorting">
         Sort by
         <select onChange={(e) => handleChange(e.target.value)}>
           <option value="" defaultValue></option>
@@ -88,10 +114,17 @@ const Cars = () => {
             return <CarsListItem key={id} car={car} />;
           })}
         </tbody>
-      </table>
+      </table> */}
+
+
+
+
+<div className="mt-3"> <span className="text1">32 Applied <span className="text2">of 50 capacity</span></span> </div>
+
       <Link to={"/cars/new"}>
         <button className="cars-new-button">Add New Car</button>
       </Link>
+
     </div>
   );
 };

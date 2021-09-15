@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NavBar from "./Components/NavBar";
+import Login from "./Components/Login"
 import FourOFour from "./Pages/FourOFour";
 import Home from "./Pages/Home";
 import CarsIndex from "./Pages/CarsIndex";
@@ -26,12 +27,14 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
+              <Home />
       <UserProvider>
         <Router>
-          <NavBar />
           <Switch>
+          <Route exact path="/" component={Login} />
+            <div>
+          <NavBar />
             <Route exact path="/">
-              <Home />
             </Route>
             <Route path="/loggedInPage">
               <LoggedInPage />
@@ -75,6 +78,7 @@ function App() {
             <Route path="*">
               <FourOFour />
             </Route>
+            </div>
           </Switch>
         </Router>
       </UserProvider>
