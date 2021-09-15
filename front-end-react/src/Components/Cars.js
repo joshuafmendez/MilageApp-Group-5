@@ -11,6 +11,7 @@ const Cars = () => {
   const entireState = useSelector((state) => state);
   const dispatch = useDispatch();
   const { cars } = entireState;
+  
   let sorted = Object.values(cars);
 
   const [sorting, setSorting] = useState(sorted);

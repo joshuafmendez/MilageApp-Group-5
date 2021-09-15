@@ -66,7 +66,6 @@ function CarEditForm() {
           onChange={handleChange}
           id="make"
           placeholder="Enter make of the car"
-          required
         />
         <label htmlFor="model">Model:</label>
         <input
@@ -75,7 +74,6 @@ function CarEditForm() {
           value={model}
           onChange={handleChange}
           placeholder="Enter model of the car"
-          required
         />
         <label htmlFor="vin">VIN:</label>
         <input
@@ -84,7 +82,6 @@ function CarEditForm() {
           value={vin}
           onChange={handleChange}
           placeholder="Enter VIN of the car"
-          required
         />
         <label htmlFor="year">year:</label>
         <input
@@ -93,7 +90,6 @@ function CarEditForm() {
           value={year}
           min="1900"
           onChange={handleChange}
-          required
         />
         <label htmlFor="odometer">Odometer:</label>
         <input
