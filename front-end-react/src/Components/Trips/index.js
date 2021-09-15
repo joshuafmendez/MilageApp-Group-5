@@ -3,11 +3,16 @@ import { useState, useEffect } from "react";
 import { apiURL } from "../../util/apiURL";
 import TripsListItem from "./TripsListItem";
 import { Link, useParams } from "react-router-dom";
+// import { useSelector, useDispatch } from "react-redux";
 import "../../App.css";
 
 const API = apiURL();
 
 const Trips = () => {
+  // const entireState = useSelector((state) => state);
+  // const dispatch = useDispatch();
+  // const { cars } = entireState;
+
   const [trips, setTrips] = useState([]);
   let { id } = useParams();
   useEffect(() => {

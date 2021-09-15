@@ -3,6 +3,7 @@ import { useParams, useHistory, Link } from "react-router-dom";
 import axios from "axios";
 import { apiURL } from "../util/apiURL";
 import TripsIndex from "../Pages/Trips/TripsIndex";
+// import { useSelector } from "react-redux";
 
 const API = apiURL();
 
@@ -10,6 +11,8 @@ function CarDetails() {
   let [car, setCar] = useState({});
   let { id } = useParams();
   let history = useHistory();
+
+  // const car = useSelector((state) => state.cars[id]);
 
   const deleteCar = async () => {
     try {

@@ -1,30 +1,21 @@
-import React from "react";
-import axios from "axios";
-import { useState, useEffect } from "react";
-import { apiURL } from "../util/apiURL";
-import CarsListItem from "./CarsListItem";
+import React, { useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../App.css";
-
-const API = apiURL();
+import { useSelector, useDispatch } from "react-redux";
+import { addCars } from "../Store/Actions/carsActions";
+import CarsList from "./CarsList";
+import { fetchAllCarsFN } from "../util/networkRequest";
 
 const Cars = () => {
-  const [cars, setCars] = useState([]);
+  const entireState = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const { cars } = entireState;
+  let sorted = Object.values(cars);
 
-  const fetchAllCars = async () => {
-    try {
-      let res = await axios.get(`${API}/cars`);
-      setCars(res.data.payload);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    fetchAllCars();
-  }, []);
+  const [sorting, setSorting] = useState(sorted);
 
   const handleChange = (type) => {
-    const sortedCars = [...cars];
     const sortTypes = {
       id: "id",
       make: "make",
@@ -33,7 +24,7 @@ const Cars = () => {
 
     const sortProperty = sortTypes[type];
 
-    const sorted = sortedCars.sort((a, b) => {
+    sorted = Object.values(cars).sort((a, b) => {
       if (sortProperty === "make" || sortProperty === "model") {
         return a[sortProperty].localeCompare(b[sortProperty]);
       } else if (sortProperty === "id") {
@@ -42,14 +33,27 @@ const Cars = () => {
         return null;
       }
     });
-    setCars(sorted);
+    setSorting(sorted);
   };
+
+  useEffect(() => {
+    const fetchAllCars = async () => {
+      try {
+        const res = await fetchAllCarsFN();
+        setSorting(Object.values(res));
+        dispatch(addCars(res));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchAllCars();
+  }, [dispatch]);
 
   return (
     <div>
       <div className="sorting">
         Sort by
-        <select onChange={(e) => handleChange(e.target.value)}>
+        <select id="sorting-id" onChange={(e) => handleChange(e.target.value)}>
           <option value="" defaultValue></option>
           <option name="id" value="id">
             id
@@ -83,10 +87,7 @@ const Cars = () => {
           </tr>
         </thead>
         <tbody>
-          {cars.map((car) => {
-            const { id } = car;
-            return <CarsListItem key={id} car={car} />;
-          })}
+          <CarsList cars={sorting} />
         </tbody>
       </table>
       <Link to={"/cars/new"}>
