@@ -1,9 +1,9 @@
 const db = require("../db/config");
 
-const getAllCars = async () => {
+const getAllCars = async (uid) => {
   try {
-    const query = "SELECT * FROM cars";
-    const allCars = await db.any(query);
+    const query = "SELECT * FROM cars WHERE uid=$1";
+    const allCars = await db.any(query,uid);
     return { status: true, payload: allCars };
   } catch (error) {
     return { status: false, payload: error };
@@ -21,10 +21,10 @@ const getCar = async (id) => {
 };
 
 const addCar = async (car) => {
-  const { make, model, vin, year, odometer, doors } = car;
+  const { make, model, vin, year, odometer, doors, uid } = car;
   try {
     const query =
-      "INSERT INTO cars (make, model, vin, year, odometer, doors) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *";
+      "INSERT INTO cars (make, model, vin, year, odometer, doors,uid) VALUES ($1, $2, $3, $4, $5, $6,$7) RETURNING *";
     const newCar = await db.one(query, [
       make,
       model,
@@ -32,6 +32,7 @@ const addCar = async (car) => {
       year,
       odometer,
       doors,
+      uid
     ]);
     return { status: true, payload: newCar };
   } catch (error) {
@@ -50,10 +51,10 @@ const deleteCar = async (id) => {
 };
 
 const updateCar = async (id, car) => {
-  const { make, model, vin, year, odometer, doors } = car;
+  const { make, model, vin, year, odometer, doors,uid } = car;
   try {
     const query =
-      "UPDATE cars SET make=$1, model=$2, vin=$3, year=$4, odometer=$5, doors=$6 WHERE id=$7 RETURNING *";
+      "UPDATE cars SET make=$1, model=$2, vin=$3, year=$4, odometer=$5, doors=$6, uid=$7 WHERE id=$8 RETURNING *";
     const updatedCar = await db.one(query, [
       make,
       model,
@@ -61,6 +62,7 @@ const updateCar = async (id, car) => {
       year,
       odometer,
       doors,
+      uid,
       id,
     ]);
     return { status: true, payload: updatedCar };

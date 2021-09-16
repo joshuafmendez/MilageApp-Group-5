@@ -9,11 +9,13 @@ export default ({children}) => {
             console.log("changing state of user")
             console.log(user)
             if(user){
-            const { displayName, email, photoURL } = user;
+            const { displayName, email, photoURL,uid } = user;
+           
             setUser({
                 displayName,
                 email,
-                photoURL
+                photoURL,
+                uid
             })
             }else{
                 setUser(null)
