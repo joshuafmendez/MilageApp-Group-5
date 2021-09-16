@@ -1,26 +1,29 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useParams, useHistory, Link } from "react-router-dom";
-import { apiURL } from "../util/apiURL";
-
-const API = apiURL();
+import { addCar } from "../Store/Actions/carsActions";
+import { useSelector, useDispatch } from "react-redux";
+import { updateCarById } from "../util/networkRequest";
 
 function CarEditForm() {
   let { id } = useParams();
   let history = useHistory();
+  const cars = useSelector((state) => state.cars);
+  const dispatch = useDispatch();
+  const car = cars[id];
 
-  const [car, setCar] = useState({
-    make: "",
-    model: "",
-    vin: "",
-    year: "",
-    odometer: "",
-    doors: "",
+  const [carInput, setCarInput] = useState({
+    make: car.make,
+    model: car.model,
+    vin: car.vin,
+    year: car.year,
+    odometer: car.odometer,
+    doors: car.doors,
   });
 
   const updateCar = async (updatedCar) => {
     try {
-      await axios.put(`${API}/cars/${id}`, updatedCar);
+      const editedCar = await updateCarById(id, updatedCar);
+      dispatch(addCar(editedCar));
       history.push(`/cars/${id}`);
     } catch (error) {
       console.log(error);
@@ -28,27 +31,30 @@ function CarEditForm() {
   };
 
   const handleChange = (e) => {
-    setCar({ ...car, [e.target.id]: e.target.value });
+    setCarInput({ ...carInput, [e.target.id]: e.target.value });
   };
 
-  useEffect(() => {
-    const fetchCar = async () => {
-      try {
-        const res = await axios.get(`${API}/cars/${id}`);
-        setCar(res.data.payload);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchCar();
-  }, [id]);
+  // if (!car) {
+  //   useEffect(() => {
+  //     const fetchCar = async () => {
+  //       try {
+  //         const { data } = await axios.get(`${API}/cars/${id}`);
+  //         // dispatch(addCar(data.payload));
+  //         setCarInput(data.payload);
+  //       } catch (err) {
+  //         console.log(err);
+  //       }
+  //     };
+  //     fetchCar();
+  //   }, [dispatch, id]);
+  // }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    updateCar(car, id);
+    updateCar(carInput, id);
   };
 
-  const { make, model, vin, year, odometer, doors } = car;
+  const { make, model, vin, year, odometer, doors } = carInput;
 
   return (
     <div>
@@ -60,7 +66,6 @@ function CarEditForm() {
           onChange={handleChange}
           id="make"
           placeholder="Enter make of the car"
-          required
         />
         <label htmlFor="model">Model:</label>
         <input
@@ -69,7 +74,6 @@ function CarEditForm() {
           value={model}
           onChange={handleChange}
           placeholder="Enter model of the car"
-          required
         />
         <label htmlFor="vin">VIN:</label>
         <input
@@ -78,7 +82,6 @@ function CarEditForm() {
           value={vin}
           onChange={handleChange}
           placeholder="Enter VIN of the car"
-          required
         />
         <label htmlFor="year">year:</label>
         <input
@@ -87,7 +90,6 @@ function CarEditForm() {
           value={year}
           min="1900"
           onChange={handleChange}
-          required
         />
         <label htmlFor="odometer">Odometer:</label>
         <input

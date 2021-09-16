@@ -1,40 +1,29 @@
-import React from "react";
-import axios from "axios";
-import { useState, useEffect,useContext } from "react";
-import { apiURL } from "../util/apiURL";
-import CarsListItem from "./CarsListItem";
-import { UserContext } from "../Providers/UserProvider";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import("../App.css");
-const API = apiURL();
+import "../App.css";
+import { useSelector, useDispatch } from "react-redux";
+import { addCars } from "../Store/Actions/carsActions";
+import CarsList from "./CarsList";
+import { fetchAllCarsFN } from "../util/networkRequest";
+import { UserContext } from "../Providers/UserProvider";
 
 const Cars = () => {
-  const [cars, setCars] = useState([]);
-  const user = useContext(UserContext)
-  const fetchAllCars = async () => {
-    try {
-      let res = await axios.get(`${API}/cars?uid=${user.uid}`);
-      setCars(res.data.payload);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    fetchAllCars();
-  }, [user]);
+  const entireState = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const { cars } = entireState;
+  let sorted = Object.values(cars);
+  const [sorting, setSorting] = useState(sorted);
+  const user = useContext(UserContext);
 
   const handleChange = (type) => {
-    const sortedCars = [...cars];
     const sortTypes = {
       id: "id",
       make: "make",
       model: "model",
     };
-
     const sortProperty = sortTypes[type];
-
-    const sorted = sortedCars.sort((a, b) => {
-      if (sortProperty === "make") {
+    sorted = Object.values(cars).sort((a, b) => {
+      if (sortProperty === "make" || sortProperty === "model") {
         return a[sortProperty].localeCompare(b[sortProperty]);
       } else if (sortProperty === "id") {
         return a[sortProperty] - b[sortProperty];
@@ -42,14 +31,27 @@ const Cars = () => {
         return null;
       }
     });
-    setCars(sorted);
+    setSorting(sorted);
   };
+
+  useEffect(() => {
+    const fetchAllCars = async () => {
+      try {
+        const res = await fetchAllCarsFN(user);
+        setSorting(Object.values(res));
+        dispatch(addCars(res));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchAllCars();
+  }, [dispatch, user]);
 
   return (
     <div>
       <div className="sorting">
         Sort by
-        <select onChange={(e) => handleChange(e.target.value)}>
+        <select id="sorting-id" onChange={(e) => handleChange(e.target.value)}>
           <option value="" defaultValue></option>
           <option name="id" value="id">
             id
@@ -83,10 +85,7 @@ const Cars = () => {
           </tr>
         </thead>
         <tbody>
-          {cars.map((car) => {
-            const { id } = car;
-            return <CarsListItem key={id} car={car} />;
-          })}
+          <CarsList cars={sorting} />
         </tbody>
       </table>
       <Link to={"/cars/new"}>
