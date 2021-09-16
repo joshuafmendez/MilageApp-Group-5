@@ -15,7 +15,8 @@ cars.use("/:car_id/expenses", expenseController);
 cars.use("/:car_id/trips", tripsController);
 
 cars.get("/", async (req, res) => {
-  const allCars = await getAllCars();
+  const  uid  = req.query.uid;
+  const allCars = await getAllCars(uid);
   res.json(allCars);
 });
 
@@ -44,3 +45,19 @@ cars.put("/:id", async (req, res) => {
 });
 
 module.exports = cars;
+
+
+// quotes.get("/search", (req, res) => {
+//   const person = req.query.person;
+//   let filtered;
+//   if (person) {
+//     filtered = quotesArray.filter((quote) => {
+//       return person === quote.person;
+//     });
+//   }
+//   if (filtered.length > 0) {
+//     res.json({ success: true, payload: filtered });
+//   } else {
+//     res.redirect("/404");
+//   }
+// });

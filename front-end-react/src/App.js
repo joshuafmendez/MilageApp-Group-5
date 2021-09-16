@@ -11,65 +11,71 @@ import TripsIndex from "./Pages/Trips/TripsIndex.js";
 import TripsEdit from "./Pages/Trips/TripsEdit.js";
 import TripsNew from "./Pages/Trips/TripsNew.js";
 import TripsShow from "./Pages/Trips/TripsShow.js";
-// import ExpensesIndex from "./Pages/ExpensesIndex";
-// import ExpensesEdit from "./Pages/ExpensesEdit";
-// import ExpensesNew from "./Pages/ExpensesNew";
-// import ExpensesShow from "./Pages/ExpensesShow";
+import "firebase/auth";
+import UserProvider from "./Providers/UserProvider";
+import { LoggedInPage } from "./Pages/LoggedInPage";
+import ExpensesIndex from "./Pages/ExpensesIndex";
+import ExpensesEdit from "./Pages/ExpenseEdit";
+import ExpensesNew from "./Pages/ExpenseNew";
+import ExpensesShow from "./Pages/ExpenseShow";
 import "./App.css";
-// import { apiURL } from "./util/apiURL";
-
-// const API = apiURL();
 
 function App() {
   return (
     <div className="App">
-      <Router>
-        <NavBar />
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/cars">
-            <CarsIndex />
-          </Route>
-          <Route path="/cars/new">
-            <CarNew />
-          </Route>
-          <Route exact path="/cars/:id">
-            <CarShow />
-          </Route>
-          <Route path="/cars/:id/edit">
-            <CarEdit />
-          </Route>
-          <Route exact path="/cars/:id/trips">
-            <TripsIndex />
-          </Route>
-          <Route path="/cars/:id/trips/new">
-            <TripsNew />
-          </Route>
-          <Route exact path="/cars/:id/trips/:trip_id">
-            <TripsShow />
-          </Route>
-          <Route path="/cars/:id/trips/:trip_id/edit">
-            <TripsEdit />
-          </Route>
-          {/* <Route exact path="/cars/:id/expenses">
-            <ExpensesIndex />
-          </Route> */}
-          {/* <Route path="/cars/:id/expenses/new">
-            <ExpensesNew />
-          </Route> */}
-          {/* <Route exact path="/cars/:id/expenses/:expense_id">
-            <ExpensesShow />
-          </Route> */}
-          {/* <Route path="/cars/:id/expenses/:expense_id/edit">
-            <ExpensesEdit />
-          </Route> */}
-          <Route path="*">
-            <FourOFour />
-          </Route>
-        </Switch>
-      </Router>
+      <UserProvider>
+        <Router>
+          <NavBar />
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/loggedInPage">
+              <LoggedInPage />
+            </Route>
+            <Route exact path="/cars">
+              <CarsIndex />
+            </Route>
+            <Route path="/cars/new">
+              <CarNew />
+            </Route>
+            <Route exact path="/cars/:id">
+              <CarShow />
+            </Route>
+            <Route path="/cars/:id/edit">
+              <CarEdit />
+            </Route>
+
+            <Route exact path="/cars/:id/trips">
+              <TripsIndex />
+            </Route>
+            <Route path="/cars/:id/trips/new">
+              <TripsNew />
+            </Route>
+            <Route exact path="/cars/:id/trips/:trip_id">
+              <TripsShow />
+            </Route>
+            <Route path="/cars/:id/trips/:trip_id/edit">
+              <TripsEdit />
+            </Route>
+            <Route exact path="/cars/:car_id/expenses">
+              <ExpensesIndex />
+            </Route>
+            <Route path="/cars/:car_id/expenses/new">
+              <ExpensesNew />
+            </Route>
+            <Route exact path="/cars/:car_id/expenses/:id">
+              <ExpensesShow />
+            </Route>
+            <Route path="/cars/:car_id/expenses/:id/edit">
+              <ExpensesEdit />
+            </Route>
+            <Route path="*">
+              <FourOFour />
+            </Route>
+          </Switch>
+        </Router>
+      </UserProvider>
     </div>
   );
 }

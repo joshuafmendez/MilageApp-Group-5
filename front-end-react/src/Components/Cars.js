@@ -1,20 +1,19 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import "../App.css";
 import { useSelector, useDispatch } from "react-redux";
 import { addCars } from "../Store/Actions/carsActions";
 import CarsList from "./CarsList";
 import { fetchAllCarsFN } from "../util/networkRequest";
+import { UserContext } from "../Providers/UserProvider";
 
 const Cars = () => {
   const entireState = useSelector((state) => state);
   const dispatch = useDispatch();
   const { cars } = entireState;
-  
   let sorted = Object.values(cars);
-
   const [sorting, setSorting] = useState(sorted);
+  const user = useContext(UserContext);
 
   const handleChange = (type) => {
     const sortTypes = {
@@ -38,7 +37,7 @@ const Cars = () => {
   useEffect(() => {
     const fetchAllCars = async () => {
       try {
-        const res = await fetchAllCarsFN();
+        const res = await fetchAllCarsFN(user);
         setSorting(Object.values(res));
         dispatch(addCars(res));
       } catch (error) {
@@ -46,7 +45,7 @@ const Cars = () => {
       }
     };
     fetchAllCars();
-  }, [dispatch]);
+  }, [dispatch, user]);
 
   return (
     <div>
@@ -60,9 +59,9 @@ const Cars = () => {
           <option name="make" value="make">
             make
           </option>
-          <option name="model" value="model">
+          {/* <option name="model" value="model">
             model
-          </option>
+          </option> */}
         </select>
       </div>
       <table>
@@ -74,9 +73,9 @@ const Cars = () => {
             <th>
               <h2>Make</h2>
             </th>
-            <th>
+            {/* <th>
               <h2>Model</h2>
-            </th>
+            </th> */}
             <th>
               <h2>Total Mileage</h2>
             </th>

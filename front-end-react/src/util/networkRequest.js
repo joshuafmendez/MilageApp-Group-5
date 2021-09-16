@@ -3,8 +3,8 @@ import { apiURL } from "./apiURL";
 
 const API = apiURL();
 
-export const fetchAllCarsFN = async () => {
-  let { data } = await axios.get(`${API}/cars`);
+export const fetchAllCarsFN = async (user) => {
+  let { data } = await axios.get(`${API}/cars?uid=${user.uid}`);
   return data.payload;
 };
 
