@@ -73,58 +73,17 @@ const Cars = () => {
 </ul>
 
 
-      {/* <div className="sorting">
-        Sort by
-        <select onChange={(e) => handleChange(e.target.value)}>
-          <option value="" defaultValue></option>
-          <option name="id" value="id">
-            id
-          </option>
-          <option name="make" value="make">
-            make
-          </option>
-          <option name="model" value="model">
-            model
-          </option>
-        </select>
-      </div>
-      <table>
-        <thead>
-          <tr>
-            <th>
-              <h2>Car ID</h2>
-            </th>
-            <th>
-              <h2>Make</h2>
-            </th>
-            <th>
-              <h2>Model</h2>
-            </th>
-            <th>
-              <h2>Total Mileage</h2>
-            </th>
-            <th>
-              <h2>Total Expenses</h2>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {cars.map((car) => {
-            const { id } = car;
-            return <CarsListItem key={id} car={car} />;
-          })}
-        </tbody>
-      </table> */}
-
-
-
-
-<div className="mt-3"> <span className="text1">32 Applied <span className="text2">of 50 capacity</span></span> </div>
-
-      <Link to={"/cars/new"}>
+      <Link to={"/cars/new/new"}>
         <button className="cars-new-button">Add New Car</button>
       </Link>
-
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
     </div>
   );
 };

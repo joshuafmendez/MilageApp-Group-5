@@ -7,7 +7,7 @@ import Slider from "./Slider.js";
 
 function CarsListItem({ car }) {
   const { id, make, model } = car;
-  const colors = ["red","blue","yellow","purple"]
+ 
   return (
  
     <div className="wrapper">
@@ -31,19 +31,26 @@ function CarsListItem({ car }) {
         <br></br>
     
     
-     <h1> $900</h1>  
+  
   
 <br></br>
 <br></br>
 <br></br>
 <br></br>
 
-    <button className="btn btn-success buy-now">Estimat Deduction</button>
+
     <Link to={`/cars/${id}`}>
           <h2> {make} {model}</h2>
         </Link>
-        <Slider/>
+     
         mileage
+        <div className="border">
+  <div className="bar" style={{height:"24px",width:"20%"}}></div>
+</div>
+        gas
+        <div className="border">
+  <div className="bar" style={{height:"24px",width:"20%"}}></div>
+</div>
     </div>
 
 </div>

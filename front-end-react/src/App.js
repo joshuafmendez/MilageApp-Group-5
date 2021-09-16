@@ -4,7 +4,7 @@ import NavBar from "./Components/NavBar";
 import Login from "./Components/Login"
 import FourOFour from "./Pages/FourOFour";
 import Home from "./Pages/Home";
-import CarsIndex from "./Pages/CarsIndex";
+ import CarsIndex from "./Pages/CarsIndex";
 import CarEdit from "./Pages/CarEdit";
 import CarNew from "./Pages/CarNew";
 import CarShow from "./Pages/CarShow";
@@ -42,7 +42,7 @@ function App() {
             <Route exact path="/cars">
               <CarsIndex />
             </Route>
-            <Route path="/cars/new">
+            <Route path="/cars/new/new">
               <CarNew />
             </Route>
             <Route exact path="/cars/:id">
