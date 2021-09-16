@@ -1,19 +1,19 @@
 import React from "react";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect,useContext } from "react";
 import { apiURL } from "../util/apiURL";
 import CarsListItem from "./CarsListItem";
+import { UserContext } from "../Providers/UserProvider";
 import { Link } from "react-router-dom";
 import("../App.css");
-
 const API = apiURL();
 
 const Cars = () => {
   const [cars, setCars] = useState([]);
-
+  const user = useContext(UserContext)
   const fetchAllCars = async () => {
     try {
-      let res = await axios.get(`${API}/cars`);
+      let res = await axios.get(`${API}/cars?uid=${user.uid}`);
       setCars(res.data.payload);
     } catch (error) {
       console.log(error);
@@ -21,7 +21,7 @@ const Cars = () => {
   };
   useEffect(() => {
     fetchAllCars();
-  }, []);
+  }, [user]);
 
   const handleChange = (type) => {
     const sortedCars = [...cars];

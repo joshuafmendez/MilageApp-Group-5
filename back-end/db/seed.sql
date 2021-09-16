@@ -1,11 +1,11 @@
 \c mileage_db;
 
 INSERT INTO
-    cars(make, model, vin, year, odometer, doors, user_id)
+    cars(make, model, vin, year, odometer, doors, uid)
 VALUES 
-    ('Dodge','Charger','1234567890AUPMNTR',2005,90000,4, abcd),
-    ('Chevy','Impala','4544567890AUPMNTR',2010,50000,4, efgh),
-    ('Ford','Mustang','9894567890AUPMNTR',2015,30000,4, ijkl);
+    ('Dodge','Charger','1234567890AUPMNTR',2005,90000,4, 'abcd'),
+    ('Chevy','Impala','4544567890AUPMNTR',2010,50000,4, 'efgh'),
+    ('Ford','Mustang','9894567890AUPMNTR',2015,30000,4, 'ijkl');
 
 
  -- seed gas
