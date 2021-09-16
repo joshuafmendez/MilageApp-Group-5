@@ -1,5 +1,6 @@
 import React, { useState, useEffect, createContext } from "react";
 import { auth } from "../Services/Firebase";
+
 export const UserContext = createContext({ user: null });
 
 export default ({ children }) => {

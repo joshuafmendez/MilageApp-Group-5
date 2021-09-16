@@ -45,7 +45,6 @@ function App() {
             <Route path="/cars/:id/edit">
               <CarEdit />
             </Route>
-
             <Route exact path="/cars/:id/trips">
               <TripsIndex />
             </Route>
