@@ -1,11 +1,13 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState,useContext } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { apiURL } from "../util/apiURL";
+import { UserContext } from "../Providers/UserProvider";
 
 const API = apiURL();
 
 function CarNewForm() {
+  const user = useContext(UserContext)
   const [car, setCar] = useState({
     make: "",
     model: "",
@@ -13,6 +15,7 @@ function CarNewForm() {
     year: "",
     odometer: "",
     doors: "",
+    uid: user.uid
   });
 
   let history = useHistory();
