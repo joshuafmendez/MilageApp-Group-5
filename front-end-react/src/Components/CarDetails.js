@@ -61,8 +61,16 @@ function CarDetails() {
           <button>EDIT</button>
         </Link>
 
-        <TripsIndex />
-        <ExpensesIndex />
+        <div>
+          <Link to={`/cars/${id}/expenses`}>
+            Total Expenses {"display information"}
+          </Link>
+        </div>
+        <div>
+          <Link to={`/cars/${id}/trips`}>
+            Total Mileage {"display information"}
+          </Link>
+        </div>
       </div>
     </div>
   );
