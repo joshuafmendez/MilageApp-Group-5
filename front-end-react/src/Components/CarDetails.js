@@ -2,8 +2,6 @@ import React, { useState, useEffect, useContext } from "react";
 import { useParams, useHistory, Link } from "react-router-dom";
 import axios from "axios";
 import { apiURL } from "../util/apiURL";
-import TripsIndex from "../Pages/Trips/TripsIndex";
-import ExpensesIndex from "../Pages/ExpensesIndex";
 import { UserContext } from "../Providers/UserProvider";
 const API = apiURL();
 
