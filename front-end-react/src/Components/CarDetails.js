@@ -30,6 +30,8 @@ function CarDetails() {
         let res = await axios.get(`${API}/cars/${id}`);
         if (res.data.payload.uid === user.uid) {
           setCar(res.data.payload);
+        }else{
+          history.push("/")
         }
       } catch (err) {
         console.log(err);
@@ -39,7 +41,9 @@ function CarDetails() {
   }, [id, user]);
 
   const { make, model, vin, year, odometer, doors } = car;
-
+if(!user){
+  return<div className="spinner-border"></div>
+}else{
   return (
     <div>
       <h2>Car ID: {id}</h2>
@@ -72,6 +76,8 @@ function CarDetails() {
       </div>
     </div>
   );
+}
+  
 }
 
 export default CarDetails;
