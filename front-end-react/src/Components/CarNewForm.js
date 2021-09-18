@@ -87,6 +87,7 @@ function CarNewForm() {
           min="0"
           placeholder="Enter the mileage on the odometer"
           onChange={handleChange}
+          required
         />
         <label htmlFor="doors">Doors:</label>
         <input
@@ -96,6 +97,7 @@ function CarNewForm() {
           min="2"
           placeholder="Enter the number doors of the car"
           onChange={handleChange}
+          required
         />
         <div>
           <button type="submit">Submit</button>
