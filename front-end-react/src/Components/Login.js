@@ -16,7 +16,7 @@ const Login = () => {
   const history = useHistory();
   useEffect(() => {
     if (user) {
-      history.push("/loggedInPage");
+      history.push("/loggedInCars");
     }
   }, [user, history]);
   return (
