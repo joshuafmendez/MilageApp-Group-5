@@ -2,6 +2,8 @@ import React, { useContext, useEffect } from "react";
 import { UserContext } from "../Providers/UserProvider";
 import { useHistory } from "react-router-dom";
 import { signOut } from "../Services/Firebase";
+import CarsIndex from "./CarsIndex"
+// import "../Components/Style/LoggedInPage.css"
 
 
 export const LoggedInPage = () => {
@@ -26,15 +28,16 @@ export const LoggedInPage = () => {
   
   if ( user ){
     return (
-      <div>
+      <div className="log-start">
         <h1> YOU ARE NOW LOGGED IN : </h1>
         <h1>Welcome {user.displayName} !</h1>
         <div>
-          <img src = {user.photoURL}
+          {/* <img src = {user.photoURL}
           style={imgStyle}
             className="user-image"
             alt="its the users head"
-            ></img>
+            ></img> */}
+            <CarsIndex/>
         </div>
         email: {user.email}
         <button onClick={handleLogout}> LOG OUT</button>

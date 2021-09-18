@@ -6,6 +6,10 @@ import { addCars } from "../Store/Actions/carsActions";
 import CarsList from "./CarsList";
 import { fetchAllCarsFN } from "../util/networkRequest";
 import { UserContext } from "../Providers/UserProvider";
+import { useHistory } from "react-router-dom";
+import { signOut } from "../Services/Firebase";
+import CarsListItem from "./CarsListItem";
+import "../Components/Style/Cars.css"
 
 const Cars = () => {
   const entireState = useSelector((state) => state);
@@ -14,6 +18,7 @@ const Cars = () => {
   let sorted = Object.values(cars);
   const [sorting, setSorting] = useState(sorted);
   const user = useContext(UserContext);
+  const history = useHistory();
 
   const handleChange = (type) => {
     const sortTypes = {
@@ -47,6 +52,12 @@ const Cars = () => {
     fetchAllCars();
   }, [dispatch, user]);
 
+  useEffect(() => { 
+    if(!user){
+      history.push("/")
+      }
+    }, [user, history]);
+
   return (
     <div>
       <div className="sorting">
@@ -64,33 +75,41 @@ const Cars = () => {
           </option> */}
         </select>
       </div>
-      <table>
-        <thead>
-          <tr>
-            <th>
-              <h2>Car ID</h2>
-            </th>
-            <th>
-              <h2>Make</h2>
-            </th>
-            {/* <th>
-              <h2>Model</h2>
-            </th> */}
-            <th>
-              <h2>Total Mileage</h2>
-            </th>
-            <th>
-              <h2>Total Expenses</h2>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <CarsList cars={sorting} />
-        </tbody>
-      </table>
+
+<ul className="cars-list">
+{cars.map((car) => {
+            const { id } = car;
+            return <CarsListItem key={id} car={car} />;
+          })}
+</ul>
+//       <table>
+//         <thead>
+//           <tr>
+//             <th>
+//               <h2>Car ID</h2>
+//             </th>
+//             <th>
+//               <h2>Make</h2>
+//             </th>
+//             {/* <th>
+//               <h2>Model</h2>
+//             </th> */}
+//             <th>
+//               <h2>Total Mileage</h2>
+//             </th>
+//             <th>
+//               <h2>Total Expenses</h2>
+//             </th>
+//           </tr>
+//         </thead>
+//         <tbody>
+//           <CarsList cars={sorting} />
+//         </tbody>
+//       </table>
       <Link to={"/cars/new"}>
         <button className="cars-new-button">Add New Car</button>
       </Link>
+<br></br>
     </div>
   );
 };

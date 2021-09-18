@@ -1,9 +1,9 @@
 import React from "react";
-import { Login } from "../Components/Login";
+// import { Login } from "../Components/Login";
 function Home(props) {
   return (
     <div>
-      <Login/>
+      {/* <Login/> */}
     </div>
   );
 }

@@ -1,0 +1,229 @@
+/* .navbar{
+    background-color: black;
+ 
+}
+
+.title-logo{
+    font-size: 40px;
+    color:white;
+    margin-left: 48%;
+    height: 190px;
+}
+.navbar-toggler-icon{
+ color: white;
+}
+.navbar-toggler{
+    background-color: white;
+    color:white;
+    margin-right: 11%;
+    height: 80px;
+    width: 90px;
+    border:solid rgb(238 ,13 ,118) 1px;
+
+}
+
+
+
+
+
+
+.logo{
+    height: 100px;
+    width:100px;
+}
+.box-logo{
+ 
+    margin-left:83%;
+}
+
+
+
+
+
+span.navbar-toggler-icon{
+
+    height: 70px;
+    width:70px;
+    margin-right: 2px;
+}
+
+
+
+button .navbar-toggler-icon{
+
+    border:solid pink 2px;
+display: flex;
+align-self: center;
+}
+
+button.navbar-toggler.collapsed{
+
+display:flex;
+flex-direction: column;
+align-content: center;
+
+}
+
+
+button.navbar-toggler{
+    display:flex;
+    flex-direction: column;
+    align-content: center;
+
+
+}
+
+button.navbar-toggler-icon {
+    background-image: none;
+    background-color:purple;
+}
+span.navbar-toggler.icon {
+    background-image: none;
+    background-color:purple;
+}
+
+
+
+
+
+
+
+.navbar-light .navbar-toggler-icon {
+    background-image: none ;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");}
+
+
+    .burger{
+        height: 80px;
+      width: 80px;
+    
+    } 
+    .navi navbar-nav{
+        display:flex;
+        color:white;
+    }
+
+
+    a{
+        color:white;
+    }
+    a:link {
+        text-decoration-line: none;
+        color:white;
+        display:flex;
+        align-items: center;
+
+        
+    }
+    a:active{
+        color:white;
+        text-decoration-line: none;
+    }
+    h2{
+        color:black;
+        text-decoration-line: none;
+    }
+
+    .responsive-navbar-nav{
+        background-color:white;
+    }
+    a.active{text-decoration-line: none;}
+
+    a:link:nth-child(2){
+        height: 90px;
+        
+    }
+
+
+    svg.icon-small{
+    
+        height:60px;
+    } */
+
+
+.sidenav {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+
+  .sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  .main {
+    margin-left: 160px; /* Same as the width of the sidenav */
+    font-size: 28px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+
+
+    
+  .right-nav{
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+
+
+  .right-nav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+  }
+  
+  .right-nav a:hover {
+    color: #f1f1f1;
+  }
+  
+  .main {
+    margin-left: 160px; /* Same as the width of the sidenav */
+    font-size: 28px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+  }
+  
+
+ 
+
+  div.gas-input{
+      background-color: yellow;
+      width:900px;
+      color:black;
+  }
+
+  input.gas-here{
+      color:black;
+  }
+  .allNav{
+      width: 50%;
+  }

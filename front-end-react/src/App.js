@@ -1,9 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NavBar from "./Components/NavBar";
+import Login from "./Components/Login"
 import FourOFour from "./Pages/FourOFour";
 import Home from "./Pages/Home";
-import CarsIndex from "./Pages/CarsIndex";
+ import CarsIndex from "./Pages/CarsIndex";
 import CarEdit from "./Pages/CarEdit";
 import CarNew from "./Pages/CarNew";
 import CarShow from "./Pages/CarShow";
@@ -23,12 +24,14 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
+              <Home />
       <UserProvider>
         <Router>
-          <NavBar />
           <Switch>
+          <Route exact path="/" component={Login} />
+            <div>
+          <NavBar />
             <Route exact path="/">
-              <Home />
             </Route>
             <Route path="/loggedInPage">
               <LoggedInPage />
@@ -36,7 +39,7 @@ function App() {
             <Route exact path="/cars">
               <CarsIndex />
             </Route>
-            <Route path="/cars/new">
+            <Route path="/cars/new/new">
               <CarNew />
             </Route>
             <Route exact path="/cars/:id">
@@ -72,6 +75,7 @@ function App() {
             <Route path="*">
               <FourOFour />
             </Route>
+            </div>
           </Switch>
         </Router>
       </UserProvider>
