@@ -13,15 +13,15 @@ const Expenses = () => {
 
   const { car_id } = useParams();
 
-  const fetchAllExpenses = async () => {
-    try {
-      let res = await axios.get(`${API}/cars/${car_id}/expenses`);
-      setExpenses(res.data.payload);
-    } catch (error) {
-      console.log(error);
-    }
-  };
   useEffect(() => {
+    const fetchAllExpenses = async () => {
+      try {
+        let res = await axios.get(`${API}/cars/${car_id}/expenses`);
+        setExpenses(res.data.payload);
+      } catch (error) {
+        console.log(error);
+      }
+    };
     fetchAllExpenses();
   }, [car_id]);
 
@@ -64,7 +64,6 @@ const Expenses = () => {
           </option>
         </select>
       </div>
-      {/* car_id,expense_type, business_use, amount_spent, date */}
       <table>
         <thead>
           <tr>

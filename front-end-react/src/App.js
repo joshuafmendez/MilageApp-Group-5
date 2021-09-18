@@ -8,21 +8,18 @@ import Home from "./Pages/Home";
 import CarEdit from "./Pages/CarEdit";
 import CarNew from "./Pages/CarNew";
 import CarShow from "./Pages/CarShow";
+import TripsIndex from "./Pages/Trips/TripsIndex.js";
+import TripsEdit from "./Pages/Trips/TripsEdit.js";
+import TripsNew from "./Pages/Trips/TripsNew.js";
+import TripsShow from "./Pages/Trips/TripsShow.js";
 import "firebase/auth";
 import UserProvider from "./Providers/UserProvider";
 import { LoggedInPage } from "./Pages/LoggedInPage";
-// import TripsIndex from "./Pages/TripsIndex";
-// import TripsEdit from "./Pages/TripsEdit";
-// import TripsNew from "./Pages/TripsNew";
-// import TripsShow from "./Pages/TripsShow";
 import ExpensesIndex from "./Pages/ExpensesIndex";
-import ExpenseEdit from "./Pages/ExpenseEdit";
-import ExpenseNew from "./Pages/ExpenseNew";
-import ExpenseShow from "./Pages/ExpenseShow";
+import ExpensesEdit from "./Pages/ExpenseEdit";
+import ExpensesNew from "./Pages/ExpenseNew";
+import ExpensesShow from "./Pages/ExpenseShow";
 import "./App.css";
-// import { apiURL } from "./util/apiURL";
-
-// const API = apiURL();
 
 function App() {
   return (
@@ -51,30 +48,30 @@ function App() {
             <Route path="/cars/:id/edit">
               <CarEdit />
             </Route>
-            {/* <Route exact path="/cars/:car_id/trips">
-            <TripsIndex />
+            <Route exact path="/cars/:id/trips">
+              <TripsIndex />
             </Route>
-            <Route path="/cars/:car_id/trips/new">
-            <TripsNew />
+            <Route path="/cars/:id/trips/new">
+              <TripsNew />
             </Route>
-            <Route exact path="/cars/:car_id/trips/:id">
-            <TripsShow />
+            <Route exact path="/cars/:id/trips/:trip_id">
+              <TripsShow />
             </Route>
-            <Route path="/cars/:car_id/trips/:id/edit">
-            <TripsEdit />
+            <Route path="/cars/:id/trips/:trip_id/edit">
+              <TripsEdit />
             </Route>
             <Route exact path="/cars/:car_id/expenses">
-            <ExpensesIndex />
+              <ExpensesIndex />
             </Route>
             <Route path="/cars/:car_id/expenses/new">
-            <ExpensesNew />
+              <ExpensesNew />
             </Route>
             <Route exact path="/cars/:car_id/expenses/:id">
-            <ExpensesShow />
+              <ExpensesShow />
             </Route>
             <Route path="/cars/:car_id/expenses/:id/edit">
-            <ExpensesEdit />
-          </Route> */}
+              <ExpensesEdit />
+            </Route>
             <Route path="*">
               <FourOFour />
             </Route>

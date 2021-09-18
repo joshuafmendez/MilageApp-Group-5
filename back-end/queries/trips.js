@@ -21,12 +21,28 @@ const getTrip = async (id) => {
 };
 
 const addTrip = async (body, car_id) => {
-  const { business_use,miles,date,reason,start_odometer,stop_odometer,favorite} = body;
+  const {
+    business_use,
+    miles,
+    date,
+    reason,
+    start_odometer,
+    stop_odometer,
+    favorite,
+  } = body;
   try {
-
     const query =
       "INSERT INTO trips ( car_id,business_use,miles,date,reason,start_odometer,stop_odometer,favorite) VALUES ($1, $2, $3, $4,$5,$6,$7,$8) RETURNING *";
-    const newTrip = await db.one(query, [ car_id,business_use,miles,date,reason,start_odometer,stop_odometer,favorite]);
+    const newTrip = await db.one(query, [
+      car_id,
+      business_use,
+      miles,
+      date,
+      reason,
+      start_odometer,
+      stop_odometer,
+      favorite,
+    ]);
     return { status: true, payload: newTrip };
   } catch (error) {
     return { status: false, payload: error };
@@ -44,20 +60,28 @@ const deleteTrip = async (id) => {
 };
 
 const updateTrip = async (id, body) => {
-  const { car_id,business_use,miles,date,reason,start_odometer,stop_odometer,favorite } = body;
+  const {
+    car_id,
+    business_use,
+    miles,
+    date,
+    reason,
+    start_odometer,
+    stop_odometer,
+    favorite,
+  } = body;
   try {
     const query =
-
       "UPDATE trips SET car_id=$1, business_use=$2, miles=$3, date=$4,reason=$5,start_odometer=$6,stop_odometer=$7,favorite=$8 WHERE id=$9 RETURNING *";
     const updatedTrip = await db.one(query, [
-        car_id,
-        business_use,
-        miles,
-        date,
-        reason,
-        start_odometer,
-        stop_odometer,
-        favorite,
+      car_id,
+      business_use,
+      miles,
+      date,
+      reason,
+      start_odometer,
+      stop_odometer,
+      favorite,
       id,
     ]);
     return { status: true, payload: updatedTrip };

@@ -12,7 +12,8 @@ CREATE TABLE
         vin TEXT not null,
         year INT not null,
         odometer INT, 
-        doors INT
+        doors INT,
+        uid TEXT not null
     );
 
  CREATE TABLE

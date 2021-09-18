@@ -42,6 +42,7 @@ function CarsListItem({ car }) {
     <Link to={`/cars/${id}`}>
           <h2> {make} {model}</h2>
         </Link>
+
      
         mileage
         <div className="border">
@@ -54,6 +55,28 @@ function CarsListItem({ car }) {
     </div>
 
 </div>
+
+//       </td>
+//       <td>
+//         <Link to={`/cars/${id}`}>
+//           <h2>
+//             {" "}
+//             {make} {model}
+//           </h2>
+//         </Link>
+//       </td>
+//       {/* <td>
+//         <Link to={`/cars/${id}`}>
+//           <h2> {model}</h2>
+//         </Link>
+//       </td> */}
+//       <td>
+//         <h2> total mileage</h2>
+//       </td>
+//       <td>
+//         <h2> total expenses</h2>
+//       </td>
+//     </tr>
 
   );
 }

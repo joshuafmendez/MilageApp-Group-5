@@ -1,15 +1,20 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState,useContext } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { apiURL } from "../util/apiURL";
+
 // import'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
 import { MDBInput } from "mdbreact";
 import "../Components/Style/CarNewForm.css"
 
+import { UserContext } from "../Providers/UserProvider";
+
+
 const API = apiURL();
 
 function CarNewForm() {
+  const user = useContext(UserContext)
   const [car, setCar] = useState({
     make: "",
     model: "",
@@ -17,6 +22,7 @@ function CarNewForm() {
     year: "",
     odometer: "",
     doors: "",
+    uid: user.uid
   });
 
   let history = useHistory();
@@ -86,6 +92,7 @@ function CarNewForm() {
           min="0"
           placeholder="Enter the mileage on the odometer"
           onChange={handleChange}
+          required
         />
         <label htmlFor="doors">Doors:</label>
         <input
@@ -95,6 +102,7 @@ function CarNewForm() {
           min="2"
           placeholder="Enter the number doors of the car"
           onChange={handleChange}
+          required
         />
         <div>
           <button type="submit">Submit</button>
