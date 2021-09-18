@@ -27,22 +27,22 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-              <Home />
+              {/* <Home /> */}
       <UserProvider>
         <Router>
           <Switch>
           <Route exact path="/" component={Login} />
             <div>
           <NavBar />
-            <Route exact path="/">
-            </Route>
-            <Route path="/loggedInPage">
+            {/* <Route exact path="/">
+            </Route> */}
+            <Route path="/loggedInCars">
               <LoggedInPage />
             </Route>
-            <Route exact path="/cars">
+            <Route exact path="/loggedInCars">
               <CarsIndex />
             </Route>
-            <Route path="/cars/new/new">
+            <Route path="/cars/new">
               <CarNew />
             </Route>
             <Route exact path="/cars/:id">

@@ -40,7 +40,7 @@ export default function NavBar() {
        <NavLink to="/">
          <h2>Home</h2><FcHome size="36px"/>
        </NavLink>
-       <NavLink to="/cars">
+       <NavLink to="/loggedInCars">
          <h2>Car(s)</h2><FcAutomotive size="36px"/>
        </NavLink>
        <NavLink to="/cars/:car_id/trips/new">
@@ -54,7 +54,7 @@ export default function NavBar() {
 
 
 <div className="right-nav">
-       <NavLink to="/">
+       <NavLink to="/loggedInCars">
          <h2>Start Trip</h2><GiSteeringWheel size="36px"/>
        </NavLink>
        <NavLink to="/cars">

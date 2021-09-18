@@ -19,7 +19,7 @@ function CarDetails() {
   };
   const handleDelete = async () => {
     await deleteCar();
-    history.push("/cars");
+    history.push("/loggedInCars");
   };
 
   useEffect(() => {

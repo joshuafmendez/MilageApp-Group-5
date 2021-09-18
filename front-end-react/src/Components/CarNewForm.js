@@ -106,7 +106,7 @@ function CarNewForm() {
 
 
 
-<form className="form-rows">
+<form onSubmit={handleSubmit} className="form-rows">
 
   <div className="all-rows">
 
@@ -192,6 +192,10 @@ function CarNewForm() {
 
 </div>
 </div>
+<button type="submit">Submit</button>
+          <Link to={`/cars`}>
+            <button>Cancel</button>
+          </Link>
   </form>
   </div>
 
