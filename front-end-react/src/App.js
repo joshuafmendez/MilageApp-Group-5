@@ -1,10 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NavBar from "./Components/NavBar";
-import Login from "./Components/Login"
+import Login from "./Components/Login";
 import FourOFour from "./Pages/FourOFour";
-import Home from "./Pages/Home";
- import CarsIndex from "./Pages/CarsIndex";
 import CarEdit from "./Pages/CarEdit";
 import CarNew from "./Pages/CarNew";
 import CarShow from "./Pages/CarShow";
@@ -24,58 +22,52 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-              {/* <Home /> */}
       <UserProvider>
         <Router>
           <Switch>
-          <Route exact path="/" component={Login} />
+            <Route exact path="/" component={Login} />
             <div>
-          <NavBar />
-            {/* <Route exact path="/">
-            </Route> */}
-            <Route path="/loggedInCars">
-              <LoggedInPage />
-            </Route>
-            <Route exact path="/loggedInCars">
-              <CarsIndex />
-            </Route>
-            <Route path="/cars/new">
-              <CarNew />
-            </Route>
-            <Route exact path="/cars/:id">
-              <CarShow />
-            </Route>
-            <Route path="/cars/:id/edit">
-              <CarEdit />
-            </Route>
-            <Route exact path="/cars/:id/trips">
-              <TripsIndex />
-            </Route>
-            <Route path="/cars/:id/trips/new">
-              <TripsNew />
-            </Route>
-            <Route exact path="/cars/:id/trips/:trip_id">
-              <TripsShow />
-            </Route>
-            <Route path="/cars/:id/trips/:trip_id/edit">
-              <TripsEdit />
-            </Route>
-            <Route exact path="/cars/:car_id/expenses">
-              <ExpensesIndex />
-            </Route>
-            <Route path="/cars/:car_id/expenses/new">
-              <ExpensesNew />
-            </Route>
-            <Route exact path="/cars/:car_id/expenses/:id">
-              <ExpensesShow />
-            </Route>
-            <Route path="/cars/:car_id/expenses/:id/edit">
-              <ExpensesEdit />
-            </Route>
+              <NavBar />
+              <Route exact path="/cars">
+                <LoggedInPage />
+              </Route>
+              <Route exact path="/cars/car/new">
+                <CarNew />
+              </Route>
+              <Route exact path="/cars/:id/edit">
+                <CarEdit />
+              </Route>
+              <Route exact path="/cars/:id">
+                <CarShow />
+              </Route>
+              <Route exact path="/cars/:id/trips">
+                <TripsIndex />
+              </Route>
+              <Route exact path="/cars/:id/trips/trip/new">
+                <TripsNew />
+              </Route>
+              <Route exact path="/cars/:id/trips/:trip_id">
+                <TripsShow />
+              </Route>
+              <Route exact path="/cars/:id/trips/:trip_id/edit">
+                <TripsEdit />
+              </Route>
+              <Route exact path="/cars/:id/expenses">
+                <ExpensesIndex />
+              </Route>
+              <Route path="/cars/:id/expenses/expense/new">
+                <ExpensesNew />
+              </Route>
+              <Route exact path="/cars/:id/expenses/:expense_id">
+                <ExpensesShow />
+              </Route>
+              <Route path="/cars/:id/expenses/:expense_id/edit">
+                <ExpensesEdit />
+              </Route>
+            </div>
             <Route path="*">
               <FourOFour />
             </Route>
-            </div>
           </Switch>
         </Router>
       </UserProvider>

@@ -1,82 +1,79 @@
-
-
-import logo from "../Components/Images/tripLogo.png"
+// import logo from "../Components/Images/tripLogo.png"
 import { NavLink } from "react-router-dom";
-import * as ReactBootStrap from "react-bootstrap";
-import React, { useState, useEffect } from "react";
-import "../Components/Style/NavBar.css"
-import { FcHome } from 'react-icons/fc';
-import { FcAutomotive } from 'react-icons/fc';
-import { FcCurrencyExchange} from 'react-icons/fc';
-import { ImRoad} from 'react-icons/im';
-import { GiSteeringWheel} from 'react-icons/gi';
-import { FaGasPump} from 'react-icons/fa';
+// import * as ReactBootStrap from "react-bootstrap";
+import React, { useState } from "react";
+import "../Components/Style/NavBar.css";
+import { FcHome } from "react-icons/fc";
+import { FcAutomotive } from "react-icons/fc";
+import { FcCurrencyExchange } from "react-icons/fc";
+import { ImRoad } from "react-icons/im";
+import { GiSteeringWheel } from "react-icons/gi";
+import { FaGasPump } from "react-icons/fa";
 import { signOut } from "../Services/Firebase";
 // import FormPage from "./FormPage.js"
 
 export default function NavBar() {
-
-
   let [gasForm, setGasForm] = useState(false);
 
-
   const handleLogout = async () => {
-    signOut()
-    alert("you've been logged out")
+    signOut();
+    alert("you've been logged out");
   };
 
-// const gasClick = ()=>{
-// setGasForm(!gasForm)
+  // const gasClick = ()=>{
+  // setGasForm(!gasForm)
+  // }
 
+  return (
+    <div>
+      <div className="sidenav">
+        <NavLink to="/">
+          <h2>Home</h2>
+          <FcHome size="36px" />
+        </NavLink>
+        <NavLink to="/cars">
+          <h2>Car(s)</h2>
+          <FcAutomotive size="36px" />
+        </NavLink>
+        <NavLink to="/cars/:car_id/trips/new">
+          <h2>Mileage</h2>
+          <ImRoad size="36px" />
+        </NavLink>
+        <NavLink to="/cars/:car_id/expenses/new">
+          <h2>Car Expenses</h2>
+          <FcCurrencyExchange size="36px" />
+        </NavLink>
+        <button onClick={handleLogout}> LOG OUT</button>
+      </div>
 
-// }
+      <div className="right-nav">
+        <NavLink to="/cars">
+          <h2>Start Trip</h2>
+          <GiSteeringWheel size="36px" />
+        </NavLink>
+        <NavLink to="/cars">
+          <h2>Car(s)</h2>
+          <FcAutomotive size="36px" />
+        </NavLink>
+        <button onClick={() => setGasForm(!gasForm)}>
+          <h2>Enter Gas</h2>
+          <FaGasPump size="36px" />
+        </button>
+        {gasForm && (
+          <input className="gas-here" placeholder="enter gas" type="text" />
+        )}
 
+        <NavLink to="/cars/:car_id/expenses/new">
+          <h2>Enter Expenses</h2>
+          <FcCurrencyExchange size="36px" />
+        </NavLink>
 
- return (
+        {/* {gasForm  && <FormPage/>} */}
 
-
-<div>
-<div className="sidenav">
-       <NavLink to="/">
-         <h2>Home</h2><FcHome size="36px"/>
-       </NavLink>
-       <NavLink to="/loggedInCars">
-         <h2>Car(s)</h2><FcAutomotive size="36px"/>
-       </NavLink>
-       <NavLink to="/cars/:car_id/trips/new">
-         <h2>Mileage</h2><ImRoad size="36px"/>
-       </NavLink>
-       <NavLink to="/cars/:car_id/expenses/new">
-         <h2>Car Expenses</h2><FcCurrencyExchange size="36px"/>
-       </NavLink>
-       <button onClick={handleLogout}> LOG OUT</button>
-</div>
-
-
-<div className="right-nav">
-       <NavLink to="/loggedInCars">
-         <h2>Start Trip</h2><GiSteeringWheel size="36px"/>
-       </NavLink>
-       <NavLink to="/cars">
-         <h2>Car(s)</h2><FcAutomotive size="36px"/>
-       </NavLink>
-       <button onClick={() => setGasForm(!gasForm)}>
-         <h2>Enter Gas</h2><FaGasPump size="36px"/>
-       </button>
-       {gasForm  &&  <input className="gas-here" placeholder="enter gas" type="text"/>} 
-
-       <NavLink to="/cars/:car_id/expenses/new">
-         <h2>Enter Expenses</h2><FcCurrencyExchange size="36px"/>
-       </NavLink>
-
-  
-
-       {/* {gasForm  && <FormPage/>} */}
-
-       {/* <FormPage/> */}
-       <button onClick={handleLogout}> LOG OUT</button>
-</div>
-{/* {gasForm && (
+        {/* <FormPage/> */}
+        <button onClick={handleLogout}> LOG OUT</button>
+      </div>
+      {/* {gasForm && (
   <form className="row g-3">
   <div className="col-md-6">
     <label for="inputEmail4" className="form-label">Email</label>
@@ -122,17 +119,9 @@ export default function NavBar() {
   </div>
 </form>
       )} */}
-
-
-</div>
+    </div>
   );
 }
-
-
-
-
-
-
 
 // import React from "react";
 // import { MDBContainer, MDBRow, MDBCol, MDBBtn } from 'mdbreact';

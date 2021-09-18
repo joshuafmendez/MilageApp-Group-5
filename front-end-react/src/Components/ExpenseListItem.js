@@ -4,6 +4,8 @@ import carImage from "./little_car.jpg";
 function ExpenseListItem({ expense }) {
   const { id, car_id, expense_type, business_use, amount_spent, date } =
     expense;
+
+  console.log(expense);
   return (
     <tr>
       <td>

@@ -22,7 +22,6 @@ const TripNewForm = () => {
   const addTrip = async (newTrip) => {
     try {
       await axios.post(`${API}/cars/${id}/trips`, newTrip);
-      console.log(newTrip);
     } catch (error) {
       console.log(error);
     }

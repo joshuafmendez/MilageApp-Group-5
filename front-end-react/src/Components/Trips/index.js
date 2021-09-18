@@ -64,7 +64,7 @@ const Trips = () => {
           })}
         </tbody>
       </table>
-      <Link to={`/cars/${id}/trips/new`}>
+      <Link to={`/cars/${id}/trips/trip/new`}>
         <button className="trips-new-button">Add New Trip</button>
       </Link>
     </div>

@@ -1,32 +1,32 @@
-.logo{
-    height: 80px;
-    width: 80px;
+.logo {
+  height: 80px;
+  width: 80px;
 }
 
-div.container-fluid{
-    display: flex;
-    align-content: center;
-    align-items: center;
+div.container-fluid {
+  display: flex;
+  align-content: center;
+  align-items: center;
 }
-.a-link{
-    margin-top:30%;
-}
-
-.card-mb3{
-    width: 80%;
-    height: 80%;
+.a-link {
+  margin-top: 30%;
 }
 
-.first-section{
-    display: flex;
-    justify-content: center;
-    height: 800px;
-    background-image: url("https://www.nationalbusinessmirror.com/wp-content/uploads/2020/04/highways-construction.jpg");
-   background-size: cover;
+.card-mb3 {
+  width: 80%;
+  height: 80%;
 }
-.mid-box{
-    background-color: white;
-    width: 50%;
+
+.first-section {
+  display: flex;
+  justify-content: center;
+  height: 800px;
+  background-image: url("https://www.nationalbusinessmirror.com/wp-content/uploads/2020/04/highways-construction.jpg");
+  background-size: cover;
+}
+.mid-box {
+  background-color: white;
+  width: 50%;
 }
 /* .I6d-__hero-expansive__heading {
     margin: 0;
@@ -42,10 +42,9 @@ color:rgb(153,211,182);
 .cgmt-weight-bold {
     font-weight: 800;
 } */
-.b{
-    color:black
-
+.b {
+  color: black;
 }
-.g{
-    color:green;
+.g {
+  color: green;
 }

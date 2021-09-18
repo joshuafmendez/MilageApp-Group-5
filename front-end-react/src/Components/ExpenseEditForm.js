@@ -8,7 +8,7 @@ const API = apiURL();
 function ExpenseEditForm() {
   let history = useHistory();
 
-  const { car_id, id } = useParams(); // needs attention to be able change the car_id
+  const { expense_id, id } = useParams(); // needs attention to be able change the car_id
 
   const [expense, setExpense] = useState({
     car_id: "",
@@ -20,8 +20,8 @@ function ExpenseEditForm() {
 
   const updateExpense = async (updatedExpense) => {
     try {
-      await axios.put(`${API}/cars/${car_id}/expenses/${id}`, updatedExpense);
-      history.push(`/cars/${car_id}/expenses`);
+      await axios.put(`${API}/cars/${id}/expenses/${expense_id}`, updatedExpense);
+      history.push(`/cars/${id}/expenses`);
     } catch (error) {
       console.log(error);
     }
@@ -30,14 +30,14 @@ function ExpenseEditForm() {
   useEffect(() => {
     const fetchExpense = async () => {
       try {
-        const res = await axios.get(`${API}/cars/${car_id}/expenses/${id}`);
+        const res = await axios.get(`${API}/cars/${id}/expenses/${expense_id}`);
         setExpense(res.data.payload);
       } catch (err) {
         console.log(err);
       }
     };
     fetchExpense();
-  }, [car_id, id]);
+  }, [expense_id, id]);
 
   const handleChange = (e) => {
     setExpense({ ...expense, [e.target.id]: e.target.value });
@@ -60,15 +60,6 @@ function ExpenseEditForm() {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="car_id">Car ID</label>
-        <input
-          value={car_id}
-          type="number"
-          onChange={handleChange}
-          id={car_id}
-          placeholder="Enter a car ID"
-          required
-        />
         <label htmlFor="date">Date</label>
         <input
           value={date}
@@ -118,7 +109,7 @@ function ExpenseEditForm() {
         />
         <div>
           <button type="submit">Submit</button>
-          <Link to={`/cars/${car_id}/expenses/${id}`}>
+          <Link to={`/cars/${id}/expenses/${expense_id}`}>
             <button>Cancel</button>
           </Link>
         </div>

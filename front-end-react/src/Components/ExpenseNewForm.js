@@ -7,21 +7,17 @@ const API = apiURL();
 
 function ExpenseNewForm() {
   const [expense, setExpense] = useState({
-    car_id: "",
     expense_type: "",
     business_use: false,
     amount_spent: 0,
     date: "",
   });
-
   let history = useHistory();
-
-  const { car_id } = useParams(); // needs attention to be able change the car_id
+  const { id } = useParams();
 
   const addExpense = async (newExpense) => {
     try {
-      await axios.post(`${API}/cars/${car_id}/expenses`, newExpense);
-      history.push(`/cars/${car_id}/expenses`);
+      await axios.post(`${API}/cars/${id}/expenses`, newExpense);
     } catch (error) {
       console.log(error);
     }
@@ -38,9 +34,10 @@ function ExpenseNewForm() {
     setExpense({ ...expense, business_use: !expense.business_use });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    addExpense(expense);
+    await addExpense(expense);
+    history.push(`/cars/${id}/expenses`);
   };
 
   const { business_use, amount_spent, date } = expense;
@@ -48,15 +45,6 @@ function ExpenseNewForm() {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="car_id">Car ID</label>
-        <input
-          value={car_id}
-          type="number"
-          onChange={handleChange}
-          id={car_id}
-          placeholder="Enter a car ID"
-          required
-        />
         <label htmlFor="date">Date</label>
         <input
           value={date}
@@ -106,7 +94,7 @@ function ExpenseNewForm() {
         />
         <div>
           <button type="submit">Submit</button>
-          <Link to={`/cars/${car_id}/expenses`}>
+          <Link to={`/cars/${id}/expenses`}>
             <button>Cancel</button>
           </Link>
         </div>

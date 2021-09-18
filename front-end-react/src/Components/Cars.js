@@ -1,49 +1,49 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import "../App.css";
 import { useSelector, useDispatch } from "react-redux";
 import { addCars } from "../Store/Actions/carsActions";
-import CarsList from "./CarsList";
 import { fetchAllCarsFN } from "../util/networkRequest";
 import { UserContext } from "../Providers/UserProvider";
 import { useHistory } from "react-router-dom";
-import { signOut } from "../Services/Firebase";
+// import { signOut } from "../Services/Firebase";
 import CarsListItem from "./CarsListItem";
-import "../Components/Style/Cars.css"
+import "../Components/Style/Cars.css";
 
 const Cars = () => {
   const entireState = useSelector((state) => state);
   const dispatch = useDispatch();
   const { cars } = entireState;
-  let sorted = Object.values(cars);
-  const [sorting, setSorting] = useState(sorted);
   const user = useContext(UserContext);
   const history = useHistory();
+  const carsArr = Object.values(cars);
 
-  const handleChange = (type) => {
-    const sortTypes = {
-      id: "id",
-      make: "make",
-      model: "model",
-    };
-    const sortProperty = sortTypes[type];
-    sorted = Object.values(cars).sort((a, b) => {
-      if (sortProperty === "make" || sortProperty === "model") {
-        return a[sortProperty].localeCompare(b[sortProperty]);
-      } else if (sortProperty === "id") {
-        return a[sortProperty] - b[sortProperty];
-      } else {
-        return null;
-      }
-    });
-    setSorting(sorted);
-  };
+  // Keep for pdf conversion --TODO--
+  // let sorted = Object.values(cars);
+  // const [sorting, setSorting] = useState(sorted);
+  // const handleChange = (type) => {
+  //   const sortTypes = {
+  //     id: "id",
+  //     make: "make",
+  //     model: "model",
+  //   };
+  //   const sortProperty = sortTypes[type];
+  //   sorted = Object.values(cars).sort((a, b) => {
+  //     if (sortProperty === "make" || sortProperty === "model") {
+  //       return a[sortProperty].localeCompare(b[sortProperty]);
+  //     } else if (sortProperty === "id") {
+  //       return a[sortProperty] - b[sortProperty];
+  //     } else {
+  //       return null;
+  //     }
+  //   });
+  //   setSorting(sorted);
+  // };
 
   useEffect(() => {
     const fetchAllCars = async () => {
       try {
         const res = await fetchAllCarsFN(user);
-        setSorting(Object.values(res));
         dispatch(addCars(res));
       } catch (error) {
         console.log(error);
@@ -52,64 +52,23 @@ const Cars = () => {
     fetchAllCars();
   }, [dispatch, user]);
 
-  useEffect(() => { 
-    if(!user){
-      history.push("/")
-      }
-    }, [user, history]);
+  useEffect(() => {
+    if (!user) {
+      history.push("/");
+    }
+  }, [user, history]);
 
   return (
     <div>
-      <div className="sorting">
-        Sort by
-        <select id="sorting-id" onChange={(e) => handleChange(e.target.value)}>
-          <option value="" defaultValue></option>
-          <option name="id" value="id">
-            id
-          </option>
-          <option name="make" value="make">
-            make
-          </option>
-          {/* <option name="model" value="model">
-            model
-          </option> */}
-        </select>
-      </div>
-
-<ul className="cars-list">
-{cars.map((car) => {
-            const { id } = car;
-            return <CarsListItem key={id} car={car} />;
-          })}
-</ul>
-//       <table>
-//         <thead>
-//           <tr>
-//             <th>
-//               <h2>Car ID</h2>
-//             </th>
-//             <th>
-//               <h2>Make</h2>
-//             </th>
-//             {/* <th>
-//               <h2>Model</h2>
-//             </th> */}
-//             <th>
-//               <h2>Total Mileage</h2>
-//             </th>
-//             <th>
-//               <h2>Total Expenses</h2>
-//             </th>
-//           </tr>
-//         </thead>
-//         <tbody>
-//           <CarsList cars={sorting} />
-//         </tbody>
-//       </table>
-      <Link to={"/cars/new"}>
+      <ul className="cars-list">
+        {carsArr.map((car, i) => {
+          return <CarsListItem key={i} car={car} />;
+        })}
+      </ul>
+      <Link to={"/cars/car/new"}>
         <button className="cars-new-button">Add New Car</button>
       </Link>
-<br></br>
+      <br></br>
     </div>
   );
 };

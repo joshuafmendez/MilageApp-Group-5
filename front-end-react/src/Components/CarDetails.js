@@ -3,20 +3,15 @@ import { useParams, useHistory, Link } from "react-router-dom";
 import axios from "axios";
 import { apiURL } from "../util/apiURL";
 import TripsIndex from "../Pages/Trips/TripsIndex";
-// import { useSelector } from "react-redux";
-
-// import userEvent from "@testing-library/user-event";
+import ExpensesIndex from "../Pages/ExpensesIndex";
 import { UserContext } from "../Providers/UserProvider";
 const API = apiURL();
 
 function CarDetails() {
   const user = useContext(UserContext);
   let [car, setCar] = useState({});
-  // let [userMounted,setUserMounted] = useState(false)
   let { id } = useParams();
   let history = useHistory();
-
-  // const car = useSelector((state) => state.cars[id]);
 
   const deleteCar = async () => {
     try {
@@ -27,18 +22,16 @@ function CarDetails() {
   };
   const handleDelete = async () => {
     await deleteCar();
-    history.push("/loggedInCars");
+    history.push("/cars");
   };
 
   useEffect(() => {
-    //  setTimeout(()=>{},100)
     const fetchCar = async () => {
       console.log("fetchCarfunction user", user);
       try {
         let res = await axios.get(`${API}/cars/${id}`);
         if (res.data.payload.uid === user.uid) {
           setCar(res.data.payload);
-          console.log(res.data.payload);
         }
       } catch (err) {
         console.log(err);
@@ -69,6 +62,7 @@ function CarDetails() {
         </Link>
 
         <TripsIndex />
+        <ExpensesIndex />
       </div>
     </div>
   );
