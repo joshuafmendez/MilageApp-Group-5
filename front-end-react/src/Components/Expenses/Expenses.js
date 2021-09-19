@@ -1,21 +1,16 @@
 import React from "react";
-import axios from "axios";
-import { apiURL } from "../util/apiURL";
-import { useState, useEffect, useContext } from "react";
+import { useEffect, useContext } from "react";
 import ExpenseListItem from "./ExpenseListItem";
 import { Link, useParams } from "react-router-dom";
 import { fetchAllExpensesFN } from "../../util/networkRequest";
 import { useDispatch, useSelector } from "react-redux";
 import { addExpenses } from "../../Store/Actions/expenseActions";
 import { UserContext } from "../../Providers/UserProvider";
-import("../../App.css");
-const API = apiURL();
-
+import "../../App.css";
 
 const Expenses = () => {
   const entireState = useSelector((state) => state);
   const dispatch = useDispatch();
-  // const [expenses, setExpenses] = useState([]);
   const { expenses } = entireState;
   const expenseArr = Object.values(expenses);
   const { id } = useParams();
@@ -24,18 +19,14 @@ const Expenses = () => {
   useEffect(() => {
     const fetchAllExpenses = async () => {
       try {
-        let res = await axios.get(`${API}/cars/${id}/expenses?uid=${user.uid}`);
-        // setExpenses(res.data.payload);
-        // let res = await fetchAllExpensesFN(id);
-        // if (res.data.payload.uid === user.uid) {
+        let res = await fetchAllExpensesFN(id, user);
         dispatch(addExpenses(res));
-        // }
       } catch (error) {
         console.log(error);
       }
     };
     fetchAllExpenses();
-  }, [dispatch, id]);
+  }, [dispatch, id, user]);
 
   // const handleChange = (type) => {
   //   const sortedCars = [...expenses];

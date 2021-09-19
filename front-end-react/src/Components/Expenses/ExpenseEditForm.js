@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState, useEffect,useContext } from "react";
 import { useHistory, Link, useParams } from "react-router-dom";
 import { apiURL } from "../../util/apiURL";
-import { UserContext } from "../Providers/UserProvider";
+import { UserContext } from "../../Providers/UserProvider";
 
 const API = apiURL();
 
@@ -39,7 +39,7 @@ function ExpenseEditForm() {
       }
     };
     fetchExpense();
-  }, [expense_id, id]);
+  }, [expense_id, id, user]);
 
   const handleChange = (e) => {
     setExpense({ ...expense, [e.target.id]: e.target.value });

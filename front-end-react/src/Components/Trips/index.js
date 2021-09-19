@@ -1,13 +1,10 @@
 import { useEffect } from "react";
-import { apiURL } from "../../util/apiURL";
 import TripsListItem from "./TripsListItem";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import "../../App.css";
 import { fetchAllTripsFN } from "../../util/networkRequest";
 import { addTrips } from "../../Store/Actions/tripsActions";
-
-const API = apiURL();
 
 const Trips = () => {
   const entireState = useSelector((state) => state);

@@ -13,8 +13,8 @@ export const updateCarById = async (id, updatedCar) => {
   return editedCar;
 };
 
-export const fetchAllExpensesFN = async (id) => {
-  let { data } = await axios.get(`${API}/cars/${id}/expenses`);
+export const fetchAllExpensesFN = async (id, user) => {
+  let { data } = await axios.get(`${API}/cars/${id}/expenses?uid=${user.uid}`);
   return data.payload;
 };
 
@@ -26,8 +26,8 @@ export const updateExpenseById = async (id, expense_id, updatedExpense) => {
   return editedExpense;
 };
 
-export const fetchAllTripsFN = async (id) => {
-  let { data } = await axios.get(`${API}/cars/${id}/trips`);
+export const fetchAllTripsFN = async (id, user) => {
+  let { data } = await axios.get(`${API}/cars/${id}/trips?uid=${user.uid}`);
   return data.payload;
 };
 
