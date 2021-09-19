@@ -1,31 +1,32 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { apiURL } from "../../util/apiURL";
 import TripsListItem from "./TripsListItem";
 import { Link, useParams } from "react-router-dom";
-// import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "../../App.css";
+import { fetchAllTripsFN } from "../../util/networkRequest";
+import { addTrips } from "../../Store/Actions/tripsActions";
 
 const API = apiURL();
 
 const Trips = () => {
-  // const entireState = useSelector((state) => state);
-  // const dispatch = useDispatch();
-  // const { cars } = entireState;
+  const entireState = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const { trips } = entireState;
+  const { id } = useParams();
+  const tripsArr = Object.values(trips);
 
-  const [trips, setTrips] = useState([]);
-  let { id } = useParams();
   useEffect(() => {
     const fetchAllTrips = async () => {
       try {
-        const { data } = await axios.get(`${API}/cars/${id}/trips`);
-        setTrips(data.payload);
+        let res = await fetchAllTripsFN(id);
+        dispatch(addTrips(res));
       } catch (error) {
         console.log(error);
       }
     };
     fetchAllTrips();
-  }, [id]);
+  }, [dispatch, id]);
 
   return (
     <div>
@@ -59,7 +60,7 @@ const Trips = () => {
           </tr>
         </thead>
         <tbody>
-          {trips.map((trip, i) => {
+          {tripsArr.map((trip, i) => {
             return <TripsListItem key={i} trip={trip} />;
           })}
         </tbody>

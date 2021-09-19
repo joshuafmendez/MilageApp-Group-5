@@ -6,11 +6,11 @@ const trips = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
     case ADD_TRIPS:
-      const nextCarState = {};
-      payload.forEach((car) => {
-        nextCarState[car.id] = car;
+      const nextTripState = {};
+      payload.forEach((trip) => {
+        nextTripState[trip.id] = trip;
       });
-      return nextCarState;
+      return nextTripState;
     case ADD_TRIP:
       return { ...state, [payload.id]: payload };
     default:

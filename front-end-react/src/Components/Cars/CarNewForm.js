@@ -1,14 +1,14 @@
 import axios from "axios";
 import { useState, useContext } from "react";
 import { useHistory, Link } from "react-router-dom";
-import { apiURL } from "../util/apiURL";
+import { apiURL } from "../../util/apiURL";
 
 // import'bootstrap-css-only/css/bootstrap.min.css';
 import "mdbreact/dist/css/mdb.css";
 // import { MDBInput } from "mdbreact";
-import "../Components/Style/CarNewForm.css";
+import "../../Components/Style/CarNewForm.css";
 
-import { UserContext } from "../Providers/UserProvider";
+import { UserContext } from "../../Providers/UserProvider";
 
 const API = apiURL();
 
@@ -21,7 +21,7 @@ function CarNewForm() {
     year: "",
     odometer: "",
     doors: "",
-    uid: user.uid,
+    uid: user && user.uid,
   });
 
   let history = useHistory();

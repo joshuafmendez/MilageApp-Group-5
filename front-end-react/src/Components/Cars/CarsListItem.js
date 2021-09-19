@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../Components/Style/CardListItem.css";
+import "../../Components/Style/CardListItem.css";
 // import Slider from "./Slider.js";
 
 function CarsListItem({ car }) {

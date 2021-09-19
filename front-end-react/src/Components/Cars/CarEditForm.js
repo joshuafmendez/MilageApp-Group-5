@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useParams, useHistory, Link } from "react-router-dom";
-import { addCar } from "../Store/Actions/carsActions";
+import { addCar } from "../../Store/Actions/carsActions";
 import { useSelector, useDispatch } from "react-redux";
-import { updateCarById } from "../util/networkRequest";
+import { updateCarById } from "../../util/networkRequest";
 
 function CarEditForm() {
   let { id } = useParams();
