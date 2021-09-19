@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useHistory, Link, useParams } from "react-router-dom";
-import { apiURL } from "../util/apiURL";
+import { apiURL } from "../../util/apiURL";
 
 const API = apiURL();
 
@@ -20,7 +20,10 @@ function ExpenseEditForm() {
 
   const updateExpense = async (updatedExpense) => {
     try {
-      await axios.put(`${API}/cars/${id}/expenses/${expense_id}`, updatedExpense);
+      await axios.put(
+        `${API}/cars/${id}/expenses/${expense_id}`,
+        updatedExpense
+      );
       history.push(`/cars/${id}/expenses`);
     } catch (error) {
       console.log(error);

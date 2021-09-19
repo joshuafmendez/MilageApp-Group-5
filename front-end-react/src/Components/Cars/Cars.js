@@ -1,14 +1,14 @@
 import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import "../App.css";
+import "../../App.css";
 import { useSelector, useDispatch } from "react-redux";
-import { addCars } from "../Store/Actions/carsActions";
-import { fetchAllCarsFN } from "../util/networkRequest";
-import { UserContext } from "../Providers/UserProvider";
+import { addCars } from "../../Store/Actions/carsActions";
+import { fetchAllCarsFN } from "../../util/networkRequest";
+import { UserContext } from "../../Providers/UserProvider";
 import { useHistory } from "react-router-dom";
 // import { signOut } from "../Services/Firebase";
 import CarsListItem from "./CarsListItem";
-import "../Components/Style/Cars.css";
+import "../../Components/Style/Cars.css";
 
 const Cars = () => {
   const entireState = useSelector((state) => state);

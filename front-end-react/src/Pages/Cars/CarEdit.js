@@ -1,4 +1,4 @@
-import CarEditForm from "../Components/CarEditForm";
+import CarEditForm from "../../Components/Cars/CarEditForm";
 
 function CarEdit() {
   return (

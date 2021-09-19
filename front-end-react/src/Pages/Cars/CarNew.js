@@ -1,4 +1,4 @@
-import CarNewForm from "../Components/CarNewForm";
+import CarNewForm from "../../Components/Cars/CarNewForm";
 
 function CarNew() {
   return (

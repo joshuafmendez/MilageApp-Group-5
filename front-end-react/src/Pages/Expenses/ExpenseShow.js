@@ -1,4 +1,4 @@
-import ExpenseDetails from "../Components/ExpenseDetails";
+import ExpenseDetails from "../../Components/Expenses/ExpenseDetails";
 
 function ExpenseShow() {
   return (
