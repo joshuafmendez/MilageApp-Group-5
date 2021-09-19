@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { UserContext } from "../Providers/UserProvider";
 import { useHistory } from "react-router-dom";
 // import { signOut } from "../Services/Firebase";
-import CarsIndex from "./CarsIndex";
+import CarsIndex from "./Cars/CarsIndex";
 // import "../Components/Style/LoggedInPage.css"
 
 export const LoggedInPage = () => {
