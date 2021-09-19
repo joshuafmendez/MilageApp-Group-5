@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import carImage from "./little_car.jpg";
+import carImage from "../little_car.jpg";
 
 function ExpenseListItem({ expense }) {
   const { id, car_id, expense_type, business_use, amount_spent, date } =
@@ -20,7 +20,7 @@ function ExpenseListItem({ expense }) {
         <h2> {expense_type}</h2>
       </td>
       <td>
-        <h2> {amount_spent}</h2>
+        <h2> ${amount_spent}</h2>
       </td>
       <td>
         <img src={business_use ? carImage : ""} alt="" />

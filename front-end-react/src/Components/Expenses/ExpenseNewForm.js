@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useContext, useState } from "react";
 import { useHistory, Link, useParams } from "react-router-dom";
-import { apiURL } from "../util/apiURL";
+import { apiURL } from "../../util/apiURL";
 import { UserContext } from "../Providers/UserProvider"
 
 const API = apiURL();

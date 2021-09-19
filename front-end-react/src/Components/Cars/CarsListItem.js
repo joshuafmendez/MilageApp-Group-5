@@ -1,8 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+<<<<<<< HEAD:front-end-react/src/Components/CarsListItem.js
 import { useSelector, useDispatch } from "react-redux";
 import "../Components/Style/CardListItem.css";
 import { selectCar } from "../Store/Actions/carsActions";
+=======
+import "../../Components/Style/CardListItem.css";
+>>>>>>> 19751aaaf7b2e6bdf97102346a8cd6c37abf9c25:front-end-react/src/Components/Cars/CarsListItem.js
 // import Slider from "./Slider.js";
 
 function CarsListItem({ car }) {
