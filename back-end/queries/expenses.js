@@ -3,10 +3,9 @@ const db = require("../db/config");
 const getAllExpenses = async (car_id, uid) => {
   const queryOne = "SELECT * FROM cars WHERE uid=$1 AND id=$2"
   const authCheck = await db.any(queryOne, [uid, car_id])
-  console.log("authCheck", authCheck, "uid", uid)
+  // console.log("authCheck", authCheck, "uid", uid)
   if (authCheck.length) {
     try {
-      console.log("hello")
       const query = "SELECT * FROM expenses WHERE car_id=$1";
       const allExpenses = await db.any(query, car_id);
       return { status: true, payload: allExpenses };
@@ -21,7 +20,6 @@ const getAllExpenses = async (car_id, uid) => {
 const getExpense = async (id, car_id, uid) => {
   const queryOne = "SELECT * FROM cars WHERE uid=$1 AND id=$2"
   const authCheck = await db.any(queryOne, [uid, car_id])
-  console.log("authCheck", authCheck, "uid", uid)
   if (authCheck.length) {
     try {
       const query = "SELECT * FROM expenses WHERE id=$1 AND car_id=$2 ";
@@ -37,7 +35,6 @@ const getExpense = async (id, car_id, uid) => {
 
 const addExpense = async (body, car_id, uid) => {
   const { expense_type, business_use, amount_spent, date } = body;
-
   const queryOne = "SELECT * FROM cars WHERE uid=$1 AND id=$2"
   const authCheck = await db.any(queryOne, [uid, car_id])
 

@@ -1,20 +1,23 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { useParams, useHistory, Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { apiURL } from "../../util/apiURL";
 import { UserContext } from "../../Providers/UserProvider";
+// import { addExpenses } from "../../Store/Actions/expenseActions";
+import { addCar } from "../../Store/Actions/carsActions";
+import { fetchAllExpensesFN } from "../../util/networkRequest";
+import { addExpenses } from "../../Store/Actions/expenseActions";
 const API = apiURL();
 
 function CarDetails() {
   const entireState = useSelector((state) => state);
-  const { expenses, trips } = entireState;
+  const { cars, expenses, trips } = entireState;
   const user = useContext(UserContext);
   const history = useHistory();
   const expensesArr = Object.values(expenses);
   const tripsArr = Object.values(trips);
-
-  let [car, setCar] = useState({});
+  const dispatch = useDispatch();
   let { id } = useParams();
 
   const deleteCar = async () => {
@@ -24,6 +27,7 @@ function CarDetails() {
       console.log(err);
     }
   };
+
   const handleDelete = async () => {
     await deleteCar();
     history.push("/cars");
@@ -34,7 +38,7 @@ function CarDetails() {
       try {
         let res = await axios.get(`${API}/cars/${id}`);
         if (res.data.payload.uid === user.uid) {
-          setCar(res.data.payload);
+          dispatch(addCar(res.data.payload));
         } else {
           history.push("/");
         }
@@ -43,8 +47,19 @@ function CarDetails() {
       }
     };
     fetchCar();
-  }, [id, user]);
 
+    const fetchAllExpenses = async () => {
+      try {
+        let res = await fetchAllExpensesFN(id, user);
+        dispatch(addExpenses(res));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchAllExpenses();
+  }, [id, user, history, dispatch]);
+
+  const car = cars[id];
   const { make, model, vin, year, odometer, doors } = car;
   if (!user) {
     return <div className="spinner-border"></div>;

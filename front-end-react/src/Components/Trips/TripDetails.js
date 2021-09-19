@@ -8,8 +8,6 @@ const API = apiURL();
 const TripDetails = () => {
   let [trip, setTrip] = useState({});
   let { id, trip_id } = useParams();
-  let test = useParams();
-  console.log(test);
   let history = useHistory();
 
   const deleteTrip = async () => {

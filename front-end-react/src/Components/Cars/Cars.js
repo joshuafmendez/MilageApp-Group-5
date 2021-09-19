@@ -17,7 +17,6 @@ const Cars = () => {
   const user = useContext(UserContext);
   const history = useHistory();
   const carsArr = Object.values(cars);
-  console.log("cars state", cars, "cars Arr",carsArr )
   
   // Keep for pdf conversion --TODO--
   // let sorted = Object.values(cars);
