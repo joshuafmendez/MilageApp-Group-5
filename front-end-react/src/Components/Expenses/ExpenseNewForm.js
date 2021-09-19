@@ -1,11 +1,12 @@
 import axios from "axios";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useHistory, Link, useParams } from "react-router-dom";
 import { apiURL } from "../../util/apiURL";
+import { UserContext } from "../Providers/UserProvider"
 
 const API = apiURL();
-
 function ExpenseNewForm() {
+  const user = useContext(UserContext);
   const [expense, setExpense] = useState({
     expense_type: "",
     business_use: false,
@@ -17,7 +18,7 @@ function ExpenseNewForm() {
 
   const addExpense = async (newExpense) => {
     try {
-      await axios.post(`${API}/cars/${id}/expenses`, newExpense);
+      await axios.post(`${API}/cars/${id}/expenses?uid=${user.uid}`, newExpense);
     } catch (error) {
       console.log(error);
     }
