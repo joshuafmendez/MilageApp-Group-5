@@ -1,21 +1,23 @@
 import React from "react";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect,useContext } from "react";
 import { apiURL } from "../util/apiURL";
 import ExpenseListItem from "./ExpenseListItem";
 import { Link, useParams } from "react-router-dom";
+import { UserContext } from "../Providers/UserProvider";
 import("../App.css");
 
 const API = apiURL();
 
 const Expenses = () => {
+  const user = useContext(UserContext);
   const [expenses, setExpenses] = useState([]);
   const { id } = useParams();
 
   useEffect(() => {
     const fetchAllExpenses = async () => {
       try {
-        let res = await axios.get(`${API}/cars/${id}/expenses`);
+        let res = await axios.get(`${API}/cars/${id}/expenses?uid=${user.uid}`);
         setExpenses(res.data.payload);
       } catch (error) {
         console.log(error);

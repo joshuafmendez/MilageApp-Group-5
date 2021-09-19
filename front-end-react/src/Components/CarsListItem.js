@@ -1,11 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import "../Components/Style/CardListItem.css";
+import { selectCar } from "../Store/Actions/carsActions";
 // import Slider from "./Slider.js";
 
 function CarsListItem({ car }) {
   const { id, make, model } = car;
-
+  const entireState = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const {selectedCar} = entireState;
+  const handleClick =()=>{
+    dispatch(selectCar(car))
+   
+  }
+  console.log(selectedCar)
   return (
     <div className="wrapper">
       <div className="card text-center">
@@ -31,7 +40,7 @@ function CarsListItem({ car }) {
         <br></br>
         <br></br>
         <br></br>
-        <Link to={`/cars/${id}`}>
+        <Link to={`/cars/${id}`} onClick = {handleClick}>
           <h2>
             {" "}
             {make} {model}

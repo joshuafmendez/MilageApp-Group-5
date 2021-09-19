@@ -3,6 +3,7 @@ import { useParams, useHistory, Link } from "react-router-dom";
 import axios from "axios";
 import { apiURL } from "../util/apiURL";
 import { UserContext } from "../Providers/UserProvider";
+import { useSelector} from "react-redux";
 const API = apiURL();
 
 function CarDetails() {
@@ -10,6 +11,9 @@ function CarDetails() {
   let [car, setCar] = useState({});
   let { id } = useParams();
   let history = useHistory();
+  const entireState = useSelector((state) => state);
+  const {selectedCar} = entireState;
+  console.log("selected car", selectedCar[0])
 
   const deleteCar = async () => {
     try {
@@ -25,6 +29,7 @@ function CarDetails() {
 
   useEffect(() => {
     const fetchCar = async () => {
+      
       console.log("fetchCarfunction user", user);
       try {
         let res = await axios.get(`${API}/cars/${id}`);
