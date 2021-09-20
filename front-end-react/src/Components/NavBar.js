@@ -31,16 +31,16 @@ export default function NavBar() {
           <h2>Home</h2>
           <FcHome size="36px" />
         </NavLink>
-        <NavLink to="/cars">
+        {/* <NavLink to="/cars">
           <h2>Car(s)</h2>
           <FcAutomotive size="36px" />
-        </NavLink>
+        </NavLink> */}
         <NavLink to="/cars/:car_id/trips/new">
-          <h2>Mileage</h2>
+          <h2>Enter Mileage</h2>
           <ImRoad size="36px" />
         </NavLink>
         <NavLink to="/cars/:car_id/expenses/new">
-          <h2>Car Expenses</h2>
+          <h2>Enter Expenses</h2>
           <FcCurrencyExchange size="36px" />
         </NavLink>
         <button onClick={handleLogout}> LOG OUT</button>
@@ -51,12 +51,12 @@ export default function NavBar() {
           <h2>Start Trip</h2>
           <GiSteeringWheel size="36px" />
         </NavLink>
-        <NavLink to="/cars">
+        {/* <NavLink to="/cars">
           <h2>Car(s)</h2>
           <FcAutomotive size="36px" />
-        </NavLink>
+        </NavLink> */}
         <button onClick={() => setGasForm(!gasForm)}>
-          <h2>Enter Gas</h2>
+          <h2>Enter Mileage</h2>
           <FaGasPump size="36px" />
         </button>
         {gasForm && (
@@ -70,8 +70,7 @@ export default function NavBar() {
 
         {/* {gasForm  && <FormPage/>} */}
 
-        {/* <FormPage/> */}
-        <button onClick={handleLogout}> LOG OUT</button>
+ 
       </div>
       {/* {gasForm && (
   <form className="row g-3">

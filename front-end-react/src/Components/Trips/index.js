@@ -1,14 +1,18 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext} from "react";
 import { apiURL } from "../../util/apiURL";
 import TripsListItem from "./TripsListItem";
 import { Link, useParams } from "react-router-dom";
+import { UserContext } from "../../Providers/UserProvider";
+import { useHistory } from "react-router-dom";
 // import { useSelector, useDispatch } from "react-redux";
 import "../../App.css";
 
 const API = apiURL();
 
 const Trips = () => {
+  const user = useContext(UserContext);
+  const history = useHistory();
   // const entireState = useSelector((state) => state);
   // const dispatch = useDispatch();
   // const { cars } = entireState;
@@ -26,6 +30,13 @@ const Trips = () => {
     };
     fetchAllTrips();
   }, [id]);
+
+  useEffect(() => {
+    if (!user) {
+      history.push("/");
+    }
+  }, [user, history]);
+
 
   return (
     <div>

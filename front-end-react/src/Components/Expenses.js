@@ -1,14 +1,19 @@
 import React from "react";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect,useContext } from "react";
 import { apiURL } from "../util/apiURL";
 import ExpenseListItem from "./ExpenseListItem";
 import { Link, useParams } from "react-router-dom";
+import { UserContext } from "../Providers/UserProvider";
+import { useHistory } from "react-router-dom";
 import("../App.css");
 
 const API = apiURL();
 
 const Expenses = () => {
+  const user = useContext(UserContext);
+  const history = useHistory();
+
   const [expenses, setExpenses] = useState([]);
   const { id } = useParams();
 
@@ -45,6 +50,12 @@ const Expenses = () => {
   //   });
   //   setExpenses(sorted);
   // };
+
+  useEffect(() => {
+    if (!user) {
+      history.push("/");
+    }
+  }, [user, history]);
 
   return (
     <div>
