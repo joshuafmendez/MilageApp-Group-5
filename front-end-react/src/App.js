@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NavBar from "./Components/NavBar";
 import Login from "./Components/Login";
@@ -20,6 +20,10 @@ import ExpensesShow from "./Pages/Expenses/ExpenseShow";
 import "./App.css";
 
 function App() {
+  let [navExpenses, setNavExpenses] = useState(false);
+const navToggle = (boolean)=>{
+  setNavExpenses(boolean)
+}
   return (
     <div className="App">
       <UserProvider>
@@ -27,9 +31,12 @@ function App() {
           <Switch>
             <Route exact path="/" component={Login} />
             <div>
-              <NavBar />
+
+              <NavBar navExpenses={navExpenses} />
+
+
               <Route exact path="/cars">
-                <LoggedInPage />
+                <LoggedInPage navToggle={navToggle}/>
               </Route>
               <Route exact path="/cars/car/new">
                 <CarNew />
@@ -37,9 +44,12 @@ function App() {
               <Route exact path="/cars/:id/edit">
                 <CarEdit />
               </Route>
+
               <Route exact path="/cars/:id">
-                <CarShow />
+                <CarShow navToggle={navToggle} />
               </Route>
+
+
               <Route exact path="/cars/:id/trips">
                 <TripsIndex />
               </Route>

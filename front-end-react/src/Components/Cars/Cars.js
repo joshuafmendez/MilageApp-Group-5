@@ -82,13 +82,14 @@ const Cars = () => {
     Disabled radio
   </label>
 </div> */}
-
+{/* 
       <ul className="cars-list">
         {carsArr.map((car, i) => {
-          return <CarsListItem key={i} car={car} />;
+          return <CarsListItem key={i} car={car} carsArr={carsArr} cars={cars}/>;
         })}
         
-      </ul>
+      </ul> */}
+      <CarsListItem  carsArr={carsArr} cars={cars}/>
       <Link to={"/cars/car/new"}>
         <button className="cars-new-button">Add New Car</button>
       </Link>

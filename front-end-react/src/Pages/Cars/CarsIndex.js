@@ -1,7 +1,8 @@
 import React from "react";
 import Cars from "../../Components/Cars/Cars";
 
-const CarsIndex = () => {
+const CarsIndex = ({navToggle}) => {
+  navToggle(false)
   return (
     <div>
       <Cars />

@@ -190,10 +190,10 @@ span.navbar-toggler.icon {
   z-index: 1;
   top: 0;
   right: 0;
-  background-color: white;
+  background-color: rgb(39, 180, 180);
   overflow-x: hidden;
   padding-top: 20px;
-  border: solid darkgreen 2px;
+  border: solid rgb(8, 32, 8) 2px;
 }
 
 .right-nav a {

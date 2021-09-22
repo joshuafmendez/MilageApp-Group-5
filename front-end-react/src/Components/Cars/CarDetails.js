@@ -98,7 +98,7 @@ function CarDetails() {
           <div className="bar" style={{ height: "18px", width: "20%" }}></div>
         </div>
         <div className="form-check">
-  <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked/>
+  <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked="true"/>
   <label className="form-check-label" for="exampleRadios1">
     Default car
   </label>
@@ -107,7 +107,7 @@ function CarDetails() {
       <br></br>
       
     </div>
-        <div>
+       
           <Link to={"/cars"}>
             <button>BACK</button>
           </Link>
@@ -116,7 +116,7 @@ function CarDetails() {
             <button>EDIT</button>
           </Link>
 
-          <div>
+         
             <Link to={`/cars/${id}/expenses`}>
               Total Expenses: $
               {expensesArr.reduce((total, expense) => {
@@ -124,8 +124,7 @@ function CarDetails() {
                 return total;
               }, 0)}
             </Link>
-          </div>
-          <div>
+        
             <Link to={`/cars/${id}/trips`}>
               Total Mileage:
               {tripsArr.reduce((total, trip) => {
@@ -133,14 +132,8 @@ function CarDetails() {
                 return total;
               }, 0)}
             </Link>
-          </div>
-          <div className="form-check">
-  <input id="is_default"  className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"/>
-  <label className="form-check-label" for="exampleRadios1">
-    default car
-  </label>
-</div>
-        </div>
+     
+        
       </div>
     );
   }
