@@ -8,8 +8,9 @@ export const fetchAllCarsFN = async (user) => {
   return data.payload;
 };
 
-export const updateCarById = async (id, updatedCar) => {
-  const editedCar = await axios.put(`${API}/cars/${id}`, updatedCar);
+export const updateCarById = async (id, updatedCar,user) => {
+  console.log("id",id,"updatedCar",updatedCar,"user",user)
+  const editedCar = await axios.put(`${API}/cars/${id}?uid=${user.uid}`, updatedCar);
   return editedCar;
 };
 

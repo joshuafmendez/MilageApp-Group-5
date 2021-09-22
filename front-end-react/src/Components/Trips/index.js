@@ -25,7 +25,7 @@ const Trips = () => {
       }
     };
     fetchAllTrips();
-  }, [dispatch, id]);
+  }, [dispatch, id,user]);
 
   return (
     <div>
