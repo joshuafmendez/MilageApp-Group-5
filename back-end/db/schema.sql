@@ -13,6 +13,7 @@ CREATE TABLE
         year INT not null,
         odometer INT, 
         doors INT,
+        is_default BOOLEAN NOT NULL,
         uid TEXT not null
         -- selected_car BOOLEAN NOT NULL
     );
