@@ -34,7 +34,7 @@ const TripDetails = () => {
       }
     };
     fetchTrip();
-  }, [id, trip_id]);
+  }, [id, trip_id,user]);
 
   const {
     date,

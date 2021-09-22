@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
 import { useParams, useHistory, Link } from "react-router-dom";
 import { addCar } from "../../Store/Actions/carsActions";
 import { useSelector, useDispatch } from "react-redux";
 import { updateCarById } from "../../util/networkRequest";
+import { UserContext } from "../../Providers/UserProvider";
+
 
 function CarEditForm() {
+  const user = useContext(UserContext);
   let { id } = useParams();
   let history = useHistory();
   const cars = useSelector((state) => state.cars);
@@ -17,12 +20,12 @@ function CarEditForm() {
     vin: car.vin,
     year: car.year,
     odometer: car.odometer,
-    doors: car.doors,
+    doors: car.doors
   });
 
-  const updateCar = async (updatedCar) => {
+  const updateCar = async (updatedCar,id) => {
     try {
-      const editedCar = await updateCarById(id, updatedCar);
+      const editedCar = await updateCarById( id,updatedCar,user);
       dispatch(addCar(editedCar));
       history.push(`/cars/${id}`);
     } catch (error) {

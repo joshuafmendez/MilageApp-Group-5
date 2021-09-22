@@ -22,7 +22,8 @@ cars.get("/", async (req, res) => {
 
 cars.get("/:id", async (req, res) => {
   const { id } = req.params;
-  const car = await getCar(id);
+  const uid = req.query.uid;
+  const car = await getCar(id,uid);
   res.json(car);
 });
 
@@ -33,14 +34,16 @@ cars.post("/", async (req, res) => {
 
 cars.delete("/:id", async (req, res) => {
   const { id } = req.params;
-  const car = await deleteCar(id);
+  const uid = req.query.uid;
+  const car = await deleteCar(id,uid);
   res.json(car);
 });
 
 cars.put("/:id", async (req, res) => {
   const { body, params } = req;
   const { id } = params;
-  const car = await updateCar(id, body);
+  const uid = req.query.uid;
+  const car = await updateCar(id, body,uid);
   res.json(car);
 });
 

@@ -4,8 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { apiURL } from "../../util/apiURL";
 import { UserContext } from "../../Providers/UserProvider";
-import { fetchAllExpensesFN } from "../../util/networkRequest";
+import { fetchAllExpensesFN,fetchAllTripsFN } from "../../util/networkRequest";
 import { addExpenses } from "../../Store/Actions/expenseActions";
+import {addTrips} from "../../Store/Actions/tripsActions"
 const API = apiURL();
 
 function CarDetails() {
@@ -20,7 +21,7 @@ function CarDetails() {
 
   const deleteCar = async () => {
     try {
-      await axios.delete(`${API}/cars/${id}`);
+      await axios.delete(`${API}/cars/${id}?uid=${user.uid}`);
     } catch (err) {
       console.log(err);
     }
@@ -32,14 +33,14 @@ function CarDetails() {
   };
 
   useEffect(() => {
-    const fetchCar = async () => {
-      try {
-        await axios.get(`${API}/cars/${id}`);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchCar();
+    // const fetchCar = async () => {
+    //   try {
+    //     await axios.get(`${API}/cars/${id}`);
+    //   } catch (err) {
+    //     console.log(err);
+    //   }
+    // };
+    // fetchCar();
 
     const fetchAllExpenses = async () => {
       try {
@@ -50,6 +51,17 @@ function CarDetails() {
       }
     };
     fetchAllExpenses();
+
+    const fetchAllTrips = async () => {
+      try {
+        let res = await fetchAllTripsFN(id,user);
+        dispatch(addTrips(res));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchAllTrips();
+
   }, [id, user, history, dispatch]);
 
   if (!user) {
