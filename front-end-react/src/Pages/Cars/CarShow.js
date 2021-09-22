@@ -1,4 +1,4 @@
-import CarDetails from "../Components/CarDetails";
+import CarDetails from "../../Components/Cars/CarDetails";
 
 function CarShow() {
   return (

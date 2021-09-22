@@ -1,14 +1,14 @@
 import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import "../App.css";
+import "../../App.css";
 import { useSelector, useDispatch } from "react-redux";
-import { addCars } from "../Store/Actions/carsActions";
-import { fetchAllCarsFN } from "../util/networkRequest";
-import { UserContext } from "../Providers/UserProvider";
+import { addCars } from "../../Store/Actions/carsActions";
+import { fetchAllCarsFN } from "../../util/networkRequest";
+import { UserContext } from "../../Providers/UserProvider";
 import { useHistory } from "react-router-dom";
 // import { signOut } from "../Services/Firebase";
 import CarsListItem from "./CarsListItem";
-import "../Components/Style/Cars.css";
+import "../../Components/Style/Cars.css";
 
 const Cars = () => {
   const entireState = useSelector((state) => state);
@@ -18,6 +18,8 @@ const Cars = () => {
   const history = useHistory();
   const carsArr = Object.values(cars);
 
+  
+  
   // Keep for pdf conversion --TODO--
   // let sorted = Object.values(cars);
   // const [sorting, setSorting] = useState(sorted);
@@ -60,10 +62,32 @@ const Cars = () => {
 
   return (
     <div>
+
+
+{/* <div className="form-check">
+  <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked/>
+  <label className="form-check-label" for="exampleRadios1">
+    Default radio
+  </label>
+</div>
+<div className="form-check">
+  <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2"/>
+  <label className="form-check-label" for="exampleRadios2">
+    Second default radio
+  </label>
+</div>
+<div className="form-check">
+  <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" disabled/>
+  <label className="form-check-label" for="exampleRadios3">
+    Disabled radio
+  </label>
+</div> */}
+
       <ul className="cars-list">
         {carsArr.map((car, i) => {
           return <CarsListItem key={i} car={car} />;
         })}
+        
       </ul>
       <Link to={"/cars/car/new"}>
         <button className="cars-new-button">Add New Car</button>

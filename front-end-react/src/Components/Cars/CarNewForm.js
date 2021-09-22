@@ -1,14 +1,14 @@
 import axios from "axios";
 import { useState, useContext } from "react";
 import { useHistory, Link } from "react-router-dom";
-import { apiURL } from "../util/apiURL";
+import { apiURL } from "../../util/apiURL";
 
 // import'bootstrap-css-only/css/bootstrap.min.css';
 import "mdbreact/dist/css/mdb.css";
 // import { MDBInput } from "mdbreact";
-import "../Components/Style/CarNewForm.css";
+import "../../Components/Style/CarNewForm.css";
 
-import { UserContext } from "../Providers/UserProvider";
+import { UserContext } from "../../Providers/UserProvider";
 
 const API = apiURL();
 
@@ -21,7 +21,8 @@ function CarNewForm() {
     year: "",
     odometer: "",
     doors: "",
-    uid: user.uid,
+    is_default: "",
+    uid: user && user.uid,
   });
 
   let history = useHistory();
@@ -39,12 +40,17 @@ function CarNewForm() {
     setCar({ ...car, [e.target.id]: e.target.value });
   };
 
+  const isDefaultCheckbox = (e) => {
+    setCar({ ...car, is_default: !car.is_default });
+  };
+  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     addCar(car);
   };
 
-  const { make, model, vin, year, odometer, doors } = car;
+  const { make, model, vin, year, odometer, doors, is_default } = car;
 
   return (
     <div>
@@ -186,13 +192,21 @@ function CarNewForm() {
                 required
               />
             </div>
+            <div className="form-check">
+  <input id="is_default" value={is_default} className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" onChange={isDefaultCheckbox}/>
+  <label className="form-check-label" for="exampleRadios1">
+    default car
+  </label>
+</div>
           </div>
         </div>
         <button type="submit">Submit</button>
         <Link to={`/cars`}>
           <button>Cancel</button>
         </Link>
+
       </form>
+      
     </div>
   );
 }

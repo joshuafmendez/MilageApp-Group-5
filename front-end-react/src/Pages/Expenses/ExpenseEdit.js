@@ -1,4 +1,4 @@
-import ExpenseEditForm from "../Components/ExpenseEditForm";
+import ExpenseEditForm from "../../Components/Expenses/ExpenseEditForm";
 
 function ExpenseEdit() {
   return (

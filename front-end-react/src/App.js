@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NavBar from "./Components/NavBar";
 import Login from "./Components/Login";
 import FourOFour from "./Pages/FourOFour";
-import CarEdit from "./Pages/CarEdit";
-import CarNew from "./Pages/CarNew";
-import CarShow from "./Pages/CarShow";
+import CarEdit from "./Pages/Cars/CarEdit";
+import CarNew from "./Pages/Cars/CarNew";
+import CarShow from "./Pages/Cars/CarShow";
 import TripsIndex from "./Pages/Trips/TripsIndex.js";
 import TripsEdit from "./Pages/Trips/TripsEdit.js";
 import TripsNew from "./Pages/Trips/TripsNew.js";
@@ -13,10 +13,10 @@ import TripsShow from "./Pages/Trips/TripsShow.js";
 import "firebase/auth";
 import UserProvider from "./Providers/UserProvider";
 import { LoggedInPage } from "./Pages/LoggedInPage";
-import ExpensesIndex from "./Pages/ExpensesIndex";
-import ExpensesEdit from "./Pages/ExpenseEdit";
-import ExpensesNew from "./Pages/ExpenseNew";
-import ExpensesShow from "./Pages/ExpenseShow";
+import ExpensesIndex from "./Pages/Expenses/ExpensesIndex";
+import ExpensesEdit from "./Pages/Expenses/ExpenseEdit";
+import ExpensesNew from "./Pages/Expenses/ExpenseNew";
+import ExpensesShow from "./Pages/Expenses/ExpenseShow";
 import "./App.css";
 
 function App() {

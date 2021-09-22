@@ -1,11 +1,13 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect,useContext } from "react";
 import { useHistory, Link, useParams } from "react-router-dom";
-import { apiURL } from "../util/apiURL";
+import { apiURL } from "../../util/apiURL";
+import { UserContext } from "../../Providers/UserProvider";
 
 const API = apiURL();
 
 function ExpenseEditForm() {
+  const user = useContext(UserContext);
   let history = useHistory();
 
   const { expense_id, id } = useParams(); // needs attention to be able change the car_id
@@ -20,7 +22,7 @@ function ExpenseEditForm() {
 
   const updateExpense = async (updatedExpense) => {
     try {
-      await axios.put(`${API}/cars/${id}/expenses/${expense_id}`, updatedExpense);
+      await axios.put(`${API}/cars/${id}/expenses/${expense_id}?uid=${user.uid}`, updatedExpense);
       history.push(`/cars/${id}/expenses`);
     } catch (error) {
       console.log(error);
@@ -30,14 +32,14 @@ function ExpenseEditForm() {
   useEffect(() => {
     const fetchExpense = async () => {
       try {
-        const res = await axios.get(`${API}/cars/${id}/expenses/${expense_id}`);
+        const res = await axios.get(`${API}/cars/${id}/expenses/${expense_id}?uid=${user.uid}`);
         setExpense(res.data.payload);
       } catch (err) {
         console.log(err);
       }
     };
     fetchExpense();
-  }, [expense_id, id]);
+  }, [expense_id, id, user]);
 
   const handleChange = (e) => {
     setExpense({ ...expense, [e.target.id]: e.target.value });

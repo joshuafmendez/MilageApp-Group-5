@@ -14,6 +14,7 @@ CREATE TABLE
         odometer INT, 
         doors INT,
         uid TEXT not null
+        -- selected_car BOOLEAN NOT NULL
     );
 
  CREATE TABLE

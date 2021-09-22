@@ -26,15 +26,11 @@ export default function NavBar() {
 
   return (
     <div>
-      <div className="sidenav">
+      {/* <div className="sidenav">
         <NavLink to="/">
           <h2>Home</h2>
           <FcHome size="36px" />
         </NavLink>
-        {/* <NavLink to="/cars">
-          <h2>Car(s)</h2>
-          <FcAutomotive size="36px" />
-        </NavLink> */}
         <NavLink to="/cars/:car_id/trips/new">
           <h2>Enter Mileage</h2>
           <ImRoad size="36px" />
@@ -44,7 +40,7 @@ export default function NavBar() {
           <FcCurrencyExchange size="36px" />
         </NavLink>
         <button onClick={handleLogout}> LOG OUT</button>
-      </div>
+      </div> */}
 
       <div className="right-nav">
         <NavLink to="/cars">
@@ -67,10 +63,9 @@ export default function NavBar() {
           <h2>Enter Expenses</h2>
           <FcCurrencyExchange size="36px" />
         </NavLink>
+        <button onClick={handleLogout}> LOG OUT</button>
 
         {/* {gasForm  && <FormPage/>} */}
-
- 
       </div>
       {/* {gasForm && (
   <form className="row g-3">

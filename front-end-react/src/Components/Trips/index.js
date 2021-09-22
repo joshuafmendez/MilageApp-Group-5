@@ -6,30 +6,32 @@ import { Link, useParams } from "react-router-dom";
 import { UserContext } from "../../Providers/UserProvider";
 import { useHistory } from "react-router-dom";
 // import { useSelector, useDispatch } from "react-redux";
-import "../../App.css";
+import { useDispatch, useSelector } from "react-redux";
 
-const API = apiURL();
+import "../../App.css";
+import { fetchAllTripsFN } from "../../util/networkRequest";
+import { addTrips } from "../../Store/Actions/tripsActions";
 
 const Trips = () => {
   const user = useContext(UserContext);
   const history = useHistory();
-  // const entireState = useSelector((state) => state);
-  // const dispatch = useDispatch();
-  // const { cars } = entireState;
+  const entireState = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const { trips } = entireState;
+  const { id } = useParams();
+  const tripsArr = Object.values(trips);
 
-  const [trips, setTrips] = useState([]);
-  let { id } = useParams();
   useEffect(() => {
     const fetchAllTrips = async () => {
       try {
-        const { data } = await axios.get(`${API}/cars/${id}/trips`);
-        setTrips(data.payload);
+        let res = await fetchAllTripsFN(id);
+        dispatch(addTrips(res));
       } catch (error) {
         console.log(error);
       }
     };
     fetchAllTrips();
-  }, [id]);
+  }, [dispatch, id]);
 
   useEffect(() => {
     if (!user) {
@@ -70,7 +72,7 @@ const Trips = () => {
           </tr>
         </thead>
         <tbody>
-          {trips.map((trip, i) => {
+          {tripsArr.map((trip, i) => {
             return <TripsListItem key={i} trip={trip} />;
           })}
         </tbody>

@@ -1,14 +1,15 @@
 import React from 'react';
 
-function Total({total}) {
+function Total({expense}) {
     // const total = (total)=>{
 
     //     return {}
 
     // }
+    console.log('expenes',expense)
   return (
-    <div>
-      {total}
+    <div id={expense}>
+      
     </div>
   );
 }

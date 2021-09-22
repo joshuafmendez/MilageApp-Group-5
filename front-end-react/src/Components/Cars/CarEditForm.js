@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useParams, useHistory, Link } from "react-router-dom";
-import { addCar } from "../Store/Actions/carsActions";
+import { addCar } from "../../Store/Actions/carsActions";
 import { useSelector, useDispatch } from "react-redux";
-import { updateCarById } from "../util/networkRequest";
+import { updateCarById } from "../../util/networkRequest";
+import "../Style/CarEditForm.css"
+
 
 function CarEditForm() {
   let { id } = useParams();
@@ -18,6 +20,7 @@ function CarEditForm() {
     year: car.year,
     odometer: car.odometer,
     doors: car.doors,
+    is_default: car.is_default
   });
 
   const updateCar = async (updatedCar) => {
@@ -48,16 +51,20 @@ function CarEditForm() {
   //     fetchCar();
   //   }, [dispatch, id]);
   // }
+  const isDefaultCheckbox = (e) => {
+    setCarInput({ ...carInput, is_default: !carInput.is_default });
+  };
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
     updateCar(carInput, id);
   };
 
-  const { make, model, vin, year, odometer, doors } = carInput;
+  const { make, model, vin, year, odometer, doors, is_default } = carInput;
 
   return (
-    <div>
+    <div className="edit-form">
       <form onSubmit={handleSubmit}>
         <label htmlFor="make">Make:</label>
         <input
@@ -109,6 +116,13 @@ function CarEditForm() {
           placeholder="Enter the number doors of the car"
           onChange={handleChange}
         />
+
+<div className="form-check">
+  <input id="is_default" value={is_default} className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" onChange={isDefaultCheckbox}/>
+  <label className="form-check-label" for="exampleRadios1">
+    default car
+  </label>
+</div>
         <div>
           <button type="submit">Submit</button>
           <Link to={`/cars`}>

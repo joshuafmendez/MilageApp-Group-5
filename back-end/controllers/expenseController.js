@@ -11,32 +11,39 @@ const {
 } = require("../queries/expenses");
 
 expenses.get("/", async (req, res) => {
-  const allExpenses = await getAllExpenses(req.params.car_id);
+  const { car_id } = req.params;
+  const  uid  = req.query.uid;
+  const allExpenses = await getAllExpenses(car_id,uid);
   res.json(allExpenses);
 });
 
 expenses.get("/:id", async (req, res) => {
-  const expense = await getExpense(req.params.id);
+  const { car_id,id } = req.params;
+  const  uid  = req.query.uid;
+  const expense = await getExpense(id,car_id,uid);
   res.json(expense);
 });
 
 expenses.post("/", async (req, res) => {
   const { body, params } = req;
   const { car_id } = params;
-  const expense = await addExpense(body, car_id);
+  const  uid  = req.query.uid;
+  const expense = await addExpense(body, car_id,uid);
   res.json(expense);
 });
 
 expenses.delete("/:id", async (req, res) => {
-  const { id } = req.params;
-  const expense = await deleteExpense(id);
+  const  uid  = req.query.uid;
+  const { id,car_id } = req.params;
+  const expense = await deleteExpense(id,car_id,uid);
   res.json(expense);
 });
 
 expenses.put("/:id", async (req, res) => {
   const { body, params } = req;
   const { id } = params;
-  const expense = await updateExpense(id, body);
+  const  uid  = req.query.uid;
+  const expense = await updateExpense(id, body,uid);
   res.json(expense);
 });
 
