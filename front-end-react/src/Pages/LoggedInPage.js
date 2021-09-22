@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import CarsIndex from "./Cars/CarsIndex";
 import "../Components/Style/LoggedInPage.css";
 
-export const LoggedInPage = ({ navToggle }) => {
+export const LoggedInPage = ({ navToggle ,mileageToggle}) => {
   // const imgStyle = {
   //   width: "30vh",
   //   height: "30vh",
@@ -34,7 +34,7 @@ export const LoggedInPage = ({ navToggle }) => {
 
         {/* email: {user.email} */}
 
-        <CarsIndex navToggle={navToggle} />
+        <CarsIndex navToggle={navToggle} mileageToggle={mileageToggle} />
 
         {/* <button onClick={handleLogout}> LOG OUT</button> */}
       </div>

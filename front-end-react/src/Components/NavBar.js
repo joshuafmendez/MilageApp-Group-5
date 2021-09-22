@@ -12,8 +12,9 @@ import { FaGasPump } from "react-icons/fa";
 import { signOut } from "../Services/Firebase";
 // import FormPage from "./FormPage.js"
 
-export default function NavBar({ navExpenses }) {
+export default function NavBar({ navExpenses,navMileage }) {
   let [expenseForm, setExpenseForm] = useState(false);
+  let [mileageForm, setMileageForm] = useState(false);
 
   const handleLogout = async () => {
     signOut();
@@ -25,6 +26,9 @@ export default function NavBar({ navExpenses }) {
   // }
   useEffect(() => {
     setExpenseForm(navExpenses);
+  });
+  useEffect(() => {
+    setMileageForm(navMileage);
   });
 
   return (
@@ -40,6 +44,17 @@ export default function NavBar({ navExpenses }) {
             <FcCurrencyExchange size="36px" />
           </NavLink>
         )}
+
+{mileageForm && (
+          <NavLink to="/cars/:car_id/trips/trip/new">
+            <h2>Enter Mileage</h2>
+            <ImRoad size="36px" />
+          </NavLink>
+        )}
+
+
+
+
 
         <button onClick={handleLogout}> LOG OUT</button>
 

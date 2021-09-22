@@ -21,9 +21,13 @@ import "./App.css";
 
 function App() {
   let [navExpenses, setNavExpenses] = useState(false);
-const navToggle = (boolean)=>{
-  setNavExpenses(boolean)
-}
+  let [navMileage, setNavMileage] = useState(false);
+  const navToggle = (boolean) => {
+    setNavExpenses(boolean);
+  };
+  const mileageToggle = (boolean) => {
+    setNavMileage(boolean);
+  };
   return (
     <div className="App">
       <UserProvider>
@@ -31,12 +35,12 @@ const navToggle = (boolean)=>{
           <Switch>
             <Route exact path="/" component={Login} />
             <div>
-
-              <NavBar navExpenses={navExpenses} />
-
-
+              <NavBar navExpenses={navExpenses} navMileage={navMileage} />
               <Route exact path="/cars">
-                <LoggedInPage navToggle={navToggle}/>
+                <LoggedInPage
+                  navToggle={navToggle}
+                  mileageToggle={mileageToggle}
+                />
               </Route>
               <Route exact path="/cars/car/new">
                 <CarNew />
@@ -44,12 +48,9 @@ const navToggle = (boolean)=>{
               <Route exact path="/cars/:id/edit">
                 <CarEdit />
               </Route>
-
               <Route exact path="/cars/:id">
-                <CarShow navToggle={navToggle} />
+                <CarShow navToggle={navToggle} mileageToggle={mileageToggle} />
               </Route>
-
-
               <Route exact path="/cars/:id/trips">
                 <TripsIndex />
               </Route>

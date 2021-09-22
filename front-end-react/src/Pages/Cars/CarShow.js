@@ -1,7 +1,8 @@
 import CarDetails from "../../Components/Cars/CarDetails";
 
-function CarShow({navToggle}) {
+function CarShow({navToggle,mileageToggle}) {
   navToggle(true)
+  mileageToggle(true)
   return (
     <div>
       <CarDetails />

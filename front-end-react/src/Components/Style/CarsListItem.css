@@ -156,3 +156,14 @@ button.showMe{
   z-index:3;
   text-align: center;
 }
+
+ul.ul-show{
+  display:flex;
+  justify-content: space-around;
+  margin-bottom:13px;
+}
+li.li-show{
+  /* display:flex;
+  justify-content: space-around; */
+  margin-bottom:13px;
+}

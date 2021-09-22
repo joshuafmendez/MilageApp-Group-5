@@ -28,9 +28,9 @@ function CarsListItem({ car , carsArr,cars}) {
 
 
 <div>
-<ul style={showElement ? { display:'none'} : {display : 'block'}}>
+<ul style={showElement ? { display:'none'} : {display : 'block'}} className="ul-show">
 {carsArr.map((car, i) => {
-          return <li>      
+          return <li className="li-show">      
             <div className="card text-center">
             <h2 className="make-model">{car.make} {car.model}</h2>  
             <br></br>
