@@ -1,11 +1,13 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useHistory, Link, useParams } from "react-router-dom";
 import { apiURL } from "../../util/apiURL";
+import { UserContext } from "../../Providers/UserProvider"
 
 const API = apiURL();
 
 const TripNewForm = () => {
+  const user = useContext(UserContext);
   let { id } = useParams();
   const [trip, setTrip] = useState({
     date: "",
@@ -21,7 +23,7 @@ const TripNewForm = () => {
 
   const addTrip = async (newTrip) => {
     try {
-      await axios.post(`${API}/cars/${id}/trips`, newTrip);
+      await axios.post(`${API}/cars/${id}/trips?uid=${user.uid}`, newTrip);
     } catch (error) {
       console.log(error);
     }

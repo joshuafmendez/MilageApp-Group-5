@@ -3,11 +3,10 @@ const db = require("../db/config");
 const getAllExpenses = async (car_id, uid) => {
   const queryOne = "SELECT * FROM cars WHERE uid=$1 AND id=$2"
   const authCheck = await db.any(queryOne, [uid, car_id])
-  // console.log("authCheck", authCheck, "uid", uid)
   if (authCheck.length) {
     try {
-      const query = "SELECT * FROM expenses WHERE car_id=$1";
-      const allExpenses = await db.any(query, car_id);
+      const queryTwo = "SELECT * FROM expenses WHERE car_id=$1";
+      const allExpenses = await db.any(queryTwo, car_id);
       return { status: true, payload: allExpenses };
     } catch (error) {
       return { status: false, payload: error };
@@ -40,7 +39,6 @@ const addExpense = async (body, car_id, uid) => {
 
   if (authCheck.length) {
     try {
-      console.log("car_id", car_id)
       const queryTwo =
         "INSERT INTO expenses (car_id, expense_type, business_use, amount_spent, date) VALUES ($1, $2, $3, $4, $5) RETURNING *";
       const newExpense = await db.one(queryTwo, [
@@ -59,12 +57,12 @@ const addExpense = async (body, car_id, uid) => {
   }
 };
 
-const deleteExpense = async (id, car_id,uid) => {
+const deleteExpense = async (id, car_id, uid) => {
   const queryOne = "SELECT * FROM cars WHERE uid=$1 AND id=$2"
   const authCheck = await db.any(queryOne, [uid, car_id])
   if (authCheck.length) {
     try {
-      const query = "DELETE FROM expenses WHERE id=$1  AND car_id=$2 RETURNING *";
+      const query = "DELETE FROM expenses WHERE id=$1 AND car_id=$2 RETURNING *";
       const deletedExpense = await db.one(query, [id, car_id]);
       return { status: true, payload: deletedExpense };
     } catch (error) {
