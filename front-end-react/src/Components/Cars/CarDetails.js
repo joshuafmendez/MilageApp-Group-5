@@ -4,8 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { apiURL } from "../../util/apiURL";
 import { UserContext } from "../../Providers/UserProvider";
-// import { addExpenses } from "../../Store/Actions/expenseActions";
-import { addCar } from "../../Store/Actions/carsActions";
 import { fetchAllExpensesFN } from "../../util/networkRequest";
 import { addExpenses } from "../../Store/Actions/expenseActions";
 const API = apiURL();
@@ -36,12 +34,7 @@ function CarDetails() {
   useEffect(() => {
     const fetchCar = async () => {
       try {
-        let res = await axios.get(`${API}/cars/${id}`);
-        if (res.data.payload.uid === user.uid) {
-          dispatch(addCar(res.data.payload));
-        } else {
-          history.push("/");
-        }
+        await axios.get(`${API}/cars/${id}`);
       } catch (err) {
         console.log(err);
       }
@@ -59,20 +52,19 @@ function CarDetails() {
     fetchAllExpenses();
   }, [id, user, history, dispatch]);
 
-  const car = cars[id];
-  const { make, model, vin, year, odometer, doors } = car;
   if (!user) {
     return <div className="spinner-border"></div>;
   } else {
+    const car = cars[id];
     return (
       <div>
         <h2>Car ID: {id}</h2>
-        <h2>Make: {make}</h2>
-        <h2>Model: {model}</h2>
-        <h2>VIN: {vin}</h2>
-        <h2>Year: {year}</h2>
-        <h2>Odometer: {odometer}</h2>
-        <h2>Doors: {doors}</h2>
+        <h2>Make: {car?.make}</h2>
+        <h2>Model: {car?.model}</h2>
+        <h2>VIN: {car?.vin}</h2>
+        <h2>Year: {car?.year}</h2>
+        <h2>Odometer: {car?.odometer}</h2>
+        <h2>Doors: {car?.doors}</h2>
 
         <div>
           <Link to={"/cars"}>
