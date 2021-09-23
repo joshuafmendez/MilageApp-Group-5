@@ -11,6 +11,9 @@ const {
   updateTrip,
 } = require("../queries/trips");
 
+const pdfTripsController = require("./tripsController");
+trips.use("/:car_id/trips/pdf", pdfTripsController);
+
 trips.get("/", async (req, res) => {
   const allTrips = await getAllTrips(req.params.car_id);
   res.json(allTrips);
