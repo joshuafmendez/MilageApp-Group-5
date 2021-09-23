@@ -17,7 +17,7 @@ const Cars = () => {
   const user = useContext(UserContext);
   const history = useHistory();
   const carsArr = Object.values(cars);
-  
+
   // Keep for pdf conversion --TODO--
   // let sorted = Object.values(cars);
   // const [sorting, setSorting] = useState(sorted);
@@ -60,11 +60,7 @@ const Cars = () => {
 
   return (
     <div>
-      <ul className="cars-list">
-        {carsArr.map((car, i) => {
-          return <CarsListItem key={i} car={car} />;
-        })}
-      </ul>
+      <CarsListItem carsArr={carsArr} cars={cars} />
       <Link to={"/cars/car/new"}>
         <button className="cars-new-button">Add New Car</button>
       </Link>

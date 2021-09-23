@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useParams, useHistory, Link } from "react-router-dom";
 import { addCar } from "../../Store/Actions/carsActions";
 import { useSelector, useDispatch } from "react-redux";
 import { updateCarById } from "../../util/networkRequest";
+import "../Style/CarEditForm.css";
+import { UserContext } from "../../Providers/UserProvider";
 
 function CarEditForm() {
+  const user = useContext(UserContext);
   let { id } = useParams();
   let history = useHistory();
   const cars = useSelector((state) => state.cars);
@@ -18,11 +21,12 @@ function CarEditForm() {
     year: car.year,
     odometer: car.odometer,
     doors: car.doors,
+    is_default: car.is_default,
   });
 
-  const updateCar = async (updatedCar) => {
+  const updateCar = async (updatedCar, id) => {
     try {
-      const editedCar = await updateCarById(id, updatedCar);
+      const editedCar = await updateCarById(id, updatedCar, user);
       dispatch(addCar(editedCar));
       history.push(`/cars/${id}`);
     } catch (error) {
@@ -34,30 +38,19 @@ function CarEditForm() {
     setCarInput({ ...carInput, [e.target.id]: e.target.value });
   };
 
-  // if (!car) {
-  //   useEffect(() => {
-  //     const fetchCar = async () => {
-  //       try {
-  //         const { data } = await axios.get(`${API}/cars/${id}`);
-  //         // dispatch(addCar(data.payload));
-  //         setCarInput(data.payload);
-  //       } catch (err) {
-  //         console.log(err);
-  //       }
-  //     };
-  //     fetchCar();
-  //   }, [dispatch, id]);
-  // }
+  const isDefaultCheckbox = (e) => {
+    setCarInput({ ...carInput, is_default: !carInput.is_default });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     updateCar(carInput, id);
   };
 
-  const { make, model, vin, year, odometer, doors } = carInput;
+  const { make, model, vin, year, odometer, doors, is_default } = carInput;
 
   return (
-    <div>
+    <div className="edit-form">
       <form onSubmit={handleSubmit}>
         <label htmlFor="make">Make:</label>
         <input
@@ -109,6 +102,19 @@ function CarEditForm() {
           placeholder="Enter the number doors of the car"
           onChange={handleChange}
         />
+
+        <div className="form-check">
+          <input
+            id="is_default"
+            value={is_default}
+            className="form-check-input"
+            type="radio"
+            onChange={isDefaultCheckbox}
+          />
+          <label className="form-check-label" for="exampleRadios1">
+            default car
+          </label>
+        </div>
         <div>
           <button type="submit">Submit</button>
           <Link to={`/cars`}>

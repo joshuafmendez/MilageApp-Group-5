@@ -1,4 +1,4 @@
-import { ADD_CAR, ADD_CARS } from "../Actions/actionTypes";
+import { ADD_CAR, ADD_CARS} from "../Actions/actionTypes";
 
 let initialState = {};
 

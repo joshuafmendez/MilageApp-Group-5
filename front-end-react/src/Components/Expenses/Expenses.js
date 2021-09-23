@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect, useContext } from "react";
+import { useEffect, useContext, useHistory } from "react";
 import ExpenseListItem from "./ExpenseListItem";
 import { Link, useParams } from "react-router-dom";
 import { fetchAllExpensesFN } from "../../util/networkRequest";
@@ -49,6 +49,12 @@ const Expenses = () => {
   //   });
   //   setExpenses(sorted);
   // };
+
+  useEffect(() => {
+    if (!user) {
+      useHistory.push("/");
+    }
+  }, [user]);
 
   return (
     <div>

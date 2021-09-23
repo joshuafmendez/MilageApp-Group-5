@@ -1,12 +1,17 @@
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import TripsListItem from "./TripsListItem";
 import { Link, useParams } from "react-router-dom";
+import { UserContext } from "../../Providers/UserProvider";
+import { useHistory } from "react-router-dom";
+// import { useSelector, useDispatch } from "react-redux";
 import { useDispatch, useSelector } from "react-redux";
 import "../../App.css";
 import { fetchAllTripsFN } from "../../util/networkRequest";
 import { addTrips } from "../../Store/Actions/tripsActions";
 
 const Trips = () => {
+  const user = useContext(UserContext);
+  const history = useHistory();
   const entireState = useSelector((state) => state);
   const dispatch = useDispatch();
   const { trips } = entireState;
@@ -16,14 +21,20 @@ const Trips = () => {
   useEffect(() => {
     const fetchAllTrips = async () => {
       try {
-        let res = await fetchAllTripsFN(id);
+        let res = await fetchAllTripsFN(id, user);
         dispatch(addTrips(res));
       } catch (error) {
         console.log(error);
       }
     };
     fetchAllTrips();
-  }, [dispatch, id]);
+  }, [dispatch, id, user]);
+
+  useEffect(() => {
+    if (!user) {
+      history.push("/");
+    }
+  }, [user, history]);
 
   return (
     <div>

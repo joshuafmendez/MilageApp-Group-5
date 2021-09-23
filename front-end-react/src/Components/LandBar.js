@@ -86,15 +86,4 @@ export default function Home() {
       <p>Scroll down</p>
     </header>
   );
-
-  //   return (
-  //     <div>
-  //       {state === 'start' && (
-  //         <AddTripButton addTrip={() => setState('add-trip') } />
-  //       )}
-
-  //       {state === 'add-trip' && <AnotherComponent />}
-  //     </div>
-  //   )
-  // }
 }

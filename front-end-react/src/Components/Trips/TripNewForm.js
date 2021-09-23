@@ -1,11 +1,16 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState,useContext,useEffect } from "react";
 import { useHistory, Link, useParams } from "react-router-dom";
 import { apiURL } from "../../util/apiURL";
+import "../Style/TripNewForm.css"
+import { UserContext } from "../../Providers/UserProvider";
 
 const API = apiURL();
 
 const TripNewForm = () => {
+  const user = useContext(UserContext);
+  const history = useHistory();
+
   let { id } = useParams();
   const [trip, setTrip] = useState({
     date: "",
@@ -17,11 +22,10 @@ const TripNewForm = () => {
     favorite: false,
   });
 
-  let history = useHistory();
 
   const addTrip = async (newTrip) => {
     try {
-      await axios.post(`${API}/cars/${id}/trips`, newTrip);
+      await axios.post(`${API}/cars/${id}/trips?uid=${user.uid}`, newTrip);
     } catch (error) {
       console.log(error);
     }
@@ -55,8 +59,15 @@ const TripNewForm = () => {
     favorite,
   } = trip;
 
+  useEffect(() => {
+    if (!user) {
+      history.push("/");
+    }
+  }, [user, history]);
+
   return (
     <div>
+      {/* 
       <form onSubmit={handleSubmit}>
         <label htmlFor="date">Date:</label>
         <input
@@ -122,7 +133,133 @@ const TripNewForm = () => {
             <button>Cancel</button>
           </Link>
         </div>
-      </form>
+      </form> */}
+
+      <div>
+        <form className="form-trip" onSubmit={handleSubmit}>
+          Car Mileage
+          <table>
+            <tr>
+              {" "}
+              <td className="data-td">
+                <label htmlFor="date">Date:</label>
+              </td>
+              <td className="data-td">
+                <input
+                  value={date}
+                  type="date"
+                  onChange={handleChange}
+                  id="date"
+                  placeholder="date"
+                  required
+                />{" "}
+              </td>
+            </tr>
+            <tr>
+              {" "}
+              <td className="data-td">
+                <label htmlFor="amount_spent">miles:</label>
+              </td>
+              <td className="data-td">
+                <input
+                  id="miles"
+                  type="number"
+                  value={miles}
+                  onChange={handleChange}
+                  placeholder="Enter overall miles for the trip"
+                  required
+                />{" "}
+              </td>
+            </tr>
+            <tr>
+              {" "}
+              <td className="data-td">
+                <label htmlFor="reason">reason:</label>
+              </td>
+              <td className="data-td">
+                <input
+                  id="reason"
+                  type="text"
+                  value={reason}
+                  onChange={handleChange}
+                  placeholder="Enter reason for your trip"
+                  required
+                />{" "}
+              </td>
+            </tr>
+
+            <tr>
+              {" "}
+              <td className="data-td">
+                <label htmlFor="start_odometer">Start Odometer:</label>
+              </td>
+              <td className="data-td">
+                <input
+                  id="start_odometer"
+                  type="number"
+                  value={start_odometer}
+                  min="0"
+                  placeholder="Enter the mileage show on the odometer at start of trip"
+                  onChange={handleChange}
+                />{" "}
+              </td>
+            </tr>
+            <tr>
+              {" "}
+              <td className="data-td">
+                <label htmlFor="stop_odometer">Stop Odometer:</label>
+              </td>
+              <td className="data-td">
+                <input
+                  id="stop_odometer"
+                  type="number"
+                  value={stop_odometer}
+                  min="0"
+                  placeholder="Enter the mileage show on the odometer at start of trip"
+                  onChange={handleChange}
+                />{" "}
+              </td>
+            </tr>
+            <tr>
+              {" "}
+              <td className="data-td">
+                <label htmlFor="business_use">Business Use:</label>
+              </td>
+              <td className="data-td">
+                <input
+                  id="business_use"
+                  type="checkbox"
+                  onChange={businessCheckbox}
+                  checked={business_use}
+                />
+              </td>
+            </tr>
+
+            <tr>
+              {" "}
+              <td className="data-td">
+                <label htmlFor="favorite">Favorite:</label>
+              </td>
+              <td className="data-td">
+                <input
+                  id="favorite"
+                  type="checkbox"
+                  onChange={favoriteCheckbox}
+                  checked={favorite}
+                />
+              </td>
+            </tr>
+          </table>
+          <div>
+            <button className="button-sub" type="submit">
+              Submit
+            </button>
+            <Link to={`/cars/${id}/expenses`}>
+              <button className="button-can">Cancel</button>
+            </Link>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

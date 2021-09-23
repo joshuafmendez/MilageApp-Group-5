@@ -10,10 +10,10 @@ const getAllCars = async (uid) => {
   }
 };
 
-const getCar = async (id) => {
+const getCar = async (id, uid) => {
   try {
-    const query = "SELECT * FROM cars WHERE id=$1";
-    const car = await db.one(query, id);
+    const query = "SELECT * FROM cars WHERE id=$1 and uid=$2";
+    const car = await db.one(query, [id, uid]);
     return { status: true, payload: car };
   } catch (error) {
     return { status: false, payload: error };
@@ -21,10 +21,10 @@ const getCar = async (id) => {
 };
 
 const addCar = async (car) => {
-  const { make, model, vin, year, odometer, doors, uid } = car;
+  const { make, model, vin, year, odometer, doors, is_default, uid } = car;
   try {
     const query =
-      "INSERT INTO cars (make, model, vin, year, odometer, doors,uid) VALUES ($1, $2, $3, $4, $5, $6,$7) RETURNING *";
+      "INSERT INTO cars (make, model, vin, year, odometer, doors,is_default,uid) VALUES ($1, $2, $3, $4, $5, $6,$7,$8) RETURNING *";
     const newCar = await db.one(query, [
       make,
       model,
@@ -32,6 +32,7 @@ const addCar = async (car) => {
       year,
       odometer,
       doors,
+      is_default,
       uid,
     ]);
     return { status: true, payload: newCar };
@@ -40,34 +41,42 @@ const addCar = async (car) => {
   }
 };
 
-const deleteCar = async (id) => {
+const deleteCar = async (id, uid) => {
   try {
-    const query = "DELETE FROM cars WHERE id=$1 RETURNING *";
-    const deletedCar = await db.one(query, id);
+    const query = "DELETE FROM cars WHERE id=$1 AND uid=$2 RETURNING *";
+    const deletedCar = await db.one(query, [id, uid]);
     return { status: true, payload: deletedCar };
   } catch (error) {
+    console.log(error);
     return { status: false, payload: error };
   }
 };
 
-const updateCar = async (id, car) => {
-  const { make, model, vin, year, odometer, doors, uid } = car;
-  try {
-    const query =
-      "UPDATE cars SET make=$1, model=$2, vin=$3, year=$4, odometer=$5, doors=$6, uid=$7 WHERE id=$8 RETURNING *";
-    const updatedCar = await db.one(query, [
-      make,
-      model,
-      vin,
-      year,
-      odometer,
-      doors,
-      uid,
-      id,
-    ]);
-    return { status: true, payload: updatedCar };
-  } catch (error) {
-    return { status: false, payload: error };
+const updateCar = async (id, body, uid) => {
+  const { make, model, vin, year, odometer, doors, is_default } = body;
+  const queryOne = "SELECT * FROM cars WHERE uid=$1 AND id=$2";
+  const authCheck = await db.any(queryOne, [uid, id]);
+  if (authCheck.length) {
+    try {
+      const query =
+        "UPDATE cars SET make=$1, model=$2, vin=$3, year=$4, odometer=$5, doors=$6, is_default=$7, uid=$8 WHERE id=$9 RETURNING *";
+      const updatedCar = await db.one(query, [
+        make,
+        model,
+        vin,
+        year,
+        odometer,
+        doors,
+        is_default,
+        uid,
+        id,
+      ]);
+      return { status: true, payload: updatedCar };
+    } catch (error) {
+      return { status: false, payload: error };
+    }
+  } else {
+    return { status: false, payload: "user doesn't match" };
   }
 };
 
