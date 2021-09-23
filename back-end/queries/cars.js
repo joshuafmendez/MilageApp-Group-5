@@ -42,7 +42,6 @@ const addCar = async (car) => {
 };
 
 const deleteCar = async (id, uid) => {
-  console.log("hello", "id", id, "uid", uid);
   try {
     const query = "DELETE FROM cars WHERE id=$1 AND uid=$2 RETURNING *";
     const deletedCar = await db.one(query, [id, uid]);
