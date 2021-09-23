@@ -21,6 +21,7 @@ function CarNewForm() {
     year: "",
     odometer: "",
     doors: "",
+    is_default: true,
     uid: user && user.uid,
   });
 
@@ -39,74 +40,22 @@ function CarNewForm() {
     setCar({ ...car, [e.target.id]: e.target.value });
   };
 
+  // const isDefaultCheckbox = (e) => {
+  //   console.log('e',e)
+  //   setCar({ ...car, is_default: !car.is_default });
+  // };
+  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     addCar(car);
   };
 
-  const { make, model, vin, year, odometer, doors } = car;
+  const { make, model, vin, year, odometer, doors, is_default } = car;
 
   return (
     <div>
-      {/* <form onSubmit={handleSubmit}>
-
-        <label htmlFor="make">Make:</label>
-        <input
-          value={make}
-          type="text"
-          onChange={handleChange}
-          id="make"
-          placeholder="Enter make of the car"
-          required
-        />
-  
-        <label htmlFor="model">Model:</label>
-        <input
-          id="model"
-          type="text"
-          value={model}
-          onChange={handleChange}
-          placeholder="Enter model of the car"
-          required
-        />
-
-        <label htmlFor="year">year:</label>
-        <input
-          id="year"
-          type="number"
-          value={year}
-          min="1900"
-          onChange={handleChange}
-          required
-        />
-        <label htmlFor="odometer">Odometer:</label>
-        <input
-          id="odometer"
-          type="number"
-          value={odometer}
-          min="0"
-          placeholder="Enter the mileage on the odometer"
-          onChange={handleChange}
-          required
-        />
-        <label htmlFor="doors">Doors:</label>
-        <input
-          id="doors"
-          type="number"
-          value={doors}
-          min="2"
-          placeholder="Enter the number doors of the car"
-          onChange={handleChange}
-          required
-        />
-        <div>
-          <button type="submit">Submit</button>
-          <Link to={`/cars`}>
-            <button>Cancel</button>
-          </Link>
-        </div>
-      </form> */}
-
+    
       <form onSubmit={handleSubmit} className="form-rows">
         <div className="all-rows">
           <div className="left-form">
@@ -186,13 +135,21 @@ function CarNewForm() {
                 required
               />
             </div>
+            {/* <div className="form-check">
+  <input id="is_default" value={is_default} className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" onChange={isDefaultCheckbox}/>
+  <label className="form-check-label" for="exampleRadios1">
+    default car
+  </label>
+</div> */}
           </div>
         </div>
         <button type="submit">Submit</button>
         <Link to={`/cars`}>
           <button>Cancel</button>
         </Link>
+
       </form>
+      
     </div>
   );
 }

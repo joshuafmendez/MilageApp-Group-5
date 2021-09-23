@@ -1,19 +1,21 @@
 import axios from "axios";
-import { useContext, useState } from "react";
+import { useState,useContext,useEffect } from "react";
+import "../Style/ExpenseNewForm.css"
 import { useHistory, Link, useParams } from "react-router-dom";
 import { apiURL } from "../../util/apiURL";
 import { UserContext } from "../../Providers/UserProvider"
 
+
 const API = apiURL();
 function ExpenseNewForm() {
   const user = useContext(UserContext);
+  const history = useHistory();
   const [expense, setExpense] = useState({
     expense_type: "",
     business_use: false,
     amount_spent: 0,
     date: "",
   });
-  let history = useHistory();
   const { id } = useParams();
 
   const addExpense = async (newExpense) => {
@@ -43,63 +45,106 @@ function ExpenseNewForm() {
 
   const { business_use, amount_spent, date } = expense;
 
+  useEffect(() => {
+    if (!user) {
+      history.push("/");
+    }
+  }, [user, history]);
+
+
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="date">Date</label>
-        <input
-          value={date}
-          type="date"
-          onChange={handleChange}
-          id="date"
-          placeholder="Enter date"
-          required
-        />
-        Expense type
-        <select onChange={handleSelectChange}>
-          <option value="" defaultValue></option>
-          <option name="gas" value="Gas">
-            Gas
-          </option>
-          <option name="repairs" value="Repairs">
-            Repairs
-          </option>
-          <option name="car_insurance" value="Car Insurance">
-            Car Insurance
-          </option>
-          <option name="oil_change" value="Oil Change">
-            Oil Change
-          </option>
-          <option name="registration_fees" value="Registration Fees">
-            Registration Fees
-          </option>
-          <option name="depreciation" value="Depreciation">
-            Depreciation
-          </option>
-        </select>
-        <label htmlFor="amount_spent">Amount</label>
-        <input
-          id="amount_spent"
-          type="number"
-          value={amount_spent}
-          min="1"
-          onChange={handleChange}
-          required
-        />
-        <label htmlFor="business_use">Business Use</label>
-        <input
-          id="business_use"
-          type="checkbox"
-          onChange={handleCheckboxChange}
-          checked={business_use}
-        />
-        <div>
-          <button type="submit">Submit</button>
-          <Link to={`/cars/${id}/expenses`}>
-            <button>Cancel</button>
-          </Link>
-        </div>
-      </form>
+    <div className="div-form">
+      <div>
+        <form onSubmit={handleSubmit}>
+          Car Mileage
+          <table>
+            <tr>
+              {" "}
+              <td>
+                <label htmlFor="date">Date:</label>
+              </td>
+              <td>
+                <input
+                  value={date}
+                  type="date"
+                  onChange={handleChange}
+                  id="date"
+                  placeholder="Enter date"
+                  required
+                />{" "}
+              </td>
+            </tr>
+            <tr>
+              {" "}
+              <td>
+                <label> Expense type:</label>
+              </td>
+              <td>
+                <select onChange={handleSelectChange}>
+                  <option value="" defaultValue></option>
+                  <option name="gas" value="Gas">
+                    Gas
+                  </option>
+                  <option name="repairs" value="Repairs">
+                    Repairs
+                  </option>
+                  <option name="car_insurance" value="Car Insurance">
+                    Car Insurance
+                  </option>
+                  <option name="oil_change" value="Oil Change">
+                    Oil Change
+                  </option>
+                  <option name="registration_fees" value="Registration Fees">
+                    Registration Fees
+                  </option>
+                  <option name="depreciation" value="Depreciation">
+                    Depreciation
+                  </option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              {" "}
+              <td>
+                <label htmlFor="amount_spent">Amount:</label>
+              </td>
+              <td>
+                <input
+                  id="amount_spent"
+                  type="number"
+                  value={amount_spent}
+                  min="1"
+                  onChange={handleChange}
+                  required
+                />{" "}
+              </td>
+            </tr>
+
+            <tr>
+              {" "}
+              <td>
+                <label htmlFor="business_use">Business Use:</label>
+              </td>
+              <td>
+                <input
+                  id="business_use"
+                  type="checkbox"
+                  onChange={handleCheckboxChange}
+                  checked={business_use}
+                />
+              </td>
+            </tr>
+          </table>
+          <div>
+            <button className="button-sub" type="submit">
+              Submit
+            </button>
+            <Link to={`/cars/${id}/expenses`}>
+              <button className="button-can">Cancel</button>
+            </Link>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

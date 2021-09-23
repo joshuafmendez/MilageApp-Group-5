@@ -3,9 +3,9 @@ import { UserContext } from "../Providers/UserProvider";
 import { useHistory } from "react-router-dom";
 // import { signOut } from "../Services/Firebase";
 import CarsIndex from "./Cars/CarsIndex";
-// import "../Components/Style/LoggedInPage.css"
+import "../Components/Style/LoggedInPage.css";
 
-export const LoggedInPage = () => {
+export const LoggedInPage = ({ navToggle ,mileageToggle}) => {
   // const imgStyle = {
   //   width: "30vh",
   //   height: "30vh",
@@ -29,17 +29,13 @@ export const LoggedInPage = () => {
   if (user) {
     return (
       <div className="log-start">
-        <h1> YOU ARE NOW LOGGED IN : </h1>
+        {/* <h1> YOU ARE NOW LOGGED IN : </h1> */}
         <h1>Welcome {user.displayName} !</h1>
-        email: {user.email}
-        <div>
-          {/* <img src = {user.photoURL}
-          style={imgStyle}
-            className="user-image"
-            alt="its the users head"
-            ></img> */}
-          <CarsIndex />
-        </div>
+
+        {/* email: {user.email} */}
+
+        <CarsIndex navToggle={navToggle} mileageToggle={mileageToggle} />
+
         {/* <button onClick={handleLogout}> LOG OUT</button> */}
       </div>
     );

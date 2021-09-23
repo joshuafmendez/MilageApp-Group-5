@@ -1,0 +1,19 @@
+.table-data{
+    font-size: 20px;
+}
+.table-p{
+    font-size: 20px;
+}
+.table-expense{
+    border: solid .5px darkgrey;
+    margin-top:6%;
+}
+.table-expense>th{
+    border: solid .5px darkgrey;
+
+}
+th.th-expense{
+    border: solid 1px grey;
+    padding:0;
+    width: 20%;
+}

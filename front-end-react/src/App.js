@@ -1,4 +1,8 @@
+
+import React, { useState } from "react";
+
 import { Route, Switch } from "react-router-dom";
+
 import NavBar from "./Components/NavBar";
 import Login from "./Components/Login";
 import FourOFour from "./Pages/FourOFour";
@@ -19,49 +23,60 @@ import ExpensesShow from "./Pages/Expenses/ExpenseShow";
 import "./App.css";
 
 function App() {
+  let [navExpenses, setNavExpenses] = useState(false);
+  let [navMileage, setNavMileage] = useState(false);
+  const navToggle = (boolean) => {
+    setNavExpenses(boolean);
+  };
+  const mileageToggle = (boolean) => {
+    setNavMileage(boolean);
+  };
   return (
     <div className="App">
       <UserProvider>
-        <Switch>
-          <Route exact path="/" component={Login} />
-          <>
-            <NavBar />
-            <Route exact path="/cars">
-              <LoggedInPage />
-            </Route>
-            <Route exact path="/cars/car/new">
-              <CarNew />
-            </Route>
-            <Route exact path="/cars/:id/edit">
-              <CarEdit />
-            </Route>
-            <Route exact path="/cars/:id">
-              <CarShow />
-            </Route>
-            <Route exact path="/cars/:id/trips">
-              <TripsIndex />
-            </Route>
-            <Route exact path="/cars/:id/trips/trip/new">
-              <TripsNew />
-            </Route>
-            <Route exact path="/cars/:id/trips/:trip_id">
-              <TripsShow />
-            </Route>
-            <Route exact path="/cars/:id/trips/:trip_id/edit">
-              <TripsEdit />
-            </Route>
-            <Route exact path="/cars/:id/expenses">
-              <ExpensesIndex />
-            </Route>
-            <Route path="/cars/:id/expenses/expense/new">
-              <ExpensesNew />
-            </Route>
-            <Route exact path="/cars/:id/expenses/:expense_id">
-              <ExpensesShow />
-            </Route>
-            <Route path="/cars/:id/expenses/:expense_id/edit">
-              <ExpensesEdit />
-            </Route>
+          <Switch>
+            <Route exact path="/" component={Login} />
+            <>
+              <NavBar navExpenses={navExpenses} navMileage={navMileage} />
+              <Route exact path="/cars">
+                <LoggedInPage
+                  navToggle={navToggle}
+                  mileageToggle={mileageToggle}
+                />
+              </Route>
+              <Route exact path="/cars/car/new">
+                <CarNew />
+              </Route>
+              <Route exact path="/cars/:id/edit">
+                <CarEdit />
+              </Route>
+              <Route exact path="/cars/:id">
+                <CarShow navToggle={navToggle} mileageToggle={mileageToggle} />
+              </Route>
+              <Route exact path="/cars/:id/trips">
+                <TripsIndex />
+              </Route>
+              <Route exact path="/cars/:id/trips/trip/new">
+                <TripsNew />
+              </Route>
+              <Route exact path="/cars/:id/trips/:trip_id">
+                <TripsShow />
+              </Route>
+              <Route exact path="/cars/:id/trips/:trip_id/edit">
+                <TripsEdit />
+              </Route>
+              <Route exact path="/cars/:id/expenses">
+                <ExpensesIndex />
+              </Route>
+              <Route path="/cars/:id/expenses/expense/new">
+                <ExpensesNew />
+              </Route>
+              <Route exact path="/cars/:id/expenses/:expense_id">
+                <ExpensesShow />
+              </Route>
+              <Route path="/cars/:id/expenses/:expense_id/edit">
+                <ExpensesEdit />
+              </Route>
           </>
           <Route path="*">
             <FourOFour />

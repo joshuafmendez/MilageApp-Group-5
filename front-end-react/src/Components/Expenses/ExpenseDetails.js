@@ -4,6 +4,8 @@ import axios from "axios";
 import { apiURL } from "../../util/apiURL";
 import { UserContext } from "../../Providers/UserProvider";
 
+
+
 const API = apiURL();
 
 function ExpenseDetails() {
@@ -61,6 +63,7 @@ function ExpenseDetails() {
             <button>EDIT</button>
           </Link>
         </div>
+
       </div>
     );
   }

@@ -3,3 +3,12 @@
   justify-content: space-around;
   flex-wrap: wrap;
 }
+
+.mint-box{
+  height: 220px;
+  background-image: linear-gradient(
+    to right,
+    rgba(156, 234, 222, 0),
+    rgba(156, 234, 222, 1)
+  )
+}

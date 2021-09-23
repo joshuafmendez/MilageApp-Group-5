@@ -1,0 +1,8 @@
+.log-start{
+    background-image: linear-gradient(
+        to right,
+        rgba(156, 234, 222, 0),
+        rgba(156, 234, 222, 1)
+      );
+      height:5%;
+}
