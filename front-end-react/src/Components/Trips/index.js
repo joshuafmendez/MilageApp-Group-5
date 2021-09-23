@@ -1,6 +1,4 @@
-import axios from "axios";
-import { useState, useEffect, useContext} from "react";
-import { apiURL } from "../../util/apiURL";
+import { useEffect, useContext } from "react";
 import TripsListItem from "./TripsListItem";
 import { Link, useParams } from "react-router-dom";
 import { UserContext } from "../../Providers/UserProvider";
@@ -10,7 +8,6 @@ import { useDispatch, useSelector } from "react-redux";
 import "../../App.css";
 import { fetchAllTripsFN } from "../../util/networkRequest";
 import { addTrips } from "../../Store/Actions/tripsActions";
-import { UserContext } from "../../Providers/UserProvider"
 
 const Trips = () => {
   const user = useContext(UserContext);
@@ -24,21 +21,20 @@ const Trips = () => {
   useEffect(() => {
     const fetchAllTrips = async () => {
       try {
-        let res = await fetchAllTripsFN(id,user);
+        let res = await fetchAllTripsFN(id, user);
         dispatch(addTrips(res));
       } catch (error) {
         console.log(error);
       }
     };
     fetchAllTrips();
-  }, [dispatch, id,user]);
+  }, [dispatch, id, user]);
 
   useEffect(() => {
     if (!user) {
       history.push("/");
     }
   }, [user, history]);
-
 
   return (
     <div>

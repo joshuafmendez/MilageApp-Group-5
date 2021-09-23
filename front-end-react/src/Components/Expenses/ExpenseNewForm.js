@@ -56,7 +56,7 @@ function ExpenseNewForm() {
     <div className="div-form">
       <div>
         <form onSubmit={handleSubmit}>
-          Car Mileage
+          Car Expenses
           <table>
             <tr>
               {" "}

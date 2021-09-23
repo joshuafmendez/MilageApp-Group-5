@@ -51,7 +51,7 @@ function CarNewForm() {
     addCar(car);
   };
 
-  const { make, model, vin, year, odometer, doors, is_default } = car;
+  const { make, model, vin, year, odometer, doors} = car;
 
   return (
     <div>

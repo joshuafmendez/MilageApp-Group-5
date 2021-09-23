@@ -18,8 +18,6 @@ const Cars = () => {
   const history = useHistory();
   const carsArr = Object.values(cars);
 
-  
-  
   // Keep for pdf conversion --TODO--
   // let sorted = Object.values(cars);
   // const [sorting, setSorting] = useState(sorted);
@@ -62,34 +60,7 @@ const Cars = () => {
 
   return (
     <div>
-
-
-{/* <div className="form-check">
-  <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked/>
-  <label className="form-check-label" for="exampleRadios1">
-    Default radio
-  </label>
-</div>
-<div className="form-check">
-  <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2"/>
-  <label className="form-check-label" for="exampleRadios2">
-    Second default radio
-  </label>
-</div>
-<div className="form-check">
-  <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" disabled/>
-  <label className="form-check-label" for="exampleRadios3">
-    Disabled radio
-  </label>
-</div> */}
-{/* 
-      <ul className="cars-list">
-        {carsArr.map((car, i) => {
-          return <CarsListItem key={i} car={car} carsArr={carsArr} cars={cars}/>;
-        })}
-        
-      </ul> */}
-      <CarsListItem  carsArr={carsArr} cars={cars}/>
+      <CarsListItem carsArr={carsArr} cars={cars} />
       <Link to={"/cars/car/new"}>
         <button className="cars-new-button">Add New Car</button>
       </Link>

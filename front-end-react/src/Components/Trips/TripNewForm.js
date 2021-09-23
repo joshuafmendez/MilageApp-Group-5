@@ -137,7 +137,7 @@ const TripNewForm = () => {
 
       <div>
         <form className="form-trip" onSubmit={handleSubmit}>
-          Car Expenses
+          Car Mileage
           <table>
             <tr>
               {" "}

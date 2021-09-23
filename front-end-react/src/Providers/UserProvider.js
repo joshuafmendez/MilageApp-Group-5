@@ -19,7 +19,6 @@ const UserProvider = ({ children }) => {
           photoURL,
           uid,
         });
-
         const fetchAllCars = async () => {
           try {
             const res = await fetchAllCarsFN(user);

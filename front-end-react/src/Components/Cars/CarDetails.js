@@ -4,11 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { apiURL } from "../../util/apiURL";
 import { UserContext } from "../../Providers/UserProvider";
-import { fetchAllExpensesFN,fetchAllTripsFN } from "../../util/networkRequest";
+import { fetchAllExpensesFN, fetchAllTripsFN } from "../../util/networkRequest";
 import { addExpenses } from "../../Store/Actions/expenseActions";
 import "../Style/CarDetails.css";
 import "../Style/CarDetails.css";
-import {addTrips} from "../../Store/Actions/tripsActions"
+import { addTrips } from "../../Store/Actions/tripsActions";
 
 const API = apiURL();
 
@@ -36,15 +36,6 @@ function CarDetails() {
   };
 
   useEffect(() => {
-    // const fetchCar = async () => {
-    //   try {
-    //     await axios.get(`${API}/cars/${id}`);
-    //   } catch (err) {
-    //     console.log(err);
-    //   }
-    // };
-    // fetchCar();
-
     const fetchAllExpenses = async () => {
       try {
         let res = await fetchAllExpensesFN(id, user);
@@ -57,14 +48,13 @@ function CarDetails() {
 
     const fetchAllTrips = async () => {
       try {
-        let res = await fetchAllTripsFN(id,user);
+        let res = await fetchAllTripsFN(id, user);
         dispatch(addTrips(res));
       } catch (error) {
         console.log(error);
       }
     };
     fetchAllTrips();
-
   }, [id, user, history, dispatch]);
 
   if (!user) {
@@ -112,36 +102,35 @@ function CarDetails() {
                 name="exampleRadios"
                 id="exampleRadios1"
                 value="option1"
-                checked="true"
+                checked={true}
               />
-              <label className="form-check-label" for="exampleRadios1">
+              <label className="form-check-label" htmlFor="exampleRadios1">
                 Default car
               </label>
             </div>
-
-        <Link to={"/cars"}>
-          <button>BACK</button>
-        </Link>
-        <button onClick={handleDelete}>DELETE</button>
-        <Link to={`/cars/${id}/edit`}>
-          <button>EDIT</button>
-        </Link>
-
-        <Link to={`/cars/${id}/expenses`}>
-          Total Expenses: $
-          {expensesArr.reduce((total, expense) => {
-            total += expense.amount_spent;
-            return total;
-          }, 0)}
-        </Link>
-
-        <Link to={`/cars/${id}/trips`}>
-          Total Mileage:
-          {tripsArr.reduce((total, trip) => {
-            total += trip.miles;
-            return total;
-          }, 0)}
-        </Link>
+            <Link to={"/cars"}>
+              <button>BACK</button>
+            </Link>
+            <button onClick={handleDelete}>DELETE</button>
+            <Link to={`/cars/${id}/edit`}>
+              <button>EDIT</button>
+            </Link>
+            <Link to={`/cars/${id}/expenses`}>
+              Total Expenses: $
+              {expensesArr.reduce((total, expense) => {
+                total += expense.amount_spent;
+                return total;
+              }, 0)}
+            </Link>
+            <Link to={`/cars/${id}/trips`}>
+              Total Mileage:
+              {tripsArr.reduce((total, trip) => {
+                total += trip.miles;
+                return total;
+              }, 0)}
+            </Link>
+          </div>
+        </div>
       </div>
     );
   }

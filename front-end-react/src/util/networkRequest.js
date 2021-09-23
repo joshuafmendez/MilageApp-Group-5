@@ -9,7 +9,6 @@ export const fetchAllCarsFN = async (user) => {
 };
 
 export const updateCarById = async (id, updatedCar,user) => {
-  console.log("id",id,"updatedCar",updatedCar,"user",user)
   const editedCar = await axios.put(`${API}/cars/${id}?uid=${user.uid}`, updatedCar);
   return editedCar;
 };

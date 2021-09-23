@@ -1,71 +1,70 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { useState, useContext,useEffect } from "react";
+import { useState } from "react";
 import "../../Components/Style/CarsListItem.css";
 import { selectCar } from "../../Store/Actions/carsActions";
-import { GiSteeringWheel } from "react-icons/gi";
 
-
-import { FcCheckmark } from "react-icons/fc";
-
-function CarsListItem({ car , carsArr,cars}) {
-  // const [indexId, setIndexId] = useState(true);
-  // const [allCars, setAllCars] = useState([]);
-  
+function CarsListItem({ car, carsArr, cars }) {
   let [showElement, setShowElement] = useState(false);
-
-  
-  // const { id, make, model,is_default } = car;
   const dispatch = useDispatch();
   const handleClick = () => {
     dispatch(selectCar(car));
   };
 
-
   return (
-
-
-
-<div>
-<ul style={showElement ? { display:'none'} : {display : 'block'}} className="ul-show">
-{carsArr.map((car, i) => {
-          return <li className="li-show">      
-            <div className="card text-center">
-            <h2 className="make-model">{car.make} {car.model}</h2>  
-            <br></br>
-            <br></br>
-            <br></br>
-          <div className="image">
-            {" "}
-            <img
-              src="https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png"
-              style={{ width: "200px" }}
-              alt={"car"}
-            />{" "}
-          </div>
-          {/* <Link to={`/cars/${car.id}`}>
+    <div>
+      <ul
+        style={showElement ? { display: "none" } : { display: "block" }}
+        className="ul-show"
+      >
+        {carsArr.map((car, i) => {
+          return (
+            <li key={i} className="li-show">
+              <div className="card text-center">
+                <h2 className="make-model">
+                  {car.make} {car.model}
+                </h2>
+                <br></br>
+                <br></br>
+                <br></br>
+                <div className="image">
+                  {" "}
+                  <img
+                    src="https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png"
+                    style={{ width: "200px" }}
+                    alt={"car"}
+                  />{" "}
+                </div>
+                {/* <Link to={`/cars/${car.id}`}>
             <h2> {car.id}</h2>
           </Link> */}
-          <br></br>
-       
-          <Link to={`/cars/${car.id}`} onClick={handleClick}>
-      <br></br>
-      <br></br>
-      <br></br>
-            <button className="showMe" onClick={() => setShowElement(!showElement)}>
- Make Default Car
- </button>
-           
-          </Link>
-        </div>
-        {showElement && (
-          <input className="gas-here" placeholder="enter gas" type="text" />
-        )}
-      </li>;
+                <br></br>
+
+                <Link to={`/cars/${car.id}`} onClick={handleClick}>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <button
+                    className="showMe"
+                    onClick={() => setShowElement(!showElement)}
+                  >
+                    Make Default Car
+                  </button>
+                </Link>
+              </div>
+              {showElement && (
+                <input
+                  className="gas-here"
+                  placeholder="enter gas"
+                  type="text"
+                />
+              )}
+            </li>
+          );
         })}
-</ul>
-</div>
+      </ul>
+    </div>
   );
 }
 

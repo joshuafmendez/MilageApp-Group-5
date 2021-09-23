@@ -1,11 +1,10 @@
 import React, { useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
 // import "../../App.css";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 // import { addCars } from "../../Store/Actions/carsActions";
 import { addCars } from "../Store/Actions/carsActions";
 import { fetchAllCarsFN } from "../util/networkRequest";
-import { UserContext } from "../Providers/UserProvider"
+import { UserContext } from "../Providers/UserProvider";
 import { useHistory } from "react-router-dom";
 import { signInWithGoogle } from "../Services/Firebase";
 import "../Components/Style/Login.css";
@@ -18,58 +17,36 @@ import TripLogo from "./Images/giflogo.GIF";
 // import { MDBCard, MDBCardImage, MDBCardBody, MDBCardTitle, MDBCardText, MDBCardGroup } from 'mdb-react-ui-kit';
 
 const Login = () => {
-
-  const entireState = useSelector((state) => state);
   const dispatch = useDispatch();
-  const { cars } = entireState;
   const user = useContext(UserContext);
   const history = useHistory();
-  const carsArr = Object.values(cars);
-
-
 
   useEffect(() => {
     const fetchAllCars = async () => {
       try {
         const res = await fetchAllCarsFN(user);
         dispatch(addCars(res));
-        console.log('1',res)
-        if(res.length){
-         let filterArray = res.filter(el => el.is_default === true)
-         history.push(`/cars/${filterArray[filterArray.length-1].id}`);
-        // console.log('filtr', filterArray[filterArray.length-1].id)
-        }else{
+        console.log("1", res);
+        if (res.length) {
+          let filterArray = res.filter((el) => el.is_default === true);
+          history.push(`/cars/${filterArray[filterArray.length - 1].id}`);
+          // console.log('filtr', filterArray[filterArray.length-1].id)
+        } else {
           history.push("/cars/car/new");
         }
-        console.log('res',res)
       } catch (error) {
         console.log(error);
       }
     };
     fetchAllCars();
-  }, [dispatch, user]);
-
-
-
-
-
+  }, [dispatch, user, history]);
 
   useEffect(() => {
     if (user) {
       history.push("/cars");
-      console.log('cars',cars)
+      // console.log("cars", cars);
     }
   }, [user, history]);
-
-
-
-
-
-
-
-
-
-
 
   return (
     <div className="sign-box">
@@ -128,67 +105,6 @@ const Login = () => {
         </section>
       </div>
     </div>
-
-    /* <div>
-        <div className="square-box">
-          <div className="top-sign">
-            <h3>Sign In</h3>
-            <div></div>
-          </div>
-          <div className="card-body">
-            <form>
-              <div className="input-group form-group">
-                <div className="avatar">
-                  <span className="first-avi">
-                    <MdPerson />
-                  </span>
-                </div>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="username"
-                />
-              </div>
-              <br></br> <br></br>
-              <div className="input-group form-group">
-                <div className="key">
-                  <span className="first-key">
-                    <FcKey />
-                  </span>
-                </div>
-
-                <input
-                  type="password"
-                  className="form-control"
-                  placeholder="password"
-                />
-              </div>
-              <br></br>
-              <ssection className="check-sign">
-                <div className="remember">
-                  <input className="font" type="checkbox" />
-                  Remember Me
-                </div>
-                <div className="form-group">
-                  <input
-                    type="submit"
-                    value="Login"
-                    className="btn float-right login_btn"
-                  />
-                </div>
-              </ssection>
-            </form>
-          </div>
-          <div className="top-sign">
-            <div className="link-foot">
-              <button onClick={signInWithGoogle}>Sign in With google</button>
-            </div>
-            <div>
-              <button onClick={signOut}> sign out</button>
-            </div>
-          </div>
-        </div>
-      </div> */
   );
 };
 
