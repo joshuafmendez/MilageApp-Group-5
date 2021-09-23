@@ -7,10 +7,10 @@ import { UserContext } from "../../Providers/UserProvider";
 import { useHistory } from "react-router-dom";
 // import { useSelector, useDispatch } from "react-redux";
 import { useDispatch, useSelector } from "react-redux";
-
 import "../../App.css";
 import { fetchAllTripsFN } from "../../util/networkRequest";
 import { addTrips } from "../../Store/Actions/tripsActions";
+import { UserContext } from "../../Providers/UserProvider"
 
 const Trips = () => {
   const user = useContext(UserContext);
@@ -24,14 +24,14 @@ const Trips = () => {
   useEffect(() => {
     const fetchAllTrips = async () => {
       try {
-        let res = await fetchAllTripsFN(id);
+        let res = await fetchAllTripsFN(id,user);
         dispatch(addTrips(res));
       } catch (error) {
         console.log(error);
       }
     };
     fetchAllTrips();
-  }, [dispatch, id]);
+  }, [dispatch, id,user]);
 
   useEffect(() => {
     if (!user) {

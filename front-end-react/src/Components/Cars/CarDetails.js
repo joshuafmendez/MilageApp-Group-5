@@ -4,12 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { apiURL } from "../../util/apiURL";
 import { UserContext } from "../../Providers/UserProvider";
-// import { addExpenses } from "../../Store/Actions/expenseActions";
-import { addCar } from "../../Store/Actions/carsActions";
-import { fetchAllExpensesFN } from "../../util/networkRequest";
+import { fetchAllExpensesFN,fetchAllTripsFN } from "../../util/networkRequest";
 import { addExpenses } from "../../Store/Actions/expenseActions";
 import "../Style/CarDetails.css";
 import "../Style/CarDetails.css";
+import {addTrips} from "../../Store/Actions/tripsActions"
+
 const API = apiURL();
 
 function CarDetails() {
@@ -24,7 +24,7 @@ function CarDetails() {
 
   const deleteCar = async () => {
     try {
-      await axios.delete(`${API}/cars/${id}`);
+      await axios.delete(`${API}/cars/${id}?uid=${user.uid}`);
     } catch (err) {
       console.log(err);
     }
@@ -36,19 +36,14 @@ function CarDetails() {
   };
 
   useEffect(() => {
-    const fetchCar = async () => {
-      try {
-        let res = await axios.get(`${API}/cars/${id}`);
-        if (res.data.payload.uid === user.uid) {
-          dispatch(addCar(res.data.payload));
-        } else {
-          history.push("/");
-        }
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchCar();
+    // const fetchCar = async () => {
+    //   try {
+    //     await axios.get(`${API}/cars/${id}`);
+    //   } catch (err) {
+    //     console.log(err);
+    //   }
+    // };
+    // fetchCar();
 
     const fetchAllExpenses = async () => {
       try {
@@ -59,13 +54,23 @@ function CarDetails() {
       }
     };
     fetchAllExpenses();
+
+    const fetchAllTrips = async () => {
+      try {
+        let res = await fetchAllTripsFN(id,user);
+        dispatch(addTrips(res));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchAllTrips();
+
   }, [id, user, history, dispatch]);
 
-  const car = cars[id];
-  const { make, model, vin, year, odometer, doors } = car;
   if (!user) {
     return <div className="spinner-border"></div>;
   } else {
+    const car = cars[id];
     return (
       <div className="car-details">
         <div className="wrapper">
@@ -80,12 +85,12 @@ function CarDetails() {
             </div>
             {/* [miles] * [rate], or 175 miles * $0.56 = $98. */}
             <li>Car ID: {id}</li>
-            <li>Make: {make}</li>
-            <li>Model: {model}</li>
-            <li>VIN: {vin}</li>
-            <li>Year: {year}</li>
-            <li>Odometer: {odometer}</li>
-            <li>Doors: {doors}</li>
+            <li>Make: {car?.make}</li>
+            <li>Model: {car?.model}</li>
+            <li>VIN: {car?.vin}</li>
+            <li>Year: {car?.year}</li>
+            <li>Odometer: {car?.odometer}</li>
+            <li>Doors: {car?.doors}</li>
             mileage: $900
             <div className="border">
               <div
@@ -113,9 +118,6 @@ function CarDetails() {
                 Default car
               </label>
             </div>
-          </div>
-          <br></br>
-        </div>
 
         <Link to={"/cars"}>
           <button>BACK</button>

@@ -1,5 +1,8 @@
+
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+import { Route, Switch } from "react-router-dom";
+
 import NavBar from "./Components/NavBar";
 import Login from "./Components/Login";
 import FourOFour from "./Pages/FourOFour";
@@ -31,10 +34,9 @@ function App() {
   return (
     <div className="App">
       <UserProvider>
-        <Router>
           <Switch>
             <Route exact path="/" component={Login} />
-            <div>
+            <>
               <NavBar navExpenses={navExpenses} navMileage={navMileage} />
               <Route exact path="/cars">
                 <LoggedInPage
@@ -75,12 +77,11 @@ function App() {
               <Route path="/cars/:id/expenses/:expense_id/edit">
                 <ExpensesEdit />
               </Route>
-            </div>
-            <Route path="*">
-              <FourOFour />
-            </Route>
-          </Switch>
-        </Router>
+          </>
+          <Route path="*">
+            <FourOFour />
+          </Route>
+        </Switch>
       </UserProvider>
     </div>
   );

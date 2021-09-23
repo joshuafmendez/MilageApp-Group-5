@@ -5,14 +5,12 @@ import { apiURL } from "../../util/apiURL";
 import "../Style/TripNewForm.css"
 import { UserContext } from "../../Providers/UserProvider";
 
-
 const API = apiURL();
 
 const TripNewForm = () => {
-
   const user = useContext(UserContext);
   const history = useHistory();
-  
+
   let { id } = useParams();
   const [trip, setTrip] = useState({
     date: "",
@@ -27,7 +25,7 @@ const TripNewForm = () => {
 
   const addTrip = async (newTrip) => {
     try {
-      await axios.post(`${API}/cars/${id}/trips`, newTrip);
+      await axios.post(`${API}/cars/${id}/trips?uid=${user.uid}`, newTrip);
     } catch (error) {
       console.log(error);
     }

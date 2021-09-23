@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams, useHistory, Link } from "react-router-dom";
 import axios from "axios";
+import { UserContext } from "../../Providers/UserProvider";
 import { apiURL } from "../../util/apiURL";
 
 const API = apiURL();
 
 const TripDetails = () => {
+  const user = useContext(UserContext);
   let [trip, setTrip] = useState({});
   let { id, trip_id } = useParams();
   let history = useHistory();
 
   const deleteTrip = async () => {
     try {
-      await axios.delete(`${API}/cars/${id}/trips/${trip_id}`);
+      await axios.delete(`${API}/cars/${id}/trips/${trip_id}?uid=${user.uid}`);
     } catch (err) {
       console.log(err);
     }
@@ -25,14 +27,14 @@ const TripDetails = () => {
   useEffect(() => {
     const fetchTrip = async () => {
       try {
-        const { data } = await axios.get(`${API}/cars/${id}/trips/${trip_id}`);
+        const { data } = await axios.get(`${API}/cars/${id}/trips/${trip_id}?uid=${user.uid}`);
         setTrip(data.payload);
       } catch (err) {
         console.log(err);
       }
     };
     fetchTrip();
-  }, [id, trip_id]);
+  }, [id, trip_id,user]);
 
   const {
     date,
