@@ -56,9 +56,16 @@ function CarDetails() {
     };
     fetchAllTrips();
   }, [id, user, history, dispatch]);
+  useEffect(() => {
+    if (!user) {
+      history.push("/");
+    }
+  }, [user, history]);
 
   if (!user) {
     return <div className="spinner-border"></div>;
+  }if(user.uid !== cars[id].uid){
+    history.push("/404")
   } else {
     const car = cars[id];
     return (
