@@ -12,7 +12,6 @@ export default function NavBar({ navExpenses, navMileage }) {
 
   const handleLogout = async () => {
     signOut();
-    alert("you've been logged out");
   };
 
   useEffect(() => {

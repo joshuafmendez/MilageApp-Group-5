@@ -41,6 +41,11 @@ function ExpenseDetails() {
     };
     fetchExpense();
   }, [expense_id, id, user]);
+  useEffect(() => {
+    if (!user) {
+      history.push("/");
+    }
+  }, [user]);
 
   const { expense_type, business_use, amount_spent, date } = expense;
   if (!user) {
