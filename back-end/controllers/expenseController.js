@@ -10,9 +10,9 @@ const {
   updateExpense,
 } = require("../queries/expenses");
 
-const pdfExpenseController = require("./expenseController");
+// const pdfExpenseController = require("./expenseController");
 
-expenses.use("/:car_id/expenses/pdf", pdfExpenseController);
+// expenses.use("/expenses/pdf", pdfExpenseController);
 
 expenses.get("/", async (req, res) => {
   const { car_id } = req.params;
