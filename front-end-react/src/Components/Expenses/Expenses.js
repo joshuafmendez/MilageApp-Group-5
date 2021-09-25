@@ -1,7 +1,7 @@
 import React from "react";
-import { useEffect, useContext, useHistory } from "react";
+import { useEffect, useContext} from "react";
 import ExpenseListItem from "./ExpenseListItem";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams,useHistory } from "react-router-dom";
 import { fetchAllExpensesFN } from "../../util/networkRequest";
 import { useDispatch, useSelector } from "react-redux";
 import { addExpenses } from "../../Store/Actions/expenseActions";
@@ -10,6 +10,7 @@ import "../../App.css";
 
 const Expenses = () => {
   const entireState = useSelector((state) => state);
+  const history = useHistory();
   const dispatch = useDispatch();
   const { expenses } = entireState;
   const expenseArr = Object.values(expenses);
@@ -52,7 +53,7 @@ const Expenses = () => {
 
   useEffect(() => {
     if (!user) {
-      useHistory.push("/");
+      history.push("/");
     }
   }, [user]);
 

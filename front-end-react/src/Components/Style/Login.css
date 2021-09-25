@@ -122,3 +122,25 @@ div.icon-login > button {
   border-radius: 7%;
   border: lightgrey solid 1px;
 }
+.logInForm{
+  position: fixed;
+  width:20vw;
+  right: 35vw;
+  top: 7vw;
+  background-color: #f8fefe;
+  padding: 2vw;
+  border: 1px solid rgb(246, 243, 243);
+  border-radius: 10px;
+  box-shadow:10px 5px 5px  #aeaeae5a ;
+}
+.signUpForm{
+  position: fixed;
+  width:20vw;
+  right: 5vw;
+  top: 7vw;
+  background-color: #f8fefe;
+  padding: 2vw;
+  border: 1px solid rgb(246, 243, 243);
+  border-radius: 10px;
+  box-shadow:10px 5px 5px #aeaeae5a;
+}

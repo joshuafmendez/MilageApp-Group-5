@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 // import "../../App.css";
 import { useDispatch } from "react-redux";
 // import { addCars } from "../../Store/Actions/carsActions";
@@ -20,7 +20,27 @@ const Login = () => {
   const dispatch = useDispatch();
   const user = useContext(UserContext);
   const history = useHistory();
+  const [input, setInput] = useState({
+    email: "",
+    password: ""
+  })
+  const [signUpInput, setSignUpInput] = useState({
+    email: "",
+    password: "",
+    passwordCheck: ""
+  })
+  const handleSubmit = () => {
 
+  }
+  const handleChange = (e) => {
+    setInput({ ...input, [e.target.id]: e.target.value });
+  };
+  const handleSignUpChange = (e) => {
+    setSignUpInput({ ...signUpInput, [e.target.id]: e.target.value });
+  };
+  console.log("log In",input)
+  console.log("sign Up" ,signUpInput)
+  
   useEffect(() => {
     const fetchAllCars = async () => {
       try {
@@ -85,6 +105,71 @@ const Login = () => {
           <button className="sign-up">Free Sign Up</button>
         </div>
       </nav>
+      {/* --------------------------------- */}
+      {/* Log in
+      <form className="logInForm">
+        <legend>Log In</legend>
+        <div className="mb-3">
+          <label for="email" className="form-label">Email address</label>
+          <input
+            onChange={handleChange}
+            value={input.email}
+            type="email"
+            className="form-control"
+            id="email"
+            aria-describedby="emailHelp"
+            placeholder="...@url.com"
+            required
+          />
+        </div>
+        <div className="mb-3">
+          <label for="password" className="form-label">Password</label>
+          <input
+            onChange={handleChange}
+            value={input.password}
+            type="password"
+            className="form-control"
+            id="password"
+            required
+          />
+        </div>
+        <div className="mb-3 form-check">
+        </div>
+        <button type="submit" className="btn btn-primary">Submit</button>
+      </form> */}
+      {/* signUp */}
+      {/* <form className="signUpForm">
+        <legend>Sign Up</legend>
+        <div className="mb-3">
+          <label for="email" className="form-label">Email address</label>
+          <input
+            onChange={handleSignUpChange}
+            value={signUpInput.email}
+            type="email"
+            className="form-control"
+            id="email"
+            aria-describedby="emailHelp"
+            placeholder="...@url.com"
+            required
+          />
+          <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div className="mb-3">
+          <label for="password" className="form-label">Password</label>
+          <input
+            onChange={handleSignUpChange}
+            value={signUpInput.password}
+            type="password"
+            className="form-control"
+            id="password"
+            required
+          />
+        </div>
+        <div className="mb-3 form-check">
+        </div>
+        <button type="submit" className="btn btn-primary">Submit</button>
+      </form> */}
+      {/* --------------------------------------- */}
       <div className="login-body">
         <section className="first-section">
           <article className="intro-text">

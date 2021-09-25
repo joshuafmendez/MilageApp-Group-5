@@ -44,6 +44,7 @@ const Cars = () => {
     const fetchAllCars = async () => {
       try {
         const res = await fetchAllCarsFN(user);
+        console.log("res", res)
         dispatch(addCars(res));
       } catch (error) {
         console.log(error);
