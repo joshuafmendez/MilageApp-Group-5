@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState, useEffect,useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useHistory, Link, useParams } from "react-router-dom";
 import { apiURL } from "../../util/apiURL";
 import { UserContext } from "../../Providers/UserProvider";
@@ -9,9 +9,7 @@ const API = apiURL();
 function ExpenseEditForm() {
   const user = useContext(UserContext);
   let history = useHistory();
-
   const { expense_id, id } = useParams(); // needs attention to be able change the car_id
-
   const [expense, setExpense] = useState({
     car_id: "",
     expense_type: "",
@@ -22,8 +20,10 @@ function ExpenseEditForm() {
 
   const updateExpense = async (updatedExpense) => {
     try {
-      await axios.put(`${API}/cars/${id}/expenses/${expense_id}?uid=${user.uid}`, updatedExpense);
-      history.push(`/cars/${id}/expenses`);
+      await axios.put(
+        `${API}/cars/${id}/expenses/${expense_id}?uid=${user.uid}`,
+        updatedExpense
+      );
     } catch (error) {
       console.log(error);
     }
@@ -32,7 +32,9 @@ function ExpenseEditForm() {
   useEffect(() => {
     const fetchExpense = async () => {
       try {
-        const res = await axios.get(`${API}/cars/${id}/expenses/${expense_id}?uid=${user.uid}`);
+        const res = await axios.get(
+          `${API}/cars/${id}/expenses/${expense_id}?uid=${user.uid}`
+        );
         setExpense(res.data.payload);
       } catch (err) {
         console.log(err);
@@ -52,12 +54,13 @@ function ExpenseEditForm() {
     setExpense({ ...expense, business_use: !expense.business_use });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    updateExpense(expense);
+    await updateExpense(expense);
+    history.push(`/cars/${id}/expenses`);
   };
 
-  const { business_use, amount_spent, date } = expense;
+  const { business_use, amount_spent, date, expense_type } = expense;
 
   return (
     <div>
@@ -72,24 +75,28 @@ function ExpenseEditForm() {
           required
         />
         Expense type
-        <select onChange={handleSelectChange}>
-          <option value="" defaultValue></option>
-          <option name="gas" value="Gas">
+        <select
+          value={expense_type}
+          id="Expense-Selection"
+          onChange={handleSelectChange}
+        >
+          <option value=""></option>
+          <option selected name="gas" value="Gas">
             Gas
           </option>
-          <option name="repairs" value="Repairs">
+          <option selected name="repairs" value="Repairs">
             Repairs
           </option>
-          <option name="car_insurance" value="Car Insurance">
+          <option selected name="car_insurance" value="Car Insurance">
             Car Insurance
           </option>
-          <option name="oil_change" value="Oil Change">
+          <option selected name="oil_change" value="Oil Change">
             Oil Change
           </option>
-          <option name="registration_fees" value="Registration Fees">
+          <option selected name="registration_fees" value="Registration Fees">
             Registration Fees
           </option>
-          <option name="depreciation" value="Depreciation">
+          <option selected name="depreciation" value="Depreciation">
             Depreciation
           </option>
         </select>

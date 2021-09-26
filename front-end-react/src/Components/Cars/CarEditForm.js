@@ -27,8 +27,9 @@ function CarEditForm() {
   const updateCar = async (updatedCar, id) => {
     try {
       const editedCar = await updateCarById(id, updatedCar, user);
-      dispatch(addCar(editedCar));
-      history.push(`/cars/${id}`);
+      if (editedCar.data.status) {
+        dispatch(addCar(editedCar.data.payload));
+      }
     } catch (error) {
       console.log(error);
     }
@@ -42,9 +43,10 @@ function CarEditForm() {
     setCarInput({ ...carInput, is_default: !carInput.is_default });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    updateCar(carInput, id);
+    await updateCar(carInput, id);
+    history.push(`/cars/${id}`);
   };
 
   const { make, model, vin, year, odometer, doors, is_default } = carInput;
@@ -111,13 +113,13 @@ function CarEditForm() {
             type="radio"
             onChange={isDefaultCheckbox}
           />
-          <label className="form-check-label" for="exampleRadios1">
+          <label className="form-check-label" htmlFor="exampleRadios1">
             default car
           </label>
         </div>
         <div>
           <button type="submit">Submit</button>
-          <Link to={`/cars`}>
+          <Link to={`/cars/${id}`}>
             <button>Cancel</button>
           </Link>
         </div>

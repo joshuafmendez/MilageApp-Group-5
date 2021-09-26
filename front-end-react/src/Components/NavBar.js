@@ -5,13 +5,22 @@ import { FcCurrencyExchange } from "react-icons/fc";
 import { ImRoad } from "react-icons/im";
 import { GiSteeringWheel } from "react-icons/gi";
 import { signOut } from "../Services/Firebase";
+import { useHistory } from "react-router";
+// import { useSelector } from "react-redux";
 
 export default function NavBar({ navExpenses, navMileage }) {
   let [expenseForm, setExpenseForm] = useState(false);
   let [mileageForm, setMileageForm] = useState(false);
+  let history = useHistory();
+
+  // const entireState = useSelector((state) => state);
+  // const { cars, expenses, trips } = entireState;
+  // console.log(entireState)
+
 
   const handleLogout = async () => {
     signOut();
+    history.push("/");
   };
 
   useEffect(() => {

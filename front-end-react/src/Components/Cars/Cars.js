@@ -3,12 +3,17 @@ import { Link } from "react-router-dom";
 import "../../App.css";
 import { useSelector, useDispatch } from "react-redux";
 import { addCars } from "../../Store/Actions/carsActions";
-import { fetchAllCarsFN } from "../../util/networkRequest";
+import { getAllCarsFN } from "../../util/networkRequest";
 import { UserContext } from "../../Providers/UserProvider";
 import { useHistory } from "react-router-dom";
 // import { signOut } from "../Services/Firebase";
 import CarsListItem from "./CarsListItem";
 import "../../Components/Style/Cars.css";
+
+// TODO:
+// new car on navbar
+// enter expense and trips on navbar
+// 404 not working
 
 const Cars = () => {
   const entireState = useSelector((state) => state);
@@ -18,7 +23,7 @@ const Cars = () => {
   const history = useHistory();
   const carsArr = Object.values(cars);
 
-  // Keep for pdf conversion --TODO--
+  // Keep for pdf conversion TODO:
   // let sorted = Object.values(cars);
   // const [sorting, setSorting] = useState(sorted);
   // const handleChange = (type) => {
@@ -43,8 +48,7 @@ const Cars = () => {
   useEffect(() => {
     const fetchAllCars = async () => {
       try {
-        const res = await fetchAllCarsFN(user);
-        console.log("res", res)
+        const res = await getAllCarsFN(user);
         dispatch(addCars(res));
       } catch (error) {
         console.log(error);

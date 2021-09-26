@@ -2,10 +2,7 @@ import axios from "axios";
 import { useState, useContext } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { apiURL } from "../../util/apiURL";
-
-// import'bootstrap-css-only/css/bootstrap.min.css';
 import "mdbreact/dist/css/mdb.css";
-// import { MDBInput } from "mdbreact";
 import "../../Components/Style/CarNewForm.css";
 
 import { UserContext } from "../../Providers/UserProvider";
@@ -30,7 +27,6 @@ function CarNewForm() {
   const addCar = async (newCar) => {
     try {
       await axios.post(`${API}/cars`, newCar);
-      history.push("/cars");
     } catch (error) {
       console.log(error);
     }
@@ -40,22 +36,16 @@ function CarNewForm() {
     setCar({ ...car, [e.target.id]: e.target.value });
   };
 
-  // const isDefaultCheckbox = (e) => {
-  //   console.log('e',e)
-  //   setCar({ ...car, is_default: !car.is_default });
-  // };
-  
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    addCar(car);
+    await addCar(car);
+    history.push("/cars");
   };
 
-  const { make, model, vin, year, odometer, doors} = car;
+  const { make, model, vin, year, odometer, doors } = car;
 
   return (
     <div>
-    
       <form onSubmit={handleSubmit} className="form-rows">
         <div className="all-rows">
           <div className="left-form">
@@ -135,51 +125,15 @@ function CarNewForm() {
                 required
               />
             </div>
-            {/* <div className="form-check">
-  <input id="is_default" value={is_default} className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" onChange={isDefaultCheckbox}/>
-  <label className="form-check-label" for="exampleRadios1">
-    default car
-  </label>
-</div> */}
           </div>
         </div>
         <button type="submit">Submit</button>
         <Link to={`/cars`}>
           <button>Cancel</button>
         </Link>
-
       </form>
-      
     </div>
   );
 }
 
 export default CarNewForm;
-
-// {
-/* 
-//   </div>
-//   <div className="col-md-4">
-//     <label for="inputState" className="form-label">State</label>
-//     <select id="inputState" className="form-select">
-//       <option selected>Choose...</option>
-//       <option>...</option>
-//     </select>
-//   </div>
-//   <div className="col-md-2">
-//     <label for="inputZip" class="form-label">Zip</label>
-//     <input type="text" class="form-control" id="inputZip">
-//   </div>
-//   <div class="col-12">
-//     <div class="form-check">
-//       <input class="form-check-input" type="checkbox" id="gridCheck">
-//       <label class="form-check-label" for="gridCheck">
-//         Check me out
-//       </label>
-//     </div>
-//   </div>
-//   <div class="col-12">
-//     <button type="submit" class="btn btn-primary">Sign in</button>
-//   </div>
-// </form> */
-// }

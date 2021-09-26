@@ -5,10 +5,13 @@ import { useState } from "react";
 import "../../Components/Style/CarsListItem.css";
 import { selectCar } from "../../Store/Actions/carsActions";
 
-function CarsListItem({ car, carsArr, cars }) {
+function CarsListItem({ car, carsArr }) {
   let [showElement, setShowElement] = useState(false);
   const dispatch = useDispatch();
+
+  // FIXME: This returns undefined
   const handleClick = () => {
+    console.log("car", car);
     dispatch(selectCar(car));
   };
 
