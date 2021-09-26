@@ -76,10 +76,10 @@ function App() {
             <Route path="/cars/:id/expenses/:expense_id/edit">
               <ExpensesEdit />
             </Route>
-            <Route path="*">
-              <FourOFour />
-            </Route>
           </>
+          <Route path="*">
+            <FourOFour />
+          </Route>
         </Switch>
       </UserProvider>
     </div>

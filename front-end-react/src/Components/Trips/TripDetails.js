@@ -24,18 +24,18 @@ const TripDetails = () => {
     history.push(`/cars/${id}/trips`);
   };
 
-  const generateReport = async () => {
-    try {
-      await axios.get(`${API}/cars/${id}/trips/pdf`);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const generateReport = async () => {
+  //   try {
+  //     await axios.get(`${API}/cars/${id}/trips/pdf`);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
-  const handleDelete = async () => {
-    await generateReport();
-    // history.push(`/cars/${id}/trips/pdf`);
-  };
+  // const handleReport = async () => {
+  //   await generateReport();
+  //   history.push(`/cars/${id}/trips`);
+  // };
 
   useEffect(() => {
     const fetchTrip = async () => {
@@ -81,7 +81,7 @@ const TripDetails = () => {
           <button>Edit</button>
         </Link>
         <button onClick={handleDelete}>Delete</button>
-        <button onClick={handleReport}>Generate Report</button>
+        {/* <button onClick={handleReport}>Generate Report</button> */}
       </div>
     </div>
   );

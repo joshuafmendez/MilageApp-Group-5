@@ -9,6 +9,9 @@ import { addExpenses } from "../../Store/Actions/expenseActions";
 import "../Style/CarDetails.css";
 import "../Style/CarDetails.css";
 import { addTrips } from "../../Store/Actions/tripsActions";
+import pdfMake from "pdfmake/build/pdfmake";
+import pdfFonts from "pdfmake/build/vfs_fonts";
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 const API = apiURL();
 
@@ -40,6 +43,7 @@ function CarDetails() {
       try {
         let res = await fetchAllExpensesFN(id, user);
         dispatch(addExpenses(res));
+        // console.log("res", res);
       } catch (error) {
         console.log(error);
       }
@@ -56,6 +60,7 @@ function CarDetails() {
     };
     fetchAllTrips();
   }, [id, user, history, dispatch]);
+
   useEffect(() => {
     if (!user) {
       history.push("/");
@@ -64,10 +69,103 @@ function CarDetails() {
 
   if (!user) {
     return <div className="spinner-border"></div>;
-  }if(user.uid !== cars[id].uid){
-    history.push("/404")
+  }
+  if (user.uid !== cars[id].uid) {
+    history.push("/404");
   } else {
-    const car = cars[id];
+    let car = cars[id];
+
+    let totalBusinessExpenses = 0;
+    let expenses = [["Expense", "Date", "Amount"]];
+    expensesArr.forEach((expense) => {
+      if (expense.business_use) {
+        expenses.push([
+          `${expense.expense_type}`,
+          `${expense.date}`,
+          `$${expense.amount_spent.toLocaleString()}`,
+        ]);
+        totalBusinessExpenses += Number(expense.amount_spent);
+      }
+    });
+    console.log("expenses outside handleReport", expenses);
+
+    let totalBusinessTrips = 0;
+    let trips = [["Date", "Miles", "Reason"]];
+    tripsArr.forEach((trip) => {
+      if (trip.business_use) {
+        trips.push([`${trip.date}`, `${trip.miles}`, `${trip.reason}`]);
+        totalBusinessTrips += Number(trip.miles);
+      }
+    });
+
+    console.log("tripsArr", tripsArr);
+    const handleReport = () => {
+      car = cars[id];
+      let documentDefinition = {
+        header: function (currentPage, pageCount) {
+          return {
+            text: currentPage.toString() + " of " + pageCount,
+            alignment: "right",
+            margin: [0, 30, 20, 50],
+            fontSize: 7,
+          };
+        },
+        content: [
+          {
+            text: `${car?.make} ${car?.model} expenses for business-use\n for the year 2021 `,
+            bold: true,
+            fontSize: 20,
+            alignment: "center",
+            margin: [0, 20],
+          },
+          {
+            layout: "lightHorizontalLines",
+            table: {
+              headerRows: 1,
+              widths: ["*", "30%", "20%"],
+              height: "100",
+              body: expenses,
+              fontSize: 40,
+            },
+          },
+          {
+            text: `Total expenses: $${totalBusinessExpenses.toLocaleString()}`,
+            alignment: "left",
+            bold: true,
+            fontSize: 15,
+            margin: [307, 20, 10, 0],
+          },
+          {
+            pageBreak: "before",
+            text: `${car?.make} ${car?.model} miles for business-use\n for the year 2021 `,
+            bold: true,
+            fontSize: 20,
+            alignment: "center",
+            margin: [0, 20],
+          },
+          {
+            layout: "lightHorizontalLines",
+            table: {
+              headerRows: 1,
+              widths: ["25%", "25%", "*"],
+
+              body: trips,
+            },
+          },
+          {
+            text: `Total mileage: ${totalBusinessTrips.toLocaleString()}`,
+            alignment: "left",
+            bold: true,
+            fontSize: 15,
+            margin: [35, 20, 10, 0],
+          },
+        ],
+      };
+
+      const pdfDoc = pdfMake.createPdf(documentDefinition).open();
+      return pdfDoc;
+    };
+
     return (
       <div className="car-details">
         <div className="wrapper">
@@ -88,14 +186,14 @@ function CarDetails() {
             <li>Year: {car?.year}</li>
             <li>Odometer: {car?.odometer}</li>
             <li>Doors: {car?.doors}</li>
-            mileage: $900
+            Mileage: 900
             <div className="border">
               <div
                 className="bar"
                 style={{ height: "18px", width: "20%" }}
               ></div>
             </div>
-            gas: $700
+            Expenses: $700
             <div className="border">
               <div
                 className="bar"
@@ -122,6 +220,7 @@ function CarDetails() {
             <Link to={`/cars/${id}/edit`}>
               <button>EDIT</button>
             </Link>
+            <button onClick={handleReport}>GENERATE REPORT</button>
             <Link to={`/cars/${id}/expenses`}>
               Total Expenses: $
               {expensesArr.reduce((total, expense) => {

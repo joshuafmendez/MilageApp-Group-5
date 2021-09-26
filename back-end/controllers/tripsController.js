@@ -11,9 +11,6 @@ const {
   updateTrip,
 } = require("../queries/trips");
 
-// const pdfTripsController = require("./pdftripsController");
-// trips.use("/trips/pdf", pdfTripsController);
-
 trips.get("/", async (req, res) => {
   const { car_id } = req.params;
   const uid = req.query.uid;

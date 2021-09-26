@@ -10,9 +10,7 @@ const {
 
 const expenseController = require("./expenseController");
 const tripsController = require("./tripsController");
-// const pdfTripsController = require("./pdftripsController");
 
-// cars.use("/:car_id/pdfTrips", pdfTripsController);
 cars.use("/:car_id/expenses", expenseController);
 cars.use("/:car_id/trips", tripsController);
 
@@ -50,18 +48,3 @@ cars.put("/:id", async (req, res) => {
 });
 
 module.exports = cars;
-
-// quotes.get("/search", (req, res) => {
-//   const person = req.query.person;
-//   let filtered;
-//   if (person) {
-//     filtered = quotesArray.filter((quote) => {
-//       return person === quote.person;
-//     });
-//   }
-//   if (filtered.length > 0) {
-//     res.json({ success: true, payload: filtered });
-//   } else {
-//     res.redirect("/404");
-//   }
-// });

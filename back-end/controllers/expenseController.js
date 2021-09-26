@@ -10,10 +10,6 @@ const {
   updateExpense,
 } = require("../queries/expenses");
 
-// const pdfExpenseController = require("./expenseController");
-
-// expenses.use("/expenses/pdf", pdfExpenseController);
-
 expenses.get("/", async (req, res) => {
   const { car_id } = req.params;
   const uid = req.query.uid;
