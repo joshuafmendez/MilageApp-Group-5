@@ -75,7 +75,9 @@ function App() {
               <ExpensesEdit />
             </Route>
           </>
+
           <Route path="/*">
+
             <FourOFour />
           </Route>
         </Switch>

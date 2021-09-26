@@ -24,17 +24,32 @@ const TripDetails = () => {
     history.push(`/cars/${id}/trips`);
   };
 
+  // const generateReport = async () => {
+  //   try {
+  //     await axios.get(`${API}/cars/${id}/trips/pdf`);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+
+  // const handleReport = async () => {
+  //   await generateReport();
+  //   history.push(`/cars/${id}/trips`);
+  // };
+
   useEffect(() => {
     const fetchTrip = async () => {
       try {
-        const { data } = await axios.get(`${API}/cars/${id}/trips/${trip_id}?uid=${user.uid}`);
+        const { data } = await axios.get(
+          `${API}/cars/${id}/trips/${trip_id}?uid=${user.uid}`
+        );
         setTrip(data.payload);
       } catch (err) {
         console.log(err);
       }
     };
     fetchTrip();
-  }, [id, trip_id,user]);
+  }, [id, trip_id, user]);
 
   const {
     date,
@@ -66,6 +81,7 @@ const TripDetails = () => {
           <button>Edit</button>
         </Link>
         <button onClick={handleDelete}>Delete</button>
+        {/* <button onClick={handleReport}>Generate Report</button> */}
       </div>
     </div>
   );
