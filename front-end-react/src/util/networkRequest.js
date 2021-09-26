@@ -19,6 +19,10 @@ export const deleteCarByID = async (id, user) => {
   let { data } = await axios.delete(`${API}/cars/${id}?uid=${user.uid}`);
   return data.payload;
 };
+export const postCar = async (newCar, id, user) => {
+  let { data } = await axios.post(`${API}/cars`, newCar);
+  return data.payload;
+};
 
 // Expenses Routes
 export const getAllExpensesFN = async (id, user) => {
