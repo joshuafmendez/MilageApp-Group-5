@@ -16,8 +16,5 @@
   "bugs": {
     "url": "https://github.com/joinpursuit/pern-final-project/issues"
   },
-  "homepage": "https://github.com/joinpursuit/pern-final-project#readme",
-  "dependencies": {
-    "pdfmake": "^0.2.2"
-  }
+  "homepage": "https://github.com/joinpursuit/pern-final-project#readme"
 }
