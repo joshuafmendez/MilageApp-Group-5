@@ -1,7 +1,7 @@
 import React, { useState, useEffect, createContext } from "react";
 import { auth } from "../Services/Firebase";
 import { useDispatch } from "react-redux";
-import { fetchAllCarsFN } from "../util/networkRequest";
+import { getAllCarsFN } from "../util/networkRequest";
 import { addCars } from "../Store/Actions/carsActions";
 export const UserContext = createContext({ user: null });
 
@@ -21,7 +21,7 @@ const UserProvider = ({ children }) => {
         });
         const fetchAllCars = async () => {
           try {
-            const res = await fetchAllCarsFN(user);
+            const res = await getAllCarsFN(user);
             dispatch(addCars(res));
           } catch (error) {
             console.log(error);

@@ -1,11 +1,14 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useHistory, Link, useParams } from "react-router-dom";
 import { apiURL } from "../../util/apiURL";
+import { UserContext } from "../../Providers/UserProvider";
 
 const API = apiURL();
 
 const TripEditForm = () => {
+  const user = useContext(UserContext);
+  let history = useHistory();
   let { id, trip_id } = useParams();
   const [trip, setTrip] = useState({
     date: "",
@@ -17,11 +20,12 @@ const TripEditForm = () => {
     favorite: false,
   });
 
-  let history = useHistory();
-
   const updateTrip = async (updateTrip) => {
     try {
-      await axios.put(`${API}/cars/${id}/trips/${trip_id}`, updateTrip);
+      await axios.put(
+        `${API}/cars/${id}/trips/${trip_id}?uid=${user.uid}`,
+        updateTrip
+      );
     } catch (error) {
       console.log(error);
     }
@@ -30,14 +34,16 @@ const TripEditForm = () => {
   useEffect(() => {
     const fetchTrip = async () => {
       try {
-        const { data } = await axios.get(`${API}/cars/${id}/trips/${trip_id}`);
+        const { data } = await axios.get(
+          `${API}/cars/${id}/trips/${trip_id}?uid=${user.uid}`
+        );
         setTrip(data.payload);
       } catch (err) {
         console.log(err);
       }
     };
     fetchTrip();
-  }, [trip_id, id]);
+  }, [trip_id, id, user]);
 
   const handleChange = (e) => {
     setTrip({ ...trip, [e.target.id]: e.target.value });
@@ -66,7 +72,7 @@ const TripEditForm = () => {
     business_use,
     favorite,
   } = trip;
-
+  console.log("trip", trip);
   return (
     <div>
       <form onSubmit={handleSubmit}>

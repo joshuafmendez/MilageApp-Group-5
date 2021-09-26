@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-
 import { Route, Switch } from "react-router-dom";
-
 import NavBar from "./Components/NavBar";
 import Login from "./Components/Login";
 import FourOFour from "./Pages/FourOFour";
@@ -46,11 +44,11 @@ function App() {
             <Route exact path="/cars/car/new">
               <CarNew />
             </Route>
-            <Route exact path="/cars/:id/edit">
-              <CarEdit />
-            </Route>
             <Route exact path="/cars/:id">
               <CarShow navToggle={navToggle} mileageToggle={mileageToggle} />
+            </Route>
+            <Route path="/cars/:id/edit">
+              <CarEdit />
             </Route>
             <Route exact path="/cars/:id/trips">
               <TripsIndex />
@@ -73,13 +71,13 @@ function App() {
             <Route exact path="/cars/:id/expenses/:expense_id">
               <ExpensesShow />
             </Route>
-            <Route path="/cars/:id/expenses/:expense_id/edit">
+            <Route exact path="/cars/:id/expenses/:expense_id/edit">
               <ExpensesEdit />
             </Route>
-            <Route path="*">
-              <FourOFour />
-            </Route>
           </>
+          <Route path="/*">
+            <FourOFour />
+          </Route>
         </Switch>
       </UserProvider>
     </div>

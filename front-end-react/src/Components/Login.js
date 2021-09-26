@@ -1,9 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 // import "../../App.css";
 import { useDispatch } from "react-redux";
 // import { addCars } from "../../Store/Actions/carsActions";
 import { addCars } from "../Store/Actions/carsActions";
-import { fetchAllCarsFN } from "../util/networkRequest";
+import { getAllCarsFN } from "../util/networkRequest";
 import { UserContext } from "../Providers/UserProvider";
 import { useHistory } from "react-router-dom";
 import { signInWithGoogle } from "../Services/Firebase";
@@ -20,37 +20,38 @@ const Login = () => {
   const dispatch = useDispatch();
   const user = useContext(UserContext);
   const history = useHistory();
-  const [input, setInput] = useState({
-    email: "",
-    password: ""
-  })
-  const [signUpInput, setSignUpInput] = useState({
-    email: "",
-    password: "",
-    passwordCheck: ""
-  })
-  const handleSubmit = () => {
+  // const [input, setInput] = useState({
+  //   email: "",
+  //   password: "",
+  // });
+  // const [signUpInput, setSignUpInput] = useState({
+  //   email: "",
+  //   password: "",
+  //   passwordCheck: "",
+  // });
+  // const handleSubmit = () => {};
+  // const handleChange = (e) => {
+  //   setInput({ ...input, [e.target.id]: e.target.value });
+  // };
+  // const handleSignUpChange = (e) => {
+  //   setSignUpInput({ ...signUpInput, [e.target.id]: e.target.value });
+  // };
 
-  }
-  const handleChange = (e) => {
-    setInput({ ...input, [e.target.id]: e.target.value });
-  };
-  const handleSignUpChange = (e) => {
-    setSignUpInput({ ...signUpInput, [e.target.id]: e.target.value });
-  };
-  console.log("log In",input)
-  console.log("sign Up" ,signUpInput)
-  
+  useEffect(() => {
+    if (user) {
+      history.push("/cars");
+    }
+  }, [user, history]);
+
   useEffect(() => {
     const fetchAllCars = async () => {
       try {
-        const res = await fetchAllCarsFN(user);
+        const res = await getAllCarsFN(user);
         dispatch(addCars(res));
-        console.log("1", res);
         if (res.length) {
+          //FIXME: The current code does nothing
           let filterArray = res.filter((el) => el.is_default === true);
           history.push(`/cars/${filterArray[filterArray.length - 1].id}`);
-          // console.log('filtr', filterArray[filterArray.length-1].id)
         } else {
           history.push("/cars/car/new");
         }
@@ -60,13 +61,6 @@ const Login = () => {
     };
     fetchAllCars();
   }, [dispatch, user, history]);
-
-  useEffect(() => {
-    if (user) {
-      history.push("/cars");
-      // console.log("cars", cars);
-    }
-  }, [user, history]);
 
   return (
     <div className="sign-box">

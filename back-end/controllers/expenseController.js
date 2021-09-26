@@ -2,6 +2,7 @@ const express = require("express");
 const expenses = express.Router({
   mergeParams: true,
 });
+
 const {
   getAllExpenses,
   getExpense,
