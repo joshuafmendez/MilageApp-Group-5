@@ -10,6 +10,12 @@ import { useHistory } from "react-router-dom";
 import CarsListItem from "./CarsListItem";
 import "../../Components/Style/Cars.css";
 
+// TODO:
+// new forms on navbar
+// enter expense and trips on navbar
+// edit form on cars and edit forms on trips are not working
+// 404 not working
+
 const Cars = () => {
   const entireState = useSelector((state) => state);
   const dispatch = useDispatch();
@@ -44,7 +50,6 @@ const Cars = () => {
     const fetchAllCars = async () => {
       try {
         const res = await fetchAllCarsFN(user);
-        console.log("res", res)
         dispatch(addCars(res));
       } catch (error) {
         console.log(error);
