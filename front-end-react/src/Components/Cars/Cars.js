@@ -18,7 +18,7 @@ const Cars = () => {
   const history = useHistory();
   const carsArr = Object.values(cars);
 
-  // Keep for pdf conversion --TODO--
+  // Keep for pdf conversion TODO:
   // let sorted = Object.values(cars);
   // const [sorting, setSorting] = useState(sorted);
   // const handleChange = (type) => {
