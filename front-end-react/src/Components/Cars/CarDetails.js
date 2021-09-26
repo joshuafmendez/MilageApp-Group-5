@@ -7,7 +7,6 @@ import { UserContext } from "../../Providers/UserProvider";
 import { fetchAllExpensesFN, fetchAllTripsFN } from "../../util/networkRequest";
 import { addExpenses } from "../../Store/Actions/expenseActions";
 import "../Style/CarDetails.css";
-import "../Style/CarDetails.css";
 import { addTrips } from "../../Store/Actions/tripsActions";
 
 const API = apiURL();
@@ -56,17 +55,26 @@ function CarDetails() {
     };
     fetchAllTrips();
   }, [id, user, history, dispatch]);
-  useEffect(() => {
-    if (!user) {
-      history.push("/");
-    }
-  }, [user, history]);
+
+  // useEffect(() => {
+  //   if (!user) {
+  //     history.push("/");
+  //   }
+  // }, [user, history]);
+
+  const setCheck = (e) => {
+    console.log(e.target)
+  }
 
   if (!user) {
     return <div className="spinner-border"></div>;
-  }if(user.uid !== cars[id].uid){
-    history.push("/404")
-  } else {
+  }
+  // if (user.uid !== cars[id]?.uid) {
+  //   // debugger;
+  //   history.push("/404");
+  // } 
+  else {
+    // debugger;
     const car = cars[id];
     return (
       <div className="car-details">
@@ -109,7 +117,8 @@ function CarDetails() {
                 name="exampleRadios"
                 id="exampleRadios1"
                 value="option1"
-                checked={true}
+                onChange={setCheck}
+                // checked={setCheck}
               />
               <label className="form-check-label" htmlFor="exampleRadios1">
                 Default car

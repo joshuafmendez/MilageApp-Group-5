@@ -4,8 +4,6 @@ import axios from "axios";
 import { apiURL } from "../../util/apiURL";
 import { UserContext } from "../../Providers/UserProvider";
 
-
-
 const API = apiURL();
 
 function ExpenseDetails() {
@@ -45,7 +43,7 @@ function ExpenseDetails() {
     if (!user) {
       history.push("/");
     }
-  }, [user]);
+  }, [user, history]);
 
   const { expense_type, business_use, amount_spent, date } = expense;
   if (!user) {
@@ -68,7 +66,6 @@ function ExpenseDetails() {
             <button>EDIT</button>
           </Link>
         </div>
-
       </div>
     );
   }

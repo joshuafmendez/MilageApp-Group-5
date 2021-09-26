@@ -1,7 +1,7 @@
 import React from "react";
-import { useEffect, useContext} from "react";
+import { useEffect, useContext } from "react";
 import ExpenseListItem from "./ExpenseListItem";
-import { Link, useParams,useHistory } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 import { fetchAllExpensesFN } from "../../util/networkRequest";
 import { useDispatch, useSelector } from "react-redux";
 import { addExpenses } from "../../Store/Actions/expenseActions";
@@ -29,51 +29,14 @@ const Expenses = () => {
     fetchAllExpenses();
   }, [dispatch, id, user]);
 
-  // const handleChange = (type) => {
-  //   const sortedCars = [...expenses];
-  //   const sortTypes = {
-  //     expense_type: "expense_type",
-  //     date: "date",
-  //     amount_spent: "amount_spent",
-  //   };
-
-  //   const sortProperty = sortTypes[type];
-
-  //   const sorted = sortedCars.sort((a, b) => {
-  //     if (sortProperty === "expense_type" || sortProperty === "date") {
-  //       return a[sortProperty].localeCompare(b[sortProperty]);
-  //     } else if (sortProperty === "amount_spent") {
-  //       return a[sortProperty] - b[sortProperty];
-  //     } else {
-  //       return null;
-  //     }
-  //   });
-  //   setExpenses(sorted);
-  // };
-
   useEffect(() => {
     if (!user) {
       history.push("/");
     }
-  }, [user]);
+  }, [user, history]);
 
   return (
     <div>
-      {/* <div className="sorting">
-        Sort by
-        <select onChange={(e) => handleChange(e.target.value)}>
-          <option value="" defaultValue></option>
-          <option name="date" value="date">
-            date
-          </option>
-          <option name="expense_type" value="expense_type">
-            expense type
-          </option>
-          <option name="amount_spent" value="amount_spent">
-            amount
-          </option>
-        </select>
-      </div> */}
       <table>
         <thead>
           <tr>

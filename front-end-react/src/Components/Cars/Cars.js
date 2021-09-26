@@ -13,7 +13,6 @@ import "../../Components/Style/Cars.css";
 // TODO:
 // new forms on navbar
 // enter expense and trips on navbar
-// edit form on cars and edit forms on trips are not working
 // 404 not working
 
 const Cars = () => {
