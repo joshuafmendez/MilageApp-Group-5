@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 // import { useSelector, useDispatch } from "react-redux";
 import { useDispatch, useSelector } from "react-redux";
 import "../../App.css";
-import { fetchAllTripsFN } from "../../util/networkRequest";
+import { getAllTripsFN } from "../../util/networkRequest";
 import { addTrips } from "../../Store/Actions/tripsActions";
 
 const Trips = () => {
@@ -21,7 +21,7 @@ const Trips = () => {
   useEffect(() => {
     const fetchAllTrips = async () => {
       try {
-        let res = await fetchAllTripsFN(id, user);
+        let res = await getAllTripsFN(id, user);
         dispatch(addTrips(res));
       } catch (error) {
         console.log(error);

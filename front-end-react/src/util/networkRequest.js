@@ -3,21 +3,28 @@ import { apiURL } from "./apiURL";
 
 const API = apiURL();
 
-export const fetchAllCarsFN = async (user) => {
+// Car Routes
+export const getAllCarsFN = async (user) => {
   let { data } = await axios.get(`${API}/cars?uid=${user.uid}`);
   return data.payload;
 };
-
-export const updateCarById = async (id, updatedCar,user) => {
-  const editedCar = await axios.put(`${API}/cars/${id}?uid=${user.uid}`, updatedCar);
+export const updateCarById = async (id, updatedCar, user) => {
+  const editedCar = await axios.put(
+    `${API}/cars/${id}?uid=${user.uid}`,
+    updatedCar
+  );
   return editedCar;
 };
-
-export const fetchAllExpensesFN = async (id, user) => {
-  let { data } = await axios.get(`${API}/cars/${id}/expenses?uid=${user.uid}`);
+export const deleteCarByID = async (id, user) => {
+  let { data } = await axios.delete(`${API}/cars/${id}?uid=${user.uid}`);
   return data.payload;
 };
 
+// Expenses Routes
+export const getAllExpensesFN = async (id, user) => {
+  let { data } = await axios.get(`${API}/cars/${id}/expenses?uid=${user.uid}`);
+  return data.payload;
+};
 export const updateExpenseById = async (id, expense_id, updatedExpense) => {
   const editedExpense = await axios.put(
     `${API}/cars/${id}/expenses/${expense_id}`,
@@ -26,7 +33,8 @@ export const updateExpenseById = async (id, expense_id, updatedExpense) => {
   return editedExpense;
 };
 
-export const fetchAllTripsFN = async (id, user) => {
+// Trips Routes
+export const getAllTripsFN = async (id, user) => {
   let { data } = await axios.get(`${API}/cars/${id}/trips?uid=${user.uid}`);
   return data.payload;
 };

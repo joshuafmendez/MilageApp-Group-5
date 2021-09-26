@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useContext } from "react";
 import ExpenseListItem from "./ExpenseListItem";
 import { Link, useParams, useHistory } from "react-router-dom";
-import { fetchAllExpensesFN } from "../../util/networkRequest";
+import { getAllExpensesFN } from "../../util/networkRequest";
 import { useDispatch, useSelector } from "react-redux";
 import { addExpenses } from "../../Store/Actions/expenseActions";
 import { UserContext } from "../../Providers/UserProvider";
@@ -20,7 +20,7 @@ const Expenses = () => {
   useEffect(() => {
     const fetchAllExpenses = async () => {
       try {
-        let res = await fetchAllExpensesFN(id, user);
+        let res = await getAllExpensesFN(id, user);
         dispatch(addExpenses(res));
       } catch (error) {
         console.log(error);

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "../../App.css";
 import { useSelector, useDispatch } from "react-redux";
 import { addCars } from "../../Store/Actions/carsActions";
-import { fetchAllCarsFN } from "../../util/networkRequest";
+import { getAllCarsFN } from "../../util/networkRequest";
 import { UserContext } from "../../Providers/UserProvider";
 import { useHistory } from "react-router-dom";
 // import { signOut } from "../Services/Firebase";
@@ -11,7 +11,7 @@ import CarsListItem from "./CarsListItem";
 import "../../Components/Style/Cars.css";
 
 // TODO:
-// new forms on navbar
+// new car on navbar
 // enter expense and trips on navbar
 // 404 not working
 
@@ -48,7 +48,7 @@ const Cars = () => {
   useEffect(() => {
     const fetchAllCars = async () => {
       try {
-        const res = await fetchAllCarsFN(user);
+        const res = await getAllCarsFN(user);
         dispatch(addCars(res));
       } catch (error) {
         console.log(error);

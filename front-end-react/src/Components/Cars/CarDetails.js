@@ -1,15 +1,15 @@
 import React, { useEffect, useContext } from "react";
 import { useParams, useHistory, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
-import { apiURL } from "../../util/apiURL";
 import { UserContext } from "../../Providers/UserProvider";
-import { fetchAllExpensesFN, fetchAllTripsFN } from "../../util/networkRequest";
+import {
+  deleteCarByID,
+  getAllExpensesFN,
+  getAllTripsFN,
+} from "../../util/networkRequest";
 import { addExpenses } from "../../Store/Actions/expenseActions";
 import "../Style/CarDetails.css";
 import { addTrips } from "../../Store/Actions/tripsActions";
-
-const API = apiURL();
 
 function CarDetails() {
   const entireState = useSelector((state) => state);
@@ -23,7 +23,7 @@ function CarDetails() {
 
   const deleteCar = async () => {
     try {
-      await axios.delete(`${API}/cars/${id}?uid=${user.uid}`);
+      await deleteCarByID(id, user);
     } catch (err) {
       console.log(err);
     }
@@ -35,46 +35,34 @@ function CarDetails() {
   };
 
   useEffect(() => {
-    const fetchAllExpenses = async () => {
+    const getAllExpenses = async () => {
       try {
-        let res = await fetchAllExpensesFN(id, user);
+        let res = await getAllExpensesFN(id, user);
         dispatch(addExpenses(res));
       } catch (error) {
         console.log(error);
       }
     };
-    fetchAllExpenses();
+    getAllExpenses();
 
-    const fetchAllTrips = async () => {
+    const getAllTrips = async () => {
       try {
-        let res = await fetchAllTripsFN(id, user);
+        let res = await getAllTripsFN(id, user);
         dispatch(addTrips(res));
       } catch (error) {
         console.log(error);
       }
     };
-    fetchAllTrips();
+    getAllTrips();
   }, [id, user, history, dispatch]);
 
-  // useEffect(() => {
-  //   if (!user) {
-  //     history.push("/");
-  //   }
-  // }, [user, history]);
-
   const setCheck = (e) => {
-    console.log(e.target)
-  }
+    console.log(e.target);
+  };
 
   if (!user) {
     return <div className="spinner-border"></div>;
-  }
-  // if (user.uid !== cars[id]?.uid) {
-  //   // debugger;
-  //   history.push("/404");
-  // } 
-  else {
-    // debugger;
+  } else {
     const car = cars[id];
     return (
       <div className="car-details">
@@ -88,7 +76,6 @@ function CarDetails() {
                 alt={"car"}
               />{" "}
             </div>
-            {/* [miles] * [rate], or 175 miles * $0.56 = $98. */}
             <li>Car ID: {id}</li>
             <li>Make: {car?.make}</li>
             <li>Model: {car?.model}</li>
@@ -118,7 +105,6 @@ function CarDetails() {
                 id="exampleRadios1"
                 value="option1"
                 onChange={setCheck}
-                // checked={setCheck}
               />
               <label className="form-check-label" htmlFor="exampleRadios1">
                 Default car

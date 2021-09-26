@@ -3,7 +3,7 @@ import React, { useContext, useEffect } from "react";
 import { useDispatch } from "react-redux";
 // import { addCars } from "../../Store/Actions/carsActions";
 import { addCars } from "../Store/Actions/carsActions";
-import { fetchAllCarsFN } from "../util/networkRequest";
+import { getAllCarsFN } from "../util/networkRequest";
 import { UserContext } from "../Providers/UserProvider";
 import { useHistory } from "react-router-dom";
 import { signInWithGoogle } from "../Services/Firebase";
@@ -46,7 +46,7 @@ const Login = () => {
   useEffect(() => {
     const fetchAllCars = async () => {
       try {
-        const res = await fetchAllCarsFN(user);
+        const res = await getAllCarsFN(user);
         dispatch(addCars(res));
         if (res.length) {
           //FIXME: The current code does nothing
