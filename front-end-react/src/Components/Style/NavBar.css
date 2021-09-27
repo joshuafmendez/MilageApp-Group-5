@@ -342,7 +342,7 @@ div.cars-div{
   margin-bottom: 20px;
   
 }
-p.sum-expenses,p.sum-mileage{
+div.nav-expenses >a{
   color:limegreen;
 }
 .nav-expenses>p{

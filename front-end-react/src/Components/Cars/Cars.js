@@ -6,7 +6,6 @@ import { addCars } from "../../Store/Actions/carsActions";
 import { getAllCarsFN } from "../../util/networkRequest";
 import { UserContext } from "../../Providers/UserProvider";
 import { useHistory } from "react-router-dom";
-// import { signOut } from "../Services/Firebase";
 import CarsListItem from "./CarsListItem";
 import "../../Components/Style/Cars.css";
 import { AiOutlineAppstoreAdd } from "react-icons/ai";
@@ -28,28 +27,6 @@ const Cars = () => {
   const history = useHistory();
   const carsArr = Object.values(cars);
 
-  // Keep for pdf conversion TODO:
-  // let sorted = Object.values(cars);
-  // const [sorting, setSorting] = useState(sorted);
-  // const handleChange = (type) => {
-  //   const sortTypes = {
-  //     id: "id",
-  //     make: "make",
-  //     model: "model",
-  //   };
-  //   const sortProperty = sortTypes[type];
-  //   sorted = Object.values(cars).sort((a, b) => {
-  //     if (sortProperty === "make" || sortProperty === "model") {
-  //       return a[sortProperty].localeCompare(b[sortProperty]);
-  //     } else if (sortProperty === "id") {
-  //       return a[sortProperty] - b[sortProperty];
-  //     } else {
-  //       return null;
-  //     }
-  //   });
-  //   setSorting(sorted);
-  // };
-
   useEffect(() => {
     const fetchAllCars = async () => {
       try {
@@ -69,35 +46,24 @@ const Cars = () => {
   }, [user, history]);
 
   return (
-    // <div>
-    //   <CarsListItem carsArr={carsArr} cars={cars} />
-    //   <Link to={"/cars/car/new"}>
-    //     <button className="cars-new-button">Add New Car</button>
-    //   </Link>
-    //   <br></br>
-    // </div>
-
     <div className="cars-div">
-    <div className="whit">
+    {/* <div className="whit">
       <p>
-        {" "}
+  
         Welcome {user.displayName}, Trip App understands the importance of
         business owners and independant contractors documenting their
         mileage and automotive expenses and we are here to make that
         process as easy as possible for you.
       </p>
-    </div>
-    <div className="gren">
+    </div> */}
+    {/* <div className="gren">
       <p>Learn more about tax breaks you may qualify for:</p>
-    </div>
+    </div> */}
+
+
+    
 
     <ul className="ul-choices">
-      {/* {newCarForm && (
-        <div className="toggle-form">
-          <FormModal setShow={setShow} />
-        </div>
-      )} */}
-
       <li>
         <div className="choices">
   
@@ -106,12 +72,6 @@ const Cars = () => {
             <AiOutlineAppstoreAdd size="35px" />
          <button className="cars-new-button">Add New Car</button>
        </Link>
-            {/* <button className="cars-new-button">Add New Car</button> */}
-
-
-
-
-
         </div>
       </li>
 
@@ -141,11 +101,34 @@ const Cars = () => {
         </div>
       </li>
     </ul>
-
-    <br></br>
     <CarsListItem carsArr={carsArr} cars={cars} />
   </div>
   );
 };
 
 export default Cars;
+
+
+
+
+  // Keep for pdf conversion TODO:
+  // let sorted = Object.values(cars);
+  // const [sorting, setSorting] = useState(sorted);
+  // const handleChange = (type) => {
+  //   const sortTypes = {
+  //     id: "id",
+  //     make: "make",
+  //     model: "model",
+  //   };
+  //   const sortProperty = sortTypes[type];
+  //   sorted = Object.values(cars).sort((a, b) => {
+  //     if (sortProperty === "make" || sortProperty === "model") {
+  //       return a[sortProperty].localeCompare(b[sortProperty]);
+  //     } else if (sortProperty === "id") {
+  //       return a[sortProperty] - b[sortProperty];
+  //     } else {
+  //       return null;
+  //     }
+  //   });
+  //   setSorting(sorted);
+  // };

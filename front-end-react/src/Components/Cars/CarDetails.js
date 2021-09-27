@@ -14,7 +14,6 @@ import { AiOutlineAppstoreAdd } from "react-icons/ai";
 import { AiFillCar } from "react-icons/ai";
 import { GrDocumentPdf } from "react-icons/gr";
 import { FaCalculator } from "react-icons/fa";
-import sprite from "../Images/spritea.png";
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
@@ -29,6 +28,8 @@ function CarDetails() {
   const dispatch = useDispatch();
   let { id } = useParams();
 
+
+
   const deleteCar = async () => {
     try {
       await deleteCarByID(id, user);
@@ -41,6 +42,12 @@ function CarDetails() {
     await deleteCar();
     history.push("/cars");
   };
+
+
+
+
+
+
 
   useEffect(() => {
     const getAllExpenses = async () => {
@@ -90,6 +97,7 @@ function CarDetails() {
 
     let totalBusinessTrips = 0;
     let trips = [["Date", "Miles", "Reason"]];
+
     tripsArr.forEach((trip) => {
       if (trip.business_use) {
         trips.push([`${trip.date}`, `${trip.miles}`, `${trip.reason}`]);
@@ -97,7 +105,23 @@ function CarDetails() {
       }
     });
 
+
+
+
+
+
+
+
+
     console.log("tripsArr", tripsArr);
+
+
+
+
+
+
+
+
     const handleReport = () => {
       car = cars[id];
       let documentDefinition = {
@@ -165,6 +189,13 @@ function CarDetails() {
       return pdfDoc;
     };
 
+
+
+
+
+
+
+
     return (
       <>
         <div className="log-start">
@@ -222,17 +253,14 @@ function CarDetails() {
 <div class="hi"></div> */}
         <section className="car-section">
           <div className="all-bs">
-            <div className="delete">
-              {" "}
-              <button onClick={handleDelete}>DELETE</button>
-            </div>
-            <div className="edit">
-              {" "}
+          
+              <button className="b-delete" onClick={handleDelete}>DELETE</button>
+       
               <Link to={`/cars/${id}/edit`}>
-                <button>EDIT</button>
+                <button className="b-edit">EDIT</button>
               </Link>
             </div>
-          </div>
+          
 
           <div className="concar-div">
             <img
@@ -278,7 +306,7 @@ function CarDetails() {
 
             <li className="li-choicesb">
               <div className="choicesb">
-                <Link to={"/cars/car/new"}>
+                <Link to={"/cars"}>
                   <AiFillCar size="35px" />
                   <button className="cars-new-button">Select Car</button>
                 </Link>
@@ -314,21 +342,25 @@ function CarDetails() {
 
         {/* 
         <button onClick={handleReport}>GENERATE REPORT</button> */}
-
+{/* 
         <Link to={`/cars/${id}/expenses`}>
           Total Expenses: $
           {expensesArr.reduce((total, expense) => {
             total += expense.amount_spent;
             return total;
           }, 0)}
-        </Link>
+        </Link> */}
+
+{/* 
         <Link to={`/cars/${id}/trips`}>
           Total Mileage:
           {tripsArr.reduce((total, trip) => {
             total += trip.miles;
             return total;
           }, 0)}
-        </Link>
+        </Link> */}
+
+        
         {/* </div> */}
         {/* </div> */}
       </>
