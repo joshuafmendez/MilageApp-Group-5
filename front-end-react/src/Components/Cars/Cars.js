@@ -9,6 +9,11 @@ import { useHistory } from "react-router-dom";
 // import { signOut } from "../Services/Firebase";
 import CarsListItem from "./CarsListItem";
 import "../../Components/Style/Cars.css";
+import { AiOutlineAppstoreAdd } from "react-icons/ai";
+import { AiFillCar } from "react-icons/ai";
+import { GrDocumentPdf } from "react-icons/gr";
+import { FaCalculator } from "react-icons/fa";
+// import FormModal from "./FormModal";
 
 // TODO:
 // new car on navbar
@@ -64,13 +69,82 @@ const Cars = () => {
   }, [user, history]);
 
   return (
-    <div>
-      <CarsListItem carsArr={carsArr} cars={cars} />
-      <Link to={"/cars/car/new"}>
-        <button className="cars-new-button">Add New Car</button>
-      </Link>
-      <br></br>
+    // <div>
+    //   <CarsListItem carsArr={carsArr} cars={cars} />
+    //   <Link to={"/cars/car/new"}>
+    //     <button className="cars-new-button">Add New Car</button>
+    //   </Link>
+    //   <br></br>
+    // </div>
+
+    <div className="cars-div">
+    <div className="whit">
+      <p>
+        {" "}
+        Welcome {user.displayName}, Trip App understands the importance of
+        business owners and independant contractors documenting their
+        mileage and automotive expenses and we are here to make that
+        process as easy as possible for you.
+      </p>
     </div>
+    <div className="gren">
+      <p>Learn more about tax breaks you may qualify for:</p>
+    </div>
+
+    <ul className="ul-choices">
+      {/* {newCarForm && (
+        <div className="toggle-form">
+          <FormModal setShow={setShow} />
+        </div>
+      )} */}
+
+      <li>
+        <div className="choices">
+  
+
+          <Link to={"/cars/car/new"}>
+            <AiOutlineAppstoreAdd size="35px" />
+         <button className="cars-new-button">Add New Car</button>
+       </Link>
+            {/* <button className="cars-new-button">Add New Car</button> */}
+
+
+
+
+
+        </div>
+      </li>
+
+      <li>
+        <div className="choices">
+          <Link to={"/cars/car/new"}>
+            <AiFillCar size="35px" />
+            <button className="cars-new-button">Select Car</button>
+          </Link>
+        </div>
+      </li>
+      <li>
+        <div className="choices">
+          <Link to={"/cars/car/new"}>
+            <GrDocumentPdf size="33px" />
+            <button className="cars-new-button">Generate Report</button>
+          </Link>
+        </div>
+      </li>
+
+      <li>
+        <div className="choices">
+          <Link to={"/cars/car/new"}>
+            <FaCalculator size="33px" />
+            <button className="cars-new-button">Get Tax Help</button>
+          </Link>
+        </div>
+      </li>
+    </ul>
+
+    <br></br>
+    <CarsListItem carsArr={carsArr} cars={cars} />
+  </div>
   );
 };
 

@@ -7,6 +7,7 @@ import { GiSteeringWheel } from "react-icons/gi";
 import { signOut } from "../Services/Firebase";
 import { useHistory } from "react-router";
 // import { useSelector } from "react-redux";
+import expenses from "../Store/Reducers/expenses";
 
 export default function NavBar({ navExpenses, navMileage }) {
   let [expenseForm, setExpenseForm] = useState(false);
@@ -16,7 +17,6 @@ export default function NavBar({ navExpenses, navMileage }) {
   // const entireState = useSelector((state) => state);
   // const { cars, expenses, trips } = entireState;
   // console.log(entireState)
-
 
   const handleLogout = async () => {
     signOut();
@@ -33,12 +33,50 @@ export default function NavBar({ navExpenses, navMileage }) {
   return (
     <div>
       <div className="right-nav">
-        <NavLink to="/cars">
+
+
+
+        
+        <div className="nav-expenses">
+          <p className="total-expenses">Total Expenses</p>
+          <p className="sum-expenses">$200,000.00</p>
+        </div>
+
+
+
+
+        <div className="nav-expenses">
+          <p className="total-expenses">Total mileage</p>
+          <p className="sum-mileage">9,000,000</p>
+        </div>
+
+
+
+
+
+        {/* <NavLink to="/cars">
           <h2>All Cars</h2>
-          <GiSteeringWheel size="36px" />
-        </NavLink>
+          <GiSteeringWheel size="36px" /> */}
+  
+        
         {expenseForm && (
-          <NavLink to={`/cars/:car_id/expenses/expense/new`}>
+
+<div className="nav-expenses">
+<NavLink to="/cars"> ✚ Enter Expenses     </NavLink>
+<FcCurrencyExchange size="16px" />
+</div>
+        )}
+
+        {mileageForm && (
+ 
+ <div className="nav-expenses">
+ <NavLink to="/cars"> ✚ Enter Mileage    </NavLink>
+ <ImRoad size="16px" />
+ </div>
+
+        )}
+        {/* {expenseForm && (
+          <NavLink to="/cars/:car_id/expenses/expense/new">
             <h2>Enter Expenses</h2>
             <FcCurrencyExchange size="36px" />
           </NavLink>
@@ -49,7 +87,7 @@ export default function NavBar({ navExpenses, navMileage }) {
             <h2>Enter Mileage</h2>
             <ImRoad size="36px" />
           </NavLink>
-        )}
+        )} */}
 
         <button onClick={handleLogout}> LOG OUT</button>
 
