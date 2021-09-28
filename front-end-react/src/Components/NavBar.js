@@ -19,7 +19,7 @@ export default function NavBar({ navExpenses, navMileage }) {
 
 
   const handleLogout = async () => {
-    signOut();
+    await signOut();
     history.push("/");
   };
 
