@@ -230,7 +230,6 @@ function CarDetails() {
       <>
         <div>
           <div className="right-nav">
-         
             <div className="nav-expenses">
               <p className="total-expenses">Total Expenses</p>
               <Link to={`/cars/${id}/expenses`}>
@@ -242,8 +241,6 @@ function CarDetails() {
                 .00
               </Link>
             </div>
-
-   
 
             {/* <div className="nav-expenses">
               <NavLink to="/cars"> ✚ Enter Expenses </NavLink>
@@ -275,7 +272,7 @@ function CarDetails() {
             </div>
 
             <div className="nav-expenses">
-              <Link to={`/cars/${id}/mileage`}>📘 Mileage Table</Link>
+              <Link to={`/cars/${id}/trips`}>📘 Mileage Table</Link>
             </div>
 
             <button onClick={handleLogout}> LOG OUT</button>
@@ -283,17 +280,16 @@ function CarDetails() {
         </div>
 
         <section className="car-section">
-        <div className="odo-mileage">
-           Mileage
-
-              <p className="total-odo">
+          <div className="odo-mileage">
+            Mileage
+            <p className="total-odo">
               000999-098765
-                {tripsArr.reduce((total, trip) => {
-                  total += trip.miles;
-                  return total;
-                }, 0)}
-              </p>
-            </div>
+              {tripsArr.reduce((total, trip) => {
+                total += trip.miles;
+                return total;
+              }, 0)}
+            </p>
+          </div>
           {/* <br></br> */}
           <div className="all-bs">
             <button className="button-delete" onClick={handleDelete}>
@@ -312,18 +308,16 @@ function CarDetails() {
               style={{ width: "500px", height: "250px" }}
               alt={"car"}
             />{" "}
-
-          <div className="deets">
-            <li>Car ID: {id}</li>
-            <li>Make: {car?.make}</li>
-            <li>Model: {car?.model}</li>
-            <li>VIN: {car?.vin}</li>
-            <li>Year: {car?.year}</li>
-            <li>Odometer: {car?.odometer.toLocaleString()}</li>
-            <li>Doors: {car?.doors}</li>
+            <div className="deets">
+              <li>Car ID: {id}</li>
+              <li>Make: {car?.make}</li>
+              <li>Model: {car?.model}</li>
+              <li>VIN: {car?.vin}</li>
+              <li>Year: {car?.year}</li>
+              <li>Odometer: {car?.odometer.toLocaleString()}</li>
+              <li>Doors: {car?.doors}</li>
+            </div>
           </div>
-          </div>
-
         </section>
         <br></br>
         <br></br>

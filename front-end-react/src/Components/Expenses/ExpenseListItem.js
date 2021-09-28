@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import carImage from "../little_car.jpg";
-import "../Style/ExpenseListItem.css"
-
+import "../Style/ExpenseListItem.css";
 
 function ExpenseListItem({ expense }) {
   const { id, car_id, expense_type, business_use, amount_spent, date } =
@@ -15,15 +14,12 @@ function ExpenseListItem({ expense }) {
       </td>
 
       <td className="date-data">
-    <h2>
-         {date}
-      </h2> 
+        <h2>{date}</h2>
 
-   //   <td>
-   //     <Link to={`/cars/${car_id}/expenses/${id}`}>
-   //       <h2> {newDate.toLocaleDateString()}</h2>
-   //     </Link>
-
+        {/* <td> */}
+        {/* <Link to={`/cars/${car_id}/expenses/${id}`}> */}
+        {/* <h2> {newDate.toLocaleDateString()}</h2> */}
+        {/* </Link> */}
       </td>
       <td>
         <h2> {expense_type}</h2>

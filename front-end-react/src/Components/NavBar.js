@@ -21,13 +21,17 @@ export default function NavBar({ navExpenses, navMileage }) {
   const entireState = useSelector((state) => state);
   const { cars, expenses, trips } = entireState;
   const user = useContext(UserContext);
-  const history = useHistory();
   const expensesArr = Object.values(expenses);
   const tripsArr = Object.values(trips);
   const dispatch = useDispatch();
   let { id } = useParams();
   let [expenseForm, setExpenseForm] = useState(false);
   let [mileageForm, setMileageForm] = useState(false);
+  let history = useHistory();
+
+  // const entireState = useSelector((state) => state);
+  // const { cars, expenses, trips } = entireState;
+  // console.log(entireState)
 
   const handleLogout = async () => {
     await signOut();
@@ -97,8 +101,6 @@ export default function NavBar({ navExpenses, navMileage }) {
   return (
     <div className="log-start">
       <div className="corner-fix">
-  
-
         {/* 
       <a
         href="https://www.irs.gov/newsroom/heres-the-411-on-who-can-deduct-car-expenses-on-their-tax-returns"
@@ -107,10 +109,7 @@ export default function NavBar({ navExpenses, navMileage }) {
    
       </a> */}
 
-        <Link to={`/cars`}>
-       
-    Home
-        </Link>
+        <Link to={`/cars`}>Home</Link>
 
         <div className="dropdown">
           <div className="dropbtn">Driver Resources</div>
@@ -135,7 +134,7 @@ export default function NavBar({ navExpenses, navMileage }) {
 
       {/* <CarsIndex navToggle={navToggle} mileageToggle={mileageToggle} /> */}
     </div>
-      // <Link to={`/cars/${id}/expenses`}>Car Expenses</Link>
+    // <Link to={`/cars/${id}/expenses`}>Car Expenses</Link>
     // <div>
     //   <div className="right-nav">
     //     <div className="nav-expenses">
