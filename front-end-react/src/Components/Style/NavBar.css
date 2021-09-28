@@ -317,7 +317,17 @@ flex-direction: row;
 }
 
 
-
+.home-wheels{
+  background-image: url("../Images/wheel.png");
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  height: 44px;
+  width: 44px;
+  box-shadow: transparent;
+  outline: transparent;
+  border:transparent;
+}
 
 
 .button-logout{

@@ -6,7 +6,9 @@ import { getAllExpensesFN } from "../../util/networkRequest";
 import { useDispatch, useSelector } from "react-redux";
 import { addExpenses } from "../../Store/Actions/expenseActions";
 import { UserContext } from "../../Providers/UserProvider";
-import "../../App.css";
+import "../Style/Expenses.css"
+
+// import "../../App.css";
 
 const Expenses = () => {
   const entireState = useSelector((state) => state);
@@ -36,10 +38,10 @@ const Expenses = () => {
   }, [user, history]);
 
   return (
-    <div>
-      <table>
+    <div className="main-e-div">
+      <table className="expenses-main-table">
         <thead>
-          <tr>
+          <tr className="head-row">
             <th>
               <h2>Car ID</h2>
             </th>

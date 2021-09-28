@@ -97,7 +97,7 @@ export default function NavBar({ navExpenses, navMileage }) {
   return (
     <div className="log-start">
       <div className="corner-fix">
-        <Link to={`/cars/${id}/expenses`}>Car Expenses</Link>
+  
 
         {/* 
       <a
@@ -107,12 +107,9 @@ export default function NavBar({ navExpenses, navMileage }) {
    
       </a> */}
 
-        <Link to={`/cars/${id}/trips`}>
-          {/* {tripsArr.reduce((total, trip) => {
-              total += trip.miles;
-              return total;
-            }, 0)} */}
-          Mileage Rates
+        <Link to={`/cars`}>
+       
+    Home
         </Link>
 
         <div className="dropdown">
@@ -138,7 +135,7 @@ export default function NavBar({ navExpenses, navMileage }) {
 
       {/* <CarsIndex navToggle={navToggle} mileageToggle={mileageToggle} /> */}
     </div>
-
+      // <Link to={`/cars/${id}/expenses`}>Car Expenses</Link>
     // <div>
     //   <div className="right-nav">
     //     <div className="nav-expenses">
