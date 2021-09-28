@@ -5,6 +5,7 @@ function ExpenseListItem({ expense }) {
   const { id, car_id, expense_type, business_use, amount_spent, date } =
     expense;
 
+  let newDate = new Date(date);
   return (
     <tr>
       <td>
@@ -12,7 +13,7 @@ function ExpenseListItem({ expense }) {
       </td>
       <td>
         <Link to={`/cars/${car_id}/expenses/${id}`}>
-          <h2> {date}</h2>
+          <h2> {newDate.toLocaleDateString()}</h2>
         </Link>
       </td>
       <td>
