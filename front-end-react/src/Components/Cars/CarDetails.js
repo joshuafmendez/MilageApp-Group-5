@@ -117,23 +117,29 @@ function CarDetails() {
         },
         content: [
           {
-            text: `Driver's name: ${car?.driver} `,
+            text: `Driver: ${car?.driver} `,
             bold: true,
             fontSize: 20,
             alignment: "center",
             margin: [0, 20],
           },
-          { text: `Car details `, style: "header", margin: [0, 20] },
           {
-            padding: [0, 20],
-            ul: [
-              `Car make: ${car?.make}`,
-              `Car model: ${car?.model}`,
-              `Car VIN: ${car?.vin}`,
-              `Car year: ${car?.year}`,
-              `Car mileage: ${car?.odometer.toLocaleString()}`,
-              `Number of car doors: ${car?.doors}`,
-            ],
+            layout: "lightHorizontalLines",
+            table: {
+              headerRows: 1,
+              widths: ["50%"],
+              height: "100",
+              body: [
+                [{ text: "Car details", bold: true, fontSize: 15 }],
+                [`Car make: ${car?.make}`],
+                [`Car model: ${car?.model}`],
+                [`Car VIN: ${car?.vin}`],
+                [`Car year: ${car?.year}`],
+                [`Car mileage: ${car?.odometer.toLocaleString()}`],
+                [`Number of car doors: ${car?.doors}`],
+              ],
+              fontSize: 40,
+            },
           },
 
           {
