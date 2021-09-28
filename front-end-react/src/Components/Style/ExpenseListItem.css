@@ -1,3 +1,13 @@
-tr>td{
+/* tr>td{
     border:solid grey .5px;
+} */
+.first-row{
+    font-size:16px;
+
+}
+/* tr:nth-child(2){
+    background-color:rgb(220, 166, 111);
+} */
+.row-penses:nth-child(2){
+    background-color: skyblue;
 }
