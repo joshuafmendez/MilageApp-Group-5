@@ -4,13 +4,13 @@ import "firebase/compat/auth";
 import "firebase/compat/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBL6HOcOvesfaa9m1z3el2kDjm_TlxN6rk",
-  authDomain: "glossy-protocol-314323.firebaseapp.com",
-  projectId: "glossy-protocol-314323",
-  storageBucket: "glossy-protocol-314323.appspot.com",
-  messagingSenderId: "611745384469",
-  appId: "1:611745384469:web:c14d18c75480b72199261c",
-  measurementId: "G-956DMRN27M",
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID
 };
 
 const app = firebase.initializeApp(firebaseConfig);
@@ -25,7 +25,20 @@ export const signInWithGoogle = async () => {
     console.log(err);
   }
 };
-
+export const signup = (email, password) => {
+  try {
+    auth.createUserWithEmailAndPassword(email, password)
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+export const login = (email, password) => {
+  try {
+    auth.signInWithEmailAndPassword(email, password)
+  } catch (error) {
+    console.log(error.message);
+  }
+}
 export const signOut = async () => {
   try {
     await auth.signOut();

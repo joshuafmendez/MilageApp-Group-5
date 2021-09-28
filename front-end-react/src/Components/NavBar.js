@@ -30,7 +30,7 @@ export default function NavBar({ navExpenses, navMileage }) {
   let [mileageForm, setMileageForm] = useState(false);
 
   const handleLogout = async () => {
-    signOut();
+    await signOut();
     history.push("/");
   };
 
