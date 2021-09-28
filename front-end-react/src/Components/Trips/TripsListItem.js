@@ -13,11 +13,12 @@ const TripsListItem = ({ trip }) => {
     favorite,
   } = trip;
 
+  let newDate = new Date(date);
   return (
     <tr>
       <td>
         <Link to={`/cars/${car_id}/trips/${id}`}>
-          <h2>{date}</h2>
+          <h2>{newDate.toLocaleDateString()}</h2>
         </Link>
       </td>
       <td>

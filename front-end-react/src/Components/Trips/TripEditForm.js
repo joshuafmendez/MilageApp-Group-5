@@ -72,7 +72,7 @@ const TripEditForm = () => {
     business_use,
     favorite,
   } = trip;
-  console.log("trip", trip);
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -83,7 +83,7 @@ const TripEditForm = () => {
           onChange={handleChange}
           id="date"
           placeholder="date"
-          required
+          // required
         />
         <label htmlFor="miles">miles:</label>
         <input

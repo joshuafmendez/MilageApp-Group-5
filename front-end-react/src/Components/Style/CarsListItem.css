@@ -3,7 +3,7 @@ body {
 }
 
 .wrapper {
-  width: 50%;
+  width: 40%;
   height: 180px;
   display: flex;
   justify-content: center;
@@ -13,7 +13,7 @@ body {
 
 .card {
   height: 170px;
-  width: 320px;
+  width: 220px;
   background-color: #cfb4b4;
   border-radius: 10px;
   position: relative;
@@ -42,7 +42,7 @@ body {
 
 .card .image {
   position: absolute;
-  width: 100%;
+  width: 80%;
   height: 70px;
   display: flex;
   justify-content: center;
@@ -166,4 +166,7 @@ li.li-show{
   /* display:flex;
   justify-content: space-around; */
   margin-bottom:13px;
+}
+.list-cars{
+  margin-left:10%;
 }

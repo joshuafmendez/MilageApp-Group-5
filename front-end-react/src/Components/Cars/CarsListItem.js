@@ -16,7 +16,7 @@ function CarsListItem({ car, carsArr }) {
   };
 
   return (
-    <div>
+    <div className="list-cars">
       <ul
         style={showElement ? { display: "none" } : { display: "block" }}
         className="ul-show"
@@ -39,9 +39,6 @@ function CarsListItem({ car, carsArr }) {
                     alt={"car"}
                   />{" "}
                 </div>
-                {/* <Link to={`/cars/${car.id}`}>
-            <h2> {car.id}</h2>
-          </Link> */}
                 <br></br>
 
                 <Link to={`/cars/${car.id}`} onClick={handleClick}>

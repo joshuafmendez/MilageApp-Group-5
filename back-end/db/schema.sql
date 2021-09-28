@@ -14,7 +14,8 @@ CREATE TABLE
         odometer INT, 
         doors INT,
         is_default BOOLEAN NOT NULL,
-        uid TEXT not null
+        uid TEXT not null,
+        driver TEXT not null
         -- selected_car BOOLEAN NOT NULL
     );
 
@@ -25,7 +26,7 @@ CREATE TABLE
         business_use BOOLEAN NOT NULL,
         car_id INT REFERENCES cars (id) ON DELETE CASCADE,
         amount_spent INT NOT NULL,
-        date TEXT NOT NULL
+        date TEXT 
     );
 
 CREATE TABLE

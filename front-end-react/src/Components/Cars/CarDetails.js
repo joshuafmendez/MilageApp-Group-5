@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from "react";
-import { useParams, useHistory, Link } from "react-router-dom";
+import { useParams, useHistory, Link, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { UserContext } from "../../Providers/UserProvider";
 import {
@@ -10,6 +10,17 @@ import {
 import { addExpenses } from "../../Store/Actions/expenseActions";
 import "../Style/CarDetails.css";
 import { addTrips } from "../../Store/Actions/tripsActions";
+import deletebutton from "../Images/delbutton.png";
+// import odo from "../Images/odo.png";
+import editbutton from "../Images/Edit.png";
+import { AiOutlineAppstoreAdd } from "react-icons/ai";
+import { AiFillCar } from "react-icons/ai";
+import { GrDocumentPdf } from "react-icons/gr";
+import { FaCalculator } from "react-icons/fa";
+import { FcCurrencyExchange } from "react-icons/fc";
+import { ImRoad } from "react-icons/im";
+
+import { signOut } from "../../Services/Firebase";
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
@@ -60,9 +71,9 @@ function CarDetails() {
     getAllTrips();
   }, [id, user, history, dispatch]);
 
-  const setCheck = (e) => {
-    console.log(e.target);
-  };
+  // const setCheck = (e) => {
+  //   console.log(e.target);
+  // };
 
   if (!user) {
     return <div className="spinner-border"></div>;
@@ -72,27 +83,45 @@ function CarDetails() {
     let totalBusinessExpenses = 0;
     let expenses = [["Expense", "Date", "Amount"]];
     expensesArr.forEach((expense) => {
+      let newDate = new Date(expense.date);
+      let year = newDate.getFullYear();
       if (expense.business_use) {
-        expenses.push([
-          `${expense.expense_type}`,
-          `${expense.date}`,
-          `$${expense.amount_spent.toLocaleString()}`,
-        ]);
-        totalBusinessExpenses += Number(expense.amount_spent);
+        if (year === 2021) {
+          expenses.push([
+            `${expense.expense_type}`,
+            `${newDate.toLocaleDateString()}`,
+            `$${expense.amount_spent.toLocaleString()}`,
+          ]);
+          totalBusinessExpenses += Number(expense.amount_spent);
+        }
       }
     });
-    console.log("expenses outside handleReport", expenses);
 
     let totalBusinessTrips = 0;
     let trips = [["Date", "Miles", "Reason"]];
+
     tripsArr.forEach((trip) => {
+      let newDate = new Date(trip.date);
+      let year = newDate.getFullYear();
       if (trip.business_use) {
-        trips.push([`${trip.date}`, `${trip.miles}`, `${trip.reason}`]);
-        totalBusinessTrips += Number(trip.miles);
+        if (year === 2021) {
+          trips.push([
+            `${newDate.toLocaleDateString()}`,
+            `${trip.miles}`,
+            `${trip.reason}`,
+          ]);
+          totalBusinessTrips += Number(trip.miles);
+        }
       }
     });
 
     console.log("tripsArr", tripsArr);
+
+    const handleLogout = async () => {
+      signOut();
+      history.push("/");
+    };
+
     const handleReport = () => {
       car = cars[id];
       let documentDefinition = {
@@ -106,6 +135,33 @@ function CarDetails() {
         },
         content: [
           {
+            text: `Driver: ${car?.driver} `,
+            bold: true,
+            fontSize: 20,
+            alignment: "center",
+            margin: [0, 20],
+          },
+          {
+            layout: "lightHorizontalLines",
+            table: {
+              headerRows: 1,
+              widths: ["50%"],
+              height: "100",
+              body: [
+                [{ text: "Car details", bold: true, fontSize: 15 }],
+                [`Car make: ${car?.make}`],
+                [`Car model: ${car?.model}`],
+                [`Car VIN: ${car?.vin}`],
+                [`Car year: ${car?.year}`],
+                [`Car mileage: ${car?.odometer.toLocaleString()}`],
+                [`Number of car doors: ${car?.doors}`],
+              ],
+              fontSize: 40,
+            },
+          },
+
+          {
+            pageBreak: "before",
             text: `${car?.make} ${car?.model} expenses for business-use\n for the year 2021 `,
             bold: true,
             fontSize: 20,
@@ -154,6 +210,16 @@ function CarDetails() {
             margin: [35, 20, 10, 0],
           },
         ],
+        styles: {
+          header: {
+            bold: true,
+            fontSize: 15,
+          },
+        },
+        defaultStyle: {
+          fontSize: 12,
+          margin: [0, 20],
+        },
       };
 
       const pdfDoc = pdfMake.createPdf(documentDefinition).open();
@@ -161,76 +227,107 @@ function CarDetails() {
     };
 
     return (
-      <div className="car-details">
-        <div className="wrapper">
-          <div className="car">
-            <div className="image">
-              {" "}
-              <img
-                src="https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png"
-                style={{ width: "200px" }}
-                alt={"car"}
-              />{" "}
+      <>
+        <div>
+          <div className="right-nav">
+            <div className="nav-expenses">
+              <p className="total-expenses">Total Expenses</p>
+              <Link to={`/cars/${id}/expenses`}>
+                $
+                {expensesArr.reduce((total, expense) => {
+                  total += expense.amount_spent;
+                  return total;
+                }, 0)}
+                .00
+              </Link>
             </div>
-            <li>Car ID: {id}</li>
-            <li>Make: {car?.make}</li>
-            <li>Model: {car?.model}</li>
-            <li>VIN: {car?.vin}</li>
-            <li>Year: {car?.year}</li>
-            <li>Odometer: {car?.odometer}</li>
-            <li>Doors: {car?.doors}</li>
-            Mileage: 900
-            <div className="border">
-              <div
-                className="bar"
-                style={{ height: "18px", width: "20%" }}
-              ></div>
+
+            {/* <div className="nav-expenses">
+              <NavLink to="/cars"> ✚ Enter Expenses </NavLink>
+              <FcCurrencyExchange size="16px" />
+            </div> */}
+
+            <div className="nav-expenses">
+              <Link to={`/cars/${id}/expenses/expense/new`}>
+                {" "}
+                ✚ Enter Expense{" "}
+              </Link>
+              <ImRoad size="16px" />
             </div>
-            Expenses: $700
-            <div className="border">
-              <div
-                className="bar"
-                style={{ height: "18px", width: "20%" }}
-              ></div>
+
+            <div className="nav-expenses">
+              <Link to={`/cars/${id}/trips/trip/new`}> ✚ Enter Mileage </Link>
+              <ImRoad size="16px" />
             </div>
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="exampleRadios"
-                id="exampleRadios1"
-                value="option1"
-                onChange={setCheck}
-              />
-              <label className="form-check-label" htmlFor="exampleRadios1">
-                Default car
-              </label>
+
+            <div className="nav-expenses">
+              <button onClick={handleReport} className="cars-new-button">
+                Generate Report
+              </button>
+              <GrDocumentPdf size="16px" />
             </div>
-            <Link to={"/cars"}>
-              <button>BACK</button>
-            </Link>
-            <button onClick={handleDelete}>DELETE</button>
-            <Link to={`/cars/${id}/edit`}>
-              <button>EDIT</button>
-            </Link>
-            <button onClick={handleReport}>GENERATE REPORT</button>
-            <Link to={`/cars/${id}/expenses`}>
-              Total Expenses: $
-              {expensesArr.reduce((total, expense) => {
-                total += expense.amount_spent;
-                return total;
-              }, 0)}
-            </Link>
-            <Link to={`/cars/${id}/trips`}>
-              Total Mileage:
+
+            <div className="nav-expenses">
+              <Link to={`/cars/${id}/expenses`}>📕 Expense Table</Link>
+            </div>
+
+            <div className="nav-expenses">
+              <Link to={`/cars/${id}/trips`}>📘 Mileage Table</Link>
+            </div>
+
+            <button onClick={handleLogout}> LOG OUT</button>
+          </div>
+        </div>
+
+        <section className="car-section">
+          <div className="odo-mileage">
+            Mileage
+            <p className="total-odo">
+              000999-098765
               {tripsArr.reduce((total, trip) => {
                 total += trip.miles;
                 return total;
               }, 0)}
+            </p>
+          </div>
+          {/* <br></br> */}
+          <div className="all-bs">
+            <button className="button-delete" onClick={handleDelete}>
+              {/* DELETE */}
+            </button>
+
+            <Link to={`/cars/${id}/edit`}>
+              <button className="button-edit"></button>
             </Link>
           </div>
-        </div>
-      </div>
+
+          <div className="concar-div">
+            <img
+              className="concar"
+              src="https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png"
+              style={{ width: "500px", height: "250px" }}
+              alt={"car"}
+            />{" "}
+            <div className="deets">
+              <li>Car ID: {id}</li>
+              <li>Make: {car?.make}</li>
+              <li>Model: {car?.model}</li>
+              <li>VIN: {car?.vin}</li>
+              <li>Year: {car?.year}</li>
+              <li>Odometer: {car?.odometer.toLocaleString()}</li>
+              <li>Doors: {car?.doors}</li>
+            </div>
+          </div>
+        </section>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <Link to={"/cars"}>
+          <button>BACK</button>
+        </Link>
+      </>
     );
   }
 }

@@ -24,9 +24,9 @@ table{
 td:nth-child(2){
     text-align: left;
     width: 160px;
-    background-color: white;
+    /* background-color: white;
     border: white .2px solid;
-    background-color: rgb(245, 245, 245);
+    background-color: rgb(245, 245, 245); */
 }
 td:nth-child(1){
     text-align: right;

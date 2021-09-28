@@ -11,14 +11,14 @@ li {
   list-style: none;
 }
 
-table {
+/* n {
   width: 80vw;
   margin: auto;
   border: 1px solid black;
   border-collapse: collapse;
-}
+} */
 
-td {
+/* td {
   text-align: center;
 }
 
@@ -27,8 +27,8 @@ tr {
   margin-right: auto;
   width: 60vw;
   height: 10vh;
-}
-
+} */
+/* 
 td,
 th {
   width: 10w;
@@ -51,4 +51,4 @@ td:nth-child(1) {
   padding: 1;
   margin: 3%;
   font-size: large;
-}
+} */
