@@ -21,10 +21,11 @@ const getCar = async (id, uid) => {
 };
 
 const addCar = async (car) => {
-  const { make, model, vin, year, odometer, doors, is_default, uid } = car;
+  const { make, model, vin, year, odometer, doors, is_default, uid, driver } =
+    car;
   try {
     const query =
-      "INSERT INTO cars (make, model, vin, year, odometer, doors,is_default,uid) VALUES ($1, $2, $3, $4, $5, $6,$7,$8) RETURNING *";
+      "INSERT INTO cars (make, model, vin, year, odometer, doors,is_default,uid, driver) VALUES ($1, $2, $3, $4, $5, $6,$7,$8, $9) RETURNING *";
     const newCar = await db.one(query, [
       make,
       model,
@@ -34,6 +35,7 @@ const addCar = async (car) => {
       doors,
       is_default,
       uid,
+      driver,
     ]);
     return { status: true, payload: newCar };
   } catch (error) {
@@ -53,13 +55,13 @@ const deleteCar = async (id, uid) => {
 };
 
 const updateCar = async (id, body, uid) => {
-  const { make, model, vin, year, odometer, doors, is_default } = body;
+  const { make, model, vin, year, odometer, doors, is_default, driver } = body;
   const queryOne = "SELECT * FROM cars WHERE uid=$1 AND id=$2";
   const authCheck = await db.any(queryOne, [uid, id]);
   if (authCheck.length) {
     try {
       const query =
-        "UPDATE cars SET make=$1, model=$2, vin=$3, year=$4, odometer=$5, doors=$6, is_default=$7, uid=$8 WHERE id=$9 RETURNING *";
+        "UPDATE cars SET make=$1, model=$2, vin=$3, year=$4, odometer=$5, doors=$6, is_default=$7, uid=$8, driver=$9 WHERE id=$10 RETURNING *";
       const updatedCar = await db.one(query, [
         make,
         model,
@@ -68,6 +70,7 @@ const updateCar = async (id, body, uid) => {
         odometer,
         doors,
         is_default,
+        driver,
         uid,
         id,
       ]);

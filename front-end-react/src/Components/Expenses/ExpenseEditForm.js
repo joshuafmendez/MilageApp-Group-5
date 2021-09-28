@@ -72,7 +72,7 @@ function ExpenseEditForm() {
           onChange={handleChange}
           id="date"
           placeholder="Enter date"
-          required
+          // required
         />
         Expense type
         <select
@@ -98,6 +98,9 @@ function ExpenseEditForm() {
           </option>
           <option selected name="depreciation" value="Depreciation">
             Depreciation
+          </option>
+          <option selected name="rent" value="Car Rental">
+            Car Rental
           </option>
         </select>
         <label htmlFor="amount_spent">Amount</label>

@@ -46,13 +46,18 @@ function ExpenseDetails() {
   }, [user, history]);
 
   const { expense_type, business_use, amount_spent, date } = expense;
+  let newDate = new Date(date);
+
   if (!user) {
     return <div className="spinner-border"></div>;
   } else {
     return (
       <div>
         <h2>Car ID: {id}</h2>
-        <h2>Date: {date}</h2>
+        <h2>
+          Date:
+          {newDate.toLocaleDateString()}
+        </h2>
         <h2>Expense Type: {expense_type}</h2>
         <h2>Amount: {amount_spent}</h2>
         <h2>Business Use: {business_use ? "Yes" : "No"}</h2>
