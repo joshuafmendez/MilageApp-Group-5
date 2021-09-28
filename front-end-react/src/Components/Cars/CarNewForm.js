@@ -19,6 +19,7 @@ function CarNewForm() {
     odometer: "",
     doors: "",
     is_default: true,
+    driver: "",
     uid: user && user.uid,
   });
 
@@ -42,9 +43,10 @@ function CarNewForm() {
     history.push("/cars");
   };
 
-  const { make, model, vin, year, odometer, doors } = car;
+  const { driver, make, model, vin, year, odometer, doors } = car;
 
   return (
+
     // <div>
     //   <form onSubmit={handleSubmit} className="form-rows">
     //     <div className="all-rows">
@@ -135,7 +137,26 @@ function CarNewForm() {
     // </div>
     <div className="bckground">
     <div className="divform">
+
+   <div className="bckground">
+    <div className="divform">
       <form onSubmit={handleSubmit} className="form-newcar">
+        <div className="all-rows">
+          <div className="left-form">
+            <div className="rowa">
+              <label htmlFor="driver">Driver's Name</label>
+              <input
+                value={driver}
+                type="text"
+                onChange={handleChange}
+                id="driver"
+                placeholder="Enter your name"
+                required
+              />
+            </div>
+
+            <div className="rowa">
+
         <table className="table-newcar">
           <tr className="row-make">
             <td className="label-data">
@@ -184,6 +205,12 @@ function CarNewForm() {
             </td>
 
             <td>
+
+           // </div>
+            //<br></br>
+            //<div className="rowa">
+             // <label htmlFor="vin">VIN:</label>
+
               <input
                 id="vin"
                 className="vin-input"
@@ -203,14 +230,20 @@ function CarNewForm() {
               </label>
             </td>
 
+
             <td className="input-year">
+
+         // <div className="right-form">
+         //   <div className="rowb">
+       //       <label htmlFor="year">Year:</label>
+
               <input
                 id="year"
                 type="number"
                 value={year}
                 min="1900"
                 onChange={handleChange}
-                required
+                // required
               />
             </td>
           </tr>
@@ -245,7 +278,8 @@ function CarNewForm() {
                 type="number"
                 value={doors}
                 min="2"
-                placeholder=""
+                max="4"
+                placeholder="Enter the number doors of the car"
                 onChange={handleChange}
                 style={{ width: "50px" }}
                 required

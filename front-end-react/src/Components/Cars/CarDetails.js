@@ -83,24 +83,35 @@ function CarDetails() {
     let totalBusinessExpenses = 0;
     let expenses = [["Expense", "Date", "Amount"]];
     expensesArr.forEach((expense) => {
+      let newDate = new Date(expense.date);
+      let year = newDate.getFullYear();
       if (expense.business_use) {
-        expenses.push([
-          `${expense.expense_type}`,
-          `${expense.date}`,
-          `$${expense.amount_spent.toLocaleString()}`,
-        ]);
-        totalBusinessExpenses += Number(expense.amount_spent);
+        if (year === 2021) {
+          expenses.push([
+            `${expense.expense_type}`,
+            `${newDate.toLocaleDateString()}`,
+            `$${expense.amount_spent.toLocaleString()}`,
+          ]);
+          totalBusinessExpenses += Number(expense.amount_spent);
+        }
       }
     });
-    console.log("expenses outside handleReport", expenses);
 
     let totalBusinessTrips = 0;
     let trips = [["Date", "Miles", "Reason"]];
 
     tripsArr.forEach((trip) => {
+      let newDate = new Date(trip.date);
+      let year = newDate.getFullYear();
       if (trip.business_use) {
-        trips.push([`${trip.date}`, `${trip.miles}`, `${trip.reason}`]);
-        totalBusinessTrips += Number(trip.miles);
+        if (year === 2021) {
+          trips.push([
+            `${newDate.toLocaleDateString()}`,
+            `${trip.miles}`,
+            `${trip.reason}`,
+          ]);
+          totalBusinessTrips += Number(trip.miles);
+        }
       }
     });
 
@@ -124,6 +135,33 @@ function CarDetails() {
         },
         content: [
           {
+            text: `Driver: ${car?.driver} `,
+            bold: true,
+            fontSize: 20,
+            alignment: "center",
+            margin: [0, 20],
+          },
+          {
+            layout: "lightHorizontalLines",
+            table: {
+              headerRows: 1,
+              widths: ["50%"],
+              height: "100",
+              body: [
+                [{ text: "Car details", bold: true, fontSize: 15 }],
+                [`Car make: ${car?.make}`],
+                [`Car model: ${car?.model}`],
+                [`Car VIN: ${car?.vin}`],
+                [`Car year: ${car?.year}`],
+                [`Car mileage: ${car?.odometer.toLocaleString()}`],
+                [`Number of car doors: ${car?.doors}`],
+              ],
+              fontSize: 40,
+            },
+          },
+
+          {
+            pageBreak: "before",
             text: `${car?.make} ${car?.model} expenses for business-use\n for the year 2021 `,
             bold: true,
             fontSize: 20,
@@ -172,6 +210,16 @@ function CarDetails() {
             margin: [35, 20, 10, 0],
           },
         ],
+        styles: {
+          header: {
+            bold: true,
+            fontSize: 15,
+          },
+        },
+        defaultStyle: {
+          fontSize: 12,
+          margin: [0, 20],
+        },
       };
 
       const pdfDoc = pdfMake.createPdf(documentDefinition).open();
@@ -271,7 +319,7 @@ function CarDetails() {
             <li>Model: {car?.model}</li>
             <li>VIN: {car?.vin}</li>
             <li>Year: {car?.year}</li>
-            <li>Odometer: {car?.odometer}</li>
+            <li>Odometer: {car?.odometer.toLocaleString()}</li>
             <li>Doors: {car?.doors}</li>
           </div>
           </div>
