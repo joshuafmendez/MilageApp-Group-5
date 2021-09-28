@@ -297,7 +297,8 @@ display: block;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-  width: 40%;
+  width: 50%;
+  margin-left:2%;
 
 
 }
@@ -395,7 +396,8 @@ div.all-bs{
   position: absolute;
   z-index: 77;
   margin-left:10%;
-  margin-top:10%;
+  margin-top:18%;
+  
 
 }
 
@@ -403,7 +405,89 @@ button.b-delete,button.b-edit{
   border-radius: 50%;
   height: 60px;
   width: 60px;
-  background-color: white;
-  box-shadow: maroon;
-  font-size: 13px;
+  background-color: rgb(76, 72, 72);
+  box-shadow: black;
+  font-size: 12px;
+  text-align: center;
+  color:white;
+}
+
+button.b-edit:hover{
+
+  box-shadow:transparent;
+  color:white;
+
+
+}
+button.b-delete:hover{
+  box-shadow:transparent;
+  color:white;
+  background-color: red;
+}
+
+.nav-expenses{
+  background-color: wheat;
+
+  display: flex;
+  justify-content: space-between;
+  color:rgb(51,51,51);
+  width: 94%;
+  background-color: rgb(247,247,247);
+  margin-left: 3%;
+  padding:6px;
+  align-items: center;
+  margin-bottom: 20px;
+  
+}
+div.nav-expenses >a{
+  color:limegreen;
+}
+.nav-expenses>p{
+  font-size: 12px;
+padding:0;
+margin:0;
+
+  /* font-weight: lighter; */
+}
+.nav-expenses>a:link{
+  font-size: 12px;
+  padding:0;
+  margin:0;
+
+}
+
+.nav-expenses{
+  background-color: wheat;
+
+  display: flex;
+  justify-content: space-between;
+  color:rgb(51,51,51);
+  width: 94%;
+  background-color: rgb(247,247,247);
+  margin-left: 3%;
+  padding:6px;
+  align-items: center;
+  margin-bottom: 20px;
+  
+}
+div.nav-expenses >button{
+  color:limegreen;
+}
+.nav-expenses>p{
+  font-size: 12px;
+padding:0;
+margin:0;
+
+  /* font-weight: lighter; */
+}
+.nav-expenses>button{
+  font-size: 12px;
+  padding:0;
+  margin:0;
+
+}
+
+.deets{
+  margin-left: 8%;
+  font-size: 20px;
 }

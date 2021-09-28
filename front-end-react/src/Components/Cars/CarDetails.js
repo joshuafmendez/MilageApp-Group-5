@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from "react";
-import { useParams, useHistory, Link } from "react-router-dom";
+import { useParams, useHistory, Link, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { UserContext } from "../../Providers/UserProvider";
 import {
@@ -14,6 +14,10 @@ import { AiOutlineAppstoreAdd } from "react-icons/ai";
 import { AiFillCar } from "react-icons/ai";
 import { GrDocumentPdf } from "react-icons/gr";
 import { FaCalculator } from "react-icons/fa";
+import { FcCurrencyExchange } from "react-icons/fc";
+import { ImRoad } from "react-icons/im";
+
+import { signOut } from "../../Services/Firebase";
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
@@ -28,8 +32,6 @@ function CarDetails() {
   const dispatch = useDispatch();
   let { id } = useParams();
 
-
-
   const deleteCar = async () => {
     try {
       await deleteCarByID(id, user);
@@ -42,12 +44,6 @@ function CarDetails() {
     await deleteCar();
     history.push("/cars");
   };
-
-
-
-
-
-
 
   useEffect(() => {
     const getAllExpenses = async () => {
@@ -105,22 +101,12 @@ function CarDetails() {
       }
     });
 
-
-
-
-
-
-
-
-
     console.log("tripsArr", tripsArr);
 
-
-
-
-
-
-
+    const handleLogout = async () => {
+      signOut();
+      history.push("/");
+    };
 
     const handleReport = () => {
       car = cars[id];
@@ -189,16 +175,66 @@ function CarDetails() {
       return pdfDoc;
     };
 
-
-
-
-
-
-
-
     return (
       <>
-        <div className="log-start">
+        <div>
+          <div className="right-nav">
+            <div className="nav-expenses">
+              <p className="total-expenses">Total Expenses</p>
+              <Link to={`/cars/${id}/expenses`}>
+                ${expensesArr.reduce((total, expense) => {
+                  total += expense.amount_spent;
+                  return total;
+                }, 0)}.00
+              </Link>
+            </div>
+
+            <div className="nav-expenses">
+              <p className="total-expenses">Total mileage</p>
+
+              <Link to={`/cars/${id}/trips`}>
+                {tripsArr.reduce((total, trip) => {
+                  total += trip.miles;
+                  return total;
+                }, 0)}
+              </Link>
+            </div>
+
+            {/* <div className="nav-expenses">
+              <NavLink to="/cars"> ✚ Enter Expenses </NavLink>
+              <FcCurrencyExchange size="16px" />
+            </div> */}
+
+            <div className="nav-expenses">
+              <Link to={`/cars/${id}/expenses/expense/new`} > ✚ Enter Expense </Link>
+              <ImRoad size="16px" />
+            </div>
+
+            <div className="nav-expenses">
+            <Link to={`/cars/${id}/trips/trip/new`} > ✚ Enter Mileage </Link>
+              <ImRoad size="16px" />
+            </div>
+
+            <div className="nav-expenses">
+              <button onClick={handleReport} className="cars-new-button">
+                Generate Report
+              </button>
+              <GrDocumentPdf size="16px" />
+            </div>
+
+            <div className="nav-expenses">
+              <Link to={`/cars/${id}/expenses`}>📕 Expense Table</Link>
+            </div>
+
+            <div className="nav-expenses">
+              <Link to={`/cars/${id}/mileage`}>📘 Mileage Table</Link>
+            </div>
+
+            <button onClick={handleLogout}> LOG OUT</button>
+          </div>
+        </div>
+
+        {/* <div className="log-start">
           <div className="corner-fix">
             <a
               href="https://www.irs.gov/newsroom/heres-the-411-on-who-can-deduct-car-expenses-on-their-tax-returns"
@@ -232,9 +268,7 @@ function CarDetails() {
 
             <div>logout</div>
           </div>
-
-          {/* <CarsIndex navToggle={navToggle} mileageToggle={mileageToggle} /> */}
-        </div>
+        </div> */}
 
         {/* <div className="whit"> */}
         {/* <p>
@@ -252,15 +286,16 @@ function CarDetails() {
         {/* <img src={sprite}     style={{ width: "522px",height:"140px" }}/>
 <div class="hi"></div> */}
         <section className="car-section">
+          <br></br>
           <div className="all-bs">
-          
-              <button className="b-delete" onClick={handleDelete}>DELETE</button>
-       
-              <Link to={`/cars/${id}/edit`}>
-                <button className="b-edit">EDIT</button>
-              </Link>
-            </div>
-          
+            <button className="b-delete" onClick={handleDelete}>
+              DELETE
+            </button>
+
+            <Link to={`/cars/${id}/edit`}>
+              <button className="b-edit">EDIT</button>
+            </Link>
+          </div>
 
           <div className="concar-div">
             <img
@@ -272,7 +307,7 @@ function CarDetails() {
           </div>
           {/* <div onmouseover="rotateYDIV()" id="rotate3D" style="transform: rotateY(180deg);">3D rotate</div> */}
 
-          <div className="cdropdown">
+          {/* <div className="cdropdown">
             <div className="cdropbtn">Car Details</div>
             <div className="cdropdown-content">
               <li>Car ID: {id}</li>
@@ -283,16 +318,21 @@ function CarDetails() {
               <li>Odometer: {car?.odometer}</li>
               <li>Doors: {car?.doors}</li>
             </div>
+          </div> */}
+          <div className="deets">
+            <li>Car ID: {id}</li>
+            <li>Make: {car?.make}</li>
+            <li>Model: {car?.model}</li>
+            <li>VIN: {car?.vin}</li>
+            <li>Year: {car?.year}</li>
+            <li>Odometer: {car?.odometer}</li>
+            <li>Doors: {car?.doors}</li>
           </div>
         </section>
 
-        <div className="contain-ul">
-          <ul className="ul-choicesb">
-            {/* {newCarForm && (
-        <div className="toggle-form">
-          <FormModal setShow={setShow} />
-        </div>
-      )} */}
+        {/* <div className="contain-ul"> */}
+        {/* <ul className="ul-choicesb">
+       
 
             <li className="li-choicesb">
               <div className="choicesb">
@@ -300,7 +340,7 @@ function CarDetails() {
                   <AiOutlineAppstoreAdd size="35px" />
                   <button className="cars-new-button">Add New Car</button>
                 </Link>
-                {/* <button className="cars-new-button">Add New Car</button> */}
+               
               </div>
             </li>
 
@@ -308,18 +348,11 @@ function CarDetails() {
               <div className="choicesb">
                 <Link to={"/cars"}>
                   <AiFillCar size="35px" />
-                  <button className="cars-new-button">Select Car</button>
+                  <button className="cars-new-button">Cars</button>
                 </Link>
               </div>
             </li>
-            <li className="li-choicesb">
-              <div className="choicesb">
-                <div onClick={handleReport}>
-                  <GrDocumentPdf size="33px" />
-                  <button className="cars-new-button">Generate Report</button>
-                </div>
-              </div>
-            </li>
+     
 
             <li className="li-choicesb">
               <div className="choicesb">
@@ -329,40 +362,16 @@ function CarDetails() {
                 </Link>
               </div>
             </li>
-          </ul>
-        </div>
-
+          </ul> */}
+        {/* </div> */}
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
         <Link to={"/cars"}>
           <button>BACK</button>
         </Link>
-
-        {/*         
-        
-        <button onClick={handleDelete}>DELETE</button> */}
-
-        {/* 
-        <button onClick={handleReport}>GENERATE REPORT</button> */}
-{/* 
-        <Link to={`/cars/${id}/expenses`}>
-          Total Expenses: $
-          {expensesArr.reduce((total, expense) => {
-            total += expense.amount_spent;
-            return total;
-          }, 0)}
-        </Link> */}
-
-{/* 
-        <Link to={`/cars/${id}/trips`}>
-          Total Mileage:
-          {tripsArr.reduce((total, trip) => {
-            total += trip.miles;
-            return total;
-          }, 0)}
-        </Link> */}
-
-        
-        {/* </div> */}
-        {/* </div> */}
       </>
     );
   }

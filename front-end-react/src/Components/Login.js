@@ -50,8 +50,9 @@ const Login = () => {
         dispatch(addCars(res));
         if (res.length) {
           //FIXME: The current code does nothing
-          let filterArray = res.filter((el) => el.is_default === true);
-          history.push(`/cars/${filterArray[filterArray.length - 1].id}`);
+          history.push(`/cars`);
+          // let filterArray = res.filter((el) => el.is_default === true);
+          // history.push(`/cars/${filterArray[filterArray.length - 1].id}`);
         } else {
           history.push("/cars/car/new");
         }

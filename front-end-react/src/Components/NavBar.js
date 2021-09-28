@@ -1,9 +1,9 @@
 import { NavLink, useParams, useHistory, Link } from "react-router-dom";
-import React, { useState, useEffect,useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "../Components/Style/NavBar.css";
 import { FcCurrencyExchange } from "react-icons/fc";
 import { ImRoad } from "react-icons/im";
-// import { GiSteeringWheel } from "react-icons/gi";
+
 import { signOut } from "../Services/Firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { UserContext } from "../Providers/UserProvider";
@@ -15,12 +15,6 @@ import {
 import { addExpenses } from "../Store/Actions/expenseActions";
 import { addTrips } from "../Store/Actions/tripsActions";
 
-
-
-
-
-
-// import { useSelector } from "react-redux";
 import expenses from "../Store/Reducers/expenses";
 
 export default function NavBar({ navExpenses, navMileage }) {
@@ -35,34 +29,17 @@ export default function NavBar({ navExpenses, navMileage }) {
   let [expenseForm, setExpenseForm] = useState(false);
   let [mileageForm, setMileageForm] = useState(false);
 
-  // const entireState = useSelector((state) => state);
-  // const { cars, expenses, trips } = entireState;
-  // console.log(entireState)
-
   const handleLogout = async () => {
     signOut();
     history.push("/");
   };
-  
 
-
-
-
-
-
-
-
-
-
-  
   useEffect(() => {
     setExpenseForm(navExpenses);
   }, [navExpenses]);
   useEffect(() => {
     setMileageForm(navMileage);
   }, [navMileage]);
-
-
 
   useEffect(() => {
     const getAllExpenses = async () => {
@@ -86,10 +63,6 @@ export default function NavBar({ navExpenses, navMileage }) {
     };
     getAllTrips();
   }, [id, user, history, dispatch]);
-
-  // const setCheck = (e) => {
-  //   console.log(e.target);
-  // };
 
   if (!user) {
     return <div className="spinner-border"></div>;
@@ -119,100 +92,92 @@ export default function NavBar({ navExpenses, navMileage }) {
         totalBusinessTrips += Number(trip.miles);
       }
     });
-
-
   }
 
-
-
-
-
-
-
-
-
-
-
   return (
-    <div>
-      <div className="right-nav">
+    <div className="log-start">
+      <div className="corner-fix">
+        <Link to={`/cars/${id}/expenses`}>Car Expenses</Link>
 
-
-
-        
-        <div className="nav-expenses">
-          <p className="total-expenses">Total Expenses</p>
-          <Link to={`/cars/${id}/expenses`}>
-
-          {expensesArr.reduce((total, expense) => {
-            total += expense.amount_spent;
-            return total;
-          }, 0)}
-        </Link>
-        </div>
-
-
-
-        <div className="nav-expenses">
-          <p className="total-expenses">Total mileage</p>
-
-        
-          <Link to={`/cars/${id}/trips`}>
+        {/* 
+      <a
+        href="https://www.irs.gov/newsroom/heres-the-411-on-who-can-deduct-car-expenses-on-their-tax-returns"
+        target="blank"
+      >
    
-          {tripsArr.reduce((total, trip) => {
-            total += trip.miles;
-            return total;
-          }, 0)}
+      </a> */}
+
+        <Link to={`/cars/${id}/trips`}>
+          {/* {tripsArr.reduce((total, trip) => {
+              total += trip.miles;
+              return total;
+            }, 0)} */}
+          Mileage Rates
         </Link>
 
-         
+        <div className="dropdown">
+          <div className="dropbtn">Driver Resources</div>
+          <div className="dropdown-content">
+            <a
+              href="https://www.uber.com/us/en/drive/tax-information/"
+              target="blank"
+            >
+              Uber
+            </a>
+            <a href="https://www.lyft.com/driver/taxes" target="blank">
+              Lyft
+            </a>
+            <a href="#" target="blank">
+              Other
+            </a>
+          </div>
         </div>
 
-
-
-
-
-        
-        {expenseForm && (
-
-<div className="nav-expenses">
-<NavLink to="/cars"> ✚ Enter Expenses     </NavLink>
-<FcCurrencyExchange size="16px" />
-</div>
-        )}
-
-        {mileageForm && (
- 
- <div className="nav-expenses">
- <NavLink to="/cars"> ✚ Enter Mileage    </NavLink>
- <ImRoad size="16px" />
- </div>
-        )}
-        {/* {expenseForm && (
-          <NavLink to="/cars/:car_id/expenses/expense/new">
-            <h2>Enter Expenses</h2>
-            <FcCurrencyExchange size="36px" />
-          </NavLink>
-        )}
-
-        {mileageForm && (
-          <NavLink to="/cars/:car_id/trips/trip/new">
-            <h2>Enter Mileage</h2>
-            <ImRoad size="36px" />
-          </NavLink>
-        )} */}
-
-
-
-
-
-
-        
-
-        <button onClick={handleLogout}> LOG OUT</button>
-
-        {/* {gasForm  && <FormPage/>} */}
+        <div onClick={handleLogout}>logout</div>
       </div>
+
+      {/* <CarsIndex navToggle={navToggle} mileageToggle={mileageToggle} /> */}
     </div>
+
+    // <div>
+    //   <div className="right-nav">
+    //     <div className="nav-expenses">
+    //       <p className="total-expenses">Total Expenses</p>
+    //       <Link to={`/cars/${id}/expenses`}>
+    //         {expensesArr.reduce((total, expense) => {
+    //           total += expense.amount_spent;
+    //           return total;
+    //         }, 0)}
+    //       </Link>
+    //     </div>
+
+    //     <div className="nav-expenses">
+    //       <p className="total-expenses">Total mileage</p>
+
+    // <Link to={`/cars/${id}/trips`}>
+    //   {tripsArr.reduce((total, trip) => {
+    //     total += trip.miles;
+    //     return total;
+    //   }, 0)}
+    // </Link>
+    //     </div>
+
+    //     {expenseForm && (
+    //       <div className="nav-expenses">
+    //         <NavLink to="/cars"> ✚ Enter Expenses </NavLink>
+    //         <FcCurrencyExchange size="16px" />
+    //       </div>
+    //     )}
+
+    //     {mileageForm && (
+    //       <div className="nav-expenses">
+    //         <NavLink to="/cars"> ✚ Enter Mileage </NavLink>
+    //         <ImRoad size="16px" />
+    //       </div>
+    //     )}
+
+    //     <button onClick={handleLogout}> LOG OUT</button>
+    //   </div>
+    // </div>
   );
 }

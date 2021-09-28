@@ -46,7 +46,18 @@ const Cars = () => {
   }, [user, history]);
 
   return (
+
+
+
+
     <div className="cars-div">
+
+
+
+
+
+
+      
     {/* <div className="whit">
       <p>
   
@@ -62,7 +73,7 @@ const Cars = () => {
 
 
     
-
+{/* 
     <ul className="ul-choices">
       <li>
         <div className="choices">
@@ -83,14 +94,7 @@ const Cars = () => {
           </Link>
         </div>
       </li>
-      <li>
-        <div className="choices">
-          <Link to={"/cars/car/new"}>
-            <GrDocumentPdf size="33px" />
-            <button className="cars-new-button">Generate Report</button>
-          </Link>
-        </div>
-      </li>
+    
 
       <li>
         <div className="choices">
@@ -100,7 +104,7 @@ const Cars = () => {
           </Link>
         </div>
       </li>
-    </ul>
+    </ul> */}
     <CarsListItem carsArr={carsArr} cars={cars} />
   </div>
   );

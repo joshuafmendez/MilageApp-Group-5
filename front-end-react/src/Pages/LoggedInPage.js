@@ -43,43 +43,58 @@ export const LoggedInPage = ({ navToggle ,mileageToggle}) => {
 
       //   {/* <button onClick={handleLogout}> LOG OUT</button> */}
       // </div>
-      <div className="log-start">
-      <div className="corner-fix">
-        <a
-          href="https://www.irs.gov/newsroom/heres-the-411-on-who-can-deduct-car-expenses-on-their-tax-returns"
-          target="blank"
-        >
-          Car Expenses
-        </a>
-        <a
-          href="https://www.irs.gov/tax-professionals/standard-mileage-rates"
-          target="blank"
-        >
-          Mileage Rates
-        </a>
-        <div className="dropdown">
-          <div className="dropbtn">Driver Resources</div>
-          <div className="dropdown-content">
-            <a href="https://www.uber.com/us/en/drive/tax-information/"
-             target="blank">
-              Uber
-            </a>
-            <a href="https://www.lyft.com/driver/taxes"
-             target="blank">
-               Lyft</a>
-            <a href="#" 
-             target="blank">Other</a>
-          </div>
-        </div>
+    //   <div className="log-start">
+    //   <div className="corner-fix">
+    //     <a
+    //       href="https://www.irs.gov/newsroom/heres-the-411-on-who-can-deduct-car-expenses-on-their-tax-returns"
+    //       target="blank"
+    //     >
+    //       Car Expenses
+    //     </a>
+    //     <a
+    //       href="https://www.irs.gov/tax-professionals/standard-mileage-rates"
+    //       target="blank"
+    //     >
+    //       Mileage Rates
+    //     </a>
+    //     <div className="dropdown">
+    //       <div className="dropbtn">Driver Resources</div>
+    //       <div className="dropdown-content">
+    //         <a href="https://www.uber.com/us/en/drive/tax-information/"
+    //          target="blank">
+    //           Uber
+    //         </a>
+    //         <a href="https://www.lyft.com/driver/taxes"
+    //          target="blank">
+    //            Lyft</a>
+    //         <a href="#" 
+    //          target="blank">Other</a>
+    //       </div>
+    //     </div>
 
-        <div onClick={handleLogout}>
-          logout 
-        </div>
-      </div>
+    //     <div onClick={handleLogout}>
+    //       logout 
+    //     </div>
+    //   </div>
 
-      <CarsIndex navToggle={navToggle} mileageToggle={mileageToggle} />
+    //   <CarsIndex navToggle={navToggle} mileageToggle={mileageToggle} />
 
 
+    // </div>
+    <div>
+      <div className="whita"> 
+      <p>
+       
+            Welcome {user.displayName}, Trip App understands the importance of
+            business owners and independant contractors documenting their
+            mileage and automotive expenses and we are here to make that process
+            as easy as possible for you.
+          </p>
+        </div> 
+       <div className="grena">
+          <p>Learn more about tax breaks you may qualify for:</p>
+        </div> 
+        <CarsIndex navToggle={navToggle} mileageToggle={mileageToggle} />
     </div>
     );
   } else return <div> NOT LOGGED IN </div>;
