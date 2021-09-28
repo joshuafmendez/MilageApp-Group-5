@@ -17,7 +17,6 @@ export default function NavBar({ navExpenses, navMileage }) {
   // const { cars, expenses, trips } = entireState;
   // console.log(entireState)
 
-
   const handleLogout = async () => {
     signOut();
     history.push("/");

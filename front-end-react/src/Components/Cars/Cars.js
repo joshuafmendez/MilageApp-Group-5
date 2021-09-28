@@ -12,7 +12,6 @@ import "../../Components/Style/Cars.css";
 
 // TODO:
 // new car on navbar
-// enter expense and trips on navbar
 // 404 not working
 
 const Cars = () => {
