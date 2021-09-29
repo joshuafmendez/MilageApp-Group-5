@@ -1,4 +1,4 @@
-.vin {
+/* .vin {
   width: 50px;
 }
 .form-rows {
@@ -15,7 +15,7 @@
 .left-form {
   display: flex;
   flex-wrap: wrap;
-  /* border:solid blue 3px; */
+
   width: 100%;
   height: 120px;
   justify-content: space-around;
@@ -24,27 +24,25 @@
 .right-form {
   display: flex;
   flex-wrap: wrap;
-  /* border:solid pink  3px; */
+
   width: 100%;
   height: 120px;
   justify-content: space-around;
   align-items: center;
 }
-/* .left-form>input{
-    width: 5%;
-} */
+
 .all-rows {
   width: 100%;
   border: solid black 1px;
   border-radius: 8%;
   display: flex;
   flex-direction: column;
-  /* padding-left:8%; */
+
   margin-left: 15%;
   margin-top: 1%;
-  /* padding-top:1%; */
+
   height: 200px;
-  /* background-color: rgb(201, 108, 108); */
+
   background-color: white;
 }
 input {
@@ -67,4 +65,123 @@ label {
   background-color: darkred;
   border: 0.5px solid grey;
   border-radius: 3%;
+} */
+
+
+.form-rows {
+  /* width: 100%;
+  border: black solid 2px;
+  height: 150%;
+  background-color: none;
+  margin-top: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; */
+  /* background-color:white; */
+  width: 40%;
+  height: 800px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  /* margin-left:20%; */
+  margin-top:3%;
+  position:sticky;
+  margin-bottom: 20%;
+  margin-top:0;
+  
+}
+
+.divform{
+  /* background-color:white;
+  width: 70%;
+  height: 800px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-left:10%;
+  margin-top:3%;
+  position:sticky;
+  margin-bottom: 20%;
+  margin-top:0; */
+  /* justify-content: space-around;  */
+ /* width: 0%; */
+ width: 100%;
+ background-color: white;
+ margin:0;
+ padding-top:5%;
+ /* height: 100%; */
+ height: 900px;
+}
+
+
+/* .left-form>input{
+    width: 5%;
+} */
+
+input {
+  /* background-color: rgb(200, 245, 211); */
+  border-top: transparent;
+  border-right: transparent;
+  border-left: transparent;
+}
+label {
+  color: rgb(58, 58, 73);
+  font-family: "Allerta Stencil", sans-serif;
+}
+.submit {
+  color: white;
+  background-color: darkseagreen;
+  border: 0.5px solid grey;
+  border-radius: 3%;
+  margin-right: 30%;
+
+}
+.cancel {
+  background-color: darkred;
+  border: 0.5px solid grey;
+  border-radius: 3%;
+  margin-right: 30%;
+  color:white;
+  
+}
+.buts{
+  display: flex;
+  /* margin-right: 20%; */
+  width: 100%;
+  flex-direction: row;
+  padding: 0;
+  /* justify-content: space-around; */
+}
+.form-rows>table{
+  /* align-self: center; */
+  width: 40%;
+}
+
+.table-newcar{
+width:50%;
+margin-left: 25%;
+}
+input{
+  padding:0;
+}
+td{
+  background-color: transparent;
+}
+tr{
+  background-color: transparent;
+}
+table.table-newcar>td>{
+  display: flex;
+  padding:0;
+  flex-direction: row;
+}
+div.buts{
+  width: 10%;
+  margin-left: 50%;
+}
+.bckground{
+    /* background-color: turquoise; */
+    position:absolute;
+    z-index: 5;
+    margin-right:35%;
 }
