@@ -40,11 +40,15 @@ ul.ul-choices{
 }
 div.cars-div{
 
-
+  display: flex;
+flex-direction: column;
+align-items: center;
   width: 100%;
   background-color: white;
 
-  padding-top:0;
+  padding-top:1%;
+margin-top:1%;
+  padding-left: 0;
 
   height: 900px;
 }
@@ -185,6 +189,7 @@ div.whita {
   font-family: Arial, Helvetica, sans-serif;
   height: 130px;
   width:80%;
+
   border-radius: 3%;
 
   text-align: left;
@@ -194,6 +199,37 @@ div.whita {
 li.li-show{
   width: 100%;
 }
+.circle-car{
+  height: 150px;
+width: 150px;
+border-radius: 50%;
+background-image:url("../Images/addcaroff.png");
+/* margin-left:10px; */
+align-self:center;
+background-position: center;
+background-size: cover;
+outline: black 2px solid;
+/* position: fixed; */
 
+}
+.circle-car:hover{
+  height: 140px;
+width: 140px;
+border-radius: 50%;
+background-image:url("../Images/addcaron.png");
+/* margin-left:10px; */
+align-self:center;
+background-position: center;
+background-size: cover;
+/* position: fixed; */
+outline: rgb(255, 254, 254) 2px solid;
 
+}
+.button-newcar{
+  height:180px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top:50px;
+}
 /* background-image: linear-gradient(red, yellow); */

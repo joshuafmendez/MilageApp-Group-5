@@ -82,7 +82,7 @@ export const LoggedInPage = ({ navToggle ,mileageToggle}) => {
 
     // </div>
     <div>
-      <div className="whita"> 
+      {/* <div className="whita"> 
       <p>
        
             Welcome {user.displayName}, Trip App understands the importance of
@@ -93,7 +93,7 @@ export const LoggedInPage = ({ navToggle ,mileageToggle}) => {
         </div> 
        <div className="grena">
           <p>Learn more about tax breaks you may qualify for:</p>
-        </div> 
+        </div>  */}
         <CarsIndex navToggle={navToggle} mileageToggle={mileageToggle} />
     </div>
     );
