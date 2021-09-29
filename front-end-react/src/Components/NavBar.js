@@ -1,21 +1,20 @@
-import { NavLink, useParams, useHistory, Link } from "react-router-dom";
+import { useParams, useHistory, Link } from "react-router-dom";
 import React, { useState, useEffect, useContext } from "react";
 import "../Components/Style/NavBar.css";
-import { FcCurrencyExchange } from "react-icons/fc";
-import { ImRoad } from "react-icons/im";
-
 import { signOut } from "../Services/Firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { UserContext } from "../Providers/UserProvider";
 import {
-  deleteCarByID,
+  // deleteCarByID,
   getAllExpensesFN,
   getAllTripsFN,
 } from "../util/networkRequest";
 import { addExpenses } from "../Store/Actions/expenseActions";
 import { addTrips } from "../Store/Actions/tripsActions";
 
-import expenses from "../Store/Reducers/expenses";
+// import { FcCurrencyExchange } from "react-icons/fc";
+// import { ImRoad } from "react-icons/im";
+// import expenses from "../Store/Reducers/expenses";
 
 export default function NavBar({ navExpenses, navMileage }) {
   const entireState = useSelector((state) => state);
@@ -129,7 +128,7 @@ export default function NavBar({ navExpenses, navMileage }) {
           </div>
         </div>
 
-        <div onClick={handleLogout}>logout</div>
+        <div onClick={handleLogout}>Logout</div>
       </div>
 
       {/* <CarsIndex navToggle={navToggle} mileageToggle={mileageToggle} /> */}

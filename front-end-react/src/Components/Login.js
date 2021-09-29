@@ -15,14 +15,13 @@ import { FaInstagramSquare } from "react-icons/fa";
 import { GrFacebook } from "react-icons/gr";
 import TripLogo from "./Images/giflogo.GIF";
 
-
 // import { MDBCard, MDBCardImage, MDBCardBody, MDBCardTitle, MDBCardText, MDBCardGroup } from 'mdb-react-ui-kit';
 const Login = () => {
   const dispatch = useDispatch();
   const user = useContext(UserContext);
   const history = useHistory();
-  const [displayLogin, setDisplayLogin] = useState(false)
-  const [displaySignUp, setDisplaySignUp] = useState(false)
+  const [displayLogin, setDisplayLogin] = useState(false);
+  const [displaySignUp, setDisplaySignUp] = useState(false);
   const [input, setInput] = useState({
     email: "",
     password: "",
@@ -32,33 +31,33 @@ const Login = () => {
     newPassword: "",
     passwordCheck: "",
   });
-  const handleGoogle = () =>{
-    handleX()
-    signInWithGoogle()
-  }
+  const handleGoogle = () => {
+    handleX();
+    signInWithGoogle();
+  };
   const handleX = () => {
-    setDisplaySignUp(false)
-    setDisplayLogin(false)
-  }
+    setDisplaySignUp(false);
+    setDisplayLogin(false);
+  };
   const handleDisplayLogin = () => {
     if (displaySignUp) {
-      setDisplaySignUp(!displaySignUp)
-      setDisplayLogin(!displayLogin)
+      setDisplaySignUp(!displaySignUp);
+      setDisplayLogin(!displayLogin);
     } else {
-      setDisplayLogin(!displayLogin)
+      setDisplayLogin(!displayLogin);
     }
-  }
+  };
   const handleDisplaySignIn = () => {
-    setDisplaySignUp(!displaySignUp)
-    setDisplayLogin(!displayLogin)
-  }
+    setDisplaySignUp(!displaySignUp);
+    setDisplayLogin(!displayLogin);
+  };
   const handleLoginIn = (e) => {
-    e.preventDefault()
-    login(input.email, input.password)
-  }
+    e.preventDefault();
+    login(input.email, input.password);
+  };
   const handleSubmit = (e) => {
-    e.preventDefault()
-    signup(signUpInput.newEmail, signUpInput.newPassword)
+    e.preventDefault();
+    signup(signUpInput.newEmail, signUpInput.newPassword);
   };
   const handleChange = (e) => {
     setInput({ ...input, [e.target.id]: e.target.value });
@@ -132,16 +131,35 @@ const Login = () => {
       </nav>
       {/* --------------------------------- */}
       {/* Log in */}
-      {displayLogin &&
+      {displayLogin && (
         <form className="logInForm" onSubmit={handleLoginIn}>
-          <button type="button" className="btn-close x-button" onClick={handleX} aria-label="Close"></button>
+          <button
+            type="button"
+            className="btn-close x-button"
+            onClick={handleX}
+            aria-label="Close"
+          ></button>
           <div>
-            <button type="button" className="btn btn-outline-primary" onClick={handleDisplaySignIn}>New User</button>
-            <button type="button" className="btn btn-outline-secondary" onClick={handleGoogle}>Google Sign in</button>
+            <button
+              type="button"
+              className="btn btn-outline-primary"
+              onClick={handleDisplaySignIn}
+            >
+              New User
+            </button>
+            <button
+              type="button"
+              className="btn btn-outline-secondary"
+              onClick={handleGoogle}
+            >
+              Google Sign in
+            </button>
           </div>
           <legend>Log In</legend>
           <div className="mb-3">
-            <label htmlFor="email" className="form-label">Email address</label>
+            <label htmlFor="email" className="form-label">
+              Email address
+            </label>
             <input
               onChange={handleChange}
               value={input.email}
@@ -154,7 +172,9 @@ const Login = () => {
             />
           </div>
           <div className="mb-3">
-            <label htmlFor="password" className="form-label">Password</label>
+            <label htmlFor="password" className="form-label">
+              Password
+            </label>
             <input
               onChange={handleChange}
               value={input.password}
@@ -164,40 +184,66 @@ const Login = () => {
               required
             />
           </div>
-          <button type="submit" className="btn btn-primary">Submit</button>
-        </form>}
+          <button type="submit" className="btn btn-primary">
+            Submit
+          </button>
+        </form>
+      )}
       {/* signUp */}
-      {displaySignUp && <form className="signUpForm" onSubmit={handleSubmit}>
-      <button type="button" className="btn-close x-button" onClick={handleX} aria-label="Close"></button>
-          <div><button type="button" className="btn btn-outline-secondary" onClick={handleGoogle}>Google Sign in</button></div>
-        <legend>Sign Up</legend>
-        <div className="mb-3">
-          <label htmlFor="newEmail" className="form-label">Email address</label>
-          <input
-            onChange={handleSignUpChange}
-            value={signUpInput.newEmail}
-            type="email"
-            className="form-control"
-            id="newEmail"
-            aria-describedby="emailHelp"
-            placeholder="...@url.com"
-            required
-          />
-          <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
-        </div>
-        <div className="mb-3">
-          <label htmlFor="newPassword" className="form-label">Password</label>
-          <input
-            onChange={handleSignUpChange}
-            value={signUpInput.newPassword}
-            type="password"
-            className="form-control"
-            id="newPassword"
-            required
-          />
-        </div>
-        <button type="submit" className="btn btn-primary">Submit</button>
-      </form>}
+      {displaySignUp && (
+        <form className="signUpForm" onSubmit={handleSubmit}>
+          <button
+            type="button"
+            className="btn-close x-button"
+            onClick={handleX}
+            aria-label="Close"
+          ></button>
+          <div>
+            <button
+              type="button"
+              className="btn btn-outline-secondary"
+              onClick={handleGoogle}
+            >
+              Google Sign in
+            </button>
+          </div>
+          <legend>Sign Up</legend>
+          <div className="mb-3">
+            <label htmlFor="newEmail" className="form-label">
+              Email address
+            </label>
+            <input
+              onChange={handleSignUpChange}
+              value={signUpInput.newEmail}
+              type="email"
+              className="form-control"
+              id="newEmail"
+              aria-describedby="emailHelp"
+              placeholder="...@url.com"
+              required
+            />
+            <div id="emailHelp" className="form-text">
+              We'll never share your email with anyone else.
+            </div>
+          </div>
+          <div className="mb-3">
+            <label htmlFor="newPassword" className="form-label">
+              Password
+            </label>
+            <input
+              onChange={handleSignUpChange}
+              value={signUpInput.newPassword}
+              type="password"
+              className="form-control"
+              id="newPassword"
+              required
+            />
+          </div>
+          <button type="submit" className="btn btn-primary">
+            Submit
+          </button>
+        </form>
+      )}
       {/* --------------------------------------- */}
       <div className="login-body">
         <section className="first-section">

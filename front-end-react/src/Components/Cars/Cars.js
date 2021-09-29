@@ -1,5 +1,4 @@
 import React, { useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
 import "../../App.css";
 import { useSelector, useDispatch } from "react-redux";
 import { addCars } from "../../Store/Actions/carsActions";
@@ -8,14 +7,14 @@ import { UserContext } from "../../Providers/UserProvider";
 import { useHistory } from "react-router-dom";
 import CarsListItem from "./CarsListItem";
 import "../../Components/Style/Cars.css";
-import { AiOutlineAppstoreAdd } from "react-icons/ai";
-import { AiFillCar } from "react-icons/ai";
-import { GrDocumentPdf } from "react-icons/gr";
-import { FaCalculator } from "react-icons/fa";
+// import { Link } from "react-router-dom";
+// import { AiOutlineAppstoreAdd } from "react-icons/ai";
+// import { AiFillCar } from "react-icons/ai";
+// import { GrDocumentPdf } from "react-icons/gr";
+// import { FaCalculator } from "react-icons/fa";
 // import FormModal from "./FormModal";
 
 // TODO:
-// new car on navbar
 // 404 not working
 
 const Cars = () => {

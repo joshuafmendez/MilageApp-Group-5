@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from "react";
-import { useParams, useHistory, Link, NavLink } from "react-router-dom";
+import { useParams, useHistory, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { UserContext } from "../../Providers/UserProvider";
 import {
@@ -10,20 +10,20 @@ import {
 import { addExpenses } from "../../Store/Actions/expenseActions";
 import "../Style/CarDetails.css";
 import { addTrips } from "../../Store/Actions/tripsActions";
-import deletebutton from "../Images/delbutton.png";
-// import odo from "../Images/odo.png";
-import editbutton from "../Images/Edit.png";
-import { AiOutlineAppstoreAdd } from "react-icons/ai";
-import { AiFillCar } from "react-icons/ai";
 import { GrDocumentPdf } from "react-icons/gr";
-import { FaCalculator } from "react-icons/fa";
-import { FcCurrencyExchange } from "react-icons/fc";
 import { ImRoad } from "react-icons/im";
-
 import { signOut } from "../../Services/Firebase";
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
+// import deletebutton from "../Images/delbutton.png";
+// import odo from "../Images/odo.png";
+// import editbutton from "../Images/Edit.png";
+// import { AiOutlineAppstoreAdd } from "react-icons/ai";
+// import { AiFillCar } from "react-icons/ai";
+// import { FaCalculator } from "react-icons/fa";
+// import { FcCurrencyExchange } from "react-icons/fc";
 
 function CarDetails() {
   const entireState = useSelector((state) => state);
