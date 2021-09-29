@@ -106,7 +106,7 @@ function CarNewForm() {
                 id="year"
                 type="number"
                 value={year}
-                min="1900"
+                min="1990"
                 onChange={handleChange}
                 // required
               />
