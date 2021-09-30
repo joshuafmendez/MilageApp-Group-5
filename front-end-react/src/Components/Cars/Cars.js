@@ -52,14 +52,8 @@ const Cars = () => {
 
     <div className="cars-div">
 
-<div className="button-newcar">
-<Link to={`/cars/car/new`} >
-  <div className="circle-car"></div>
-                
-                </Link>
 
 
-</div>
 
 
 

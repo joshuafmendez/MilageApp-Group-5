@@ -22,6 +22,7 @@ function CarEditForm() {
     odometer: car.odometer,
     doors: car.doors,
     is_default: car.is_default,
+    driver: car.driver,
   });
 
   const updateCar = async (updatedCar, id) => {
@@ -49,12 +50,23 @@ function CarEditForm() {
     history.push(`/cars/${id}`);
   };
 
-  const { make, model, vin, year, odometer, doors, is_default } = carInput;
+  const { make, model, vin, year, odometer, doors, is_default, driver } =
+    carInput;
 
   return (
     <div className="edit-form">
       <form onSubmit={handleSubmit}>
+        <label htmlFor="driver">Driver's Name:</label>
+        <input
+          value={driver}
+          type="text"
+          onChange={handleChange}
+          id="driver"
+          placeholder="Enter your name"
+        />
+
         <label htmlFor="make">Make:</label>
+
         <input
           value={make}
           type="text"
@@ -83,7 +95,7 @@ function CarEditForm() {
           id="year"
           type="number"
           value={year}
-          min="1900"
+          min="1990"
           onChange={handleChange}
         />
         <label htmlFor="odometer">Odometer:</label>
@@ -101,6 +113,7 @@ function CarEditForm() {
           type="number"
           value={doors}
           min="2"
+          max="4"
           placeholder="Enter the number doors of the car"
           onChange={handleChange}
         />

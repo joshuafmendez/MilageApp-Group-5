@@ -25,7 +25,20 @@ export const signInWithGoogle = async () => {
     console.log(err);
   }
 };
-
+export const signup = (email, password) => {
+  try {
+    auth.createUserWithEmailAndPassword(email, password)
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+export const login = (email, password) => {
+  try {
+    auth.signInWithEmailAndPassword(email, password)
+  } catch (error) {
+    console.log(error.message);
+  }
+}
 export const signOut = async () => {
   try {
     await auth.signOut();

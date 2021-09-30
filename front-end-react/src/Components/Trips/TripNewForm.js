@@ -1,8 +1,8 @@
 import axios from "axios";
-import { useState,useContext,useEffect } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useHistory, Link, useParams } from "react-router-dom";
 import { apiURL } from "../../util/apiURL";
-import "../Style/TripNewForm.css"
+import "../Style/TripNewForm.css";
 import { UserContext } from "../../Providers/UserProvider";
 import "../Style/TripNewForm.css"
 
@@ -16,7 +16,7 @@ const TripNewForm = () => {
 
   let { id } = useParams();
   const [trip, setTrip] = useState({
-    date: "",
+    date: new Date(),
     miles: 0,
     reason: "",
     start_odometer: 0,
@@ -24,7 +24,6 @@ const TripNewForm = () => {
     business_use: false,
     favorite: false,
   });
-
 
   const addTrip = async (newTrip) => {
     try {
@@ -154,7 +153,7 @@ const TripNewForm = () => {
                   onChange={handleChange}
                   id="date"
                   placeholder="date"
-                  required
+                  // required
                 />{" "}
               </td>
             </tr>
@@ -168,6 +167,7 @@ const TripNewForm = () => {
                   id="miles"
                   type="number"
                   value={miles}
+                  min="0"
                   onChange={handleChange}
                   placeholder="Enter overall miles for the trip"
                   required
@@ -186,7 +186,7 @@ const TripNewForm = () => {
                   value={reason}
                   onChange={handleChange}
                   placeholder="Enter reason for your trip"
-                  required
+                  // required
                 />{" "}
               </td>
             </tr>

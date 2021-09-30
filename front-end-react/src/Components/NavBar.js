@@ -1,36 +1,39 @@
-import { NavLink, useParams, useHistory, Link } from "react-router-dom";
+import { useParams, useHistory, Link } from "react-router-dom";
 import React, { useState, useEffect, useContext } from "react";
 import "../Components/Style/NavBar.css";
-import { FcCurrencyExchange } from "react-icons/fc";
-import { ImRoad } from "react-icons/im";
-
 import { signOut } from "../Services/Firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { UserContext } from "../Providers/UserProvider";
 import {
-  deleteCarByID,
+  // deleteCarByID,
   getAllExpensesFN,
   getAllTripsFN,
 } from "../util/networkRequest";
 import { addExpenses } from "../Store/Actions/expenseActions";
 import { addTrips } from "../Store/Actions/tripsActions";
 
-import expenses from "../Store/Reducers/expenses";
+// import { FcCurrencyExchange } from "react-icons/fc";
+// import { ImRoad } from "react-icons/im";
+// import expenses from "../Store/Reducers/expenses";
 
 export default function NavBar({ navExpenses, navMileage }) {
   const entireState = useSelector((state) => state);
   const { cars, expenses, trips } = entireState;
   const user = useContext(UserContext);
-  const history = useHistory();
   const expensesArr = Object.values(expenses);
   const tripsArr = Object.values(trips);
   const dispatch = useDispatch();
   let { id } = useParams();
   let [expenseForm, setExpenseForm] = useState(false);
   let [mileageForm, setMileageForm] = useState(false);
+  let history = useHistory();
+
+  // const entireState = useSelector((state) => state);
+  // const { cars, expenses, trips } = entireState;
+  // console.log(entireState)
 
   const handleLogout = async () => {
-    signOut();
+    await signOut();
     history.push("/");
   };
 
@@ -97,8 +100,6 @@ export default function NavBar({ navExpenses, navMileage }) {
   return (
     <div className="log-start">
       <div className="corner-fix">
-  
-
         {/* 
       <a
         href="https://www.irs.gov/newsroom/heres-the-411-on-who-can-deduct-car-expenses-on-their-tax-returns"
@@ -107,10 +108,7 @@ export default function NavBar({ navExpenses, navMileage }) {
    
       </a> */}
 
-        <Link to={`/cars`}>
-       
-    Home
-        </Link>
+        <Link to={`/cars`}>Home</Link>
 
         <div className="dropdown">
           <div className="dropbtn">Driver Resources</div>
@@ -130,12 +128,12 @@ export default function NavBar({ navExpenses, navMileage }) {
           </div>
         </div>
 
-        <div onClick={handleLogout}>logout</div>
+        <div onClick={handleLogout}>Logout</div>
       </div>
 
       {/* <CarsIndex navToggle={navToggle} mileageToggle={mileageToggle} /> */}
     </div>
-      // <Link to={`/cars/${id}/expenses`}>Car Expenses</Link>
+    // <Link to={`/cars/${id}/expenses`}>Car Expenses</Link>
     // <div>
     //   <div className="right-nav">
     //     <div className="nav-expenses">

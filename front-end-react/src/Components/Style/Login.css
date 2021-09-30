@@ -124,7 +124,7 @@ div.icon-login > button {
 }
 .logInForm{
   position: fixed;
-  width:20vw;
+  width:35vw;
   right: 35vw;
   top: 7vw;
   background-color: #f8fefe;
@@ -135,12 +135,17 @@ div.icon-login > button {
 }
 .signUpForm{
   position: fixed;
-  width:20vw;
-  right: 5vw;
+  width:35vw;
+  right: 35vw;
   top: 7vw;
   background-color: #f8fefe;
   padding: 2vw;
   border: 1px solid rgb(246, 243, 243);
   border-radius: 10px;
   box-shadow:10px 5px 5px #aeaeae5a;
+}
+.x-button{
+  position: absolute;
+  margin-left: 13vw;
+  margin-top: 1.5vw;
 }
