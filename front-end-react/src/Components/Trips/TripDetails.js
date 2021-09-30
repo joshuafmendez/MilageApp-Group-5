@@ -61,6 +61,8 @@ const TripDetails = () => {
     favorite,
   } = trip;
 
+  let newDate = new Date(date);
+
   return (
     <div>
       <Link to={`/cars/${id}/trips`}>
@@ -68,7 +70,7 @@ const TripDetails = () => {
       </Link>
 
       <h2>Car ID: {id}</h2>
-      <h2>Date: {date}</h2>
+      <h2>Date: {newDate.toLocaleDateString()}</h2>
       <h2>Miles: {miles}</h2>
       <h2>Reason: {reason}</h2>
       <h2>Start Odometer: {start_odometer}</h2>
@@ -81,7 +83,6 @@ const TripDetails = () => {
           <button>Edit</button>
         </Link>
         <button onClick={handleDelete}>Delete</button>
-        {/* <button onClick={handleReport}>Generate Report</button> */}
       </div>
     </div>
   );

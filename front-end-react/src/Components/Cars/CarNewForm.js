@@ -19,6 +19,7 @@ function CarNewForm() {
     odometer: "",
     doors: "",
     is_default: true,
+    driver: "",
     uid: user && user.uid,
   });
 
@@ -42,7 +43,7 @@ function CarNewForm() {
     history.push("/cars");
   };
 
-  const { make, model, vin, year, odometer, doors } = car;
+  const { driver, make, model, vin, year, odometer, doors } = car;
 
   return (
     // <div>
@@ -99,6 +100,7 @@ function CarNewForm() {
     //           />
     //         </div>
 
+
     //         <div className="rowb">
     //           <label htmlFor="odometer">Odometer:</label>
     //           <input
@@ -133,6 +135,7 @@ function CarNewForm() {
     //     </Link>
     //   </form>
     // </div>
+
     <div className="bckground">
     <div className="divform">
       <div className="cargif"></div>
@@ -213,7 +216,7 @@ function CarNewForm() {
                 id="year"
                 type="number"
                 value={year}
-                min="1900"
+                min="1990"
                 onChange={handleChange}
                 required
               />
@@ -270,13 +273,14 @@ function CarNewForm() {
             </button>
           </Link>
 
-          <Link to={`/cars`}>
-            <button className="cancel">Cancel</button>
-          </Link>
-        </div>
-      </form>
+              <Link to={`/cars`}>
+                <button className="cancel">Cancel</button>
+              </Link>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
-  </div>
   );
 }
 

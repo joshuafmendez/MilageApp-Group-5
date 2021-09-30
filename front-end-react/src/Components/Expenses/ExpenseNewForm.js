@@ -1,10 +1,9 @@
 import axios from "axios";
-import { useState,useContext,useEffect } from "react";
-import "../Style/ExpenseNewForm.css"
+import { useState, useContext, useEffect } from "react";
+import "../Style/ExpenseNewForm.css";
 import { useHistory, Link, useParams } from "react-router-dom";
 import { apiURL } from "../../util/apiURL";
-import { UserContext } from "../../Providers/UserProvider"
-
+import { UserContext } from "../../Providers/UserProvider";
 
 const API = apiURL();
 function ExpenseNewForm() {
@@ -14,13 +13,16 @@ function ExpenseNewForm() {
     expense_type: "",
     business_use: false,
     amount_spent: 0,
-    date: "",
+    date: new Date(),
   });
   const { id } = useParams();
 
   const addExpense = async (newExpense) => {
     try {
-      await axios.post(`${API}/cars/${id}/expenses?uid=${user.uid}`, newExpense);
+      await axios.post(
+        `${API}/cars/${id}/expenses?uid=${user.uid}`,
+        newExpense
+      );
     } catch (error) {
       console.log(error);
     }
@@ -51,7 +53,6 @@ function ExpenseNewForm() {
     }
   }, [user, history]);
 
-
   return (
     <div className="div-form">
       <div>
@@ -70,7 +71,7 @@ function ExpenseNewForm() {
                   onChange={handleChange}
                   id="date"
                   placeholder="Enter date"
-                  required
+                  // required
                 />{" "}
               </td>
             </tr>
@@ -99,6 +100,9 @@ function ExpenseNewForm() {
                   </option>
                   <option name="depreciation" value="Depreciation">
                     Depreciation
+                  </option>
+                  <option name="rent" value="Car Rental">
+                    Car Rental
                   </option>
                 </select>
               </td>
