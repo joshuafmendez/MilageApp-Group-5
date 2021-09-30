@@ -1,8 +1,9 @@
 import TripNewForm from "../../Components/Trips/TripNewForm";
+import "../../Components/Style/TripNew.css"
 
 const TripsNew = () => {
   return (
-    <div>
+    <div className="trip-new-table">
       <TripNewForm />
     </div>
   );

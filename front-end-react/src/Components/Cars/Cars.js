@@ -45,7 +45,20 @@ const Cars = () => {
 
   return (
     <div className="cars-div">
-      {/* <div className="whit">
+
+<div className="button-newcar">
+<Link to={`/cars/car/new`} >
+  <div className="circle-car"></div>
+                
+                </Link>
+
+
+</div>
+
+
+
+      
+    {/* <div className="whit">
       <p>
   
         Welcome {user.displayName}, Trip App understands the importance of

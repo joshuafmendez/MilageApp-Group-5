@@ -5,9 +5,10 @@ import { UserContext } from "../../Providers/UserProvider";
 import { useHistory } from "react-router-dom";
 // import { useSelector, useDispatch } from "react-redux";
 import { useDispatch, useSelector } from "react-redux";
-import "../../App.css";
+// import "../../App.css";
 import { getAllTripsFN } from "../../util/networkRequest";
 import { addTrips } from "../../Store/Actions/tripsActions";
+import "../../Components/Style/TripsIndex.css"
 
 const Trips = () => {
   const user = useContext(UserContext);
@@ -37,7 +38,7 @@ const Trips = () => {
   }, [user, history]);
 
   return (
-    <div>
+    <div className="trips-table-parent">
       <table>
         <thead>
           <tr>

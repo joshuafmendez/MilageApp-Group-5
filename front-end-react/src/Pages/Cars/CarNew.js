@@ -1,8 +1,9 @@
 import CarNewForm from "../../Components/Cars/CarNewForm";
+import "../../Components/Style/CarNew.css"
 
 function CarNew() {
   return (
-    <div>
+    <div className="car-new-main">
       <CarNewForm />
     </div>
   );
