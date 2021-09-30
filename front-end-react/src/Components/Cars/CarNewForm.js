@@ -137,7 +137,6 @@ function CarNewForm() {
     // </div>
 
     <div className="bckground">
-
     </div>
   );
 }

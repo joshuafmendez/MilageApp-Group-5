@@ -328,14 +328,7 @@ function CarDetails() {
           {/* <br></br> */}
         </section>
 
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <Link to={"/cars"}>
-          <button>BACK</button>
-        </Link>
+     
       </>
     );
   }
