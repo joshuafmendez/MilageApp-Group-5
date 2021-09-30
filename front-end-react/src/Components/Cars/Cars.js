@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { addCars } from "../../Store/Actions/carsActions";
 import { getAllCarsFN } from "../../util/networkRequest";
 import { UserContext } from "../../Providers/UserProvider";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import CarsListItem from "./CarsListItem";
 import "../../Components/Style/Cars.css";
 // import { Link } from "react-router-dom";
@@ -45,20 +45,13 @@ const Cars = () => {
 
   return (
     <div className="cars-div">
+      <div className="button-newcar">
+        <Link to={`/cars/car/new`}>
+          <div className="circle-car"></div>
+        </Link>
+      </div>
 
-<div className="button-newcar">
-<Link to={`/cars/car/new`} >
-  <div className="circle-car"></div>
-                
-                </Link>
-
-
-</div>
-
-
-
-      
-    {/* <div className="whit">
+      {/* <div className="whit">
       <p>
   
         Welcome {user.displayName}, Trip App understands the importance of

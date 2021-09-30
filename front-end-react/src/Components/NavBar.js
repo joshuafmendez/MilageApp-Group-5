@@ -49,7 +49,6 @@ export default function NavBar({ navExpenses, navMileage }) {
       try {
         let res = await getAllExpensesFN(id, user);
         dispatch(addExpenses(res));
-        // console.log("res", res);
       } catch (error) {
         console.log(error);
       }
@@ -84,7 +83,7 @@ export default function NavBar({ navExpenses, navMileage }) {
         totalBusinessExpenses += Number(expense.amount_spent);
       }
     });
-    console.log("expenses outside handleReport", expenses);
+    // console.log("expenses outside handleReport", expenses);
 
     let totalBusinessTrips = 0;
     let trips = [["Date", "Miles", "Reason"]];
@@ -100,16 +99,7 @@ export default function NavBar({ navExpenses, navMileage }) {
   return (
     <div className="log-start">
       <div className="corner-fix">
-        {/* 
-      <a
-        href="https://www.irs.gov/newsroom/heres-the-411-on-who-can-deduct-car-expenses-on-their-tax-returns"
-        target="blank"
-      >
-   
-      </a> */}
-
         <Link to={`/cars`}>Home</Link>
-
         <div className="dropdown">
           <div className="dropbtn">Driver Resources</div>
           <div className="dropdown-content">
@@ -127,52 +117,8 @@ export default function NavBar({ navExpenses, navMileage }) {
             </a>
           </div>
         </div>
-
         <div onClick={handleLogout}>Logout</div>
       </div>
-
-      {/* <CarsIndex navToggle={navToggle} mileageToggle={mileageToggle} /> */}
     </div>
-    // <Link to={`/cars/${id}/expenses`}>Car Expenses</Link>
-    // <div>
-    //   <div className="right-nav">
-    //     <div className="nav-expenses">
-    //       <p className="total-expenses">Total Expenses</p>
-    //       <Link to={`/cars/${id}/expenses`}>
-    //         {expensesArr.reduce((total, expense) => {
-    //           total += expense.amount_spent;
-    //           return total;
-    //         }, 0)}
-    //       </Link>
-    //     </div>
-
-    //     <div className="nav-expenses">
-    //       <p className="total-expenses">Total mileage</p>
-
-    // <Link to={`/cars/${id}/trips`}>
-    //   {tripsArr.reduce((total, trip) => {
-    //     total += trip.miles;
-    //     return total;
-    //   }, 0)}
-    // </Link>
-    //     </div>
-
-    //     {expenseForm && (
-    //       <div className="nav-expenses">
-    //         <NavLink to="/cars"> ✚ Enter Expenses </NavLink>
-    //         <FcCurrencyExchange size="16px" />
-    //       </div>
-    //     )}
-
-    //     {mileageForm && (
-    //       <div className="nav-expenses">
-    //         <NavLink to="/cars"> ✚ Enter Mileage </NavLink>
-    //         <ImRoad size="16px" />
-    //       </div>
-    //     )}
-
-    //     <button onClick={handleLogout}> LOG OUT</button>
-    //   </div>
-    // </div>
   );
 }

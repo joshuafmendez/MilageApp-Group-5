@@ -23,9 +23,10 @@ const getCar = async (id, uid) => {
 const addCar = async (car) => {
   const { make, model, vin, year, odometer, doors, is_default, uid, driver } =
     car;
+  console.log(car);
   try {
     const query =
-      "INSERT INTO cars (make, model, vin, year, odometer, doors,is_default,uid, driver) VALUES ($1, $2, $3, $4, $5, $6,$7,$8, $9) RETURNING *";
+      "INSERT INTO cars (make, model, vin, year, odometer, doors, is_default, uid, driver) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *";
     const newCar = await db.one(query, [
       make,
       model,

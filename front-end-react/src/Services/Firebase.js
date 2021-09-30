@@ -3,7 +3,7 @@ import "firebase/auth";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
 
-//this has a change for pulls
+//this has a change for
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
