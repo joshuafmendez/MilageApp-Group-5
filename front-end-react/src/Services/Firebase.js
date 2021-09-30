@@ -3,6 +3,8 @@ import "firebase/auth";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
 
+//this has a change for
+
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
@@ -10,7 +12,7 @@ const firebaseConfig = {
   storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
   appId: process.env.REACT_APP_APP_ID,
-  measurementId: process.env.REACT_APP_MEASUREMENT_ID
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID,
 };
 
 const app = firebase.initializeApp(firebaseConfig);
@@ -18,30 +20,30 @@ export const auth = app.auth();
 
 const googleProvider = new firebase.auth.GoogleAuthProvider();
 
-export const signInWithGoogle = async () => {
+export const signInWithGoogle = () => {
   try {
-    await auth.signInWithPopup(googleProvider);
+    auth.signInWithPopup(googleProvider);
   } catch (err) {
     console.log(err);
   }
 };
 export const signup = (email, password) => {
   try {
-    auth.createUserWithEmailAndPassword(email, password)
+    auth.createUserWithEmailAndPassword(email, password);
   } catch (error) {
     console.log(error.message);
   }
-}
+};
 export const login = (email, password) => {
   try {
-    auth.signInWithEmailAndPassword(email, password)
+    auth.signInWithEmailAndPassword(email, password);
   } catch (error) {
     console.log(error.message);
   }
-}
-export const signOut = async () => {
+};
+export const signOut = () => {
   try {
-    await auth.signOut();
+    auth.signOut();
   } catch (err) {
     console.log(err);
   }

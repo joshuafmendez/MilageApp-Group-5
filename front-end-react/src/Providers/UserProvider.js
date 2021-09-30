@@ -12,7 +12,6 @@ const UserProvider = ({ children }) => {
     auth.onAuthStateChanged(async (user) => {
       if (user) {
         const { displayName, email, photoURL, uid } = user;
-
         await setUser({
           displayName,
           email,

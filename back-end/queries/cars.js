@@ -23,9 +23,10 @@ const getCar = async (id, uid) => {
 const addCar = async (car) => {
   const { make, model, vin, year, odometer, doors, is_default, uid, driver } =
     car;
+  console.log(car);
   try {
     const query =
-      "INSERT INTO cars (make, model, vin, year, odometer, doors,is_default,uid, driver) VALUES ($1, $2, $3, $4, $5, $6,$7,$8, $9) RETURNING *";
+      "INSERT INTO cars (make, model, vin, year, odometer, doors, is_default, uid, driver) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *";
     const newCar = await db.one(query, [
       make,
       model,
@@ -61,7 +62,7 @@ const updateCar = async (id, body, uid) => {
   if (authCheck.length) {
     try {
       const query =
-        "UPDATE cars SET make=$1, model=$2, vin=$3, year=$4, odometer=$5, doors=$6, is_default=$7, uid=$8, driver=$9 WHERE id=$10 RETURNING *";
+        "UPDATE cars SET make=$1, model=$2, vin=$3, year=$4, odometer=$5, doors=$6, is_default=$7,driver=$8, uid=$9  WHERE id=$10 RETURNING *";
       const updatedCar = await db.one(query, [
         make,
         model,
