@@ -191,14 +191,18 @@ button.showMe:hover{
 }
 
 ul.ul-show{
-  display:flex;
-  justify-content: space-around;
+  /* display:flex;
+  justify-content: space-around; */
   margin-bottom:13px;
+  /* flex-direction:row-reverse; */
 }
 li.li-show{
   /* display:flex;
   justify-content: space-around; */
   margin-bottom:13px;
+  display:flex;
+  justify-content: center;
+  align-content: center;
 }
 .list-cars{
   /* margin-left:10%; */

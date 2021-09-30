@@ -20,7 +20,7 @@ function CarsListItem({ car, carsArr }) {
 
 
       <ul
-        style={showElement ? { display: "none" } : { display: "block" }}
+        style={showElement ? { display: "none" } : { display: "flex" ,justifyContent:"space-between"}}
         className="ul-show"
       >
         {carsArr.map((car, i) => {

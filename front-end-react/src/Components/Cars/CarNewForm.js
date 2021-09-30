@@ -135,7 +135,9 @@ function CarNewForm() {
     // </div>
     <div className="bckground">
     <div className="divform">
+      <div className="cargif"></div>
       <form onSubmit={handleSubmit} className="form-newcar">
+
         <table className="table-newcar">
           <tr className="row-make">
             <td className="label-data">
@@ -155,6 +157,8 @@ function CarNewForm() {
               />
             </td>
           </tr>
+      
+          <br></br>
           {/* <br></br> */}
           <tr className="row-model">
             <td className="model-data">
@@ -175,7 +179,7 @@ function CarNewForm() {
               />
             </td>
           </tr>
-
+          <br></br>
           <tr className="row-vin">
             <td>
               <label className="label-data" htmlFor="vin">
@@ -196,6 +200,7 @@ function CarNewForm() {
               {/* {" "} */}
             </td>
           </tr>
+          <br></br>
           <tr className="row-year">
             <td>
               <label className="label-data" htmlFor="year">
@@ -214,6 +219,7 @@ function CarNewForm() {
               />
             </td>
           </tr>
+          <br></br>
           <tr className="row-odo">
             <td className="data-odo">
               <label className="label-data" htmlFor="odometer">
@@ -233,6 +239,7 @@ function CarNewForm() {
               />
             </td>
           </tr>
+          <br></br>
           <tr className="row-doors">
             <td>
               <label className="label-data" htmlFor="doors">
@@ -250,9 +257,12 @@ function CarNewForm() {
                 style={{ width: "50px" }}
                 required
               />
-            </td>
+            </td>        <br></br>
+
           </tr>
+                  <br></br>
         </table>
+
         <div className="buts">
           <Link to={`/cars`}>
             <button onClick={handleSubmit} className="submit" type="submit">

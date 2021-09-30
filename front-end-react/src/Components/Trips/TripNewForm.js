@@ -4,6 +4,9 @@ import { useHistory, Link, useParams } from "react-router-dom";
 import { apiURL } from "../../util/apiURL";
 import "../Style/TripNewForm.css"
 import { UserContext } from "../../Providers/UserProvider";
+import "../Style/TripNewForm.css"
+
+
 
 const API = apiURL();
 
@@ -135,7 +138,7 @@ const TripNewForm = () => {
         </div>
       </form> */}
 
-      <div>
+      <div className="trips-show-table">
         <form className="form-trip" onSubmit={handleSubmit}>
           Car Mileage
           <table>

@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+import "../Style/TripsListItem.css"
+import expenses from '../../Store/Reducers/expenses';
+
 
 const TripsListItem = ({ trip }) => {
   const {
@@ -14,7 +17,9 @@ const TripsListItem = ({ trip }) => {
   } = trip;
 
   return (
-    <tr>
+<div className="table-for-trips">
+    <tr className="tr-trips">
+      
       <td>
         <Link to={`/cars/${car_id}/trips/${id}`}>
           <h2>{date}</h2>
@@ -46,6 +51,7 @@ const TripsListItem = ({ trip }) => {
         </h2>
       </td>
     </tr>
+    </div>
   );
 };
 
