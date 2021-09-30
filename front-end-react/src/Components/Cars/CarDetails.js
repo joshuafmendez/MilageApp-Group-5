@@ -230,95 +230,106 @@ function CarDetails() {
       <>
         <div>
           <div className="right-nav">
-            <div className="nav-expenses">
+            <div className="chrome">
+              <div className="nav-expenses">
+                <Link to={`/cars/${id}/expenses/expense/new`}>
+                  {" "}
+                  ✚ Enter Expense{" "}
+                </Link>
+                {/* <ImRoad size="16px" /> */}
+              </div>
+            </div>
+
+            <div className="chrome">
+              <div className="nav-expenses">
+                <Link to={`/cars/${id}/trips/trip/new`}> ✚ Enter Mileage </Link>
+                {/* <ImRoad size="16px" /> */}
+              </div>
+            </div>
+
+            <div className="chrome">
+              <div className="nav-expenses">
+                <button onClick={handleReport} className="cars-new-button">
+                  🗂 Generate Report    
+                </button>
+                {/* <GrDocumentPdf size="16px" /> */}
+              </div>
+            </div>
+
+            <div className="chrome">
+              <div className="nav-expenses">
+                <Link to={`/cars/${id}/expenses`}>📕 Expense Table</Link>
+              </div>
+            </div>
+
+            <div className="chrome">
+              <div className="nav-expenses">
+                <Link to={`/cars/${id}/trips`}>📘 Mileage Table</Link>
+              </div>
+            </div>
+
+            {/* <button onClick={handleLogout}> LOG OUT</button> */}
+          </div>
+        </div>
+
+        <section className="car-section">
+          <div className="odo-deets">
+            <div className="odo-mileage">
+              Mileage
+              <p className="total-odo">
+                0
+                {tripsArr.reduce((total, trip) => {
+                  total += trip.miles;
+                  return total;
+                }, 0)}
+              </p>
+            </div>
+
+
+            <div className="all-expenses">
               <p className="total-expenses">Total Expenses</p>
-              <Link to={`/cars/${id}/expenses`}>
+              {/* <Link to={`/cars/${id}/expenses`}> */}
                 $
                 {expensesArr.reduce((total, expense) => {
                   total += expense.amount_spent;
                   return total;
                 }, 0)}
                 .00
-              </Link>
+              {/* </Link> */}
             </div>
 
-            {/* <div className="nav-expenses">
-              <NavLink to="/cars"> ✚ Enter Expenses </NavLink>
-              <FcCurrencyExchange size="16px" />
-            </div> */}
-
-            <div className="nav-expenses">
-              <Link to={`/cars/${id}/expenses/expense/new`}>
-                {" "}
-                ✚ Enter Expense{" "}
-              </Link>
-              <ImRoad size="16px" />
-            </div>
-
-            <div className="nav-expenses">
-              <Link to={`/cars/${id}/trips/trip/new`}> ✚ Enter Mileage </Link>
-              <ImRoad size="16px" />
-            </div>
-
-            <div className="nav-expenses">
-              <button onClick={handleReport} className="cars-new-button">
-                Generate Report
-              </button>
-              <GrDocumentPdf size="16px" />
-            </div>
-
-            <div className="nav-expenses">
-              <Link to={`/cars/${id}/expenses`}>📕 Expense Table</Link>
-            </div>
-
-            <div className="nav-expenses">
-              <Link to={`/cars/${id}/trips`}>📘 Mileage Table</Link>
-            </div>
-
-            <button onClick={handleLogout}> LOG OUT</button>
-          </div>
-        </div>
-
-        <section className="car-section">
-          <div className="odo-mileage">
-            Mileage
-            <p className="total-odo">
-              000999-098765
-              {tripsArr.reduce((total, trip) => {
-                total += trip.miles;
-                return total;
-              }, 0)}
-            </p>
-          </div>
-          {/* <br></br> */}
-          <div className="all-bs">
-            <button className="button-delete" onClick={handleDelete}>
-              {/* DELETE */}
-            </button>
-
-            <Link to={`/cars/${id}/edit`}>
-              <button className="button-edit"></button>
-            </Link>
-          </div>
-
-          <div className="concar-div">
-            <img
-              className="concar"
-              src="https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png"
-              style={{ width: "500px", height: "250px" }}
-              alt={"car"}
-            />{" "}
             <div className="deets">
               <li>Car ID: {id}</li>
               <li>Make: {car?.make}</li>
               <li>Model: {car?.model}</li>
               <li>VIN: {car?.vin}</li>
               <li>Year: {car?.year}</li>
-              <li>Odometer: {car?.odometer.toLocaleString()}</li>
+              <li>Odometer: {car?.odometer}</li>
               <li>Doors: {car?.doors}</li>
             </div>
           </div>
+          <div className="concar-div">
+            <img
+              className="concar"
+              src="https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png"
+              style={{ width: "110%", height: "50%" }}
+              alt={"car"}
+            />{" "}
+            <div className="all-bs">
+              <button className="button-delete" onClick={handleDelete}>
+                {/* DELETE */}
+              </button>
+
+              <Link to={`/cars/${id}/edit`}>
+                <button className="button-edit"></button>
+              </Link>
+            </div>
+          </div>
+
+          {/* <br></br> */}
+
         </section>
+
         <br></br>
         <br></br>
         <br></br>

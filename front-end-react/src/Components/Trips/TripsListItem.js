@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+import "../Style/TripsListItem.css"
+import expenses from '../../Store/Reducers/expenses';
+
 
 const TripsListItem = ({ trip }) => {
   const {
@@ -15,7 +18,9 @@ const TripsListItem = ({ trip }) => {
 
   let newDate = new Date(date);
   return (
-    <tr>
+<div className="table-for-trips">
+    <tr className="tr-trips">
+      
       <td>
         <Link to={`/cars/${car_id}/trips/${id}`}>
           <h2>{newDate.toLocaleDateString()}</h2>
@@ -47,6 +52,7 @@ const TripsListItem = ({ trip }) => {
         </h2>
       </td>
     </tr>
+    </div>
   );
 };
 

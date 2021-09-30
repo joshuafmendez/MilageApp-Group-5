@@ -66,10 +66,12 @@ export const LoggedInPage = ({ navToggle, mileageToggle }) => {
 
       //   <CarsIndex navToggle={navToggle} mileageToggle={mileageToggle} />
 
-      // </div>
-      <div>
-        <div className="whita">
-          <p>
+    // </div>
+    <div>
+      {/* <div className="whita"> 
+      <p>
+       
+
             Welcome {user.displayName}, Trip App understands the importance of
             business owners and independant contractors documenting their
             mileage and automotive expenses and we are here to make that process
@@ -78,7 +80,8 @@ export const LoggedInPage = ({ navToggle, mileageToggle }) => {
         </div>
         <div className="grena">
           <p>Learn more about tax breaks you may qualify for:</p>
-        </div>
+        </div>  */}
+
         <CarsIndex navToggle={navToggle} mileageToggle={mileageToggle} />
       </div>
     );
