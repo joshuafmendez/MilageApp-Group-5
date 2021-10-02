@@ -41,8 +41,12 @@ function ExpenseNewForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await addExpense(expense);
-    history.push(`/cars/${id}/expenses`);
+    try {
+      await addExpense(expense);
+      history.push(`/cars/${id}/expenses`);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const { business_use, amount_spent, date } = expense;

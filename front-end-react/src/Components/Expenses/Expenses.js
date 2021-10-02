@@ -6,7 +6,7 @@ import { getAllExpensesFN } from "../../util/networkRequest";
 import { useDispatch, useSelector } from "react-redux";
 import { addExpenses } from "../../Store/Actions/expenseActions";
 import { UserContext } from "../../Providers/UserProvider";
-import "../Style/Expenses.css"
+import "../Style/Expenses.css";
 
 // import "../../App.css";
 
@@ -22,8 +22,10 @@ const Expenses = () => {
   useEffect(() => {
     const fetchAllExpenses = async () => {
       try {
-        let res = await getAllExpensesFN(id, user);
-        dispatch(addExpenses(res));
+        if (user) {
+          let res = await getAllExpensesFN(id, user);
+          dispatch(addExpenses(res));
+        }
       } catch (error) {
         console.log(error);
       }

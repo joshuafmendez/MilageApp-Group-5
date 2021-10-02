@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 // import "../../App.css";
 import { getAllTripsFN } from "../../util/networkRequest";
 import { addTrips } from "../../Store/Actions/tripsActions";
-import "../../Components/Style/TripsIndex.css"
+import "../../Components/Style/TripsIndex.css";
 
 const Trips = () => {
   const user = useContext(UserContext);
@@ -22,8 +22,10 @@ const Trips = () => {
   useEffect(() => {
     const fetchAllTrips = async () => {
       try {
-        let res = await getAllTripsFN(id, user);
-        dispatch(addTrips(res));
+        if (user) {
+          let res = await getAllTripsFN(id, user);
+          dispatch(addTrips(res));
+        }
       } catch (error) {
         console.log(error);
       }

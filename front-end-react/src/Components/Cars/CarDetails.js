@@ -41,8 +41,10 @@ function CarDetails() {
   useEffect(() => {
     const getAllExpenses = async () => {
       try {
-        let res = await getAllExpensesFN(id, user);
-        dispatch(addExpenses(res));
+        if (user) {
+          let res = await getAllExpensesFN(id, user);
+          dispatch(addExpenses(res));
+        }
         // console.log("res", res);
       } catch (error) {
         console.log(error);
@@ -52,8 +54,10 @@ function CarDetails() {
 
     const getAllTrips = async () => {
       try {
-        let res = await getAllTripsFN(id, user);
-        dispatch(addTrips(res));
+        if (user) {
+          let res = await getAllTripsFN(id, user);
+          dispatch(addTrips(res));
+        }
       } catch (error) {
         console.log(error);
       }
@@ -275,16 +279,14 @@ function CarDetails() {
               </p>
             </div>
 
-
             <div className="all-expenses">
               <p className="total-expenses">Total Expenses</p>
-              {/* <Link to={`/cars/${id}/expenses`}> */}
-                $
-                {expensesArr.reduce((total, expense) => {
-                  total += expense.amount_spent;
-                  return total;
-                }, 0)}
-                .00
+              {/* <Link to={`/cars/${id}/expenses`}> */}$
+              {expensesArr.reduce((total, expense) => {
+                total += expense.amount_spent;
+                return total;
+              }, 0)}
+              .00
               {/* </Link> */}
             </div>
 
@@ -317,7 +319,6 @@ function CarDetails() {
           </div>
 
           {/* <br></br> */}
-
         </section>
 
         <br></br>
