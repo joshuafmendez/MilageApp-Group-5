@@ -3,7 +3,7 @@ import { useParams, useHistory, Link } from "react-router-dom";
 import { addCar } from "../../Store/Actions/carsActions";
 import { useSelector, useDispatch } from "react-redux";
 import { updateCarById } from "../../util/networkRequest";
-import "../Style/CarEditForm.css";
+import "../Style/Cars/CarEditForm.css";
 import { UserContext } from "../../Providers/UserProvider";
 
 function CarEditForm() {

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 // import { useState } from "react";
-import "../../Components/Style/CarsListItem.css";
+import "../../Components/Style/Cars/CarsListItem.css";
 
 function CarsListItem({ carsArr }) {
   let showElement = false;

@@ -55,12 +55,14 @@ function ExpenseDetails() {
 
   const { expense_type, business_use, amount_spent, date } = expense;
   let newDate = new Date(date);
+  newDate.setDate(newDate.getDate(date) + 1);
 
   if (!user) {
     return <div className="spinner-border"></div>;
   } else {
     return (
       <div>
+        {/* Change to make and model */}
         <h2>Car ID: {id}</h2>
         <h2>
           Date:

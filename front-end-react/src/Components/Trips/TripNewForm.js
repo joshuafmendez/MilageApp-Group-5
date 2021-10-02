@@ -2,9 +2,8 @@ import axios from "axios";
 import { useState, useContext, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { apiURL } from "../../util/apiURL";
-import "../Style/TripNewForm.css";
 import { UserContext } from "../../Providers/UserProvider";
-import "../Style/TripNewForm.css";
+import "../Style/Trips/TripNewForm.css";
 
 const API = apiURL();
 

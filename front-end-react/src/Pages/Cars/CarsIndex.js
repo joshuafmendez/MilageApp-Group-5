@@ -1,6 +1,6 @@
 import React from "react";
 import Cars from "../../Components/Cars/Cars";
-import "../../Components/Style/CarsIndex.css";
+import "../../Components/Style/Cars/CarsIndex.css";
 
 const CarsIndex = () => {
   return (

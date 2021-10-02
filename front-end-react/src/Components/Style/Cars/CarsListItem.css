@@ -216,7 +216,7 @@ li.li-show{
 div.card-center{
   /* background-color: slategray; */
   width:300px;
-  background-image: url("../Images/blackdrop.png");
+  background-image: url("../../Images/blackdrop.png");
   background-position: center;
   background-size:cover ;
   padding-top:4%;

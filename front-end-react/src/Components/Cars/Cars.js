@@ -6,7 +6,7 @@ import { getAllCarsFN } from "../../util/networkRequest";
 import { UserContext } from "../../Providers/UserProvider";
 import { Link, useHistory } from "react-router-dom";
 import CarsListItem from "./CarsListItem";
-import "../../Components/Style/Cars.css";
+import "../../Components/Style/Cars/Cars.css";
 
 // TODO:
 // 404 not working

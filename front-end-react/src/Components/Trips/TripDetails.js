@@ -51,7 +51,8 @@ const TripDetails = () => {
   } = trip;
 
   let newDate = new Date(date);
-
+  newDate.setDate(newDate.getDate(date) + 1);
+  
   return (
     <div>
       <Link to={`/cars/${id}/trips`}>

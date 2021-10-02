@@ -203,7 +203,7 @@ li.li-show{
   height: 150px;
 width: 150px;
 border-radius: 50%;
-background-image:url("../Images/addcaroff.png");
+background-image:url("../../Images/addcaroff.png");
 /* margin-left:10px; */
 align-self:center;
 background-position: center;
@@ -216,7 +216,7 @@ outline: black 2px solid;
   height: 140px;
 width: 140px;
 border-radius: 50%;
-background-image:url("../Images/addcaron.png");
+background-image: url("../../Images/addcaron.png");
 /* margin-left:10px; */
 align-self:center;
 background-position: center;

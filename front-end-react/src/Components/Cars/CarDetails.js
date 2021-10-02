@@ -8,8 +8,8 @@ import {
   getAllTripsFN,
 } from "../../util/networkRequest";
 import { addExpenses } from "../../Store/Actions/expenseActions";
-import "../Style/CarDetails.css";
 import { addTrips } from "../../Store/Actions/tripsActions";
+import "../Style/Cars/CarDetails.css";
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;

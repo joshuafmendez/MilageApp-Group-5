@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useContext, useEffect } from "react";
-import "../Style/ExpenseNewForm.css";
+import "../Style/Expenses/ExpenseNewForm.css";
 import { useHistory, useParams } from "react-router-dom";
 import { apiURL } from "../../util/apiURL";
 import { UserContext } from "../../Providers/UserProvider";
@@ -75,7 +75,7 @@ function ExpenseNewForm() {
                     onChange={handleChange}
                     id="date"
                     placeholder="Enter date"
-                  />{" "}
+                  />
                 </td>
               </tr>
               <tr>

@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllTripsFN } from "../../util/networkRequest";
 import { addTrips } from "../../Store/Actions/tripsActions";
-import "../../Components/Style/TripsIndex.css";
+import "../../Components/Style/Trips/TripsIndex.css";
 
 const Trips = () => {
   const user = useContext(UserContext);

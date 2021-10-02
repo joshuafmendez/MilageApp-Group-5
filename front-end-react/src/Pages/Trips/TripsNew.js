@@ -1,5 +1,5 @@
 import TripNewForm from "../../Components/Trips/TripNewForm";
-import "../../Components/Style/TripNew.css"
+import "../../Components/Style/Trips/TripNew.css"
 
 const TripsNew = () => {
   return (

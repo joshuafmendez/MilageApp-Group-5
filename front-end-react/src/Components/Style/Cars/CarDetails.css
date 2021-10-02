@@ -286,7 +286,7 @@ div.all-bs {
 }
 
 button.button-delete {
-  background-image: url("../Images/delbutton.png");
+  background-image: url("../../Images/delbutton.png");
   background-size: cover;
   background-position: center;
   border-radius: 50%;
@@ -297,7 +297,7 @@ button.button-delete {
   border: transparent;
 }
 button.button-delete:hover {
-  background-image: url("../Images/pressD.png");
+  background-image: url("../../Images/pressD.png");
   background-size: cover;
   background-position: center;
   border-radius: 50%;
@@ -309,7 +309,7 @@ button.button-delete:hover {
 }
 
 button.button-edit {
-  background-image: url("../Images/Edit.png");
+  background-image: url("../../Images/Edit.png");
   background-size: cover;
   background-position: center;
   border-radius: 50%;
@@ -321,7 +321,7 @@ button.button-edit {
 }
 
 button.button-edit:hover {
-  background-image: url("../Images/pressE.png");
+  background-image: url("../../Images/pressE.png");
   background-size: cover;
   background-position: center;
   border-radius: 50%;
@@ -451,10 +451,10 @@ div.nav-expenses > button {
   /* margin-top:30px; */
 }
 button.b-delete {
-  background-image: url("../Images/delbutton.png");
+  background-image: url("../../Images/delbutton.png");
 }
 .odo-mileage {
-  background-image: url("../Images/odo.PNG");
+  background-image: url("../../Images/odo.PNG");
   background-size: cover;
   background-position: top;
   display: flex;

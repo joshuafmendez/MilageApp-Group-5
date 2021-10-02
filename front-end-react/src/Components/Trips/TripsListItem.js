@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "../Style/TripsListItem.css";
+import "../Style/Trips/TripsListItem.css";
 
 const TripsListItem = ({ trip }) => {
   const {
@@ -15,6 +15,8 @@ const TripsListItem = ({ trip }) => {
   } = trip;
 
   let newDate = new Date(date);
+  newDate.setDate(newDate.getDate(date) + 1);
+
   return (
     <tr className="tr-trips">
       <td>
