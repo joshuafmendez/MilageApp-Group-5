@@ -48,10 +48,10 @@ const Expenses = () => {
       <table className="expenses-main-table">
         <thead>
           <tr className="head-row">
-            <th>Date</th>
+            <th className="head-date">Date</th>
             <th>Expense Type</th>
             <th>Amount</th>
-            <th></th>
+            <th>Test</th>
           </tr>
         </thead>
         <tbody>

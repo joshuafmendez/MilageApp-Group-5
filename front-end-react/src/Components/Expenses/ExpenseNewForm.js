@@ -59,7 +59,7 @@ function ExpenseNewForm() {
 
   return (
     <div className="div-form">
-      <div className="form-contrainer">
+      <div className="form-container">
         <form onSubmit={handleSubmit}>
           <h2>Car Expenses</h2>
           <table className="exp-new-table">

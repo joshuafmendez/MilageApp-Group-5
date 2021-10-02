@@ -3,8 +3,9 @@
   padding-top: 4%;
 }
 .expenses-main-table {
-  margin-left: 5%;
-  width: 85%;
+  width: 55%;
+  margin: auto;
+  table-layout: fixed;
 }
 .head-row {
   background-color: grey;
@@ -13,8 +14,14 @@
 .head-row th {
   font-weight: 400;
   font-size: 150%;
+  text-align: left;
+  padding: 1%;
 }
 
 .expense-new-button {
   margin: 2%;
+}
+
+.head-date {
+  width: 10%;
 }
