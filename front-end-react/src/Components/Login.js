@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 // import "../../App.css";
-import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 // import { addCars } from "../../Store/Actions/carsActions";
-import { addCars } from "../Store/Actions/carsActions";
+// import { addCars } from "../Store/Actions/carsActions";
 import { getAllCarsFN } from "../util/networkRequest";
 import { UserContext } from "../Providers/UserProvider";
 import { useHistory } from "react-router-dom";
@@ -17,7 +17,9 @@ import TripLogo from "./Images/giflogo.GIF";
 
 // import { MDBCard, MDBCardImage, MDBCardBody, MDBCardTitle, MDBCardText, MDBCardGroup } from 'mdb-react-ui-kit';
 const Login = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
+  const entireState = useSelector((state) => state);
+  const { cars } = entireState;
   const user = useContext(UserContext);
   const history = useHistory();
   const [displayLogin, setDisplayLogin] = useState(false);
@@ -87,22 +89,24 @@ const Login = () => {
   useEffect(() => {
     const fetchAllCars = async () => {
       try {
-        const res = await getAllCarsFN(user);
-        dispatch(addCars(res));
-        if (res.length) {
-          //FIXME: The current code does nothing
-          history.push(`/cars`);
-          // let filterArray = res.filter((el) => el.is_default === true);
-          // history.push(`/cars/${filterArray[filterArray.length - 1].id}`);
-        } else {
-          history.push("/cars/car/new");
+        if (!cars) {
+          const res = await getAllCarsFN(user);
+          // dispatch(addCars(res));
+          if (res.length) {
+            //FIXME: The current code does nothing
+            history.push(`/cars`);
+            // let filterArray = res.filter((el) => el.is_default === true);
+            // history.push(`/cars/${filterArray[filterArray.length - 1].id}`);
+          } else {
+            history.push("/cars/car/new");
+          }
         }
       } catch (error) {
-        console.log(error);
+        console.log("error", error);
       }
     };
     fetchAllCars();
-  }, [dispatch, user, history]);
+  }, [cars, user, history]);
 
   return (
     <div className="sign-box">

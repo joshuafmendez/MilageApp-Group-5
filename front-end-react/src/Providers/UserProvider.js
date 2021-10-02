@@ -18,15 +18,17 @@ const UserProvider = ({ children }) => {
           photoURL,
           uid,
         });
-        const fetchAllCars = async () => {
-          try {
-            const res = await getAllCarsFN(user);
-            dispatch(addCars(res));
-          } catch (error) {
-            console.log(error);
-          }
-        };
-        fetchAllCars();
+        if(user){
+          const fetchAllCars = async () => {
+            try {
+              const res = await getAllCarsFN(user);
+              dispatch(addCars(res));
+            } catch (error) {
+              console.log(error);
+            }
+          };
+          fetchAllCars();
+        }
       } else {
         setUser(null);
       }

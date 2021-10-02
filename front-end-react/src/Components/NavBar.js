@@ -33,8 +33,12 @@ export default function NavBar({ navExpenses, navMileage }) {
   // console.log(entireState)
 
   const handleLogout = async () => {
-    await signOut();
-    history.push("/");
+    try {
+      await signOut();
+      history.push("/");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
