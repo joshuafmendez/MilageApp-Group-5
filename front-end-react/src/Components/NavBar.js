@@ -51,8 +51,10 @@ export default function NavBar({ navExpenses, navMileage }) {
   useEffect(() => {
     const getAllExpenses = async () => {
       try {
-        let res = await getAllExpensesFN(id, user);
-        dispatch(addExpenses(res));
+        if (user) {
+          let res = await getAllExpensesFN(id, user);
+          dispatch(addExpenses(res));
+        }
       } catch (error) {
         console.log(error);
       }
@@ -61,8 +63,10 @@ export default function NavBar({ navExpenses, navMileage }) {
 
     const getAllTrips = async () => {
       try {
-        let res = await getAllTripsFN(id, user);
-        dispatch(addTrips(res));
+        if (user) {
+          let res = await getAllTripsFN(id, user);
+          dispatch(addTrips(res));
+        }
       } catch (error) {
         console.log(error);
       }
