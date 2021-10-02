@@ -23,7 +23,6 @@ const getCar = async (id, uid) => {
 const addCar = async (car) => {
   const { make, model, vin, year, odometer, doors, is_default, uid, driver } =
     car;
-  console.log(car);
   try {
     const query =
       "INSERT INTO cars (make, model, vin, year, odometer, doors, is_default, uid, driver) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *";
@@ -50,7 +49,6 @@ const deleteCar = async (id, uid) => {
     const deletedCar = await db.one(query, [id, uid]);
     return { status: true, payload: deletedCar };
   } catch (error) {
-    console.log(error);
     return { status: false, payload: error };
   }
 };

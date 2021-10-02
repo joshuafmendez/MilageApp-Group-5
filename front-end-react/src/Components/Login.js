@@ -32,8 +32,12 @@ const Login = () => {
     passwordCheck: "",
   });
   const handleGoogle = () => {
-    handleX();
-    signInWithGoogle();
+    try {
+      handleX();
+      signInWithGoogle();
+    } catch (error) {
+      console.log(error);
+    }
   };
   const handleX = () => {
     setDisplaySignUp(false);
@@ -53,11 +57,19 @@ const Login = () => {
   };
   const handleLoginIn = (e) => {
     e.preventDefault();
-    login(input.email, input.password);
+    try {
+      login(input.email, input.password);
+    } catch (error) {
+      console.log(error);
+    }
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    signup(signUpInput.newEmail, signUpInput.newPassword);
+    try {
+      signup(signUpInput.newEmail, signUpInput.newPassword);
+    } catch (error) {
+      console.log(error);
+    }
   };
   const handleChange = (e) => {
     setInput({ ...input, [e.target.id]: e.target.value });

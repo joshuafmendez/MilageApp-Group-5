@@ -16,35 +16,55 @@ cars.use("/:car_id/trips", tripsController);
 
 cars.get("/", async (req, res) => {
   const uid = req.query.uid;
-  const allCars = await getAllCars(uid);
-  res.json(allCars);
+  try {
+    const allCars = await getAllCars(uid);
+    res.json(allCars);
+  } catch (error) {
+    return error;
+  }
 });
 
 cars.get("/:id", async (req, res) => {
   const { id } = req.params;
   const uid = req.query.uid;
-  const car = await getCar(id, uid);
-  res.json(car);
+  try {
+    const car = await getCar(id, uid);
+    res.json(car);
+  } catch (error) {
+    return error;
+  }
 });
 
 cars.post("/", async (req, res) => {
-  const cars = await addCar(req.body);
-  res.json(cars);
+  try {
+    const cars = await addCar(req.body);
+    res.json(cars);
+  } catch (error) {
+    return error;
+  }
 });
 
 cars.delete("/:id", async (req, res) => {
   const { id } = req.params;
   const uid = req.query.uid;
-  const car = await deleteCar(id, uid);
-  res.json(car);
+  try {
+    const car = await deleteCar(id, uid);
+    res.json(car);
+  } catch (error) {
+    return error;
+  }
 });
 
 cars.put("/:id", async (req, res) => {
   const { body, params } = req;
   const { id } = params;
   const uid = req.query.uid;
-  const car = await updateCar(id, body, uid);
-  res.json(car);
+  try {
+    const car = await updateCar(id, body, uid);
+    res.json(car);
+  } catch (error) {
+    return error;
+  }
 });
 
 module.exports = cars;
