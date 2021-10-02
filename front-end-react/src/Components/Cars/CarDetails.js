@@ -10,7 +10,6 @@ import {
 import { addExpenses } from "../../Store/Actions/expenseActions";
 import "../Style/CarDetails.css";
 import { addTrips } from "../../Store/Actions/tripsActions";
-// import { signOut } from "../../Services/Firebase";
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
@@ -45,7 +44,6 @@ function CarDetails() {
           let res = await getAllExpensesFN(id, user);
           dispatch(addExpenses(res));
         }
-        // console.log("res", res);
       } catch (error) {
         console.log(error);
       }
@@ -64,10 +62,6 @@ function CarDetails() {
     };
     getAllTrips();
   }, [id, user, history, dispatch]);
-
-  // const setCheck = (e) => {
-  //   console.log(e.target);
-  // };
 
   if (!user) {
     return <div className="spinner-border"></div>;
@@ -108,13 +102,6 @@ function CarDetails() {
         }
       }
     });
-
-    console.log("tripsArr", tripsArr);
-
-    // const handleLogout = async () => {
-    //   signOut();
-    //   history.push("/");
-    // };
 
     const handleReport = () => {
       car = cars[id];
@@ -246,7 +233,6 @@ function CarDetails() {
                 <button onClick={handleReport} className="cars-new-button">
                   🗂 Generate Report    
                 </button>
-                {/* <GrDocumentPdf size="16px" /> */}
               </div>
             </div>
 
@@ -261,8 +247,6 @@ function CarDetails() {
                 <Link to={`/cars/${id}/trips`}>📘 Mileage Table</Link>
               </div>
             </div>
-
-            {/* <button onClick={handleLogout}> LOG OUT</button> */}
           </div>
         </div>
 
@@ -271,7 +255,6 @@ function CarDetails() {
             <div className="odo-mileage">
               Mileage
               <p className="total-odo">
-                0
                 {tripsArr.reduce((total, trip) => {
                   total += trip.miles;
                   return total;
@@ -308,27 +291,14 @@ function CarDetails() {
               alt={"car"}
             />{" "}
             <div className="all-bs">
-              <button className="button-delete" onClick={handleDelete}>
-                {/* DELETE */}
-              </button>
-
+              {/* DELETE */}
+              <button className="button-delete" onClick={handleDelete}></button>
               <Link to={`/cars/${id}/edit`}>
                 <button className="button-edit"></button>
               </Link>
             </div>
           </div>
-
-          {/* <br></br> */}
         </section>
-
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <Link to={"/cars"}>
-          <button>BACK</button>
-        </Link>
       </>
     );
   }

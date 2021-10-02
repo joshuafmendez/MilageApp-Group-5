@@ -29,7 +29,6 @@ const UserProvider = ({ children }) => {
           };
           fetchAllCars();
         } else {
-          // console.log("help");
           setUser(null);
         }
       } catch (error) {

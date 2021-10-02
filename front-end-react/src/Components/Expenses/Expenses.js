@@ -8,8 +8,6 @@ import { addExpenses } from "../../Store/Actions/expenseActions";
 import { UserContext } from "../../Providers/UserProvider";
 import "../Style/Expenses.css";
 
-// import "../../App.css";
-
 const Expenses = () => {
   const entireState = useSelector((state) => state);
   const history = useHistory();

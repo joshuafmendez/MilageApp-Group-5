@@ -14,25 +14,33 @@ function ExpenseDetails() {
 
   const deleteExpense = async () => {
     try {
-      await axios.delete(
-        `${API}/cars/${id}/expenses/${expense_id}?uid=${user.uid}`
-      );
+      if (user) {
+        await axios.delete(
+          `${API}/cars/${id}/expenses/${expense_id}?uid=${user.uid}`
+        );
+      }
     } catch (err) {
       console.log(err);
     }
   };
   const handleDelete = async () => {
-    await deleteExpense();
-    history.push(`/cars/${id}/expenses`);
+    try {
+      await deleteExpense();
+      history.push(`/cars/${id}/expenses`);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
     const fetchExpense = async () => {
       try {
-        let res = await axios.get(
-          `${API}/cars/${id}/expenses/${expense_id}?uid=${user.uid}`
-        );
-        setExpense(res.data.payload);
+        if (user) {
+          let res = await axios.get(
+            `${API}/cars/${id}/expenses/${expense_id}?uid=${user.uid}`
+          );
+          setExpense(res.data.payload);
+        }
       } catch (err) {
         console.log(err);
       }

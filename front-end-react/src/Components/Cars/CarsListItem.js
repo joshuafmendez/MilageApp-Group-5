@@ -1,20 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
 // import { useState } from "react";
 import "../../Components/Style/CarsListItem.css";
-import { selectCar } from "../../Store/Actions/carsActions";
 
-function CarsListItem({ car, carsArr }) {
-  // let [showElement, setShowElement] = useState(false);
+function CarsListItem({ carsArr }) {
   let showElement = false;
-  const dispatch = useDispatch();
-
-  // FIXME: This returns undefined
-  const handleClick = () => {
-    // console.log("car", car);
-    dispatch(selectCar(car));
-  };
 
   return (
     <div className="list-cars">
@@ -30,21 +20,22 @@ function CarsListItem({ car, carsArr }) {
           return (
             <li key={i} className="li-show">
               <div className="card-center">
+                {/* br needs to be redone */}
                 <br></br>
                 <br></br>
                 <br></br>{" "}
                 <img
                   className="car-pic"
                   src="https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png"
-                  // style={{ width: "200px" }}
                   alt={"car"}
                 />{" "}
                 <div className="make-model">
                   {car.make} {car.model}
-                  <Link to={`/cars/${car.id}`} onClick={handleClick}>
+                  <Link to={`/cars/${car.id}`}>
                     <button className="showMe">Select</button>
                   </Link>
                 </div>
+                {/* br needs to be redone */}
                 <br></br>
               </div>
 

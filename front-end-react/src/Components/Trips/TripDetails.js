@@ -24,26 +24,15 @@ const TripDetails = () => {
     history.push(`/cars/${id}/trips`);
   };
 
-  // const generateReport = async () => {
-  //   try {
-  //     await axios.get(`${API}/cars/${id}/trips/pdf`);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-
-  // const handleReport = async () => {
-  //   await generateReport();
-  //   history.push(`/cars/${id}/trips`);
-  // };
-
   useEffect(() => {
     const fetchTrip = async () => {
       try {
-        const { data } = await axios.get(
-          `${API}/cars/${id}/trips/${trip_id}?uid=${user.uid}`
-        );
-        setTrip(data.payload);
+        if (user) {
+          const { data } = await axios.get(
+            `${API}/cars/${id}/trips/${trip_id}?uid=${user.uid}`
+          );
+          setTrip(data.payload);
+        }
       } catch (err) {
         console.log(err);
       }

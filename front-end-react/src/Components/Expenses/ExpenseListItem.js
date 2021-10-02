@@ -12,13 +12,10 @@ function ExpenseListItem({ expense }) {
       <td>
         <h2> {car_id}</h2>
       </td>
-
       <td className="date-data">
-        <td>
-          <Link to={`/cars/${car_id}/expenses/${id}`}>
-            <h2> {newDate.toLocaleDateString()}</h2>
-          </Link>
-        </td>
+        <Link to={`/cars/${car_id}/expenses/${id}`}>
+          <h2> {newDate.toLocaleDateString()}</h2>
+        </Link>
       </td>
       <td>
         <h2> {expense_type}</h2>

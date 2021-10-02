@@ -22,10 +22,12 @@ const TripEditForm = () => {
 
   const updateTrip = async (updateTrip) => {
     try {
-      await axios.put(
-        `${API}/cars/${id}/trips/${trip_id}?uid=${user.uid}`,
-        updateTrip
-      );
+      if (user) {
+        await axios.put(
+          `${API}/cars/${id}/trips/${trip_id}?uid=${user.uid}`,
+          updateTrip
+        );
+      }
     } catch (error) {
       console.log(error);
     }
@@ -34,10 +36,12 @@ const TripEditForm = () => {
   useEffect(() => {
     const fetchTrip = async () => {
       try {
-        const { data } = await axios.get(
-          `${API}/cars/${id}/trips/${trip_id}?uid=${user.uid}`
-        );
-        setTrip(data.payload);
+        if (user) {
+          const { data } = await axios.get(
+            `${API}/cars/${id}/trips/${trip_id}?uid=${user.uid}`
+          );
+          setTrip(data.payload);
+        }
       } catch (err) {
         console.log(err);
       }
@@ -59,8 +63,12 @@ const TripEditForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await updateTrip(trip);
-    history.push(`/cars/${id}/trips`);
+    try {
+      await updateTrip(trip);
+      history.push(`/cars/${id}/trips`);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const {
@@ -83,7 +91,6 @@ const TripEditForm = () => {
           onChange={handleChange}
           id="date"
           placeholder="date"
-          // required
         />
         <label htmlFor="miles">miles:</label>
         <input

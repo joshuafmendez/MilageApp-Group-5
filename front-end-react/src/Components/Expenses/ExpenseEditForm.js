@@ -9,7 +9,7 @@ const API = apiURL();
 function ExpenseEditForm() {
   const user = useContext(UserContext);
   let history = useHistory();
-  const { expense_id, id } = useParams(); // needs attention to be able change the car_id
+  const { expense_id, id } = useParams();
   const [expense, setExpense] = useState({
     car_id: "",
     expense_type: "",
@@ -32,10 +32,12 @@ function ExpenseEditForm() {
   useEffect(() => {
     const fetchExpense = async () => {
       try {
-        const res = await axios.get(
-          `${API}/cars/${id}/expenses/${expense_id}?uid=${user.uid}`
-        );
-        setExpense(res.data.payload);
+        if (user) {
+          const res = await axios.get(
+            `${API}/cars/${id}/expenses/${expense_id}?uid=${user.uid}`
+          );
+          setExpense(res.data.payload);
+        }
       } catch (err) {
         console.log(err);
       }
@@ -56,8 +58,12 @@ function ExpenseEditForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await updateExpense(expense);
-    history.push(`/cars/${id}/expenses`);
+    try {
+      await updateExpense(expense);
+      history.push(`/cars/${id}/expenses`);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const { business_use, amount_spent, date, expense_type } = expense;
@@ -72,7 +78,6 @@ function ExpenseEditForm() {
           onChange={handleChange}
           id="date"
           placeholder="Enter date"
-          // required
         />
         Expense type
         <select
