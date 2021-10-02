@@ -10,15 +10,15 @@ const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   useEffect(() => {
     auth.onAuthStateChanged(async (user) => {
-      if (user) {
-        const { displayName, email, photoURL, uid } = user;
-        await setUser({
-          displayName,
-          email,
-          photoURL,
-          uid,
-        });
-        if(user){
+      try {
+        if (user) {
+          const { displayName, email, photoURL, uid } = user;
+          await setUser({
+            displayName,
+            email,
+            photoURL,
+            uid,
+          });
           const fetchAllCars = async () => {
             try {
               const res = await getAllCarsFN(user);
@@ -28,9 +28,12 @@ const UserProvider = ({ children }) => {
             }
           };
           fetchAllCars();
+        } else {
+          // console.log("help");
+          setUser(null);
         }
-      } else {
-        setUser(null);
+      } catch (error) {
+        console.log(error);
       }
     });
   }, [dispatch]);

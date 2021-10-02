@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { addCars } from "../Store/Actions/carsActions";
 import { getAllCarsFN } from "../util/networkRequest";
 import { UserContext } from "../Providers/UserProvider";
 import { useHistory } from "react-router-dom";
@@ -13,8 +14,7 @@ import { GrFacebook } from "react-icons/gr";
 import TripLogo from "./Images/giflogo.GIF";
 
 const Login = () => {
-  const entireState = useSelector((state) => state);
-  const { cars } = entireState;
+  const dispatch = useDispatch();
   const user = useContext(UserContext);
   const history = useHistory();
   const [displayLogin, setDisplayLogin] = useState(false);
@@ -29,12 +29,8 @@ const Login = () => {
     passwordCheck: "",
   });
   const handleGoogle = () => {
-    try {
-      handleX();
-      signInWithGoogle();
-    } catch (error) {
-      console.log(error);
-    }
+    handleX();
+    signInWithGoogle();
   };
   const handleX = () => {
     setDisplaySignUp(false);
@@ -54,19 +50,11 @@ const Login = () => {
   };
   const handleLoginIn = (e) => {
     e.preventDefault();
-    try {
-      login(input.email, input.password);
-    } catch (error) {
-      console.log(error);
-    }
+    login(input.email, input.password);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      signup(signUpInput.newEmail, signUpInput.newPassword);
-    } catch (error) {
-      console.log(error);
-    }
+    signup(signUpInput.newEmail, signUpInput.newPassword);
   };
   const handleChange = (e) => {
     setInput({ ...input, [e.target.id]: e.target.value });
@@ -84,24 +72,21 @@ const Login = () => {
   useEffect(() => {
     const fetchAllCars = async () => {
       try {
-        if (!cars) {
-          const res = await getAllCarsFN(user);
-          // dispatch(addCars(res));
-          if (res.length) {
-            //FIXME: The current code does nothing
-            history.push(`/cars`);
-            // let filterArray = res.filter((el) => el.is_default === true);
-            // history.push(`/cars/${filterArray[filterArray.length - 1].id}`);
-          } else {
-            history.push("/cars/car/new");
-          }
+        const res = await getAllCarsFN(user);
+        dispatch(addCars(res));
+        if (res.length) {
+          //FIXME: The current code does nothing
+          let filterArray = res.filter((el) => el.is_default === true);
+          history.push(`/cars/${filterArray[filterArray.length - 1].id}`);
+        } else {
+          history.push("/cars/car/new");
         }
       } catch (error) {
-        console.log("error", error);
+        console.log(error);
       }
     };
     fetchAllCars();
-  }, [cars, user, history]);
+  }, [dispatch, user, history]);
 
   return (
     <div className="sign-box">
