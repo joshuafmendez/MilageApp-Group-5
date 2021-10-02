@@ -12,7 +12,7 @@ const Expenses = () => {
   const entireState = useSelector((state) => state);
   const history = useHistory();
   const dispatch = useDispatch();
-  const { expenses } = entireState;
+  const { cars, expenses } = entireState;
   const expenseArr = Object.values(expenses);
   const { id } = useParams();
   const user = useContext(UserContext);
@@ -39,18 +39,18 @@ const Expenses = () => {
 
   return (
     <div className="main-e-div">
+      <h2>
+        {cars[id]?.make} {cars[id]?.model} Expenses
+      </h2>
+      <Link to={`/cars/${id}/expenses/expense/new`}>
+        <button className="expense-new-button">Add New Expense</button>
+      </Link>
       <table className="expenses-main-table">
         <thead>
           <tr className="head-row">
-            <th>
-              <h2>Date</h2>
-            </th>
-            <th>
-              <h2>Expense Type</h2>
-            </th>
-            <th>
-              <h2>Amount</h2>
-            </th>
+            <th>Date</th>
+            <th>Expense Type</th>
+            <th>Amount</th>
             <th></th>
           </tr>
         </thead>
@@ -60,9 +60,6 @@ const Expenses = () => {
           })}
         </tbody>
       </table>
-      <Link to={`/cars/${id}/expenses/expense/new`}>
-        <button className="expense-new-button">Add New Expense</button>
-      </Link>
     </div>
   );
 };

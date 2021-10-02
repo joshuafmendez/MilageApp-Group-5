@@ -7,7 +7,7 @@ function ExpenseListItem({ expense }) {
   newDate.setDate(newDate.getDate(date) + 1);
   return (
     <tr className="row-penses">
-      <td className="date-data">{newDate.toLocaleDateString()}</td>
+      <td>{newDate.toLocaleDateString()}</td>
       <td>{expense_type}</td>
       <td>${amount_spent.toLocaleString()}</td>
       <td>

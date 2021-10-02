@@ -23,27 +23,9 @@ body {
   position: absolute;
   z-index: 3;
 }
-/* 
-.card::before {
-  position: absolute;
-  width: 100%;
-  height: 95%;
-  content: "";
-  top: -50%;
-  background-color: #f6e4e4;
-  transform: skewY(360deg);
-  transition: 2s ease-in;
-} */
 
-/* .card:hover::before {
-  top: -70%;
-  transform: skewY(390deg);
-} */
-
- .image {
+.image {
   position: absolute;
-  /* width: 20%;
-  height: 20%; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -51,12 +33,6 @@ body {
   height: 100px;
   width: 70px;
 }
-
-/* .card .image img {
-  max-width: 100%;
-  transition: 2s ease-in;
-  height: 80px;
-} */
 
 .card:hover .image img {
   width: 80%;
@@ -71,65 +47,10 @@ body {
   transition: 2s ease-in;
 }
 
-/* .card:hover .about-product {
-  bottom: 20px !important;
-} */
-
-/* .buy-now {
-  color: #fff;
-  background-color: #ef5350 !important;
-  border-color: #ef5350 !important;
-  width: 160px;
-  margin-top: 20px;
-} */
-
-/* .buy-now:focus {
-  box-shadow: none;
-} */
-
-/* .buy-now:hover {
-  color: #fff;
-  background-color: #40e8c4 !important;
-  border-color: #40e8ad !important;
-} */
-
-/* .bar {
-  background-color: red;
-}
-.border {
-  background-color: white;
-}
-div.card.text-center{
-  height: 300px;
-} */
-
-
 .container {
   position: relative;
   width: 50%;
 }
-
-/* .image {
-  display: block;
-  width: 50%;
-  height: auto;
-} */
-
-/* .overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: #008CBA;
-  overflow: hidden;
-  width: 50%;
-  height: 50%;
-  -webkit-transform: scale(0);
-  -ms-transform: scale(0);
-  transform: scale(0);
-  -webkit-transition: .3s ease;
-  transition: .3s ease;
-} */
 
 .container:hover .overlay {
   -webkit-transform: scale(1);
@@ -149,104 +70,84 @@ div.card.text-center{
   text-align: center;
 }
 
-
-button.showMe{
-background-color: transparent;
-border:transparent;
-color:white;
-width: 305px;
-background-color: darkgrey;
-width: 77px;
-border:solid rgb(182, 185, 188) .02px;
-border-radius: 28%;
-outline:solid black 1px;
-background-image: linear-gradient(rgb(37, 37, 57) 10%, rgb(69, 78, 105) 55%, rgb(43, 43, 45) 97%,rgb(25, 25, 28) 99%);
-}
-
-button.showMe:hover{
+button.showMe {
   background-color: transparent;
-  border:transparent;
-  color:white;
+  border: transparent;
+  color: white;
   width: 305px;
   background-color: darkgrey;
   width: 77px;
-  border:transparent;
+  border: solid rgb(182, 185, 188) 0.02px;
   border-radius: 28%;
-  outline:transparent;
-  background-image: linear-gradient(rgb(37, 37, 57) 10%, rgb(69, 78, 105) 55%, rgb(43, 43, 45) 97%,rgb(25, 25, 28) 99%);
-  }
-  
+  outline: solid black 1px;
+  background-image: linear-gradient(
+    rgb(37, 37, 57) 10%,
+    rgb(69, 78, 105) 55%,
+    rgb(43, 43, 45) 97%,
+    rgb(25, 25, 28) 99%
+  );
+}
 
-.make-model{
+button.showMe:hover {
+  background-color: transparent;
+  border: transparent;
+  color: white;
+  width: 305px;
+  background-color: darkgrey;
+  width: 77px;
+  border: transparent;
+  border-radius: 28%;
+  outline: transparent;
+  background-image: linear-gradient(
+    rgb(37, 37, 57) 10%,
+    rgb(69, 78, 105) 55%,
+    rgb(43, 43, 45) 97%,
+    rgb(25, 25, 28) 99%
+  );
+}
+
+.make-model {
   position: absolute;
-  z-index:3;
+  z-index: 3;
   text-align: center;
-  color:white;
-  display:flex;
+  color: white;
+  display: flex;
   justify-content: space-between;
-  padding-left:11px; 
-  padding-bottom:2px; 
+  padding-left: 11px;
+  padding-bottom: 2px;
   width: 288px;
-
 }
 
-ul.ul-show{
-  /* display:flex;
-  justify-content: space-around; */
-  margin-bottom:13px;
-  /* flex-direction:row-reverse; */
+ul.ul-show {
+  margin-bottom: 13px;
 }
-li.li-show{
-  /* display:flex;
-  justify-content: space-around; */
-  margin-bottom:13px;
-  display:flex;
+li.li-show {
+  margin-bottom: 13px;
+  display: flex;
   justify-content: center;
   align-content: center;
 }
-.list-cars{
-  /* margin-left:10%; */
+.list-cars {
   width: 100%;
   background-color: rgb(28, 26, 26);
   margin-top: 5%;
 }
 
-
 /* new */
-div.card-center{
-  /* background-color: slategray; */
-  width:300px;
+div.card-center {
+  width: 300px;
   background-image: url("../../Images/blackdrop.png");
   background-position: center;
-  background-size:cover ;
-  padding-top:4%;
+  background-size: cover;
+  padding-top: 4%;
   height: 300px;
-  padding-left:0;
+  padding-left: 0;
   transition: transform 4s;
-  
-  
-  
-  }
-/*   
-  img.car-pic{
-    height: 100%;
-    width: 100%;
-
-  }
-  img.car-pic:hover{
-    height: 600px;
-    width: 600px;
-  } */
-
-  img.car-pic{
-
-
-    transition: transform .5s ease;
-        width: 300px;
-
-  }
-  img.car-pic:hover{
-    /* height: 250px;
-    width: 400px; */
-    transform: scale(1.5)
-  }
+}
+img.car-pic {
+  transition: transform 0.5s ease;
+  width: 300px;
+}
+img.car-pic:hover {
+  transform: scale(1.5);
+}

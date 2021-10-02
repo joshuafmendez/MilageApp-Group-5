@@ -59,10 +59,10 @@ function ExpenseNewForm() {
 
   return (
     <div className="div-form">
-      <div>
+      <div className="form-contrainer">
         <form onSubmit={handleSubmit}>
-          Car Expenses
-          <table>
+          <h2>Car Expenses</h2>
+          <table className="exp-new-table">
             <tbody>
               <tr>
                 <td>
@@ -139,7 +139,7 @@ function ExpenseNewForm() {
               </tr>
             </tbody>
           </table>
-          <div>
+          <div className="buttons-container">
             <button className="button-sub" type="submit">
               Submit
             </button>

@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-
 }
 
 nav {
@@ -11,45 +10,3 @@ nav {
 li {
   list-style: none;
 }
-
-/* n {
-  width: 80vw;
-  margin: auto;
-  border: 1px solid black;
-  border-collapse: collapse;
-} */
-
-/* td {
-  text-align: center;
-}
-
-tr {
-  margin-left: auto;
-  margin-right: auto;
-  width: 60vw;
-  height: 10vh;
-} */
-/* 
-td,
-th {
-  width: 10w;
-  border: 1px solid black;
-  text-align: left;
-  padding: 1%;
-}
-td:nth-child(1) {
-  text-align: center;
-  width: 6vw;
-}
-
-.cars-new-button {
-  padding: 1%;
-  margin: 5%;
-  font-size: large;
-}
-
-.sorting {
-  padding: 1;
-  margin: 3%;
-  font-size: large;
-} */

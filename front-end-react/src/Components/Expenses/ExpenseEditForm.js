@@ -86,25 +86,25 @@ function ExpenseEditForm() {
           onChange={handleSelectChange}
         >
           <option value=""></option>
-          <option selected name="gas" value="Gas">
+          <option name="gas" value="Gas">
             Gas
           </option>
-          <option selected name="repairs" value="Repairs">
+          <option name="repairs" value="Repairs">
             Repairs
           </option>
-          <option selected name="car_insurance" value="Car Insurance">
+          <option name="car_insurance" value="Car Insurance">
             Car Insurance
           </option>
-          <option selected name="oil_change" value="Oil Change">
+          <option name="oil_change" value="Oil Change">
             Oil Change
           </option>
-          <option selected name="registration_fees" value="Registration Fees">
+          <option name="registration_fees" value="Registration Fees">
             Registration Fees
           </option>
-          <option selected name="depreciation" value="Depreciation">
+          <option name="depreciation" value="Depreciation">
             Depreciation
           </option>
-          <option selected name="rent" value="Car Rental">
+          <option name="rent" value="Car Rental">
             Car Rental
           </option>
         </select>
