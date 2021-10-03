@@ -54,17 +54,17 @@ function ExpenseNewForm() {
   }, [user, history]);
 
   return (
-    <div className="div-form">
-      <div>
-        <form onSubmit={handleSubmit}>
+    <div>
+      <div className="trips-show-table">
+        <form className="form-trip" onSubmit={handleSubmit}>
           Car Expenses
-          <table>
+          <table className="trip-table-one">
             <tr>
-              {" "}
-              <td>
+        
+                  <td className="data-td">
                 <label htmlFor="date">Date:</label>
               </td>
-              <td>
+                  <td className="data-td">
                 <input
                   value={date}
                   type="date"
@@ -77,10 +77,10 @@ function ExpenseNewForm() {
             </tr>
             <tr>
               {" "}
-              <td>
+                  <td className="data-td">
                 <label> Expense type:</label>
               </td>
-              <td>
+                  <td className="data-td">
                 <select onChange={handleSelectChange}>
                   <option value="" defaultValue></option>
                   <option name="gas" value="Gas">
@@ -109,10 +109,10 @@ function ExpenseNewForm() {
             </tr>
             <tr>
               {" "}
-              <td>
+                  <td className="data-td">
                 <label htmlFor="amount_spent">Amount:</label>
               </td>
-              <td>
+                  <td className="data-td">
                 <input
                   id="amount_spent"
                   type="number"
@@ -126,10 +126,10 @@ function ExpenseNewForm() {
 
             <tr>
               {" "}
-              <td>
+                  <td className="data-td">
                 <label htmlFor="business_use">Business Use:</label>
               </td>
-              <td>
+                  <td className="data-td">
                 <input
                   id="business_use"
                   type="checkbox"
@@ -139,12 +139,12 @@ function ExpenseNewForm() {
               </td>
             </tr>
           </table>
-          <div>
-            <button className="button-sub" type="submit">
-              Submit
+
+          <div className="trip-buttons">
+          <button className="sub" type="submit">
             </button>
             <Link to={`/cars/${id}/expenses`}>
-              <button className="button-can">Cancel</button>
+            <button className="button-can"></button>
             </Link>
           </div>
         </form>

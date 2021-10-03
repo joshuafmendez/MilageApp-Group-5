@@ -4,9 +4,7 @@ import { useHistory, Link, useParams } from "react-router-dom";
 import { apiURL } from "../../util/apiURL";
 import "../Style/TripNewForm.css";
 import { UserContext } from "../../Providers/UserProvider";
-import "../Style/TripNewForm.css"
-
-
+import "../Style/TripNewForm.css";
 
 const API = apiURL();
 
@@ -69,80 +67,11 @@ const TripNewForm = () => {
 
   return (
     <div>
-      {/* 
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="date">Date:</label>
-        <input
-          value={date}
-          type="date"
-          onChange={handleChange}
-          id="date"
-          placeholder="date"
-          required
-        />
-        <label htmlFor="miles">miles:</label>
-        <input
-          id="miles"
-          type="number"
-          value={miles}
-          onChange={handleChange}
-          placeholder="Enter overall miles for the trip"
-          required
-        />
-        <label htmlFor="reason">reason:</label>
-        <input
-          id="reason"
-          type="text"
-          value={reason}
-          onChange={handleChange}
-          placeholder="Enter reason for your trip"
-          required
-        />
-        <label htmlFor="start_odometer">Start Odometer:</label>
-        <input
-          id="start_odometer"
-          type="number"
-          value={start_odometer}
-          min="0"
-          placeholder="Enter the mileage show on the odometer at start of trip"
-          onChange={handleChange}
-        />
-        <label htmlFor="stop_odometer">Stop Odometer:</label>
-        <input
-          id="stop_odometer"
-          type="number"
-          value={stop_odometer}
-          placeholder="Enter the mileage show on the odometer at end of trip"
-          onChange={handleChange}
-        />
-        <label htmlFor="business_use">Business Use:</label>
-        <input
-          id="business_use"
-          type="checkbox"
-          onChange={businessCheckbox}
-          checked={business_use}
-        />
-        <label htmlFor="favorite">Favorite:</label>
-        <input
-          id="favorite"
-          type="checkbox"
-          onChange={favoriteCheckbox}
-          checked={favorite}
-        />
-        <div>
-          <button type="submit">Submit</button>
-          <Link to={`/cars/${id}/trips`}>
-            <button>Cancel</button>
-          </Link>
-        </div>
-      </form> */}
-
       <div className="trips-show-table">
         <form className="form-trip" onSubmit={handleSubmit}>
-          Car Mileage
-          <table>
+          <h2> Car Mileage</h2>
+          <table className="trip-table-one">
             <tr>
-              {" "}
               <td className="data-td">
                 <label htmlFor="date">Date:</label>
               </td>
@@ -153,7 +82,6 @@ const TripNewForm = () => {
                   onChange={handleChange}
                   id="date"
                   placeholder="date"
-                  // required
                 />{" "}
               </td>
             </tr>
@@ -185,8 +113,7 @@ const TripNewForm = () => {
                   type="text"
                   value={reason}
                   onChange={handleChange}
-                  placeholder="Enter reason for your trip"
-                  // required
+                  placeholder="Reason for trip"
                 />{" "}
               </td>
             </tr>
@@ -253,12 +180,15 @@ const TripNewForm = () => {
               </td>
             </tr>
           </table>
-          <div>
-            <button className="button-sub" type="submit">
-              Submit
+
+          <div className="trip-buttons">
+   
+         <button className="sub" type="submit">
             </button>
-            <Link to={`/cars/${id}/expenses`}>
-              <button className="button-can">Cancel</button>
+     
+              {/* DELETE */}
+            <Link to={`/cars/${id}/trips`}>
+              <button className="button-can"></button>
             </Link>
           </div>
         </form>

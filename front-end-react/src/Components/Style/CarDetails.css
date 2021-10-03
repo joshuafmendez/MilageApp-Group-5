@@ -462,29 +462,30 @@ button.b-delete {
   flex-direction: column;
   align-items: center;
   margin-bottom: 0;
-  padding-top: 112px;
+  padding-top: 80px;
   /* margin-right:27%; */
   z-index: 88;
   /* position: absolute; */
-  width: 300px;
+  width: 200px;
   /* margin-top:6px; */
   /* margin-bottom:400px; */
   /* margin-left: 6%; */
-  font-size: 22px;
+  font-size: 16px;
 }
 .odo-mileage > .total-odo {
   font-family: "Orbitron", sans-serif;
   color: lime;
   background-color: rgb(52, 50, 50);
-  font-size: 20px;
+  font-size: 16px;
   width: 80%;
   border-radius: 12px;
-  padding-bottom: 28px;
-  height: 21px;
+  padding-bottom: 25px;
+  height: 19px;
   border: lime solid 0.5px;
 }
 .odo-mileage > .total-odo > #text {
   padding: 7px;
+  font-size:9px;
 }
 
 .right-nav {
@@ -536,8 +537,17 @@ button.b-delete {
 
 
 .all-expenses{
-  background-color: black;
-  color:white;
-  width: 300px;
+  background-color: rgb(159, 156, 156);
+  color:black;
+  width: 200px;
   display:flex;
+  justify-content: space-between;
+ /* padding-top:1%;  */
+font-size: 14px;
+height: 28px;
+padding-left: 10px;
+padding-right: 10px;
+/* margin-left: 45px; */
+border-radius: 50px;
+border:black solid 3px;
 }
