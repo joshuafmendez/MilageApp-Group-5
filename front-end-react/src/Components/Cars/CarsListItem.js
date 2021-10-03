@@ -30,8 +30,8 @@ function CarsListItem({ carsArr }) {
                   alt={"car"}
                 />{" "}
                 <div className="make-model">
-                  {car.make} {car.model}
-                  <Link to={`/cars/${car.id}`}>
+                  {car?.make} {car?.model}
+                  <Link to={`/cars/${car?.id}`}>
                     <button className="showMe">Select</button>
                   </Link>
                 </div>

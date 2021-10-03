@@ -46,7 +46,7 @@ function CarDetails() {
   useEffect(() => {
     const getAllExpenses = async () => {
       try {
-        if (user) {
+        if (user && id) {
           let res = await getAllExpensesFN(id, user);
           dispatch(addExpenses(res));
         }
@@ -58,7 +58,7 @@ function CarDetails() {
 
     const getAllTrips = async () => {
       try {
-        if (user) {
+        if (user && id) {
           let res = await getAllTripsFN(id, user);
           dispatch(addTrips(res));
         }
