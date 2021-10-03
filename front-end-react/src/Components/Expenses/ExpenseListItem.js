@@ -11,7 +11,9 @@ function ExpenseListItem({ expense }) {
       <td>{expense_type}</td>
       <td>${amount_spent.toLocaleString()}</td>
       <td>
-        <Link to={`/cars/${car_id}/expenses/${id}`}>Edit</Link>
+        <Link to={`/cars/${car_id}/expenses/${id}`}>
+          <button className="edit-button">Edit</button>
+        </Link>
       </td>
     </tr>
   );

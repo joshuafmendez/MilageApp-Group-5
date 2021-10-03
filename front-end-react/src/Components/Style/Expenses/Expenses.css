@@ -15,51 +15,65 @@
   font-weight: 400;
   font-size: 150%;
   text-align: left;
-  padding: 1%;
+  padding: 2%;
 }
 
 .expense-new-button {
   margin: 2%;
 }
 
-.head-date {
+.head-type {
+  width: 25%;
+}
+.head-amount {
+  width: 25%;
+}
+.head-edit {
   width: 10%;
 }
 
-.edit-col {
-  width: 10%;
-}
 
-.amount {
-  width: 8%;
-}
 
 .expenses-col {
   width: 20%;
 }
 
-@media only screen and (max-width: 500px) {
+
+.head-date {
+  width: 15%;
+}
+
+@media screen and (max-width: 500px) {
+  .main-e-div {
+    margin-top: 10%;
+    padding-top: 10%;
+  }
   .expenses-main-table {
     width: 90%;
-    margin: auto;
+        margin: auto;
     table-layout: fixed;
   }
-
-  .head-row th {
+  .head-type {
+    width: 25%;
+  }
+  .head-amount {
+    width: 15%;
+  }
+  .head-edit {
+    width: 15%;
+  }
+  .head-date {
+    width: 22%;
+      .head-row th {
     font-weight: 100;
     font-size: 80%;
     text-align: left;
     padding: 1%;
   }
 
-  .main-e-div {
-    margin-top: 20%;
-    padding-top: 4%;
-  }
-  .head-date {
-    width: 10%;
-  }
+
   .expense-new-button {
     margin: 5%;
+
   }
 }

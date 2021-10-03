@@ -3,6 +3,12 @@
   text-align: left;
   padding: 1%;
 }
+.edit-button {
+  border-radius: 20%;
+}
+.edit-button:hover {
+  background-color: yellow;
+}
 
 @media only screen and (max-width: 500px) {
   .row-penses td {
@@ -11,3 +17,4 @@
     padding: 1%;
   }
 }
+
