@@ -17,6 +17,7 @@ const Login = () => {
   const { cars } = entireState;
   const user = useContext(UserContext);
   const history = useHistory();
+  const [error, setError] = useState("");
   const [displayLogin, setDisplayLogin] = useState(false);
   const [displaySignUp, setDisplaySignUp] = useState(false);
   const [input, setInput] = useState({
@@ -52,27 +53,43 @@ const Login = () => {
     setDisplaySignUp(!displaySignUp);
     setDisplayLogin(!displayLogin);
   };
-  const handleLoginIn = (e) => {
+  const handleLoginIn = async (e) => {
     e.preventDefault();
     try {
-      login(input.email, input.password);
+      await login(input.email, input.password);
     } catch (error) {
-      console.log(error);
+      if (String(error).includes("The password is invalid or the user does not have a password.")) {
+        setError("The password is invalid or the user does not have a password.")
+      } else if (String(error).includes("Access to this account has been temporarily disabled due to many failed login attempts.")) {
+        setError("Access to this account has been temporarily disabled due to many failed login attempts.")
+      }else{
+        window.alert(error)
+        console.log(error);
+      }
     }
   };
-  const handleSubmit = (e) => {
+  const handleSignUp = async (e) => {
     e.preventDefault();
     try {
-      signup(signUpInput.newEmail, signUpInput.newPassword);
+      await signup(signUpInput.newEmail, signUpInput.newPassword);
     } catch (error) {
-      console.log(error);
+      if (String(error).includes("The email address is badly formatted.")) {
+        setError("The email address is badly formatted.")
+      }else if (String(error).includes("The email address is already in use by another account")) {
+        setError("The email address is already in use by another account.")
+      }else{
+        window.alert(error)
+        console.log(error);
+      }
     }
   };
   const handleChange = (e) => {
     setInput({ ...input, [e.target.id]: e.target.value });
+    setError("")
   };
   const handleSignUpChange = (e) => {
     setSignUpInput({ ...signUpInput, [e.target.id]: e.target.value });
+    setError("")
   };
 
   useEffect(() => {
@@ -144,6 +161,9 @@ const Login = () => {
       {/* Log in */}
       {displayLogin && (
         <form className="logInForm" onSubmit={handleLoginIn}>
+         {error!=="" &&( <div className="alert alert-danger" role="alert">
+            {error}
+          </div>)}
           <button
             type="button"
             className="btn-close x-button"
@@ -192,7 +212,7 @@ const Login = () => {
               type="password"
               className="form-control"
               id="password"
-              minlength="6"
+              minLength="6"
               required
             />
           </div>
@@ -203,7 +223,10 @@ const Login = () => {
       )}
       {/* signUp */}
       {displaySignUp && (
-        <form className="signUpForm" onSubmit={handleSubmit}>
+        <form className="signUpForm" onSubmit={handleSignUp}>
+          {error!=="" &&( <div className="alert alert-danger" role="alert">
+            {error}
+          </div>)}
           <button
             type="button"
             className="btn-close x-button"
@@ -231,7 +254,7 @@ const Login = () => {
               className="form-control"
               id="newEmail"
               aria-describedby="emailHelp"
-              placeholder="...@url.com" 
+              placeholder="...@url.com"
               required
             />
             <div id="emailHelp" className="form-text">
@@ -249,7 +272,7 @@ const Login = () => {
               className="form-control"
               id="newPassword"
               placeholder="6 characters minimum"
-              minlength="6"
+              minLength="6"
               required
             />
           </div>
