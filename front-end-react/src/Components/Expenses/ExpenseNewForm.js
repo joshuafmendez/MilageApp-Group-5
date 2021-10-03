@@ -59,8 +59,6 @@ const ExpenseNewForm = () => {
     }
   }, [user, history]);
 
-  console.log(date)
-
   return (
     <div>
       <div className="trips-show-table">
