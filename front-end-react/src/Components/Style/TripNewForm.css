@@ -1,0 +1,140 @@
+.data-td>input{
+    background-color: white;
+}
+.form-trip{
+    margin-top: 2%;
+    border: black solid 5px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    /* background-color: rgb(179, 222, 241); */
+    font-size: 22px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    padding:8px;
+
+}
+
+.trips-show-table{
+    border: purple solid 5px;
+    background-image: url("https://media.istockphoto.com/photos/toy-car-magnifying-glass-calculator-pen-and-notebook-picture-id591850812?k=20&m=591850812&s=612x612&w=0&h=1rf5FMS5qrFMWa85gQ3n_8SAc1Zkymruq001Alw9kZs=");
+    display: flex;
+    background-position: center;
+    background-size: cover;
+    flex-direction: column;
+    align-items: center;
+    height: 800px;
+    padding-top:4%;
+}
+.trip-table-one{
+    /* border: yellow solid 5px; */
+    width: 60%;
+
+
+
+}
+
+.trip-table-one>tr>td>label{
+    font-size: 22px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+    
+}
+.trip-table-one>tr>td>input{
+    font-size: 19px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+    color: dimgray;
+margin-left:5px;
+    
+}
+ form.form-trip > h2{
+    font-size:22px;
+    font-weight: lighter;
+}
+
+
+
+ /* button.sub {
+    background-image: url("../Images/subup.PNG");
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    height: 85px;
+    width: 85px;
+    box-shadow: transparent;
+    outline: transparent;
+    border: transparent;
+  } */
+
+
+
+/* button.sub:hover {
+    background-image: url("../Images/subdown.png");
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    height: 85px;
+    width: 85px;
+    box-shadow: transparent;
+    outline: transparent;
+    border: transparent;
+  } */
+.form-trip> div.trip-buttons> button{
+    background-image: url("../Images/subup.png");
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    height: 85px;
+    width: 85px;
+    box-shadow: transparent;
+    outline: transparent;
+    border: transparent;
+
+  }
+  .form-trip> div.trip-buttons> button:hover{
+    background-image: url("../Images/subdown.png");
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    height: 85px;
+    width: 85px;
+    box-shadow: transparent;
+    outline: transparent;
+    border: transparent;
+
+  }
+  
+  div.trip-buttons> a>  button.button-can {
+    background-image: url("../Images/canup.png");
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    height: 85px;
+    width: 85px;
+    box-shadow: transparent;
+    outline: transparent;
+    border: transparent;
+  }
+  
+  div.trip-buttons> a>  button.button-can:hover {
+    background-image: url("../Images/candown.png");
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    height: 85px;
+    width: 85px;
+    box-shadow: transparent;
+    outline: transparent;
+    border: transparent;
+  }
+  
+
+
+
+
+
+
+

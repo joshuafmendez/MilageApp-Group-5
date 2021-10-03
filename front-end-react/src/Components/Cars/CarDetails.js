@@ -297,7 +297,11 @@ function CarDetails() {
               </Link>
             </div>
           </div>
+
+          {/* <br></br> */}
         </section>
+
+     
       </>
     );
   }
