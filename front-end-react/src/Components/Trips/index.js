@@ -13,7 +13,7 @@ const Trips = () => {
   const history = useHistory();
   const entireState = useSelector((state) => state);
   const dispatch = useDispatch();
-  const { trips } = entireState;
+  const { cars, trips } = entireState;
   const { id } = useParams();
   const tripsArr = Object.values(trips);
 
@@ -39,32 +39,35 @@ const Trips = () => {
 
   return (
     <div className="trips-table-parent">
+      <h2>
+        {cars[id]?.make} {cars[id]?.model} Mileage
+      </h2>
       <table>
         <thead>
           <tr>
             <th>
-              <h2>Date</h2>
+              <p>Date</p>
             </th>
             <th>
-              <h2>Miles</h2>
+              <p>Miles</p>
             </th>
             <th>
-              <h2>Reason</h2>
+              <p>Reason</p>
+            </th>
+            {/* <th>
+              <p>Start Odometer</p>
             </th>
             <th>
-              <h2>Start Odometer</h2>
+              <p>Stop Odometer</p>
+            </th> */}
+            <th>
+              <p>Business Use</p>
             </th>
             <th>
-              <h2>Stop Odometer</h2>
+              <p>Favorite</p>
             </th>
             <th>
-              <h2>Business Use</h2>
-            </th>
-            <th>
-              <h2>Favorite</h2>
-            </th>
-            <th>
-              <h2>Edit</h2>
+              <p>Edit</p>
             </th>
           </tr>
         </thead>

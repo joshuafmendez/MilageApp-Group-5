@@ -3,7 +3,7 @@
   padding-top: 4%;
 }
 .expenses-main-table {
-  width: 55%;
+  width: 40%;
   margin: auto;
   table-layout: fixed;
 }
@@ -31,6 +31,14 @@
 .head-edit {
   width: 10%;
 }
+
+
+
+.expenses-col {
+  width: 20%;
+}
+
+
 .head-date {
   width: 15%;
 }
@@ -42,6 +50,8 @@
   }
   .expenses-main-table {
     width: 90%;
+        margin: auto;
+    table-layout: fixed;
   }
   .head-type {
     width: 25%;
@@ -54,5 +64,16 @@
   }
   .head-date {
     width: 22%;
+      .head-row th {
+    font-weight: 100;
+    font-size: 80%;
+    text-align: left;
+    padding: 1%;
+  }
+
+
+  .expense-new-button {
+    margin: 5%;
+
   }
 }

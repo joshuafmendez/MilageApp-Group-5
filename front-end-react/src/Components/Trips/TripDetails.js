@@ -52,21 +52,21 @@ const TripDetails = () => {
 
   let newDate = new Date(date);
   newDate.setDate(newDate.getDate(date) + 1);
-  
+
   return (
     <div>
       <Link to={`/cars/${id}/trips`}>
         <button>Back</button>
       </Link>
 
-      <h2>Car ID: {id}</h2>
-      <h2>Date: {newDate.toLocaleDateString()}</h2>
-      <h2>Miles: {miles}</h2>
-      <h2>Reason: {reason}</h2>
-      <h2>Start Odometer: {start_odometer}</h2>
-      <h2>Stop Odometer: {stop_odometer}</h2>
-      <h2>Business Use: {business_use ? "Yes" : "No"}</h2>
-      <h2>Favorite: {favorite ? "Yes" : "No"}</h2>
+      <p>Car ID: {id}</p>
+      <p>Date: {newDate.toLocaleDateString()}</p>
+      <p>Miles: {miles}</p>
+      <p>Reason: {reason}</p>
+      <p>Start Odometer: {start_odometer}</p>
+      <p>Stop Odometer: {stop_odometer}</p>
+      <p>Business Use: {business_use ? "Yes" : "No"}</p>
+      <p>Favorite: {favorite ? "Yes" : "No"}</p>
 
       <div>
         <Link to={`/cars/${id}/trips/${trip_id}/edit`}>
