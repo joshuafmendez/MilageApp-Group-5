@@ -64,27 +64,24 @@ const ExpenseNewForm = () => {
           Car Expenses
           <table className="trip-table-one">
             <tr>
-        
-                  <td className="data-td">
+              <td className="data-td">
                 <label htmlFor="date">Date:</label>
               </td>
-                  <td className="data-td">
+              <td className="data-td">
                 <input
                   value={date}
                   type="date"
                   onChange={handleChange}
                   id="date"
                   placeholder="Enter date"
-                  // required
-                />{" "}
+                />
               </td>
             </tr>
             <tr>
-              {" "}
-                  <td className="data-td">
+              <td className="data-td">
                 <label> Expense type:</label>
               </td>
-                  <td className="data-td">
+              <td className="data-td">
                 <select onChange={handleSelectChange}>
                   <option value="" defaultValue></option>
                   <option name="gas" value="Gas">
@@ -112,11 +109,10 @@ const ExpenseNewForm = () => {
               </td>
             </tr>
             <tr>
-              {" "}
-                  <td className="data-td">
+              <td className="data-td">
                 <label htmlFor="amount_spent">Amount:</label>
               </td>
-                  <td className="data-td">
+              <td className="data-td">
                 <input
                   id="amount_spent"
                   type="number"
@@ -124,16 +120,15 @@ const ExpenseNewForm = () => {
                   min="1"
                   onChange={handleChange}
                   required
-                />{" "}
+                />
               </td>
             </tr>
 
             <tr>
-              {" "}
-                  <td className="data-td">
+              <td className="data-td">
                 <label htmlFor="business_use">Business Use:</label>
               </td>
-                  <td className="data-td">
+              <td className="data-td">
                 <input
                   id="business_use"
                   type="checkbox"
@@ -143,13 +138,9 @@ const ExpenseNewForm = () => {
               </td>
             </tr>
           </table>
-
           <div className="trip-buttons">
-          <button className="sub" type="submit">
-            </button>
-            {/* <Link to={`/cars/${id}/expenses`}> */}
-            <button className="button-can"></button>
-            {/* </Link> */}
+            <button className="sub" type="submit"></button>
+            <button onClick={history.goBack} className="button-can"></button>
           </div>
         </form>
       </div>

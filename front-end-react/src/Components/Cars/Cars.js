@@ -8,11 +8,6 @@ import { Link, useHistory } from "react-router-dom";
 import CarsListItem from "./CarsListItem";
 import "../../Components/Style/Cars/Cars.css";
 
-// TODO:
-// new car on navbar
-// enter expense and trips on navbar
-// 404 not working
-
 const Cars = () => {
   const entireState = useSelector((state) => state);
   const dispatch = useDispatch();
@@ -42,10 +37,6 @@ const Cars = () => {
   }, [user, history]);
 
   return (
-
-
-
-
     <div className="cars-div">
       <div className="button-newcar">
         <Link to={`/cars/car/new`}>
@@ -59,27 +50,24 @@ const Cars = () => {
 
 export default Cars;
 
-
-
-
-  // Keep for pdf conversion TODO:
-  // let sorted = Object.values(cars);
-  // const [sorting, setSorting] = useState(sorted);
-  // const handleChange = (type) => {
-  //   const sortTypes = {
-  //     id: "id",
-  //     make: "make",
-  //     model: "model",
-  //   };
-  //   const sortProperty = sortTypes[type];
-  //   sorted = Object.values(cars).sort((a, b) => {
-  //     if (sortProperty === "make" || sortProperty === "model") {
-  //       return a[sortProperty].localeCompare(b[sortProperty]);
-  //     } else if (sortProperty === "id") {
-  //       return a[sortProperty] - b[sortProperty];
-  //     } else {
-  //       return null;
-  //     }
-  //   });
-  //   setSorting(sorted);
-  // };
+// Keep for pdf conversion TODO:
+// let sorted = Object.values(cars);
+// const [sorting, setSorting] = useState(sorted);
+// const handleChange = (type) => {
+//   const sortTypes = {
+//     id: "id",
+//     make: "make",
+//     model: "model",
+//   };
+//   const sortProperty = sortTypes[type];
+//   sorted = Object.values(cars).sort((a, b) => {
+//     if (sortProperty === "make" || sortProperty === "model") {
+//       return a[sortProperty].localeCompare(b[sortProperty]);
+//     } else if (sortProperty === "id") {
+//       return a[sortProperty] - b[sortProperty];
+//     } else {
+//       return null;
+//     }
+//   });
+//   setSorting(sorted);
+// };

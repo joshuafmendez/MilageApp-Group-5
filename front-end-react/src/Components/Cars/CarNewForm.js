@@ -184,15 +184,12 @@ function CarNewForm() {
           </table>
 
           <div className="buts">
-            <Link to={`/cars`}>
-              <button onClick={handleSubmit} className="submit" type="submit">
-                Submit
-              </button>
-            </Link>
-
-            <Link to={`/cars`}>
-              <button className="cancel">Cancel</button>
-            </Link>
+            <button onClick={handleSubmit} className="submit" type="submit">
+              Submit
+            </button>
+            <button onClick={() => history.goBack()} className="cancel">
+              Cancel
+            </button>
           </div>
         </form>
       </div>

@@ -192,7 +192,7 @@ const Login = () => {
               type="password"
               className="form-control"
               id="password"
-              minlength="6"
+              minLength="6"
               required
             />
           </div>
@@ -231,7 +231,7 @@ const Login = () => {
               className="form-control"
               id="newEmail"
               aria-describedby="emailHelp"
-              placeholder="...@url.com" 
+              placeholder="...@url.com"
               required
             />
             <div id="emailHelp" className="form-text">
@@ -249,7 +249,7 @@ const Login = () => {
               className="form-control"
               id="newPassword"
               placeholder="6 characters minimum"
-              minlength="6"
+              minLength="6"
               required
             />
           </div>
