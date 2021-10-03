@@ -6,24 +6,24 @@ import { getAllExpensesFN } from "../../util/networkRequest";
 import { useDispatch, useSelector } from "react-redux";
 import { addExpenses } from "../../Store/Actions/expenseActions";
 import { UserContext } from "../../Providers/UserProvider";
-import "../Style/Expenses.css"
-
-// import "../../App.css";
+import "../Style/Expenses/Expenses.css";
 
 const Expenses = () => {
-  const entireState = useSelector((state) => state);
-  const history = useHistory();
-  const dispatch = useDispatch();
-  const { expenses } = entireState;
-  const expenseArr = Object.values(expenses);
-  const { id } = useParams();
   const user = useContext(UserContext);
-
+  let history = useHistory();
+  const entireState = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const { cars, expenses } = entireState;
+  const { id } = useParams();
+  const expenseArr = Object.values(expenses);
+  
   useEffect(() => {
     const fetchAllExpenses = async () => {
       try {
-        let res = await getAllExpensesFN(id, user);
-        dispatch(addExpenses(res));
+        if (user) {
+          let res = await getAllExpensesFN(id, user);
+          dispatch(addExpenses(res));
+        }
       } catch (error) {
         console.log(error);
       }
@@ -39,24 +39,19 @@ const Expenses = () => {
 
   return (
     <div className="main-e-div">
+      <h2>
+        {cars[id]?.make} {cars[id]?.model} Expenses
+      </h2>
+      <Link to={`/cars/${id}/expenses/expense/new`}>
+        <button className="expense-new-button">Add New Expense</button>
+      </Link>
       <table className="expenses-main-table">
         <thead>
           <tr className="head-row">
-            <th>
-              <h2>Car ID</h2>
-            </th>
-            <th>
-              <h2>Date</h2>
-            </th>
-            <th>
-              <h2>Expense Type</h2>
-            </th>
-            <th>
-              <h2>Amount</h2>
-            </th>
-            <th>
-              <h2>Business Use?</h2>
-            </th>
+            <th className="head-date">Date</th>
+            <th className="head-type">Expense Type</th>
+            <th className="head-amount">Amount</th>
+            <th className="head-edit">Show</th>
           </tr>
         </thead>
         <tbody>
@@ -65,11 +60,9 @@ const Expenses = () => {
           })}
         </tbody>
       </table>
-      <Link to={`/cars/${id}/expenses/expense/new`}>
-        <button className="expense-new-button">Add New Expense</button>
-      </Link>
     </div>
   );
 };
+
 
 export default Expenses;

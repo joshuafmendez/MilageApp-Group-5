@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState, useContext } from "react";
-import { useHistory, Link, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { apiURL } from "../../util/apiURL";
 import { UserContext } from "../../Providers/UserProvider";
 
@@ -9,7 +9,7 @@ const API = apiURL();
 const TripEditForm = () => {
   const user = useContext(UserContext);
   let history = useHistory();
-  let { id, trip_id } = useParams();
+  const { id, trip_id } = useParams();
   const [trip, setTrip] = useState({
     date: "",
     miles: 0,
@@ -22,10 +22,12 @@ const TripEditForm = () => {
 
   const updateTrip = async (updateTrip) => {
     try {
-      await axios.put(
-        `${API}/cars/${id}/trips/${trip_id}?uid=${user.uid}`,
-        updateTrip
-      );
+      if (user) {
+        await axios.put(
+          `${API}/cars/${id}/trips/${trip_id}?uid=${user.uid}`,
+          updateTrip
+        );
+      }
     } catch (error) {
       console.log(error);
     }
@@ -34,10 +36,12 @@ const TripEditForm = () => {
   useEffect(() => {
     const fetchTrip = async () => {
       try {
-        const { data } = await axios.get(
-          `${API}/cars/${id}/trips/${trip_id}?uid=${user.uid}`
-        );
-        setTrip(data.payload);
+        if (user) {
+          const { data } = await axios.get(
+            `${API}/cars/${id}/trips/${trip_id}?uid=${user.uid}`
+          );
+          setTrip(data.payload);
+        }
       } catch (err) {
         console.log(err);
       }
@@ -48,19 +52,20 @@ const TripEditForm = () => {
   const handleChange = (e) => {
     setTrip({ ...trip, [e.target.id]: e.target.value });
   };
-
   const businessCheckbox = (e) => {
     setTrip({ ...trip, business_use: !trip.business_use });
   };
-
   const favoriteCheckbox = (e) => {
     setTrip({ ...trip, favorite: !trip.favorite });
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await updateTrip(trip);
-    history.push(`/cars/${id}/trips`);
+    try {
+      await updateTrip(trip);
+      history.push(`/cars/${id}/trips`);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const {
@@ -83,7 +88,6 @@ const TripEditForm = () => {
           onChange={handleChange}
           id="date"
           placeholder="date"
-          // required
         />
         <label htmlFor="miles">miles:</label>
         <input
@@ -136,9 +140,7 @@ const TripEditForm = () => {
         />
         <div>
           <button type="submit">Submit</button>
-          <Link to={`/cars/${id}/trips`}>
-            <button>Cancel</button>
-          </Link>
+          <button onClick={() => history.goBack()}>Cancel</button>
         </div>
       </form>
     </div>

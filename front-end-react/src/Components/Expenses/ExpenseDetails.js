@@ -6,7 +6,7 @@ import { UserContext } from "../../Providers/UserProvider";
 
 const API = apiURL();
 
-function ExpenseDetails() {
+const ExpenseDetails = () => {
   const user = useContext(UserContext);
   let [expense, setExpense] = useState({});
   let { id, expense_id } = useParams();
@@ -14,31 +14,40 @@ function ExpenseDetails() {
 
   const deleteExpense = async () => {
     try {
-      await axios.delete(
-        `${API}/cars/${id}/expenses/${expense_id}?uid=${user.uid}`
-      );
+      if (user) {
+        await axios.delete(
+          `${API}/cars/${id}/expenses/${expense_id}?uid=${user.uid}`
+        );
+      }
     } catch (err) {
       console.log(err);
     }
   };
   const handleDelete = async () => {
-    await deleteExpense();
-    history.push(`/cars/${id}/expenses`);
+    try {
+      await deleteExpense();
+      history.push(`/cars/${id}/expenses`);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
     const fetchExpense = async () => {
       try {
-        let res = await axios.get(
-          `${API}/cars/${id}/expenses/${expense_id}?uid=${user.uid}`
-        );
-        setExpense(res.data.payload);
+        if (user) {
+          let res = await axios.get(
+            `${API}/cars/${id}/expenses/${expense_id}?uid=${user.uid}`
+          );
+          setExpense(res.data.payload);
+        }
       } catch (err) {
         console.log(err);
       }
     };
     fetchExpense();
   }, [expense_id, id, user]);
+  
   useEffect(() => {
     if (!user) {
       history.push("/");
@@ -47,25 +56,26 @@ function ExpenseDetails() {
 
   const { expense_type, business_use, amount_spent, date } = expense;
   let newDate = new Date(date);
+  newDate.setDate(newDate.getDate(date) + 1);
 
   if (!user) {
     return <div className="spinner-border"></div>;
   } else {
     return (
       <div>
-        <h2>Car ID: {id}</h2>
-        <h2>
-          Date:
-          {newDate.toLocaleDateString()}
-        </h2>
-        <h2>Expense Type: {expense_type}</h2>
-        <h2>Amount: {amount_spent}</h2>
-        <h2>Business Use: {business_use ? "Yes" : "No"}</h2>
-
-        <div>
+        {/* Change to make and model */}
           <Link to={`/cars/${id}/expenses`}>
             <button>BACK</button>
           </Link>
+        <p>Car ID: {id}</p>
+        <p>
+          Date:
+          {newDate.toLocaleDateString()}
+        </p>
+        <p>Expense Type: {expense_type}</p>
+        <p>Amount: ${amount_spent}</p>
+        <p>Business Use: {business_use ? "Yes" : "No"}</p>
+        <div>
           <button onClick={handleDelete}>DELETE</button>
           <Link to={`/cars/${id}/expenses/${expense_id}/edit`}>
             <button>EDIT</button>

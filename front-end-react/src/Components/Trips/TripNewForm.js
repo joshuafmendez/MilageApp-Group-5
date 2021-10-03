@@ -1,31 +1,29 @@
 import axios from "axios";
 import { useState, useContext, useEffect } from "react";
-import { useHistory, Link, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { apiURL } from "../../util/apiURL";
-import "../Style/TripNewForm.css";
 import { UserContext } from "../../Providers/UserProvider";
-import "../Style/TripNewForm.css";
+import "../Style/Trips/TripNewForm.css";
 
 const API = apiURL();
 
 const TripNewForm = () => {
   const user = useContext(UserContext);
-  const history = useHistory();
-
-  let { id } = useParams();
+  let history = useHistory();
+  const { id } = useParams();
   const [trip, setTrip] = useState({
     date: new Date(),
     miles: 0,
     reason: "",
-    start_odometer: 0,
-    stop_odometer: 0,
     business_use: false,
     favorite: false,
   });
 
   const addTrip = async (newTrip) => {
     try {
-      await axios.post(`${API}/cars/${id}/trips?uid=${user.uid}`, newTrip);
+      if (user) {
+        await axios.post(`${API}/cars/${id}/trips?uid=${user.uid}`, newTrip);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -34,30 +32,23 @@ const TripNewForm = () => {
   const handleChange = (e) => {
     setTrip({ ...trip, [e.target.id]: e.target.value });
   };
-
   const businessCheckbox = (e) => {
     setTrip({ ...trip, business_use: !trip.business_use });
   };
-
   const favoriteCheckbox = (e) => {
     setTrip({ ...trip, favorite: !trip.favorite });
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await addTrip(trip);
-    history.push(`/cars/${id}/trips`);
+    try {
+      await addTrip(trip);
+      history.push(`/cars/${id}/trips`);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const {
-    date,
-    miles,
-    reason,
-    start_odometer,
-    stop_odometer,
-    business_use,
-    favorite,
-  } = trip;
+  const { date, miles, reason, business_use, favorite } = trip;
 
   useEffect(() => {
     if (!user) {
@@ -121,38 +112,6 @@ const TripNewForm = () => {
             <tr>
               {" "}
               <td className="data-td">
-                <label htmlFor="start_odometer">Start Odometer:</label>
-              </td>
-              <td className="data-td">
-                <input
-                  id="start_odometer"
-                  type="number"
-                  value={start_odometer}
-                  min="0"
-                  placeholder="Enter the mileage show on the odometer at start of trip"
-                  onChange={handleChange}
-                />{" "}
-              </td>
-            </tr>
-            <tr>
-              {" "}
-              <td className="data-td">
-                <label htmlFor="stop_odometer">Stop Odometer:</label>
-              </td>
-              <td className="data-td">
-                <input
-                  id="stop_odometer"
-                  type="number"
-                  value={stop_odometer}
-                  min="0"
-                  placeholder="Enter the mileage show on the odometer at start of trip"
-                  onChange={handleChange}
-                />{" "}
-              </td>
-            </tr>
-            <tr>
-              {" "}
-              <td className="data-td">
                 <label htmlFor="business_use">Business Use:</label>
               </td>
               <td className="data-td">
@@ -187,9 +146,9 @@ const TripNewForm = () => {
             </button>
      
               {/* DELETE */}
-            <Link to={`/cars/${id}/trips`}>
+            {/* <Link to={`/cars/${id}/trips`}> */}
               <button className="button-can"></button>
-            </Link>
+            {/* </Link> */}
           </div>
         </form>
       </div>

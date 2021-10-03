@@ -3,27 +3,27 @@ import TripsListItem from "./TripsListItem";
 import { Link, useParams } from "react-router-dom";
 import { UserContext } from "../../Providers/UserProvider";
 import { useHistory } from "react-router-dom";
-// import { useSelector, useDispatch } from "react-redux";
 import { useDispatch, useSelector } from "react-redux";
-// import "../../App.css";
 import { getAllTripsFN } from "../../util/networkRequest";
 import { addTrips } from "../../Store/Actions/tripsActions";
-import "../../Components/Style/TripsIndex.css"
+import "../../Components/Style/Trips/TripsIndex.css";
 
 const Trips = () => {
   const user = useContext(UserContext);
-  const history = useHistory();
+  let history = useHistory();
   const entireState = useSelector((state) => state);
   const dispatch = useDispatch();
-  const { trips } = entireState;
+  const { cars, trips } = entireState;
   const { id } = useParams();
   const tripsArr = Object.values(trips);
 
   useEffect(() => {
     const fetchAllTrips = async () => {
       try {
-        let res = await getAllTripsFN(id, user);
-        dispatch(addTrips(res));
+        if (user) {
+          let res = await getAllTripsFN(id, user);
+          dispatch(addTrips(res));
+        }
       } catch (error) {
         console.log(error);
       }
@@ -39,32 +39,32 @@ const Trips = () => {
 
   return (
     <div className="trips-table-parent">
+      <h2>
+        {cars[id]?.make} {cars[id]?.model} Mileage
+      </h2>
+      <Link to={`/cars/${id}/trips/trip/new`}>
+        <button className="trips-new-button">Add New Trip</button>
+      </Link>
       <table>
         <thead>
           <tr>
             <th>
-              <h2>Date</h2>
+              <p>Date</p>
             </th>
             <th>
-              <h2>Miles</h2>
+              <p>Miles</p>
             </th>
             <th>
-              <h2>Reason</h2>
+              <p>Reason</p>
             </th>
             <th>
-              <h2>Start Odometer</h2>
+              <p>Business Use</p>
             </th>
             <th>
-              <h2>Stop Odometer</h2>
+              <p>Favorite</p>
             </th>
             <th>
-              <h2>Business Use</h2>
-            </th>
-            <th>
-              <h2>Favorite</h2>
-            </th>
-            <th>
-              <h2>Edit</h2>
+              <p>Edit</p>
             </th>
           </tr>
         </thead>
@@ -74,9 +74,6 @@ const Trips = () => {
           })}
         </tbody>
       </table>
-      <Link to={`/cars/${id}/trips/trip/new`}>
-        <button className="trips-new-button">Add New Trip</button>
-      </Link>
     </div>
   );
 };

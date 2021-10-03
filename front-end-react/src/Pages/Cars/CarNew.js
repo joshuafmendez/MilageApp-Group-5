@@ -1,5 +1,5 @@
 import CarNewForm from "../../Components/Cars/CarNewForm";
-import "../../Components/Style/CarNew.css"
+import "../../Components/Style/Cars/CarNew.css";
 
 function CarNew() {
   return (

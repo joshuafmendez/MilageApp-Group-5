@@ -1,8 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-// import "../../App.css";
-import { useDispatch } from "react-redux";
-// import { addCars } from "../../Store/Actions/carsActions";
-import { addCars } from "../Store/Actions/carsActions";
+import { useSelector } from "react-redux";
 import { getAllCarsFN } from "../util/networkRequest";
 import { UserContext } from "../Providers/UserProvider";
 import { useHistory } from "react-router-dom";
@@ -15,9 +12,9 @@ import { FaInstagramSquare } from "react-icons/fa";
 import { GrFacebook } from "react-icons/gr";
 import TripLogo from "./Images/giflogo.GIF";
 
-// import { MDBCard, MDBCardImage, MDBCardBody, MDBCardTitle, MDBCardText, MDBCardGroup } from 'mdb-react-ui-kit';
 const Login = () => {
-  const dispatch = useDispatch();
+  const entireState = useSelector((state) => state);
+  const { cars } = entireState;
   const user = useContext(UserContext);
   const history = useHistory();
   const [displayLogin, setDisplayLogin] = useState(false);
@@ -32,8 +29,12 @@ const Login = () => {
     passwordCheck: "",
   });
   const handleGoogle = () => {
-    handleX();
-    signInWithGoogle();
+    try {
+      handleX();
+      signInWithGoogle();
+    } catch (error) {
+      console.log(error);
+    }
   };
   const handleX = () => {
     setDisplaySignUp(false);
@@ -53,11 +54,19 @@ const Login = () => {
   };
   const handleLoginIn = (e) => {
     e.preventDefault();
-    login(input.email, input.password);
+    try {
+      login(input.email, input.password);
+    } catch (error) {
+      console.log(error);
+    }
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    signup(signUpInput.newEmail, signUpInput.newPassword);
+    try {
+      signup(signUpInput.newEmail, signUpInput.newPassword);
+    } catch (error) {
+      console.log(error);
+    }
   };
   const handleChange = (e) => {
     setInput({ ...input, [e.target.id]: e.target.value });
@@ -75,22 +84,24 @@ const Login = () => {
   useEffect(() => {
     const fetchAllCars = async () => {
       try {
-        const res = await getAllCarsFN(user);
-        dispatch(addCars(res));
-        if (res.length) {
-          //FIXME: The current code does nothing
-          history.push(`/cars`);
-          // let filterArray = res.filter((el) => el.is_default === true);
-          // history.push(`/cars/${filterArray[filterArray.length - 1].id}`);
-        } else {
-          history.push("/cars/car/new");
+        if (!cars) {
+          const res = await getAllCarsFN(user);
+          // dispatch(addCars(res));
+          if (res.length) {
+            //FIXME: The current code does nothing
+            history.push(`/cars`);
+            // let filterArray = res.filter((el) => el.is_default === true);
+            // history.push(`/cars/${filterArray[filterArray.length - 1].id}`);
+          } else {
+            history.push("/cars/car/new");
+          }
         }
       } catch (error) {
-        console.log(error);
+        console.log("error", error);
       }
     };
     fetchAllCars();
-  }, [dispatch, user, history]);
+  }, [cars, user, history]);
 
   return (
     <div className="sign-box">
@@ -181,6 +192,7 @@ const Login = () => {
               type="password"
               className="form-control"
               id="password"
+              minlength="6"
               required
             />
           </div>
@@ -219,7 +231,7 @@ const Login = () => {
               className="form-control"
               id="newEmail"
               aria-describedby="emailHelp"
-              placeholder="...@url.com"
+              placeholder="...@url.com" 
               required
             />
             <div id="emailHelp" className="form-text">
@@ -236,6 +248,8 @@ const Login = () => {
               type="password"
               className="form-control"
               id="newPassword"
+              placeholder="6 characters minimum"
+              minlength="6"
               required
             />
           </div>

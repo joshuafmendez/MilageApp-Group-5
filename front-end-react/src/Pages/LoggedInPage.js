@@ -4,8 +4,7 @@ import { useHistory } from "react-router-dom";
 import CarsIndex from "./Cars/CarsIndex";
 import "../Components/Style/LoggedInPage.css";
 
-export const LoggedInPage = ({ navToggle, mileageToggle }) => {
-
+export const LoggedInPage = () => {
   const history = useHistory();
   const user = useContext(UserContext);
 
@@ -17,11 +16,8 @@ export const LoggedInPage = ({ navToggle, mileageToggle }) => {
 
   if (user) {
     return (
-      
-    <div>
-     
-
-        <CarsIndex navToggle={navToggle} mileageToggle={mileageToggle} />
+      <div>
+        <CarsIndex />
       </div>
     );
   } else return <div> NOT LOGGED IN </div>;

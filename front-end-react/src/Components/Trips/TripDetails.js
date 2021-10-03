@@ -14,42 +14,45 @@ const TripDetails = () => {
 
   const deleteTrip = async () => {
     try {
-      await axios.delete(`${API}/cars/${id}/trips/${trip_id}?uid=${user.uid}`);
+      if (user) {
+        await axios.delete(
+          `${API}/cars/${id}/trips/${trip_id}?uid=${user.uid}`
+        );
+      }
     } catch (err) {
       console.log(err);
     }
   };
   const handleDelete = async () => {
-    await deleteTrip();
-    history.push(`/cars/${id}/trips`);
+    try {
+      await deleteTrip();
+      history.push(`/cars/${id}/trips`);
+    } catch (error) {
+      console.log(error);
+    }
   };
-
-  // const generateReport = async () => {
-  //   try {
-  //     await axios.get(`${API}/cars/${id}/trips/pdf`);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-
-  // const handleReport = async () => {
-  //   await generateReport();
-  //   history.push(`/cars/${id}/trips`);
-  // };
 
   useEffect(() => {
     const fetchTrip = async () => {
       try {
-        const { data } = await axios.get(
-          `${API}/cars/${id}/trips/${trip_id}?uid=${user.uid}`
-        );
-        setTrip(data.payload);
+        if (user) {
+          const { data } = await axios.get(
+            `${API}/cars/${id}/trips/${trip_id}?uid=${user.uid}`
+          );
+          setTrip(data.payload);
+        }
       } catch (err) {
         console.log(err);
       }
     };
     fetchTrip();
   }, [id, trip_id, user]);
+
+  useEffect(() => {
+    if (!user) {
+      history.push("/");
+    }
+  }, [user, history]);
 
   const {
     date,
@@ -60,32 +63,34 @@ const TripDetails = () => {
     business_use,
     favorite,
   } = trip;
-
   let newDate = new Date(date);
+  newDate.setDate(newDate.getDate(date) + 1);
 
-  return (
-    <div>
-      <Link to={`/cars/${id}/trips`}>
-        <button>Back</button>
-      </Link>
-
-      <h2>Car ID: {id}</h2>
-      <h2>Date: {newDate.toLocaleDateString()}</h2>
-      <h2>Miles: {miles}</h2>
-      <h2>Reason: {reason}</h2>
-      <h2>Start Odometer: {start_odometer}</h2>
-      <h2>Stop Odometer: {stop_odometer}</h2>
-      <h2>Business Use: {business_use ? "Yes" : "No"}</h2>
-      <h2>Favorite: {favorite ? "Yes" : "No"}</h2>
-
+  if (!user) {
+    return <div className="spinner-border"></div>;
+  } else {
+    return (
       <div>
-        <Link to={`/cars/${id}/trips/${trip_id}/edit`}>
-          <button>Edit</button>
+        <Link to={`/cars/${id}/trips`}>
+          <button>Back</button>
         </Link>
-        <button onClick={handleDelete}>Delete</button>
+        <p>Car ID: {id}</p>
+        <p>Date: {newDate.toLocaleDateString()}</p>
+        <p>Miles: {miles}</p>
+        <p>Reason: {reason}</p>
+        <p>Start Odometer: {start_odometer}</p>
+        <p>Stop Odometer: {stop_odometer}</p>
+        <p>Business Use: {business_use ? "Yes" : "No"}</p>
+        <p>Favorite: {favorite ? "Yes" : "No"}</p>
+        <div>
+          <button onClick={handleDelete}>Delete</button>
+          <Link to={`/cars/${id}/trips/${trip_id}/edit`}>
+            <button>Edit</button>
+          </Link>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
 export default TripDetails;

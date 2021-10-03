@@ -10,8 +10,7 @@ import {
   MDBIcon,
 } from "mdb-react-ui-kit";
 import "../Components/Style/LandBar.css";
-// import { MDBBtn } from 'mdb-react-ui-kit';
-import { signInWithGoogle, signOut } from "../Services/Firebase";
+import { signInWithGoogle } from "../Services/Firebase";
 
 export default function Home() {
   // const [state, setState] = useState('start')

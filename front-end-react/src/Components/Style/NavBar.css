@@ -1,273 +1,42 @@
-/* .navbar{
-    background-color: black;
- 
-}
-
-.title-logo{
-    font-size: 40px;
-    color:white;
-    margin-left: 48%;
-    height: 190px;
-}
-.navbar-toggler-icon{
- color: white;
-}
-.navbar-toggler{
-    background-color: white;
-    color:white;
-    margin-right: 11%;
-    height: 80px;
-    width: 90px;
-    border:solid rgb(238 ,13 ,118) 1px;
-
-}
-
-
-
-
-
-
-.logo{
-    height: 100px;
-    width:100px;
-}
-.box-logo{
- 
-    margin-left:83%;
-}
-
-
-
-
-
-span.navbar-toggler-icon{
-
-    height: 70px;
-    width:70px;
-    margin-right: 2px;
-}
-
-
-
-button .navbar-toggler-icon{
-
-    border:solid pink 2px;
-display: flex;
-align-self: center;
-}
-
-button.navbar-toggler.collapsed{
-
-display:flex;
-flex-direction: column;
-align-content: center;
-
-}
-
-
-button.navbar-toggler{
-    display:flex;
-    flex-direction: column;
-    align-content: center;
-
-
-}
-
-button.navbar-toggler-icon {
-    background-image: none;
-    background-color:purple;
-}
-span.navbar-toggler.icon {
-    background-image: none;
-    background-color:purple;
-}
-
-
-
-
-
-
-
-.navbar-light .navbar-toggler-icon {
-    background-image: none ;
-}
-
-.navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");}
-
-
-    .burger{
-        height: 80px;
-      width: 80px;
-    
-    } 
-    .navi navbar-nav{
-        display:flex;
-        color:white;
-    }
-
-
-    a{
-        color:white;
-    }
-    a:link {
-        text-decoration-line: none;
-        color:white;
-        display:flex;
-        align-items: center;
-
-        
-    }
-    a:active{
-        color:white;
-        text-decoration-line: none;
-    }
-    h2{
-        color:black;
-        text-decoration-line: none;
-    }
-
-    .responsive-navbar-nav{
-        background-color:white;
-    }
-    a.active{text-decoration-line: none;}
-
-    a:link:nth-child(2){
-        height: 90px;
-        
-    }
-
-
-    svg.icon-small{
-    
-        height:60px;
-    } */
-/* 
-.sidenav {
-  height: 100%;
-  width: 160px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: rgb(13, 70, 50);
-  overflow-x: hidden;
-  padding-top: 20px;
-  color:white;
-}
-
-.sidenav a {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 25px;
-  color: white;;
-  display: block;
-}
-
-.sidenav a:hover {
-  color: #f1f1f1;
-}
-
-.main {
-  margin-left: 160px; 
-  font-size: 28px; 
-  padding: 0px 10px;
-}
-
-@media screen and (max-height: 450px) {
-  .sidenav {
-    padding-top: 15px;
-  }
-  .sidenav a {
-    font-size: 18px;
-  }
-}
-
-.right-nav {
-  height: 100%;
-  width: 160px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  right: 0;
-  background-color: rgb(39, 180, 180);
-  overflow-x: hidden;
-  padding-top: 20px;
-  border: solid rgb(8, 32, 8) 2px;
-}
-
-.right-nav a {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 25px;
-  color: darkgreen;
-  display: block;
-}
-
-.right-nav a:hover {
-  color: blue;
-}
-
-.main {
-  margin-left: 160px; 
-  font-size: 28px; 
-  padding: 0px 10px;
-}
-
-div.gas-input {
-  background-color: yellow;
-  width: 900px;
-  color: black;
-}
-
-input.gas-here {
-  color: black;
-}
-.allNav {
-  width: 50%;
-} */
-
 .right-nav {
   height: 100%;
   width: 20%;
   position: fixed;
   z-index: 1;
   top: 0;
-  left:0;
+  left: 0;
   background-color: rgb(255, 255, 255);
   overflow-x: hidden;
   padding-top: 20px;
-  border: solid rgb(221, 221, 221) .5px;
-  margin:0;
-  display:flex;
+  border: solid rgb(221, 221, 221) 0.5px;
+  margin: 0;
+  display: flex;
   flex-direction: column;
 
   margin-left: 80px;
   margin-top: 10%;
-  
 }
 
-.right-nav a>h2 {
+.right-nav a > h2 {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
-font-family: "AvenirNext-Regular-Mint","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: "AvenirNext-Regular-Mint", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
   display: block;
-  color:#333;
-font-size: 14px;
-text-decoration-line: none;
+  color: #333;
+  font-size: 14px;
+  text-decoration-line: none;
 }
 
 .right-nav a:hover {
   color: blue;
   text-decoration-line: none;
 }
-.right-nav a{
-text-decoration-line: none;
+.right-nav a {
+  text-decoration-line: none;
 }
 
 .main {
-
-
   padding: 0px 10px;
 }
 
@@ -284,40 +53,38 @@ input.gas-here {
   width: 50%;
 }
 
-.nav-expenses>div>.expense-p{
-
-  color:rgb(51,51,51)
+.nav-expenses > div > .expense-p {
+  color: rgb(51, 51, 51);
 }
-.nav-mileage> div> .mileage-p{
-
-  color:rgb(51,51,51)
+.nav-mileage > div > .mileage-p {
+  color: rgb(51, 51, 51);
 }
-div.nav-mileage> div> .miles{
-  color:limegreen;
-  
+div.nav-mileage > div > .miles {
+  color: limegreen;
 }
-div.nav-expenses>div> div{
-  color:limegreen;
-
+div.nav-expenses > div > div {
+  color: limegreen;
 }
-div.nav-expenses > div,div.nav-mileage > div,div.enter-mileage >div ,div.enter-expenses > div{
+div.nav-expenses > div,
+div.nav-mileage > div,
+div.enter-mileage > div,
+div.enter-expenses > div {
   display: flex;
   justify-content: space-between;
   width: 90%;
-  background-color: rgb(247,247,247);
+  background-color: rgb(247, 247, 247);
 
- margin-bottom: 10px;
- margin-left: 5%;
-flex-direction: row;
+  margin-bottom: 10px;
+  margin-left: 5%;
+  flex-direction: row;
 
- padding-left:2% ;
- padding-right:2% ;
- align-items: center;
- border: grey solid 2px;
+  padding-left: 2%;
+  padding-right: 2%;
+  align-items: center;
+  border: grey solid 2px;
 }
 
-
-.home-wheels{
+.home-wheels {
   background-image: url("../Images/wheel.png");
   background-size: cover;
   background-position: center;
@@ -326,45 +93,42 @@ flex-direction: row;
   width: 44px;
   box-shadow: transparent;
   outline: transparent;
-  border:transparent;
+  border: transparent;
 }
 
-
-.button-logout{
+.button-logout {
   width: 30%;
-margin-left: 18px;
+  margin-left: 18px;
 }
-div.cars-div{
-  padding-top:9%;
+div.cars-div {
+  padding-top: 9%;
   padding-left: 20%;
 }
-.nav-expenses{
+.nav-expenses {
   background-color: wheat;
 
   display: flex;
   justify-content: space-between;
-  color:rgb(51,51,51);
+  color: rgb(51, 51, 51);
   width: 94%;
-  background-color: rgb(247,247,247);
+  background-color: rgb(247, 247, 247);
   margin-left: 3%;
-  padding:6px;
+  padding: 6px;
   align-items: center;
   margin-bottom: 20px;
-  
 }
-div.nav-expenses >a{
-  color:limegreen;
+div.nav-expenses > a {
+  color: limegreen;
 }
-.nav-expenses>p{
+.nav-expenses > p {
   font-size: 12px;
-padding:0;
-margin:0;
+  padding: 0;
+  margin: 0;
 
   /* font-weight: lighter; */
 }
-.nav-expenses>a:link{
+.nav-expenses > a:link {
   font-size: 12px;
-  padding:0;
-  margin:0;
-
+  padding: 0;
+  margin: 0;
 }

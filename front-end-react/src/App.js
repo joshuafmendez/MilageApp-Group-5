@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { Route, Switch } from "react-router-dom";
 import NavBar from "./Components/NavBar";
 import Login from "./Components/Login";
@@ -20,32 +19,21 @@ import ExpensesShow from "./Pages/Expenses/ExpenseShow";
 import "./App.css";
 
 function App() {
-  let [navExpenses, setNavExpenses] = useState(false);
-  let [navMileage, setNavMileage] = useState(false);
-  const navToggle = (boolean) => {
-    setNavExpenses(boolean);
-  };
-  const mileageToggle = (boolean) => {
-    setNavMileage(boolean);
-  };
   return (
     <div className="App">
       <UserProvider>
         <Switch>
           <Route exact path="/" component={Login} />
           <>
-            <NavBar navExpenses={navExpenses} navMileage={navMileage} />
+            <NavBar />
             <Route exact path="/cars">
-              <LoggedInPage
-                navToggle={navToggle}
-                mileageToggle={mileageToggle}
-              />
+              <LoggedInPage />
             </Route>
             <Route exact path="/cars/car/new">
               <CarNew />
             </Route>
             <Route exact path="/cars/:id">
-              <CarShow navToggle={navToggle} mileageToggle={mileageToggle} />
+              <CarShow />
             </Route>
             <Route path="/cars/:id/edit">
               <CarEdit />
@@ -77,7 +65,6 @@ function App() {
           </>
 
           <Route path="/*">
-
             <FourOFour />
           </Route>
         </Switch>

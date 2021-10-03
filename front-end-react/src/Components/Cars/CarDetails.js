@@ -8,33 +8,21 @@ import {
   getAllTripsFN,
 } from "../../util/networkRequest";
 import { addExpenses } from "../../Store/Actions/expenseActions";
-import "../Style/CarDetails.css";
 import { addTrips } from "../../Store/Actions/tripsActions";
-import { GrDocumentPdf } from "react-icons/gr";
-import { ImRoad } from "react-icons/im";
-import { signOut } from "../../Services/Firebase";
+import "../Style/Cars/CarDetails.css";
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
-
-// import deletebutton from "../Images/delbutton.png";
-// import odo from "../Images/odo.png";
-// import editbutton from "../Images/Edit.png";
-// import { AiOutlineAppstoreAdd } from "react-icons/ai";
-// import { AiFillCar } from "react-icons/ai";
-// import { FaCalculator } from "react-icons/fa";
-// import { FcCurrencyExchange } from "react-icons/fc";
 
 function CarDetails() {
   const entireState = useSelector((state) => state);
   const { cars, expenses, trips } = entireState;
   const user = useContext(UserContext);
-  const history = useHistory();
   const expensesArr = Object.values(expenses);
   const tripsArr = Object.values(trips);
   const dispatch = useDispatch();
   let { id } = useParams();
-
+  let history = useHistory();
   const deleteCar = async () => {
     try {
       await deleteCarByID(id, user);
@@ -51,9 +39,10 @@ function CarDetails() {
   useEffect(() => {
     const getAllExpenses = async () => {
       try {
-        let res = await getAllExpensesFN(id, user);
-        dispatch(addExpenses(res));
-        // console.log("res", res);
+        if (user) {
+          let res = await getAllExpensesFN(id, user);
+          dispatch(addExpenses(res));
+        }
       } catch (error) {
         console.log(error);
       }
@@ -62,18 +51,16 @@ function CarDetails() {
 
     const getAllTrips = async () => {
       try {
-        let res = await getAllTripsFN(id, user);
-        dispatch(addTrips(res));
+        if (user) {
+          let res = await getAllTripsFN(id, user);
+          dispatch(addTrips(res));
+        }
       } catch (error) {
         console.log(error);
       }
     };
     getAllTrips();
   }, [id, user, history, dispatch]);
-
-  // const setCheck = (e) => {
-  //   console.log(e.target);
-  // };
 
   if (!user) {
     return <div className="spinner-border"></div>;
@@ -114,13 +101,6 @@ function CarDetails() {
         }
       }
     });
-
-    console.log("tripsArr", tripsArr);
-
-    const handleLogout = async () => {
-      signOut();
-      history.push("/");
-    };
 
     const handleReport = () => {
       car = cars[id];
@@ -252,7 +232,6 @@ function CarDetails() {
                 <button onClick={handleReport} className="cars-new-button">
                   🗂 Generate Report    
                 </button>
-                {/* <GrDocumentPdf size="16px" /> */}
               </div>
             </div>
 
@@ -267,8 +246,6 @@ function CarDetails() {
                 <Link to={`/cars/${id}/trips`}>📘 Mileage Table</Link>
               </div>
             </div>
-
-            {/* <button onClick={handleLogout}> LOG OUT</button> */}
           </div>
         </div>
 
@@ -277,7 +254,6 @@ function CarDetails() {
             <div className="odo-mileage">
               Mileage
               <p className="total-odo">
-                0
                 {tripsArr.reduce((total, trip) => {
                   total += trip.miles;
                   return total;
@@ -287,13 +263,12 @@ function CarDetails() {
 
             <div className="all-expenses">
               <p className="total-expenses">Total Expenses</p>
-              {/* <Link to={`/cars/${id}/expenses`}> */}
-                $
-                {expensesArr.reduce((total, expense) => {
-                  total += expense.amount_spent;
-                  return total;
-                }, 0)}
-                .00
+              {/* <Link to={`/cars/${id}/expenses`}> */}$
+              {expensesArr.reduce((total, expense) => {
+                total += expense.amount_spent;
+                return total;
+              }, 0)}
+              .00
               {/* </Link> */}
             </div>
 
@@ -315,10 +290,8 @@ function CarDetails() {
               alt={"car"}
             />{" "}
             <div className="all-bs">
-              <button className="button-delete" onClick={handleDelete}>
-                {/* DELETE */}
-              </button>
-
+              {/* DELETE */}
+              <button className="button-delete" onClick={handleDelete}></button>
               <Link to={`/cars/${id}/edit`}>
                 <button className="button-edit"></button>
               </Link>

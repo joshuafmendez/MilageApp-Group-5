@@ -1,36 +1,24 @@
 import { Link } from "react-router-dom";
-import carImage from "../little_car.jpg";
-import "../Style/ExpenseListItem.css";
+import "../Style/Expenses/ExpenseListItem.css";
 
-function ExpenseListItem({ expense }) {
-  const { id, car_id, expense_type, business_use, amount_spent, date } =
-    expense;
+const ExpenseListItem = ({ expense }) => {
+  const { id, car_id, expense_type, amount_spent, date } = expense;
 
   let newDate = new Date(date);
+  newDate.setDate(newDate.getDate(date) + 1);
+
   return (
     <tr className="row-penses">
+      <td>{newDate.toLocaleDateString()}</td>
+      <td>{expense_type}</td>
+      <td>${amount_spent.toLocaleString()}</td>
       <td>
-        <h2> {car_id}</h2>
-      </td>
-
-      <td className="date-data">
-        <td>
-          <Link to={`/cars/${car_id}/expenses/${id}`}>
-            <h2> {newDate.toLocaleDateString()}</h2>
-          </Link>
-        </td>
-      </td>
-      <td>
-        <h2> {expense_type}</h2>
-      </td>
-      <td>
-        <h2> ${amount_spent}</h2>
-      </td>
-      <td>
-        <img src={business_use ? carImage : ""} alt="" />
+        <Link to={`/cars/${car_id}/expenses/${id}`}>
+          <button className="edit-button">More</button>
+        </Link>
       </td>
     </tr>
   );
-}
+};
 
 export default ExpenseListItem;

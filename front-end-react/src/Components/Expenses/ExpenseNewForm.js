@@ -1,28 +1,30 @@
 import axios from "axios";
 import { useState, useContext, useEffect } from "react";
-import "../Style/ExpenseNewForm.css";
-import { useHistory, Link, useParams } from "react-router-dom";
+import "../Style/Expenses/ExpenseNewForm.css";
+import { useHistory, useParams } from "react-router-dom";
 import { apiURL } from "../../util/apiURL";
 import { UserContext } from "../../Providers/UserProvider";
 
 const API = apiURL();
-function ExpenseNewForm() {
+const ExpenseNewForm = () => {
   const user = useContext(UserContext);
-  const history = useHistory();
+  let history = useHistory();
+  const { id } = useParams();
   const [expense, setExpense] = useState({
     expense_type: "",
     business_use: false,
     amount_spent: 0,
     date: new Date(),
   });
-  const { id } = useParams();
 
   const addExpense = async (newExpense) => {
     try {
-      await axios.post(
-        `${API}/cars/${id}/expenses?uid=${user.uid}`,
-        newExpense
-      );
+      if (user) {
+        await axios.post(
+          `${API}/cars/${id}/expenses?uid=${user.uid}`,
+          newExpense
+        );
+      }
     } catch (error) {
       console.log(error);
     }
@@ -34,15 +36,17 @@ function ExpenseNewForm() {
   const handleSelectChange = (e) => {
     setExpense({ ...expense, expense_type: e.target.value });
   };
-
   const handleCheckboxChange = () => {
     setExpense({ ...expense, business_use: !expense.business_use });
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await addExpense(expense);
-    history.push(`/cars/${id}/expenses`);
+    try {
+      await addExpense(expense);
+      history.push(`/cars/${id}/expenses`);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const { business_use, amount_spent, date } = expense;
@@ -143,14 +147,14 @@ function ExpenseNewForm() {
           <div className="trip-buttons">
           <button className="sub" type="submit">
             </button>
-            <Link to={`/cars/${id}/expenses`}>
+            {/* <Link to={`/cars/${id}/expenses`}> */}
             <button className="button-can"></button>
-            </Link>
+            {/* </Link> */}
           </div>
         </form>
       </div>
     </div>
   );
-}
+};
 
 export default ExpenseNewForm;
