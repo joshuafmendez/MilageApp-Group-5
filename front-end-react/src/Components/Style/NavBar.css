@@ -1,41 +1,3 @@
-.right-nav {
-  height: 100%;
-  width: 20%;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: rgb(255, 255, 255);
-  overflow-x: hidden;
-  padding-top: 20px;
-  border: solid rgb(221, 221, 221) 0.5px;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-
-  margin-left: 80px;
-  margin-top: 10%;
-}
-
-.right-nav a > h2 {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-family: "AvenirNext-Regular-Mint", "Helvetica Neue", Helvetica, Arial,
-    sans-serif;
-  display: block;
-  color: #333;
-  font-size: 14px;
-  text-decoration-line: none;
-}
-
-.right-nav a:hover {
-  color: blue;
-  text-decoration-line: none;
-}
-.right-nav a {
-  text-decoration-line: none;
-}
-
 .main {
   padding: 0px 10px;
 }
@@ -104,19 +66,7 @@ div.cars-div {
   padding-top: 9%;
   padding-left: 20%;
 }
-.nav-expenses {
-  background-color: wheat;
 
-  display: flex;
-  justify-content: space-between;
-  color: rgb(51, 51, 51);
-  width: 94%;
-  background-color: rgb(247, 247, 247);
-  margin-left: 3%;
-  padding: 6px;
-  align-items: center;
-  margin-bottom: 20px;
-}
 div.nav-expenses > a {
   color: limegreen;
 }

@@ -37,7 +37,6 @@ const ExpenseEditForm = () => {
           const res = await axios.get(
             `${API}/cars/${id}/expenses/${expense_id}?uid=${user.uid}`
           );
-          console.log(res.data.payload);
           setExpense(res.data.payload);
         }
       } catch (err) {

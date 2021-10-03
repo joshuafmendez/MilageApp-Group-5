@@ -187,7 +187,7 @@ function CarNewForm() {
             <button onClick={handleSubmit} className="submit" type="submit">
               Submit
             </button>
-            <button onClick={() => history.goBack()} className="cancel">
+            <button onClick={() => history.goBack} className="cancel">
               Cancel
             </button>
           </div>
