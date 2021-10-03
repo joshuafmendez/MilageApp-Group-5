@@ -54,15 +54,7 @@ const TripDetails = () => {
     }
   }, [user, history]);
 
-  const {
-    date,
-    miles,
-    reason,
-    start_odometer,
-    stop_odometer,
-    business_use,
-    favorite,
-  } = trip;
+  const { date, miles, reason, business_use, favorite } = trip;
   let newDate = new Date(date);
   newDate.setDate(newDate.getDate(date) + 1);
 
@@ -78,8 +70,6 @@ const TripDetails = () => {
         <p>Date: {newDate.toLocaleDateString()}</p>
         <p>Miles: {miles}</p>
         <p>Reason: {reason}</p>
-        <p>Start Odometer: {start_odometer}</p>
-        <p>Stop Odometer: {stop_odometer}</p>
         <p>Business Use: {business_use ? "Yes" : "No"}</p>
         <p>Favorite: {favorite ? "Yes" : "No"}</p>
         <div>

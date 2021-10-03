@@ -47,7 +47,7 @@ const ExpenseDetails = () => {
     };
     fetchExpense();
   }, [expense_id, id, user]);
-  
+
   useEffect(() => {
     if (!user) {
       history.push("/");
@@ -64,9 +64,9 @@ const ExpenseDetails = () => {
     return (
       <div>
         {/* Change to make and model */}
-          <Link to={`/cars/${id}/expenses`}>
-            <button>BACK</button>
-          </Link>
+        <Link to={`/cars/${id}/expenses`}>
+          <button>BACK</button>
+        </Link>
         <p>Car ID: {id}</p>
         <p>
           Date:
@@ -84,6 +84,6 @@ const ExpenseDetails = () => {
       </div>
     );
   }
-}
+};
 
 export default ExpenseDetails;

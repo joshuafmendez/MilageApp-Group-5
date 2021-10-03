@@ -16,7 +16,6 @@ CREATE TABLE
         is_default BOOLEAN NOT NULL,
         uid TEXT not null,
         driver TEXT not null
-        -- selected_car BOOLEAN NOT NULL
     );
 
  CREATE TABLE

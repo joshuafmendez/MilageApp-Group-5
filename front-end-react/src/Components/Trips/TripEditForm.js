@@ -69,15 +69,7 @@ const TripEditForm = () => {
     }
   };
 
-  const {
-    date,
-    miles,
-    reason,
-    start_odometer,
-    stop_odometer,
-    business_use,
-    favorite,
-  } = trip;
+  const { date, miles, reason, business_use, favorite } = trip;
 
   return (
     <div className="edit-form-container">
@@ -90,7 +82,7 @@ const TripEditForm = () => {
           id="date"
           placeholder="date"
         />
-        <label htmlFor="miles">miles:</label>
+        <label htmlFor="miles">Miles:</label>
         <input
           id="miles"
           type="number"
@@ -99,7 +91,7 @@ const TripEditForm = () => {
           placeholder="Enter overall miles for the trip"
           required
         />
-        <label htmlFor="reason">reason:</label>
+        <label htmlFor="reason">Reason:</label>
         <input
           id="reason"
           type="text"
@@ -108,23 +100,7 @@ const TripEditForm = () => {
           placeholder="Enter reason for your trip"
           required
         />
-        <label htmlFor="start_odometer">Start Odometer:</label>
-        <input
-          id="start_odometer"
-          type="number"
-          value={start_odometer}
-          min="0"
-          placeholder="Enter the mileage show on the odometer at start of trip"
-          onChange={handleChange}
-        />
-        <label htmlFor="stop_odometer">Stop Odometer:</label>
-        <input
-          id="stop_odometer"
-          type="number"
-          value={stop_odometer}
-          placeholder="Enter the mileage show on the odometer at end of trip"
-          onChange={handleChange}
-        />
+
         <label htmlFor="business_use">Business Use:</label>
         <input
           id="business_use"
@@ -141,9 +117,9 @@ const TripEditForm = () => {
         />
         <div>
           <button type="submit">Submit</button>
-          <button onClick={() => history.goBack()}>Cancel</button>
         </div>
       </form>
+      <button onClick={() => history.goBack()}>Cancel</button>
     </div>
   );
 };

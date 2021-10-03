@@ -79,7 +79,7 @@ const TripNewForm = () => {
               </tr>
               <tr>
                 <td className="data-td">
-                  <label htmlFor="amount_spent">miles:</label>
+                  <label htmlFor="amount_spent">Miles:</label>
                 </td>
                 <td className="data-td">
                   <input
@@ -95,7 +95,7 @@ const TripNewForm = () => {
               </tr>
               <tr>
                 <td className="data-td">
-                  <label htmlFor="reason">reason:</label>
+                  <label htmlFor="reason">Reason:</label>
                 </td>
                 <td className="data-td">
                   <input

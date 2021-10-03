@@ -36,7 +36,7 @@ function CarDetails() {
       await deleteCar();
       history.push("/cars");
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
 
@@ -194,16 +194,6 @@ function CarDetails() {
             margin: [35, 20, 10, 0],
           },
         ],
-        styles: {
-          header: {
-            bold: true,
-            fontSize: 15,
-          },
-        },
-        defaultStyle: {
-          fontSize: 12,
-          margin: [0, 20],
-        },
       };
 
       const pdfDoc = pdfMake.createPdf(documentDefinition).open();
@@ -268,10 +258,12 @@ function CarDetails() {
             <div className="all-expenses">
               <p className="total-expenses">Total Expenses</p>
               {/* <Link to={`/cars/${id}/expenses`}> */}$
-              {expensesArr.reduce((total, expense) => {
-                total += expense.amount_spent;
-                return total;
-              }, 0)}
+              {expensesArr
+                .reduce((total, expense) => {
+                  total += expense.amount_spent;
+                  return total;
+                }, 0)
+                .toLocaleString()}
               .00
               {/* </Link> */}
             </div>
