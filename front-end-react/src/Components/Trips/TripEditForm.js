@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState, useContext } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams, Link } from "react-router-dom";
 import { apiURL } from "../../util/apiURL";
 import { UserContext } from "../../Providers/UserProvider";
 import "../Style/Trips/TripEditForm.css";
@@ -117,9 +117,11 @@ const TripEditForm = () => {
         />
         <div>
           <button type="submit">Submit</button>
+          <Link to={`/cars/${id}/trips`}>
+            <button className="button-can"></button>
+          </Link>
         </div>
       </form>
-      <button onClick={() => history.goBack()}>Cancel</button>
     </div>
   );
 };

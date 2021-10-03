@@ -1,18 +1,18 @@
 .data-td > input {
   background-color: white;
 }
-.trip-form-can-btn {
+.form-trip {
   margin-top: 2%;
   border: black solid 5px;
   background-color: white;
   display: flex;
-  /* flex-direction: column; */
-  align-items: flex-end;
-  width: 30%;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
   font-size: 22px;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: normal;
-  padding: 8px;
+  /* padding: 8px; */
 }
 
 .trips-show-table {
@@ -26,10 +26,10 @@
   align-items: center;
   height: 800px;
   padding-top: 4%;
-  width: 80%;
+  width: 100%;
 }
 .trip-table-one {
-  width: 80%;
+  width: 100%;
 }
 
 .trip-table-one > tr > td > label {
@@ -94,4 +94,10 @@ div.trip-buttons > button.button-can:hover {
   box-shadow: transparent;
   outline: transparent;
   border: transparent;
+}
+
+.trip-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1%;
 }

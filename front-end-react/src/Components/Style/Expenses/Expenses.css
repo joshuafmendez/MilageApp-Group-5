@@ -40,7 +40,7 @@
   width: 15%;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 800px) {
   .main-e-div {
     margin-top: 10%;
     padding-top: 10%;
