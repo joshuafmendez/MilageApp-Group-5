@@ -19,10 +19,12 @@ function ExpenseNewForm() {
 
   const addExpense = async (newExpense) => {
     try {
-      await axios.post(
-        `${API}/cars/${id}/expenses?uid=${user.uid}`,
-        newExpense
-      );
+      if (user) {
+        await axios.post(
+          `${API}/cars/${id}/expenses?uid=${user.uid}`,
+          newExpense
+        );
+      }
     } catch (error) {
       console.log(error);
     }

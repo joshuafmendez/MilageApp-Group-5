@@ -47,6 +47,7 @@ function ExpenseDetails() {
     };
     fetchExpense();
   }, [expense_id, id, user]);
+  
   useEffect(() => {
     if (!user) {
       history.push("/");

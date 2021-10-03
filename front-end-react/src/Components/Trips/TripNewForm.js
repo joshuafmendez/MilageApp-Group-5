@@ -10,7 +10,6 @@ const API = apiURL();
 const TripNewForm = () => {
   const user = useContext(UserContext);
   const history = useHistory();
-
   let { id } = useParams();
   const [trip, setTrip] = useState({
     date: new Date(),

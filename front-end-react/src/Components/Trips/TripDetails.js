@@ -11,7 +11,6 @@ const TripDetails = () => {
   let [trip, setTrip] = useState({});
   let { id, trip_id } = useParams();
   let history = useHistory();
-
   const deleteTrip = async () => {
     try {
       await axios.delete(`${API}/cars/${id}/trips/${trip_id}?uid=${user.uid}`);
@@ -52,7 +51,7 @@ const TripDetails = () => {
 
   let newDate = new Date(date);
   newDate.setDate(newDate.getDate(date) + 1);
-  
+
   return (
     <div>
       <Link to={`/cars/${id}/trips`}>

@@ -18,12 +18,11 @@ function CarDetails() {
   const entireState = useSelector((state) => state);
   const { cars, expenses, trips } = entireState;
   const user = useContext(UserContext);
-  const history = useHistory();
   const expensesArr = Object.values(expenses);
   const tripsArr = Object.values(trips);
   const dispatch = useDispatch();
   let { id } = useParams();
-
+  let history = useHistory();
   const deleteCar = async () => {
     try {
       await deleteCarByID(id, user);
