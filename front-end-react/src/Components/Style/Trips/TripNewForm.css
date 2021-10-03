@@ -70,7 +70,7 @@ form.form-trip > h2 {
   border: transparent;
 }
 /* Cancel Button */
-div.trip-buttons > button.button-can {
+button.button-can {
   background-image: url("../../Images/canup.png");
   background-size: cover;
   background-position: center;

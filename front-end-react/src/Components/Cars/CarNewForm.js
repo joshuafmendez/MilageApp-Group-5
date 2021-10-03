@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useContext } from "react";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { apiURL } from "../../util/apiURL";
 import "mdbreact/dist/css/mdb.css";
 import "../../Components/Style/Cars/CarNewForm.css";

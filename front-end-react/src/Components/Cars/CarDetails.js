@@ -32,8 +32,12 @@ function CarDetails() {
   };
 
   const handleDelete = async () => {
-    await deleteCar();
-    history.push("/cars");
+    try {
+      await deleteCar();
+      history.push("/cars");
+    } catch (error) {
+      console.log(error)
+    }
   };
 
   useEffect(() => {
@@ -298,8 +302,6 @@ function CarDetails() {
             </div>
           </div>
         </section>
-
-     
       </>
     );
   }
