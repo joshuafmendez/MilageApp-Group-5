@@ -8,8 +8,6 @@ const TripsListItem = ({ trip }) => {
     date,
     miles,
     reason,
-    start_odometer,
-    stop_odometer,
     business_use,
     favorite,
   } = trip;
@@ -30,12 +28,6 @@ const TripsListItem = ({ trip }) => {
       <td>
         <p>{reason}</p>
       </td>
-      {/* <td>
-        <p>{start_odometer}</p>
-      </td>
-      <td>
-        <p>{stop_odometer}</p>
-      </td> */}
       <td>
         <p>{business_use ? "Yes" : "No"}</p>
       </td>
