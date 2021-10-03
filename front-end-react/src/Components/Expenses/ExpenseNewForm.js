@@ -50,12 +50,16 @@ const ExpenseNewForm = () => {
   };
 
   const { business_use, amount_spent, date } = expense;
+  let newDate = new Date(date);
+  newDate.setDate(newDate.getDate(date) + 1);
 
   useEffect(() => {
     if (!user) {
       history.push("/");
     }
   }, [user, history]);
+
+  console.log(date)
 
   return (
     <div>
@@ -71,6 +75,7 @@ const ExpenseNewForm = () => {
                 <td className="data-td">
                   <input
                     value={date}
+                    // value="1111-11-11"
                     type="date"
                     onChange={handleChange}
                     id="date"

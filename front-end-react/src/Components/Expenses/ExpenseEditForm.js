@@ -36,6 +36,7 @@ const ExpenseEditForm = () => {
           const res = await axios.get(
             `${API}/cars/${id}/expenses/${expense_id}?uid=${user.uid}`
           );
+          console.log(res.data.payload)
           setExpense(res.data.payload);
         }
       } catch (err) {
@@ -68,6 +69,13 @@ const ExpenseEditForm = () => {
 
   return (
     <div>
+      {/* must delete all br */}
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
       <form onSubmit={handleSubmit}>
         <label htmlFor="date">Date</label>
         <input
