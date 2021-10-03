@@ -6,16 +6,16 @@ import { apiURL } from "../../util/apiURL";
 import { UserContext } from "../../Providers/UserProvider";
 
 const API = apiURL();
-function ExpenseNewForm() {
+const ExpenseNewForm = () => {
   const user = useContext(UserContext);
-  const history = useHistory();
+  let history = useHistory();
+  const { id } = useParams();
   const [expense, setExpense] = useState({
     expense_type: "",
     business_use: false,
     amount_spent: 0,
     date: new Date(),
   });
-  const { id } = useParams();
 
   const addExpense = async (newExpense) => {
     try {
@@ -36,11 +36,9 @@ function ExpenseNewForm() {
   const handleSelectChange = (e) => {
     setExpense({ ...expense, expense_type: e.target.value });
   };
-
   const handleCheckboxChange = () => {
     setExpense({ ...expense, business_use: !expense.business_use });
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -142,17 +140,17 @@ function ExpenseNewForm() {
             </tbody>
           </table>
           <div className="buttons-container">
-            <button className="button-sub" type="submit">
-              Submit
-            </button>
             <button onClick={() => history.goBack()} className="button-can">
               Cancel
+            </button>
+            <button className="button-sub" type="submit">
+              Submit
             </button>
           </div>
         </form>
       </div>
     </div>
   );
-}
+};
 
 export default ExpenseNewForm;

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState, useContext } from "react";
-import { useHistory, Link, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { apiURL } from "../../util/apiURL";
 import { UserContext } from "../../Providers/UserProvider";
 
@@ -9,7 +9,7 @@ const API = apiURL();
 const TripEditForm = () => {
   const user = useContext(UserContext);
   let history = useHistory();
-  let { id, trip_id } = useParams();
+  const { id, trip_id } = useParams();
   const [trip, setTrip] = useState({
     date: "",
     miles: 0,
@@ -52,15 +52,12 @@ const TripEditForm = () => {
   const handleChange = (e) => {
     setTrip({ ...trip, [e.target.id]: e.target.value });
   };
-
   const businessCheckbox = (e) => {
     setTrip({ ...trip, business_use: !trip.business_use });
   };
-
   const favoriteCheckbox = (e) => {
     setTrip({ ...trip, favorite: !trip.favorite });
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -143,9 +140,7 @@ const TripEditForm = () => {
         />
         <div>
           <button type="submit">Submit</button>
-          <Link to={`/cars/${id}/trips`}>
-            <button>Cancel</button>
-          </Link>
+          <button onClick={() => history.goBack()}>Cancel</button>
         </div>
       </form>
     </div>

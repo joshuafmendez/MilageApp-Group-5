@@ -1,12 +1,12 @@
 import axios from "axios";
 import { useState, useEffect, useContext } from "react";
-import { useHistory, Link, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { apiURL } from "../../util/apiURL";
 import { UserContext } from "../../Providers/UserProvider";
 
 const API = apiURL();
 
-function ExpenseEditForm() {
+const ExpenseEditForm = () => {
   const user = useContext(UserContext);
   let history = useHistory();
   const { expense_id, id } = useParams();
@@ -51,11 +51,9 @@ function ExpenseEditForm() {
   const handleSelectChange = (e) => {
     setExpense({ ...expense, expense_type: e.target.value });
   };
-
   const handleCheckboxChange = () => {
     setExpense({ ...expense, business_use: !expense.business_use });
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -126,9 +124,7 @@ function ExpenseEditForm() {
         />
         <div>
           <button type="submit">Submit</button>
-          <Link to={`/cars/${id}/expenses/${expense_id}`}>
-            <button>Cancel</button>
-          </Link>
+          <button onClick={() => history.goBack()}>Cancel</button>
         </div>
       </form>
     </div>

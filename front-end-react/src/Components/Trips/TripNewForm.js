@@ -9,14 +9,12 @@ const API = apiURL();
 
 const TripNewForm = () => {
   const user = useContext(UserContext);
-  const history = useHistory();
-  let { id } = useParams();
+  let history = useHistory();
+  const { id } = useParams();
   const [trip, setTrip] = useState({
     date: new Date(),
     miles: 0,
     reason: "",
-    // start_odometer: 0,
-    // stop_odometer: 0,
     business_use: false,
     favorite: false,
   });
@@ -34,15 +32,12 @@ const TripNewForm = () => {
   const handleChange = (e) => {
     setTrip({ ...trip, [e.target.id]: e.target.value });
   };
-
   const businessCheckbox = (e) => {
     setTrip({ ...trip, business_use: !trip.business_use });
   };
-
   const favoriteCheckbox = (e) => {
     setTrip({ ...trip, favorite: !trip.favorite });
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -53,15 +48,7 @@ const TripNewForm = () => {
     }
   };
 
-  const {
-    date,
-    miles,
-    reason,
-    // start_odometer,
-    // stop_odometer,
-    business_use,
-    favorite,
-  } = trip;
+  const { date, miles, reason, business_use, favorite } = trip;
 
   useEffect(() => {
     if (!user) {
@@ -87,7 +74,7 @@ const TripNewForm = () => {
                     onChange={handleChange}
                     id="date"
                     placeholder="date"
-                  />{" "}
+                  />
                 </td>
               </tr>
               <tr>
@@ -103,7 +90,7 @@ const TripNewForm = () => {
                     onChange={handleChange}
                     placeholder="Enter overall miles for the trip"
                     required
-                  />{" "}
+                  />
                 </td>
               </tr>
               <tr>
@@ -117,39 +104,9 @@ const TripNewForm = () => {
                     value={reason}
                     onChange={handleChange}
                     placeholder="Enter reason for your trip"
-                  />{" "}
+                  />
                 </td>
               </tr>
-              {/* <tr>
-                <td className="data-td">
-                  <label htmlFor="start_odometer">Start Odometer:</label>
-                </td> */}
-              {/* <td className="data-td">
-                  <input
-                    id="start_odometer"
-                    type="number"
-                    value={start_odometer}
-                    min="0"
-                    placeholder="Enter the mileage show on the odometer at start of trip"
-                    onChange={handleChange}
-                  />{" "}
-                </td>
-              </tr>
-              <tr>
-                <td className="data-td">
-                  <label htmlFor="stop_odometer">Stop Odometer:</label>
-                </td>
-                <td className="data-td">
-                  <input
-                    id="stop_odometer"
-                    type="number"
-                    value={stop_odometer}
-                    min="0"
-                    placeholder="Enter the mileage show on the odometer at start of trip"
-                    onChange={handleChange}
-                  />{" "}
-                </td>
-              </tr> */}
               <tr>
                 <td className="data-td">
                   <label htmlFor="business_use">Business Use:</label>
@@ -179,11 +136,11 @@ const TripNewForm = () => {
             </tbody>
           </table>
           <div>
-            <button className="button-sub" type="submit">
-              Submit
-            </button>
             <button onClick={() => history.goBack()} className="button-can">
               Cancel
+            </button>
+            <button className="button-sub" type="submit">
+              Submit
             </button>
           </div>
         </form>

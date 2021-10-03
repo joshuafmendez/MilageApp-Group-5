@@ -11,16 +11,25 @@ const TripDetails = () => {
   let [trip, setTrip] = useState({});
   let { id, trip_id } = useParams();
   let history = useHistory();
+
   const deleteTrip = async () => {
     try {
-      await axios.delete(`${API}/cars/${id}/trips/${trip_id}?uid=${user.uid}`);
+      if (user) {
+        await axios.delete(
+          `${API}/cars/${id}/trips/${trip_id}?uid=${user.uid}`
+        );
+      }
     } catch (err) {
       console.log(err);
     }
   };
   const handleDelete = async () => {
-    await deleteTrip();
-    history.push(`/cars/${id}/trips`);
+    try {
+      await deleteTrip();
+      history.push(`/cars/${id}/trips`);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
@@ -39,6 +48,12 @@ const TripDetails = () => {
     fetchTrip();
   }, [id, trip_id, user]);
 
+  useEffect(() => {
+    if (!user) {
+      history.push("/");
+    }
+  }, [user, history]);
+
   const {
     date,
     miles,
@@ -48,33 +63,34 @@ const TripDetails = () => {
     business_use,
     favorite,
   } = trip;
-
   let newDate = new Date(date);
   newDate.setDate(newDate.getDate(date) + 1);
 
-  return (
-    <div>
-      <Link to={`/cars/${id}/trips`}>
-        <button>Back</button>
-      </Link>
-
-      <p>Car ID: {id}</p>
-      <p>Date: {newDate.toLocaleDateString()}</p>
-      <p>Miles: {miles}</p>
-      <p>Reason: {reason}</p>
-      <p>Start Odometer: {start_odometer}</p>
-      <p>Stop Odometer: {stop_odometer}</p>
-      <p>Business Use: {business_use ? "Yes" : "No"}</p>
-      <p>Favorite: {favorite ? "Yes" : "No"}</p>
-
+  if (!user) {
+    return <div className="spinner-border"></div>;
+  } else {
+    return (
       <div>
-        <Link to={`/cars/${id}/trips/${trip_id}/edit`}>
-          <button>Edit</button>
+        <Link to={`/cars/${id}/trips`}>
+          <button>Back</button>
         </Link>
-        <button onClick={handleDelete}>Delete</button>
+        <p>Car ID: {id}</p>
+        <p>Date: {newDate.toLocaleDateString()}</p>
+        <p>Miles: {miles}</p>
+        <p>Reason: {reason}</p>
+        <p>Start Odometer: {start_odometer}</p>
+        <p>Stop Odometer: {stop_odometer}</p>
+        <p>Business Use: {business_use ? "Yes" : "No"}</p>
+        <p>Favorite: {favorite ? "Yes" : "No"}</p>
+        <div>
+          <button onClick={handleDelete}>Delete</button>
+          <Link to={`/cars/${id}/trips/${trip_id}/edit`}>
+            <button>Edit</button>
+          </Link>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
 export default TripDetails;

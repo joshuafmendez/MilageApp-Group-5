@@ -9,14 +9,14 @@ import { UserContext } from "../../Providers/UserProvider";
 import "../Style/Expenses/Expenses.css";
 
 const Expenses = () => {
+  const user = useContext(UserContext);
+  let history = useHistory();
   const entireState = useSelector((state) => state);
-  const history = useHistory();
   const dispatch = useDispatch();
   const { cars, expenses } = entireState;
-  const expenseArr = Object.values(expenses);
   const { id } = useParams();
-  const user = useContext(UserContext);
-
+  const expenseArr = Object.values(expenses);
+  
   useEffect(() => {
     const fetchAllExpenses = async () => {
       try {
@@ -49,11 +49,9 @@ const Expenses = () => {
         <thead>
           <tr className="head-row">
             <th className="head-date">Date</th>
-
             <th className="head-type">Expense Type</th>
             <th className="head-amount">Amount</th>
-            <th className="head-edit"></th>
-
+            <th className="head-edit">Show</th>
           </tr>
         </thead>
         <tbody>
@@ -65,5 +63,6 @@ const Expenses = () => {
     </div>
   );
 };
+
 
 export default Expenses;

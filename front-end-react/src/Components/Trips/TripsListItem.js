@@ -36,8 +36,8 @@ const TripsListItem = ({ trip }) => {
       </td>
       <td>
         <p>
-          <Link to={`/cars/${car_id}/trips/${id}/edit`}>
-            <button>Edit</button>
+          <Link to={`/cars/${car_id}/trips/${id}/`}>
+            <button>More</button>
           </Link>
         </p>
       </td>
