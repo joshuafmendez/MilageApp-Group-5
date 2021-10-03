@@ -3,3 +3,11 @@
   text-align: left;
   padding: 1%;
 }
+
+@media only screen and (max-width: 500px) {
+  .row-penses td {
+    font-size: 70%;
+    text-align: left;
+    padding: 1%;
+  }
+}

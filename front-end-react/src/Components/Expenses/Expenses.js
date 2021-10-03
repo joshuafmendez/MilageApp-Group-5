@@ -49,9 +49,9 @@ const Expenses = () => {
         <thead>
           <tr className="head-row">
             <th className="head-date">Date</th>
-            <th>Expense Type</th>
-            <th>Amount</th>
-            <th>Test</th>
+            <th className="expenses-col">Expense Type</th>
+            <th className="amount">Amount</th>
+            <th className="edit-col"></th>
           </tr>
         </thead>
         <tbody>

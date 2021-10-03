@@ -25,29 +25,29 @@ const TripsListItem = ({ trip }) => {
         </Link>
       </td>
       <td>
-        <h2>{miles}</h2>
+        <p>{miles}</p>
       </td>
       <td>
-        <h2>{reason}</h2>
+        <p>{reason}</p>
+      </td>
+      {/* <td>
+        <p>{start_odometer}</p>
       </td>
       <td>
-        <h2>{start_odometer}</h2>
+        <p>{stop_odometer}</p>
+      </td> */}
+      <td>
+        <p>{business_use ? "Yes" : "No"}</p>
       </td>
       <td>
-        <h2>{stop_odometer}</h2>
+        <p>{favorite ? "Yes" : "No"}</p>
       </td>
       <td>
-        <h2>{business_use ? "Yes" : "No"}</h2>
-      </td>
-      <td>
-        <h2>{favorite ? "Yes" : "No"}</h2>
-      </td>
-      <td>
-        <h2>
+        <p>
           <Link to={`/cars/${car_id}/trips/${id}/edit`}>
             <button>Edit</button>
           </Link>
-        </h2>
+        </p>
       </td>
     </tr>
   );

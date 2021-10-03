@@ -3,7 +3,7 @@
   padding-top: 4%;
 }
 .expenses-main-table {
-  width: 55%;
+  width: 40%;
   margin: auto;
   table-layout: fixed;
 }
@@ -24,4 +24,42 @@
 
 .head-date {
   width: 10%;
+}
+
+.edit-col {
+  width: 10%;
+}
+
+.amount {
+  width: 8%;
+}
+
+.expenses-col {
+  width: 20%;
+}
+
+@media only screen and (max-width: 500px) {
+  .expenses-main-table {
+    width: 90%;
+    margin: auto;
+    table-layout: fixed;
+  }
+
+  .head-row th {
+    font-weight: 100;
+    font-size: 80%;
+    text-align: left;
+    padding: 1%;
+  }
+
+  .main-e-div {
+    margin-top: 20%;
+    padding-top: 4%;
+  }
+  .head-date {
+    width: 10%;
+  }
+  .expense-new-button {
+    margin: 5%;
+  }
 }
