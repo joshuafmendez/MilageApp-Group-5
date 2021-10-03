@@ -3,10 +3,14 @@ import { useParams, useHistory, Link } from "react-router-dom";
 import axios from "axios";
 import { UserContext } from "../../Providers/UserProvider";
 import { apiURL } from "../../util/apiURL";
+import { useSelector } from "react-redux";
+import "../../Components/Style/Trips/TripDetails.css";
 
 const API = apiURL();
 
 const TripDetails = () => {
+  const entireState = useSelector((state) => state);
+  const { cars } = entireState;
   const user = useContext(UserContext);
   let [trip, setTrip] = useState({});
   let { id, trip_id } = useParams();
@@ -62,18 +66,20 @@ const TripDetails = () => {
     return <div className="spinner-border"></div>;
   } else {
     return (
-      <div>
-        <Link to={`/cars/${id}/trips`}>
-          <button>Back</button>
-        </Link>
-        <p>Car ID: {id}</p>
+      <div className="trip-details">
+        <p className="car-make">
+          Car: {cars[id]?.make} {cars[id]?.model}
+        </p>
         <p>Date: {newDate.toLocaleDateString()}</p>
         <p>Miles: {miles}</p>
         <p>Reason: {reason}</p>
         <p>Business Use: {business_use ? "Yes" : "No"}</p>
         <p>Favorite: {favorite ? "Yes" : "No"}</p>
-        <div>
+        <div className="buttons">
           <button onClick={handleDelete}>Delete</button>
+          <Link to={`/cars/${id}/trips`}>
+            <button>Back</button>
+          </Link>
           <Link to={`/cars/${id}/trips/${trip_id}/edit`}>
             <button>Edit</button>
           </Link>

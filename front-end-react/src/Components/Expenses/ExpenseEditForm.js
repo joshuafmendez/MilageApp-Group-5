@@ -125,9 +125,9 @@ const ExpenseEditForm = () => {
         />
         <div>
           <button type="submit">Submit</button>
-          <button onClick={() => history.goBack()}>Cancel</button>
         </div>
       </form>
+      <button onClick={() => history.goBack()}>Cancel</button>
     </div>
   );
 };

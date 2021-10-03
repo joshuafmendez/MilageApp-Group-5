@@ -45,27 +45,14 @@ const Trips = () => {
       <Link to={`/cars/${id}/trips/trip/new`}>
         <button className="trips-new-button">Add New Trip</button>
       </Link>
-      <table>
+      <table className="trips-main-table">
         <thead>
-          <tr>
-            <th>
-              <p>Date</p>
-            </th>
-            <th>
-              <p>Miles</p>
-            </th>
-            <th>
-              <p>Reason</p>
-            </th>
-            <th>
-              <p>Business Use</p>
-            </th>
-            <th>
-              <p>Favorite</p>
-            </th>
-            <th>
-              <p>Edit</p>
-            </th>
+          <tr className="head-row">
+            <th className="head-date">Date</th>
+            <th className="head-miles">Miles</th>
+            <th className="head-reason">Reason</th>
+            <th className="head-biz-use">Business Use</th>
+            <th className="head-edit">Show</th>
           </tr>
         </thead>
         <tbody>
