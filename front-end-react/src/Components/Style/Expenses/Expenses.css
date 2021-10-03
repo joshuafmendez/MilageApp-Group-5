@@ -3,7 +3,7 @@
   padding-top: 4%;
 }
 .expenses-main-table {
-  width: 40%;
+  width: 50%;
   margin: auto;
   table-layout: fixed;
 }
@@ -26,7 +26,7 @@
   width: 25%;
 }
 .head-amount {
-  width: 25%;
+  width: 15%;
 }
 .head-edit {
   width: 10%;
