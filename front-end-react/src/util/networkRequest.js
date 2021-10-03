@@ -31,7 +31,6 @@ export const postCar = async (newCar) => {
 // Expenses Routes
 export const getAllExpensesFN = async (id, user) => {
   if (id) {
-    console.log("id", id);
     let { data } = await axios.get(
       `${API}/cars/${id}/expenses?uid=${user.uid}`
     );
