@@ -30,7 +30,8 @@ export const signup = async (email, password) => {
   try {
     await auth.createUserWithEmailAndPassword(email, password);
   } catch (error) {
-    console.log(error.message);
+    window.alert(error)
+    console.log(error);
     return error;
   }
 };
@@ -38,7 +39,8 @@ export const login = async (email, password) => {
   try {
     await auth.signInWithEmailAndPassword(email, password);
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
+    window.alert("Incorrect username or password")
     return error;
   }
 };
