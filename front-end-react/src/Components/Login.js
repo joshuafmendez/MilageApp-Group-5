@@ -5,12 +5,12 @@ import { UserContext } from "../Providers/UserProvider";
 import { useHistory } from "react-router-dom";
 import { signInWithGoogle, signup, login } from "../Services/Firebase";
 import "../Components/Style/Login.css";
-import { SiTwitter } from "react-icons/si";
-import { FcKey } from "react-icons/fc";
 import { AiFillLock } from "react-icons/ai";
-import { FaInstagramSquare } from "react-icons/fa";
-import { GrFacebook } from "react-icons/gr";
 import TripLogo from "./Images/giflogo.GIF";
+// import { FaInstagramSquare } from "react-icons/fa";
+// import { GrFacebook } from "react-icons/gr";
+// import { SiTwitter } from "react-icons/si";
+// import { FcKey } from "react-icons/fc";
 
 const Login = () => {
   const entireState = useSelector((state) => state);
