@@ -64,14 +64,14 @@ function ExpenseDetails() {
     return (
       <div>
         {/* Change to make and model */}
-        <h2>Car ID: {id}</h2>
-        <h2>
+        <p>Car ID: {id}</p>
+        <p>
           Date:
           {newDate.toLocaleDateString()}
-        </h2>
-        <h2>Expense Type: {expense_type}</h2>
-        <h2>Amount: {amount_spent}</h2>
-        <h2>Business Use: {business_use ? "Yes" : "No"}</h2>
+        </p>
+        <p>Expense Type: {expense_type}</p>
+        <p>Amount: ${amount_spent}</p>
+        <p>Business Use: {business_use ? "Yes" : "No"}</p>
 
         <div>
           <Link to={`/cars/${id}/expenses`}>

@@ -172,6 +172,7 @@ function CarNewForm() {
                     type="number"
                     value={doors}
                     min="2"
+                    max="4"
                     placeholder=""
                     onChange={handleChange}
                     style={{ width: "50px" }}

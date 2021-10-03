@@ -15,8 +15,8 @@ const TripNewForm = () => {
     date: new Date(),
     miles: 0,
     reason: "",
-    start_odometer: 0,
-    stop_odometer: 0,
+    // start_odometer: 0,
+    // stop_odometer: 0,
     business_use: false,
     favorite: false,
   });
@@ -57,8 +57,8 @@ const TripNewForm = () => {
     date,
     miles,
     reason,
-    start_odometer,
-    stop_odometer,
+    // start_odometer,
+    // stop_odometer,
     business_use,
     favorite,
   } = trip;
@@ -70,11 +70,11 @@ const TripNewForm = () => {
   }, [user, history]);
 
   return (
-    <div>
+    <div className="div-form">
       <div className="trips-show-table">
         <form className="form-trip" onSubmit={handleSubmit}>
-          Car Mileage
-          <table>
+          <h2>Car Mileage</h2>
+          <table className="trips-new-table">
             <tbody>
               <tr>
                 <td className="data-td">
@@ -92,7 +92,7 @@ const TripNewForm = () => {
               </tr>
               <tr>
                 <td className="data-td">
-                  <label htmlFor="amount_spent">miles:</label>
+                  <label htmlFor="amount_spent">Miles:</label>
                 </td>
                 <td className="data-td">
                   <input
@@ -108,7 +108,7 @@ const TripNewForm = () => {
               </tr>
               <tr>
                 <td className="data-td">
-                  <label htmlFor="reason">reason:</label>
+                  <label htmlFor="reason">Reason:</label>
                 </td>
                 <td className="data-td">
                   <input
@@ -120,11 +120,11 @@ const TripNewForm = () => {
                   />{" "}
                 </td>
               </tr>
-              <tr>
+              {/* <tr>
                 <td className="data-td">
                   <label htmlFor="start_odometer">Start Odometer:</label>
-                </td>
-                <td className="data-td">
+                </td> */}
+              {/* <td className="data-td">
                   <input
                     id="start_odometer"
                     type="number"
@@ -149,7 +149,7 @@ const TripNewForm = () => {
                     onChange={handleChange}
                   />{" "}
                 </td>
-              </tr>
+              </tr> */}
               <tr>
                 <td className="data-td">
                   <label htmlFor="business_use">Business Use:</label>
