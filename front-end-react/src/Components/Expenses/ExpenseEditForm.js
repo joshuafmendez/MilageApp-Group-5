@@ -3,6 +3,7 @@ import { useState, useEffect, useContext } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { apiURL } from "../../util/apiURL";
 import { UserContext } from "../../Providers/UserProvider";
+import "../Style/Expenses/ExpenseEditForm.css";
 
 const API = apiURL();
 
@@ -36,7 +37,7 @@ const ExpenseEditForm = () => {
           const res = await axios.get(
             `${API}/cars/${id}/expenses/${expense_id}?uid=${user.uid}`
           );
-          console.log(res.data.payload)
+          console.log(res.data.payload);
           setExpense(res.data.payload);
         }
       } catch (err) {
@@ -69,14 +70,7 @@ const ExpenseEditForm = () => {
 
   return (
     <div>
-      {/* must delete all br */}
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <form onSubmit={handleSubmit}>
+      <form className="edit-form" onSubmit={handleSubmit}>
         <label htmlFor="date">Date</label>
         <input
           value={date}
@@ -137,6 +131,6 @@ const ExpenseEditForm = () => {
       </form>
     </div>
   );
-}
+};
 
 export default ExpenseEditForm;

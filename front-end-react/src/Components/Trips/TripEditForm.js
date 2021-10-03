@@ -3,6 +3,7 @@ import { useEffect, useState, useContext } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { apiURL } from "../../util/apiURL";
 import { UserContext } from "../../Providers/UserProvider";
+import "../Style/Trips/TripEditForm.css";
 
 const API = apiURL();
 
@@ -79,8 +80,8 @@ const TripEditForm = () => {
   } = trip;
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className="edit-form-container">
+      <form className="edit-form" onSubmit={handleSubmit}>
         <label htmlFor="date">Date:</label>
         <input
           value={date}
