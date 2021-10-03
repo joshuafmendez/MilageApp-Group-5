@@ -59,7 +59,6 @@ const ExpenseNewForm = () => {
     }
   }, [user, history]);
 
-  console.log(date);
 
   return (
     <div>
