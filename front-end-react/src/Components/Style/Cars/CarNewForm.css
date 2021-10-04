@@ -26,6 +26,7 @@ input {
   border-top: transparent;
   border-right: transparent;
   border-left: transparent;
+  width: 100%;
 }
 label {
   color: rgb(58, 58, 73);
@@ -36,14 +37,16 @@ label {
   background-color: darkseagreen;
   border: 0.5px solid grey;
   border-radius: 3%;
-  margin-right: 30%;
+  margin-left: 10%;
+  margin-top: 10%;
 }
 .cancel {
   background-color: darkred;
   border: 0.5px solid grey;
   border-radius: 3%;
-  margin-right: 30%;
+  margin-right: 20%;
   color: white;
+  margin-top: 10%;
 }
 
 .form-rows > table {
@@ -51,7 +54,7 @@ label {
 }
 
 .table-newcar {
-  width: 50%;
+  width: 80%;
   margin-left: 25%;
 }
 input {

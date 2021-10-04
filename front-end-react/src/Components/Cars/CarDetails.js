@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from "react";
-import { useParams, useHistory, Link } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { UserContext } from "../../Providers/UserProvider";
 import {
@@ -12,6 +12,9 @@ import { addTrips } from "../../Store/Actions/tripsActions";
 import "../Style/Cars/CarDetails.css";
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
+import LeftNav from "./DetailComps/LeftNav";
+import CenterPanel from "./DetailComps/CenterPanel";
+import RightPanel from "./DetailComps/RightPanel";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 function CarDetails() {
@@ -32,14 +35,18 @@ function CarDetails() {
   };
 
   const handleDelete = async () => {
-    await deleteCar();
-    history.push("/cars");
+    try {
+      await deleteCar();
+      history.push("/cars");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
     const getAllExpenses = async () => {
       try {
-        if (user) {
+        if (user && id) {
           let res = await getAllExpensesFN(id, user);
           dispatch(addExpenses(res));
         }
@@ -51,7 +58,7 @@ function CarDetails() {
 
     const getAllTrips = async () => {
       try {
-        if (user) {
+        if (user && id) {
           let res = await getAllTripsFN(id, user);
           dispatch(addTrips(res));
         }
@@ -190,16 +197,6 @@ function CarDetails() {
             margin: [35, 20, 10, 0],
           },
         ],
-        styles: {
-          header: {
-            bold: true,
-            fontSize: 15,
-          },
-        },
-        defaultStyle: {
-          fontSize: 12,
-          margin: [0, 20],
-        },
       };
 
       const pdfDoc = pdfMake.createPdf(documentDefinition).open();
@@ -207,100 +204,18 @@ function CarDetails() {
     };
 
     return (
-      <>
-        <div>
-          <div className="right-nav">
-            <div className="chrome">
-              <div className="nav-expenses">
-                <Link to={`/cars/${id}/expenses/expense/new`}>
-                  {" "}
-                  ✚ Enter Expense{" "}
-                </Link>
-                {/* <ImRoad size="16px" /> */}
-              </div>
-            </div>
+      <section className="car-section">
+        <LeftNav id={id} handleReport={handleReport}/>
 
-            <div className="chrome">
-              <div className="nav-expenses">
-                <Link to={`/cars/${id}/trips/trip/new`}> ✚ Enter Mileage </Link>
-                {/* <ImRoad size="16px" /> */}
-              </div>
-            </div>
+        <CenterPanel id={id} handleDelete={handleDelete} />
 
-            <div className="chrome">
-              <div className="nav-expenses">
-                <button onClick={handleReport} className="cars-new-button">
-                  🗂 Generate Report    
-                </button>
-              </div>
-            </div>
-
-            <div className="chrome">
-              <div className="nav-expenses">
-                <Link to={`/cars/${id}/expenses`}>📕 Expense Table</Link>
-              </div>
-            </div>
-
-            <div className="chrome">
-              <div className="nav-expenses">
-                <Link to={`/cars/${id}/trips`}>📘 Mileage Table</Link>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <section className="car-section">
-          <div className="odo-deets">
-            <div className="odo-mileage">
-              Mileage
-              <p className="total-odo">
-                {tripsArr.reduce((total, trip) => {
-                  total += trip.miles;
-                  return total;
-                }, 0)}
-              </p>
-            </div>
-
-            <div className="all-expenses">
-              <p className="total-expenses">Total Expenses</p>
-              {/* <Link to={`/cars/${id}/expenses`}> */}$
-              {expensesArr.reduce((total, expense) => {
-                total += expense.amount_spent;
-                return total;
-              }, 0)}
-              .00
-              {/* </Link> */}
-            </div>
-
-            <div className="deets">
-              <li>Car ID: {id}</li>
-              <li>Make: {car?.make}</li>
-              <li>Model: {car?.model}</li>
-              <li>VIN: {car?.vin}</li>
-              <li>Year: {car?.year}</li>
-              <li>Odometer: {car?.odometer}</li>
-              <li>Doors: {car?.doors}</li>
-            </div>
-          </div>
-          <div className="concar-div">
-            <img
-              className="concar"
-              src="https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png"
-              style={{ width: "110%", height: "50%" }}
-              alt={"car"}
-            />{" "}
-            <div className="all-bs">
-              {/* DELETE */}
-              <button className="button-delete" onClick={handleDelete}></button>
-              <Link to={`/cars/${id}/edit`}>
-                <button className="button-edit"></button>
-              </Link>
-            </div>
-          </div>
-        </section>
-
-     
-      </>
+        <RightPanel
+          id={id}
+          car={car}
+          expensesArr={expensesArr}
+          tripsArr={tripsArr}
+        />
+      </section>
     );
   }
 }

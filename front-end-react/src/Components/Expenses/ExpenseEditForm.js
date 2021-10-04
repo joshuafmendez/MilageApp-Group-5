@@ -1,8 +1,9 @@
 import axios from "axios";
 import { useState, useEffect, useContext } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams, Link } from "react-router-dom";
 import { apiURL } from "../../util/apiURL";
 import { UserContext } from "../../Providers/UserProvider";
+import "../Style/Expenses/ExpenseEditForm.css";
 
 const API = apiURL();
 
@@ -68,7 +69,7 @@ const ExpenseEditForm = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form className="edit-form" onSubmit={handleSubmit}>
         <label htmlFor="date">Date</label>
         <input
           value={date}
@@ -124,11 +125,13 @@ const ExpenseEditForm = () => {
         />
         <div>
           <button type="submit">Submit</button>
-          <button onClick={() => history.goBack()}>Cancel</button>
+          <Link to={`/cars/${id}/expenses`}>
+            <button className="button-can"></button>
+          </Link>
         </div>
       </form>
     </div>
   );
-}
+};
 
 export default ExpenseEditForm;

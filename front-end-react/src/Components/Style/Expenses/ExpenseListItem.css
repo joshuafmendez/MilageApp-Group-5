@@ -10,11 +10,10 @@
   background-color: yellow;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 800px) {
   .row-penses td {
     font-size: 70%;
     text-align: left;
     padding: 1%;
   }
 }
-

@@ -3,10 +3,14 @@ import { useParams, useHistory, Link } from "react-router-dom";
 import axios from "axios";
 import { apiURL } from "../../util/apiURL";
 import { UserContext } from "../../Providers/UserProvider";
+import { useSelector } from "react-redux";
+import "../../Components/Style/Expenses/ExpenseDetails.css";
 
 const API = apiURL();
 
 const ExpenseDetails = () => {
+  const entireState = useSelector((state) => state);
+  const { cars } = entireState;
   const user = useContext(UserContext);
   let [expense, setExpense] = useState({});
   let { id, expense_id } = useParams();
@@ -47,7 +51,7 @@ const ExpenseDetails = () => {
     };
     fetchExpense();
   }, [expense_id, id, user]);
-  
+
   useEffect(() => {
     if (!user) {
       history.push("/");
@@ -62,12 +66,11 @@ const ExpenseDetails = () => {
     return <div className="spinner-border"></div>;
   } else {
     return (
-      <div>
+      <div className="expense-details">
         {/* Change to make and model */}
-          <Link to={`/cars/${id}/expenses`}>
-            <button>BACK</button>
-          </Link>
-        <p>Car ID: {id}</p>
+        <p className="car-make">
+          Car: {cars[id]?.make} {cars[id]?.model}
+        </p>
         <p>
           Date:
           {newDate.toLocaleDateString()}
@@ -75,8 +78,11 @@ const ExpenseDetails = () => {
         <p>Expense Type: {expense_type}</p>
         <p>Amount: ${amount_spent}</p>
         <p>Business Use: {business_use ? "Yes" : "No"}</p>
-        <div>
+        <div className="buttons">
           <button onClick={handleDelete}>DELETE</button>
+          <Link to={`/cars/${id}/expenses`}>
+            <button>BACK</button>
+          </Link>
           <Link to={`/cars/${id}/expenses/${expense_id}/edit`}>
             <button>EDIT</button>
           </Link>
@@ -84,6 +90,6 @@ const ExpenseDetails = () => {
       </div>
     );
   }
-}
+};
 
 export default ExpenseDetails;

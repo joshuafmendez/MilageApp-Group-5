@@ -5,12 +5,12 @@ import { UserContext } from "../Providers/UserProvider";
 import { useHistory } from "react-router-dom";
 import { signInWithGoogle, signup, login } from "../Services/Firebase";
 import "../Components/Style/Login.css";
-import { SiTwitter } from "react-icons/si";
-import { FcKey } from "react-icons/fc";
 import { AiFillLock } from "react-icons/ai";
-import { FaInstagramSquare } from "react-icons/fa";
-import { GrFacebook } from "react-icons/gr";
 import TripLogo from "./Images/giflogo.GIF";
+// import { FaInstagramSquare } from "react-icons/fa";
+// import { GrFacebook } from "react-icons/gr";
+// import { SiTwitter } from "react-icons/si";
+// import { FcKey } from "react-icons/fc";
 
 const Login = () => {
   const entireState = useSelector((state) => state);
@@ -58,12 +58,24 @@ const Login = () => {
     try {
       await login(input.email, input.password);
     } catch (error) {
-      if (String(error).includes("The password is invalid or the user does not have a password.")) {
-        setError("The password is invalid or the user does not have a password.")
-      } else if (String(error).includes("Access to this account has been temporarily disabled due to many failed login attempts.")) {
-        setError("Access to this account has been temporarily disabled due to many failed login attempts.")
-      }else{
-        window.alert(error)
+      if (
+        String(error).includes(
+          "The password is invalid or the user does not have a password."
+        )
+      ) {
+        setError(
+          "The password is invalid or the user does not have a password."
+        );
+      } else if (
+        String(error).includes(
+          "Access to this account has been temporarily disabled due to many failed login attempts."
+        )
+      ) {
+        setError(
+          "Access to this account has been temporarily disabled due to many failed login attempts."
+        );
+      } else {
+        window.alert(error);
         console.log(error);
       }
     }
@@ -74,22 +86,26 @@ const Login = () => {
       await signup(signUpInput.newEmail, signUpInput.newPassword);
     } catch (error) {
       if (String(error).includes("The email address is badly formatted.")) {
-        setError("The email address is badly formatted.")
-      }else if (String(error).includes("The email address is already in use by another account")) {
-        setError("The email address is already in use by another account.")
-      }else{
-        window.alert(error)
+        setError("The email address is badly formatted.");
+      } else if (
+        String(error).includes(
+          "The email address is already in use by another account"
+        )
+      ) {
+        setError("The email address is already in use by another account.");
+      } else {
+        window.alert(error);
         console.log(error);
       }
     }
   };
   const handleChange = (e) => {
     setInput({ ...input, [e.target.id]: e.target.value });
-    setError("")
+    setError("");
   };
   const handleSignUpChange = (e) => {
     setSignUpInput({ ...signUpInput, [e.target.id]: e.target.value });
-    setError("")
+    setError("");
   };
 
   useEffect(() => {
@@ -122,20 +138,25 @@ const Login = () => {
 
   return (
     <div className="sign-box">
-      <div className="top">
-        <div className="social-icons">
+      {/* <div className="top"> */}
+      {/* <div className="social-icons">
           <FcKey />
           <SiTwitter />
           <FaInstagramSquare />
           <GrFacebook />
-        </div>
-      </div>
+        </div> */}
+      {/* </div> */}
       <nav className="nav-login">
         <ul className="nav-ul">
           <li>
             <img
               src={TripLogo}
-              style={{ height: "119px", width: "119px" }}
+              style={{
+                height: "119px",
+                width: "119px",
+                marginTop: "40px",
+                marginLeft: "30px",
+              }}
               alt={"Logo"}
             />
           </li>
@@ -161,9 +182,11 @@ const Login = () => {
       {/* Log in */}
       {displayLogin && (
         <form className="logInForm" onSubmit={handleLoginIn}>
-         {error!=="" &&( <div className="alert alert-danger" role="alert">
-            {error}
-          </div>)}
+          {error !== "" && (
+            <div className="alert alert-danger" role="alert">
+              {error}
+            </div>
+          )}
           <button
             type="button"
             className="btn-close x-button"
@@ -224,9 +247,11 @@ const Login = () => {
       {/* signUp */}
       {displaySignUp && (
         <form className="signUpForm" onSubmit={handleSignUp}>
-          {error!=="" &&( <div className="alert alert-danger" role="alert">
-            {error}
-          </div>)}
+          {error !== "" && (
+            <div className="alert alert-danger" role="alert">
+              {error}
+            </div>
+          )}
           <button
             type="button"
             className="btn-close x-button"

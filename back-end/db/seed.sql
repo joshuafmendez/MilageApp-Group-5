@@ -49,29 +49,3 @@ VALUES
 (2,TRUE,200,'2021-01-14','date night',0,0,TRUE),
 (3,TRUE,250,'2021-12-11','delivery',0,0,false);
 
-
-
- -- seed connected_tables
-
--- INSERT INTO
---     connected_tables(user_id,car_id)
--- VALUES 
--- ((SELECT id FROM users WHERE vin = 123),(SELECT id FROM cars WHERE email = farrahrios@pursuit.org)),
--- ((SELECT id FROM users WHERE vin = 234),(SELECT id FROM cars WHERE email = damienyule@pursuit.org));
--- ((SELECT id FROM users WHERE vin = 567),(SELECT id FROM cars WHERE email = durdonadjalilova@pursuit.org));
-
-   -- seed receipts ????????????????????????????????
--- INSERT INTO
---     receipts(gas_id,receipt_url)
--- VALUES 
--- ((SELECT id FROM gas WHERE vin = 123),TRUE,100,2021-11-11)
--- ((SELECT id FROM cars WHERE vin = 456),TRUE,700,2021-01-11)
--- ((SELECT id FROM cars WHERE vin = 789),false,700,2021-14-11);
-
--- users
--- INSERT INTO
---     users(email, pw_hash, name)
--- VALUES
---     (‘farrahrios@pursuit.org, swim,Farrah),
---     (‘DamienYule@pursuit.org,babygirl, Damien),
---     (‘DurdonadjAlilova, myboys, Durdona);

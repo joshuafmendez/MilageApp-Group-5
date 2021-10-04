@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useContext, useEffect } from "react";
 import "../Style/Expenses/ExpenseNewForm.css";
-import { useHistory, useParams } from "react-router-dom";
+import { useParams, useHistory, Link } from "react-router-dom";
 import { apiURL } from "../../util/apiURL";
 import { UserContext } from "../../Providers/UserProvider";
 
@@ -50,6 +50,8 @@ const ExpenseNewForm = () => {
   };
 
   const { business_use, amount_spent, date } = expense;
+  let newDate = new Date(date);
+  newDate.setDate(newDate.getDate(date) + 1);
 
   useEffect(() => {
     if (!user) {
@@ -57,90 +59,96 @@ const ExpenseNewForm = () => {
     }
   }, [user, history]);
 
+
   return (
     <div>
-      <div className="trips-show-table">
-        <form className="form-trip" onSubmit={handleSubmit}>
+      <div className="expenses-show-table">
+        <form className="form-expense" onSubmit={handleSubmit}>
           Car Expenses
-          <table className="trip-table-one">
-            <tr>
-              <td className="data-td">
-                <label htmlFor="date">Date:</label>
-              </td>
-              <td className="data-td">
-                <input
-                  value={date}
-                  type="date"
-                  onChange={handleChange}
-                  id="date"
-                  placeholder="Enter date"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td className="data-td">
-                <label> Expense type:</label>
-              </td>
-              <td className="data-td">
-                <select onChange={handleSelectChange}>
-                  <option value="" defaultValue></option>
-                  <option name="gas" value="Gas">
-                    Gas
-                  </option>
-                  <option name="repairs" value="Repairs">
-                    Repairs
-                  </option>
-                  <option name="car_insurance" value="Car Insurance">
-                    Car Insurance
-                  </option>
-                  <option name="oil_change" value="Oil Change">
-                    Oil Change
-                  </option>
-                  <option name="registration_fees" value="Registration Fees">
-                    Registration Fees
-                  </option>
-                  <option name="depreciation" value="Depreciation">
-                    Depreciation
-                  </option>
-                  <option name="rent" value="Car Rental">
-                    Car Rental
-                  </option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td className="data-td">
-                <label htmlFor="amount_spent">Amount:</label>
-              </td>
-              <td className="data-td">
-                <input
-                  id="amount_spent"
-                  type="number"
-                  value={amount_spent}
-                  min="1"
-                  onChange={handleChange}
-                  required
-                />
-              </td>
-            </tr>
+          <table className="expense-table-one">
+            {/* <tbody> */}
+              <tr>
+                <td className="data-td">
+                  <label htmlFor="date">Date:</label>
+                </td>
+                <td className="data-td">
+                  <input
+                    value={date}
+                    // value="1111-11-11"
+                    type="date"
+                    onChange={handleChange}
+                    id="date"
+                    placeholder="Enter date"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td className="data-td">
+                  <label> Expense type:</label>
+                </td>
+                <td className="data-td">
+                  <select onChange={handleSelectChange}>
+                    <option value="" defaultValue></option>
+                    <option name="gas" value="Gas">
+                      Gas
+                    </option>
+                    <option name="repairs" value="Repairs">
+                      Repairs
+                    </option>
+                    <option name="car_insurance" value="Car Insurance">
+                      Car Insurance
+                    </option>
+                    <option name="oil_change" value="Oil Change">
+                      Oil Change
+                    </option>
+                    <option name="registration_fees" value="Registration Fees">
+                      Registration Fees
+                    </option>
+                    <option name="depreciation" value="Depreciation">
+                      Depreciation
+                    </option>
+                    <option name="rent" value="Car Rental">
+                      Car Rental
+                    </option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td className="data-td">
+                  <label htmlFor="amount_spent">Amount:</label>
+                </td>
+                <td className="data-td">
+                  <input
+                    id="amount_spent"
+                    type="number"
+                    value={amount_spent}
+                    min="1"
+                    onChange={handleChange}
+                    required
+                  />
+                </td>
+              </tr>
 
-            <tr>
-              <td className="data-td">
-                <label htmlFor="business_use">Business Use:</label>
-              </td>
-              <td className="data-td">
-                <input
-                  id="business_use"
-                  type="checkbox"
-                  onChange={handleCheckboxChange}
-                  checked={business_use}
-                />
-              </td>
-            </tr>
+              <tr>
+                <td className="data-td">
+                  <label htmlFor="business_use">Business Use:</label>
+                </td>
+                <td className="data-td">
+                  <input
+                    id="business_use"
+                    type="checkbox"
+                    onChange={handleCheckboxChange}
+                    checked={business_use}
+                  />
+                </td>
+              </tr>
+            {/* </tbody> */}
           </table>
-          <div className="trip-buttons">
+          <div className="expense-buttons">
             <button className="sub" type="submit"></button>
-            <button onClick={history.goBack} className="button-can"></button>
+            <Link to={`/cars/${id}`}>
+              <button className="button-can"></button>
+            </Link>
           </div>
         </form>
       </div>

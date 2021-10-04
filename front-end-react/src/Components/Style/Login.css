@@ -2,6 +2,7 @@ nav.nav-login {
   display: flex;
   height: 80px;
   align-items: center;
+  background-color: white;
 }
 .nav-ul {
   display: flex;
@@ -45,14 +46,12 @@ ul.nav-ul {
 }
 .social-icons {
   width: 25%;
-  /* border:black solid 1px; */
   display: flex;
-  /* margin-left:75%; */
   justify-content: space-around;
   align-items: center;
 }
 .login-body {
-  /* background-color: rgb(156,234,222); */
+  background-color: white;
   background-image: linear-gradient(
     to right,
     rgba(156, 234, 222, 0),
@@ -87,8 +86,6 @@ div.icon-login > button {
   opacity: 1;
   background-image: url("https://cdn.wallethub.com/wallethub/posts/97502/most-and-least-risky-states-for-drivers-wallets-hero.png");
   background-repeat: no-repeat;
-
-  /* border:green solid 9px; */
   margin-top: 0;
 }
 .text-a {

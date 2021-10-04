@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useContext } from "react";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { apiURL } from "../../util/apiURL";
 import "mdbreact/dist/css/mdb.css";
 import "../../Components/Style/Cars/CarNewForm.css";
@@ -187,7 +187,7 @@ function CarNewForm() {
             <button onClick={handleSubmit} className="submit" type="submit">
               Submit
             </button>
-            <button onClick={() => history.goBack()} className="cancel">
+            <button onClick={() => history.goBack} className="cancel">
               Cancel
             </button>
           </div>

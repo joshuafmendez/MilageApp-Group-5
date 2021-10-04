@@ -54,6 +54,7 @@ function CarEditForm() {
     carInput;
 
   return (
+    <div className="wrap-edit">
     <div className="edit-form">
       <form onSubmit={handleSubmit}>
         <label htmlFor="driver">Driver's Name:</label>
@@ -137,6 +138,7 @@ function CarEditForm() {
           </Link>
         </div>
       </form>
+    </div>
     </div>
   );
 }
