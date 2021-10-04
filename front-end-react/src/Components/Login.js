@@ -160,7 +160,7 @@ const Login = () => {
               alt={"Logo"}
             />
           </li>
-          <li>
+          {/* <li>
             <h2>How it Works</h2>
           </li>
           <li>
@@ -168,14 +168,13 @@ const Login = () => {
           </li>
           <li>
             <h2>Tax Incentives</h2>
-          </li>
+          </li> */}
         </ul>
         <div className="icon-login">
           <button className="sign-in" onClick={handleDisplayLogin}>
             <AiFillLock />
             Sign In
           </button>
-          <button className="sign-up">Free Sign Up</button>
         </div>
       </nav>
       {/* --------------------------------- */}
@@ -313,18 +312,17 @@ const Login = () => {
             <h1 className="b">Experience a New Way </h1>
             <h1 className="b">To Manage </h1>
             <h1 className="g">Your Auto Finances</h1>
-            <button onClick={signInWithGoogle} className="start-up">
+            <button onClick={handleDisplayLogin} className="start-up">
               Get Started Now
             </button>
           </article>
 
-          <div className="card-a">
-            <div className="first-image">
-              {/* image */}
-              {/* <div className="text-a"text></div> */}
-            </div>
-          </div>
-        </section>
+          
+          
+              <img  className="first-image" src="https://cdn.wallethub.com/wallethub/posts/97502/most-and-least-risky-states-for-drivers-wallets-hero.png" />
+       
+        
+        </section>  
       </div>
     </div>
   );
