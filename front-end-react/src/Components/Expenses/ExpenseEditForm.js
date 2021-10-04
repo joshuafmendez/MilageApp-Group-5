@@ -90,7 +90,7 @@ const ExpenseEditForm = () => {
         </tr>  
 
 <tr>
-  <td>      Expense type</td>
+  <td className="expense-type">      Expense type</td>
   <td>
 
 

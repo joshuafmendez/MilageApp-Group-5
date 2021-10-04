@@ -120,12 +120,16 @@ button.showMe:hover {
 
 ul.ul-show {
   margin-bottom: 13px;
+
+
+
 }
 li.li-show {
   margin-bottom: 13px;
   display: flex;
   justify-content: center;
   align-content: center;
+  flex-wrap: wrap;
 }
 .list-cars {
   width: 100%;
