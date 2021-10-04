@@ -199,7 +199,9 @@ function CarDetails() {
         ],
       };
 
-      const pdfDoc = pdfMake.createPdf(documentDefinition).open();
+      const pdfDoc = pdfMake
+        .createPdf(documentDefinition)
+        .download(`${car?.driver}.pdf`);
       return pdfDoc;
     };
 
