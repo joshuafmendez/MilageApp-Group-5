@@ -68,9 +68,15 @@ const ExpenseEditForm = () => {
   const { business_use, amount_spent, date, expense_type } = expense;
 
   return (
-    <div>
+    <div className="main-div-edit-form">
       <form className="edit-form" onSubmit={handleSubmit}>
+        <table className="edit-expense-table">
+      <tr>
+        <td>
         <label htmlFor="date">Date</label>
+          
+        </td>
+        <td>
         <input
           value={date}
           type="date"
@@ -78,8 +84,19 @@ const ExpenseEditForm = () => {
           id="date"
           placeholder="Enter date"
         />
-        Expense type
-        <select
+
+        </td>
+        
+        </tr>  
+
+<tr>
+  <td>      Expense type</td>
+  <td>
+
+
+
+
+  <select
           value={expense_type}
           id="Expense-Selection"
           onChange={handleSelectChange}
@@ -107,8 +124,28 @@ const ExpenseEditForm = () => {
             Car Rental
           </option>
         </select>
+  </td>
+  
+  
+  
+  </tr>    
+  
+        {/* <br></br> */}
+     
+
+
+
+
+
+
+        <tr>
+    
+  <td>
         <label htmlFor="amount_spent">Amount</label>
-        <input
+  </td>
+  <td>
+
+  <input
           id="amount_spent"
           type="number"
           value={amount_spent}
@@ -116,19 +153,39 @@ const ExpenseEditForm = () => {
           onChange={handleChange}
           required
         />
-        <label htmlFor="business_use">Business Use</label>
-        <input
+
+  </td>
+  
+  
+  
+  </tr>  
+
+<tr>
+<td>
+        <label htmlFor="business_use">Business Use</label></td>
+<td>
+        
+<input
           id="business_use"
           type="checkbox"
           onChange={handleCheckboxChange}
           checked={business_use}
         />
-        <div>
-          <button type="submit">Submit</button>
+</td>
+
+
+
+</tr>
+
+     
+     
+        <div className="edit-expense-buttons">
+          <button className="new-submit" type="submit">Submit</button>
           <Link to={`/cars/${id}/expenses`}>
-            <button className="button-can"></button>
+            <button className="new-can">Cancel</button>
           </Link>
         </div>
+        </table>
       </form>
     </div>
   );

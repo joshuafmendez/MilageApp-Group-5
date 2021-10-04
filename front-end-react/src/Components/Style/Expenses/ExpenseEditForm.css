@@ -1,6 +1,37 @@
 .edit-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 80%;
   margin-top: 129px;
-  width: 10%;
-  margin-left: 40%;
+  width: 50%;
+  /* margin-left: 40%;
+padding-left: 5%; */
+  border:green solid 3px;
+
+}
+.main-div-edit-form{
+  border:yellow solid 2px;
+  display: flex;
+  flex-direction: column;
+  padding-right: 20%;
+  justify-content: center;
+  
+}
+form.edit-form>input{
+  width: 200px;
+  /* float:left; */
+}
+form.edit-form>select{
+  width: 200px;
+  /* float:left; */
+}
+form.edit-form>label{
+  width: 200px;
+  float:left;
+}
+
+.edit-expense-buttons{
+  margin-left: 50%;
+  width: 100%;
 }
