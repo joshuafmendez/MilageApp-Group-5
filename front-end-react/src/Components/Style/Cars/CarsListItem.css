@@ -114,9 +114,10 @@ button.showMe:hover {
   display: flex;
   justify-content: space-between;
   padding-left: 11px;
-  padding-bottom: 2px;
+  margin-top: 25px;
+  /* padding-bottom: 2px; */
   width: 288px;
-}
+} 
 
 .ul-show {
   margin-bottom: 13px;
@@ -133,6 +134,7 @@ li.li-show {
   width: 100%;
   background-color: rgb(28, 26, 26);
   margin-top: 5%;
+  padding-top: 3%;
 }
 
 /* new */
@@ -141,7 +143,7 @@ div.card-center {
   background-image: url("../../Images/blackdrop.png");
   background-position: center;
   background-size: cover;
-  padding-top: 4%;
+  padding-top: 20px;
   height: 300px;
   padding-left: 0;
   transition: transform 4s;
