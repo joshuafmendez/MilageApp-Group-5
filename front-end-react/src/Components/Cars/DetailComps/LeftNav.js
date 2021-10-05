@@ -36,9 +36,7 @@ const LeftNav = ({ id, handleReport }) => {
             className="nav-expenses"
             onClick={() => setShowEForm(!showEForm)}
           >
-            {/* <button onClick={() => setGasForm(!gasForm)}> */}
             <p> ✚ Enter Expense</p>
-            {/* <Link to={`/cars/${id}/expenses/expense/new`}>✚ Enter Expense</Link> */}
           </div>
         </div>
 
@@ -90,7 +88,7 @@ const LeftNav = ({ id, handleReport }) => {
             <div className="chrome">
               <div
                 className="nav-expenses"
-                onClick={() => setShowTripForm(!showTripForm)}
+                onClick={() => setShowEForm(!showEForm)}
               >
                 {/* <button onClick={() => setGasForm(!gasForm)}> */}
                 <p>✚ Enter Expense </p>
@@ -101,9 +99,11 @@ const LeftNav = ({ id, handleReport }) => {
             <div className="chrome">
               <div
                 className="nav-expenses"
-                onClick={() => setShowEForm(!showTripForm)}
+                onClick={() => setShowTripForm(!showTripForm)}
               >
-                <Link to={`/cars/${id}/trips/trip/new`}> ✚ Enter Mileage </Link>
+                {/* <Link to={`/cars/${id}/trips/trip/new`}> */}
+                <p>✚ Enter Mileage</p>
+                {/* </Link> */}
               </div>
             </div>
 

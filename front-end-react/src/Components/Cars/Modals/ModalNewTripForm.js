@@ -7,7 +7,7 @@ import "../Modals/ModalStyle/ModalNewTripForm.css";
 
 const API = apiURL();
 
-const TripNewForm = ({ setShowTripForm, showTripForm }) => {
+const ModalTripNewForm = ({ setShowTripForm, showTripForm }) => {
   const user = useContext(UserContext);
   let history = useHistory();
   const { id } = useParams();
@@ -150,4 +150,4 @@ const TripNewForm = ({ setShowTripForm, showTripForm }) => {
   );
 };
 
-export default TripNewForm;
+export default ModalTripNewForm;
