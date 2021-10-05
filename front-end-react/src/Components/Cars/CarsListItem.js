@@ -12,7 +12,7 @@ function CarsListItem({ carsArr }) {
         style={
           showElement
             ? { display: "none" }
-            : { display: "flex", justifyContent: "space-between" }
+            : { display: "flex", justifyContent: "space-around" }
         }
         className="ul-show"
       >
