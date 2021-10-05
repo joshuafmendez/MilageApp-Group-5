@@ -85,7 +85,7 @@ const ModalTripNewForm = ({ setShowTripForm, showTripForm }) => {
                   id="miles"
                   type="number"
                   value={miles}
-                  min="0"
+                  min="1"
                   onChange={handleChange}
                   placeholder="Enter overall miles for the trip"
                   required
@@ -103,6 +103,7 @@ const ModalTripNewForm = ({ setShowTripForm, showTripForm }) => {
                   value={reason}
                   onChange={handleChange}
                   placeholder="Reason for trip"
+                  required
                 />
               </td>
             </tr>
