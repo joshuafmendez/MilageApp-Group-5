@@ -68,128 +68,99 @@ const ExpenseEditForm = () => {
   const { business_use, amount_spent, date, expense_type } = expense;
 
   return (
-
     <div className="main-div-edit-form">
       <form className="edit-form" onSubmit={handleSubmit}>
         <table className="edit-expense-table">
-      <tr>
-        <td>
+          <tr>
+            <td>
+              <label htmlFor="date">Date</label>
+            </td>
+            <td>
+              <input
+                value={date}
+                type="date"
+                onChange={handleChange}
+                id="date"
+                placeholder="Enter date"
+              />
+            </td>
+          </tr>
 
-        <label htmlFor="date">Date</label>
-          
-        </td>
-        <td>
-        <input
-          value={date}
-          type="date"
-          onChange={handleChange}
-          id="date"
-          placeholder="Enter date"
-        />
+          <tr>
+            <td className="expense-type"> Expense type</td>
+            <td>
+              <select
+                value={expense_type}
+                id="Expense-Selection"
+                onChange={handleSelectChange}
+              >
+                <option value=""></option>
+                <option name="gas" value="Gas">
+                  Gas
+                </option>
+                <option name="repairs" value="Repairs">
+                  Repairs
+                </option>
+                <option name="car_insurance" value="Car Insurance">
+                  Car Insurance
+                </option>
+                <option name="oil_change" value="Oil Change">
+                  Oil Change
+                </option>
+                <option name="registration_fees" value="Registration Fees">
+                  Registration Fees
+                </option>
+                <option name="depreciation" value="Depreciation">
+                  Depreciation
+                </option>
+                <option name="rent" value="Car Rental">
+                  Car Rental
+                </option>
+              </select>
+            </td>
+          </tr>
 
-        </td>
-        
-        </tr>  
+          {/* <br></br> */}
 
-<tr>
-  <td className="expense-type">      Expense type</td>
-  <td>
+          <tr>
+            <td>
+              <label htmlFor="amount_spent">Amount</label>
+            </td>
+            <td>
+              <input
+                id="amount_spent"
+                type="number"
+                value={amount_spent}
+                min="1"
+                onChange={handleChange}
+                required
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label htmlFor="business_use">Business Use</label>
+            </td>
+            <td>
+              <input
+                id="business_use"
+                type="checkbox"
+                onChange={handleCheckboxChange}
+                checked={business_use}
+              />
+            </td>
+          </tr>
 
-
-
-
-  <select
-          value={expense_type}
-          id="Expense-Selection"
-          onChange={handleSelectChange}
-        >
-          <option value=""></option>
-          <option name="gas" value="Gas">
-            Gas
-          </option>
-          <option name="repairs" value="Repairs">
-            Repairs
-          </option>
-          <option name="car_insurance" value="Car Insurance">
-            Car Insurance
-          </option>
-          <option name="oil_change" value="Oil Change">
-            Oil Change
-          </option>
-          <option name="registration_fees" value="Registration Fees">
-            Registration Fees
-          </option>
-          <option name="depreciation" value="Depreciation">
-            Depreciation
-          </option>
-          <option name="rent" value="Car Rental">
-            Car Rental
-          </option>
-        </select>
-  </td>
-  
-  
-  
-  </tr>    
-  
-        {/* <br></br> */}
-     
-
-
-
-
-
-
-        <tr>
-    
-  <td>
-        <label htmlFor="amount_spent">Amount</label>
-  </td>
-  <td>
-
-  <input
-          id="amount_spent"
-          type="number"
-          value={amount_spent}
-          min="1"
-          onChange={handleChange}
-          required
-        />
-
-  </td>
-  
-  
-  
-  </tr>  
-
-<tr>
-<td>
-        <label htmlFor="business_use">Business Use</label></td>
-<td>
-        
-<input
-          id="business_use"
-          type="checkbox"
-          onChange={handleCheckboxChange}
-          checked={business_use}
-        />
-
-</td>
-
-
-
-</tr>
-
-     
-     
-        <div className="edit-expense-buttons">
-          <button className="new-submit" type="submit">Submit</button>
-          <Link to={`/cars/${id}/expenses`}>
-            <button className="new-can">Cancel</button>
-
-          </Link>
-        </div>
+         
         </table>
+        <div className="edit-expense-buttons">
+            <button className="new-submit" type="submit">
+              Submit
+            </button>
+            <Link to={`/cars/${id}/expenses`}>
+              <button className="new-can">Cancel</button>
+            </Link>
+          </div>
       </form>
     </div>
   );

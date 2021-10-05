@@ -61,7 +61,7 @@ const ExpenseNewForm = () => {
 
 
   return (
-    <div>
+
       <div className="expenses-show-table">
         <form className="form-expense" onSubmit={handleSubmit}>
           Car Expenses
@@ -154,7 +154,6 @@ const ExpenseNewForm = () => {
           </div>
         </form>
       </div>
-    </div>
   );
 };
 

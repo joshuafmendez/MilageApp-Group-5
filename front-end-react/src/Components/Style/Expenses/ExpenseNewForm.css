@@ -1,5 +1,4 @@
 .expenses-show-table{
-  border: green solid 4px;
   padding-top: 10%;
   padding-bottom: 10%;
   background-image: url("../../Images/form_background.jpeg");
@@ -7,8 +6,10 @@
   background-repeat: no-repeat;
   background-position: center;
   margin-top: 10%;
-  width: 70%;
-  margin-left: 15%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  /* margin-left: 15%; */
 }
 /* .div-form {
   background-color: rgb(111, 201, 186);
@@ -20,17 +21,13 @@
 } */
 .form-expense {
   table-layout: fixed;
-  width: 30%;
+  width: 500px;
   /* padding-left: 40%; */
-  border: yellow solid 3px;
-  margin: auto;
+  /* margin: auto; */
   display:flex;
   flex-direction: column;
   justify-content: center;
   background-color: wheat;
-}
-.expense-table-one{
-  /* border: orange solid 4px; */
 }
 
 /* .div-form > div {
@@ -64,6 +61,10 @@ td input {
   text-align: center;
   width: 80%;
 }
+div.expense-buttons{
+
+  width: 100%;
+}
 div.expense-buttons > button.sub {
   background-image: url("../../Images/subup.png");
   background-size: cover;
@@ -94,7 +95,9 @@ div.expense-buttons > button.sub:hover {
   outline: transparent;
   border: transparent;
 }
-
+.expense-table-one{
+  width: 100%;
+}
 
 
 .button-can:hover {
@@ -113,6 +116,7 @@ div.expense-buttons > button.sub:hover {
   .form-container {
     margin-top: 15%;
     width: 1000%;
+
   }
 
 
@@ -123,6 +127,10 @@ div.expense-buttons > button.sub:hover {
     /* padding-left: 20%; */
     border: none;
     margin: auto;
+
+  }
+  .form-expense{
+    width: 100%;
   }
 }
 
