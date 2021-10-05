@@ -133,7 +133,6 @@ div.expense-buttons{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border: purple solid 3px;
     z-index: 20;
   }
 
