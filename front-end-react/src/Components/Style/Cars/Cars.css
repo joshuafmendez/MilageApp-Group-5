@@ -168,7 +168,7 @@ div.whita {
 li.li-show {
   width: 100%;
 }
-.circle-car {
+div.circle-car {
   height: 150px;
   width: 150px;
   border-radius: 50%;
@@ -177,6 +177,7 @@ li.li-show {
   background-position: center;
   background-size: cover;
   outline: black 2px solid;
+  margin-bottom: 40px;
 }
 .circle-car:hover {
   height: 140px;

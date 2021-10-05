@@ -68,16 +68,19 @@
   padding: 12px 16px;
   text-decoration: none;
   display: block;
+  z-index: 20;
 }
 
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {
   background-color: #ddd;
+  z-index: 20;
 }
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
   display: block;
+  z-index: 20;
 }
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
@@ -111,4 +114,12 @@ div.whita {
 }
 li.li-show {
   width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+
+div.corner-fix{
+  width: 100%;
+}
+
 }

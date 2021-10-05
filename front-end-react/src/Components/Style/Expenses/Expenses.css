@@ -1,6 +1,12 @@
 .main-e-div {
   margin-top: 2%;
   padding-top: 4%;
+  padding-bottom: 34%;
+  background-image: url("../../Images/business.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 900px;
 }
 .expenses-main-table {
   width: 50%;

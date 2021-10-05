@@ -13,7 +13,7 @@ const TripsIndex = () => {
     }
   }, [user, history]);
   return (
-    <div>
+    <div className="trips-index-pages">
       <Trips />
     </div>
   );
