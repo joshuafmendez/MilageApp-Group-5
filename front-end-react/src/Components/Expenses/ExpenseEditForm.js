@@ -68,11 +68,13 @@ const ExpenseEditForm = () => {
   const { business_use, amount_spent, date, expense_type } = expense;
 
   return (
+
     <div className="main-div-edit-form">
       <form className="edit-form" onSubmit={handleSubmit}>
         <table className="edit-expense-table">
       <tr>
         <td>
+
         <label htmlFor="date">Date</label>
           
         </td>
@@ -171,6 +173,7 @@ const ExpenseEditForm = () => {
           onChange={handleCheckboxChange}
           checked={business_use}
         />
+
 </td>
 
 
@@ -183,6 +186,7 @@ const ExpenseEditForm = () => {
           <button className="new-submit" type="submit">Submit</button>
           <Link to={`/cars/${id}/expenses`}>
             <button className="new-can">Cancel</button>
+
           </Link>
         </div>
         </table>

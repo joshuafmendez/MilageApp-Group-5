@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import ModalNewExpenseForm from "../Modals/ModalNewExpenseForm";
@@ -47,6 +48,7 @@ const LeftNav = ({ id, handleReport }) => {
 
       <div className="chrome">
         <div className="nav-expenses">
+
           <Link to={`/cars/${id}/expenses`}>📕 Expense Table</Link>
         </div>
       </div>
@@ -74,6 +76,7 @@ const LeftNav = ({ id, handleReport }) => {
 
       <div className="chrome">
         <div className="nav-expenses" onClick={() => setShowEForm(!showTripForm)}>
+
           <Link to={`/cars/${id}/trips/trip/new`}> ✚ Enter Mileage </Link>
         </div>
       </div>
@@ -98,11 +101,13 @@ const LeftNav = ({ id, handleReport }) => {
         </div>
       </div>
     </div>
+
       
       
       
       </div>}
     </>
+
 
   );
 };

@@ -1,4 +1,5 @@
 .edit-form {
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -58,4 +59,5 @@ form.edit-form > label {
   .edit-expense-table {
     width: 100%;
   }
+
 }

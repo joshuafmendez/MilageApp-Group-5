@@ -66,7 +66,8 @@ const ExpenseNewForm = () => {
         <form className="form-expense" onSubmit={handleSubmit}>
           Car Expenses
           <table className="expense-table-one">
-            {/* <tbody> */}
+            <tbody> 
+
               <tr>
                 <td className="data-td">
                   <label htmlFor="date">Date:</label>
@@ -142,7 +143,8 @@ const ExpenseNewForm = () => {
                   />
                 </td>
               </tr>
-            {/* </tbody> */}
+
+            </tbody>
           </table>
           <div className="expense-buttons">
             <button className="sub" type="submit"></button>
