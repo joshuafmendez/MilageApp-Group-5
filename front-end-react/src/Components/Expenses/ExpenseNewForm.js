@@ -62,11 +62,12 @@ const ExpenseNewForm = () => {
 
   return (
     <div>
-      <div className="trips-show-table">
-        <form className="form-trip" onSubmit={handleSubmit}>
+      <div className="expenses-show-table">
+        <form className="form-expense" onSubmit={handleSubmit}>
           Car Expenses
-          <table className="trip-table-one">
-            <tbody>
+          <table className="expense-table-one">
+            <tbody> 
+
               <tr>
                 <td className="data-td">
                   <label htmlFor="date">Date:</label>
@@ -142,9 +143,10 @@ const ExpenseNewForm = () => {
                   />
                 </td>
               </tr>
+
             </tbody>
           </table>
-          <div className="trip-buttons">
+          <div className="expense-buttons">
             <button className="sub" type="submit"></button>
             <Link to={`/cars/${id}`}>
               <button className="button-can"></button>

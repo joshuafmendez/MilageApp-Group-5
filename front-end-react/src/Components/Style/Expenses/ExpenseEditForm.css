@@ -1,6 +1,63 @@
 .edit-form {
-  width: 80%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 500px;
   margin-top: 129px;
-  width: 10%;
-  margin-left: 40%;
+
+  /* margin-left: 40%;
+padding-left: 5%; */
+  /* border:green solid 3px; */
+}
+.main-div-edit-form {
+  border: yellow solid 2px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-right: 30%;
+  padding-bottom: 50%;
+  justify-content: center;
+  background-image: url("../../Images/business.jpeg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: repeat;
+}
+form.edit-form > input {
+  width: 200px;
+  /* float:left; */
+}
+form.edit-form > select {
+  width: 200px;
+  /* float:left; */
+}
+.expense-type {
+  font-size: 16px;
+  font-family: "Allerta Stencil", sans-serif;
+  color: rgb(29, 27, 27);
+
+  padding-left:8px;
+}
+form.edit-form > label {
+  width: 200px;
+  float: left;
+}
+
+.edit-expense-buttons {
+  /* margin-left: 50%; */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-left: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+  .edit-form {
+    width: 100%;
+    margin-left: 25%;
+  }
+  .edit-expense-table {
+    width: 100%;
+  }
+
 }

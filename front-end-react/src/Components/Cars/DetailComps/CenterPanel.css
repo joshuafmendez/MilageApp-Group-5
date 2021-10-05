@@ -22,7 +22,7 @@
 div.all-bs {
   display: flex;
   justify-content: space-between;
-  z-index: 77;
+  z-index:1;
 }
 
 /* Delete & Edit Common */
@@ -83,3 +83,101 @@ button.button-edit:hover {
   outline: transparent;
   border: transparent;
 }
+
+
+
+
+
+@media only screen and (max-width: 600px) {
+  /* .mobile-left-nav {
+    width: 100%;
+    visibility: hidden;
+  } */
+  /* .mobile-left-nav-click {
+    width: 100%;
+    visibility: visible;
+  } */
+  /* .hamb{
+    visibility: visible;
+    margin-top:20%;
+  }
+  .left-nav{
+    visibility: hidden;
+  }
+  .left-nav-mb{
+    visibility: visible;
+    margin-top:2%;
+  } */
+  .concar-div{
+    height: 60%;
+    width: 60%;
+    margin-top:10%;
+  }
+  div.all-bs {
+    display: flex;
+    justify-content: space-around;
+    /* z-index: 1; */
+    padding-left:20px;
+    padding-right:20px;
+  }
+
+  button.button-delete {
+    background-image: url("../../Images/delbutton.png");
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    height: 75px;
+    width: 75px;
+    outline: transparent;
+    border: transparent;
+    margin-right: 80px;
+  }
+  button.button-delete:hover {
+    background-image: url("../../Images/pressD.png");
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    height: 75px;
+    width: 75px;
+    outline: transparent;
+    border: transparent;
+  }
+  
+  /* Edit Buttons */
+  button.button-edit {
+    background-image: url("../../Images/Edit.png");
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    height: 75px;
+    width: 75px;
+    outline: transparent;
+    border: transparent;
+    margin-left: 80px;
+  }
+  button.button-edit:hover {
+    background-image: url("../../Images/pressE.png");
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    height: 75px;
+    width: 75px;
+    outline: transparent;
+    border: transparent;
+  }
+  
+
+
+
+
+
+
+
+}
+
+
+/* .modal-a{
+  border: red 2px solid;
+  width: 100%;
+
+} */

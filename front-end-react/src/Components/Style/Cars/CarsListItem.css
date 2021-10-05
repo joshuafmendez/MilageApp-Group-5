@@ -120,12 +120,16 @@ button.showMe:hover {
 
 ul.ul-show {
   margin-bottom: 13px;
+
+
+
 }
 li.li-show {
   margin-bottom: 13px;
   display: flex;
   justify-content: center;
   align-content: center;
+  flex-wrap: wrap;
 }
 .list-cars {
   width: 100%;
@@ -150,4 +154,18 @@ img.car-pic {
 }
 img.car-pic:hover {
   transform: scale(1.5);
+}
+
+
+
+@media only screen and (max-width: 800px) {
+
+
+
+ul.ul-show{
+  display: flex;
+  flex-direction: column;
+}
+
+
 }

@@ -73,7 +73,9 @@ const TripEditForm = () => {
 
   return (
     <div className="edit-form-container">
-      <form className="edit-form" onSubmit={handleSubmit}>
+
+      <form className="edit-form-trips" onSubmit={handleSubmit}>
+
         <label htmlFor="date">Date:</label>
         <input
           value={date}
@@ -115,10 +117,12 @@ const TripEditForm = () => {
           onChange={favoriteCheckbox}
           checked={favorite}
         />
-        <div>
-          <button type="submit">Submit</button>
+
+        <div className="edit-trip-buttons">
+          <button className="new-submit" type="submit">Submit</button>
           <Link to={`/cars/${id}/trips`}>
-            <button className="button-can"></button>
+            <button className="new-can">Cancel</button>
+
           </Link>
         </div>
       </form>

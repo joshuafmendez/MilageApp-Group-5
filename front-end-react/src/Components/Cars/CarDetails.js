@@ -207,7 +207,7 @@ function CarDetails() {
 
     return (
       <section className="car-section">
-        <LeftNav id={id} handleReport={handleReport} />
+        <LeftNav id={id} handleReport={handleReport}/>
 
         <CenterPanel id={id} handleDelete={handleDelete} />
 

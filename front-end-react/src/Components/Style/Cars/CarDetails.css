@@ -46,18 +46,18 @@ div.cars-div {
   outline: #b8d8ba solid 2px;
 }
 
-.choicesb:hover {
+/* .choicesb:hover {
   border-bottom: limegreen solid 2px;
   outline: red solid 0.5px;
-}
-.cars-new-button {
+} */
+/* .cars-new-button {
   border: none;
   color: rgb(58, 45, 45);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;
   font-size: 12px;
   background-color: transparent;
-}
+} */
 div.choicesb a {
   display: flex;
   flex-direction: column;
@@ -135,7 +135,7 @@ div.gren {
   font-weight: 40;
   font-size: 16px;
 }
-div.whit {
+/* div.whit {
   background-color: white;
   font-family: Arial, Helvetica, sans-serif;
   height: 130px;
@@ -145,7 +145,7 @@ div.whit {
   text-align: left;
   color: rgb(97, 87, 87);
   padding: 21px;
-}
+} */
 
 .toggle-form {
   margin-right: 44%;
@@ -309,4 +309,12 @@ button.b-delete {
   margin-left: 5%;
   margin-right: 5%;
   margin-top: 3%;
+
+}
+@media only screen and (max-width: 600px) {
+  .car-section{
+    display: flex;
+    flex-direction: column;
+  }
+
 }
