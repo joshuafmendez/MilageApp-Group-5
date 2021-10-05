@@ -1,9 +1,9 @@
 .form-expense-modal {
-
-width: 100%;
+width: 500px;
 }
 .expense-table-one{
-    width: 400px;
+    width: 100%;
+    border:black solid 5px;
 }
 
 form h2 {
@@ -71,12 +71,8 @@ div.expense-buttons > button.sub:hover {
 }
 
 .form-e-section {
-  /* border:purple solid 3px; */
-  /* height: 100%;
-        width: 700%; */
   display: flex;
   flex-direction: column;
-
   align-content: center;
 }
 
@@ -84,15 +80,12 @@ div.expense-buttons > button.sub:hover {
   width: 80%;
   height: 100%;
   background: rgba(127, 119, 119, 0.6);
-  /* border:pink solid 3px; */
   position: fixed;
   z-index: 10;
-  padding-right: 20%;
   padding-top: 6%;
   
 }
 div.expense-buttons{
-    /* border:red solid 3px; */
     width: 400px;
     display: flex;
     justify-content: space-around;
@@ -120,21 +113,14 @@ div.expense-buttons{
       width: 100%;
       height: 1100px;
       background: rgba(127, 119, 119, 0.6);
-      /* border:pink solid 3px; */
-      /* position:relative; */
       z-index: 12;
-      /* padding-left: 25%;
-      padding-right: 25%; */
-      /* margin-right: 25%; */
       padding-top: 6%;
-      
       width: 100%;
     }
     
     .exp-new-table {
       table-layout: fixed;
       width: 100%;
-      /* padding-left: 20%; */
       border: none;
       margin: auto;
     }
@@ -143,17 +129,18 @@ div.expense-buttons{
   }
 
   form.form-expense-modal {
-    width: 100%;
+    width: 300px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* border: purple solid 3px; */
+    border: purple solid 3px;
     z-index: 20;
   }
 
   .expense-table-one {
-
-    width: 100%;
+border:black solid 5px;
+width: 100%;
+   
   }
 
 
@@ -164,6 +151,3 @@ div.expense-buttons{
 
 }
 
-/* @media only screen and (max-width: 600px) {
-
-} */

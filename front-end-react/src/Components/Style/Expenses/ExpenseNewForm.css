@@ -95,7 +95,9 @@ div.expense-buttons > button.sub:hover {
   outline: transparent;
   border: transparent;
 }
-
+.expense-table-one{
+  width: 100%;
+}
 
 
 .button-can:hover {
