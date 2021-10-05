@@ -17,6 +17,7 @@
   animation-delay: 0.3s;
   animation-timing-function: ease-out;
   align-self: center;
+  z-index: -2;
 }
 
 div.all-bs {

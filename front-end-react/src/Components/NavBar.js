@@ -31,8 +31,11 @@ export default function NavBar() {
               Lyft
             </a>
             {/* This link will change */}
-            <a href="https://google.com" target="blank">
-              Other
+            <a
+              href="https://www.irs.gov/newsroom/heres-the-411-on-who-can-deduct-car-expenses-on-their-tax-returns"
+              target="blank"
+            >
+              IRS
             </a>
           </div>
         </div>

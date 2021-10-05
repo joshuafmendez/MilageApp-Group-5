@@ -4,11 +4,10 @@ import { useHistory, useParams, Link } from "react-router-dom";
 import { apiURL } from "../../../util/apiURL";
 import { UserContext } from "../../../Providers/UserProvider";
 import "../Modals/ModalStyle/ModalNewTripForm.css";
-// import "../Style/Trips/TripNewForm.css";
 
 const API = apiURL();
 
-const TripNewForm = ({setShowTripForm,showTripForm}) => {
+const TripNewForm = ({ setShowTripForm, showTripForm }) => {
   const user = useContext(UserContext);
   let history = useHistory();
   const { id } = useParams();
@@ -58,188 +57,97 @@ const TripNewForm = ({setShowTripForm,showTripForm}) => {
   }, [user, history]);
 
   return (
-<div className="main-left-div-b">
-        <form className="form-trip-modal"  onSubmit={handleSubmit}>
-          {/* <h2> Car Mileage</h2> */}
-          <table className="trip-table-one">
-            <tbody>
-              <tr>
-                <td className="data-td">
-                  <label htmlFor="date">Date:</label>
-                </td>
-                <td className="data-td">
-                  <input
-                    value={date}
-                    type="date"
-                    onChange={handleChange}
-                    id="date"
-                    placeholder="date"
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td className="data-td">
-                  <label htmlFor="amount_spent">Miles:</label>
-                </td>
-                <td className="data-td">
-                  <input
-                    id="miles"
-                    type="number"
-                    value={miles}
-                    min="0"
-                    onChange={handleChange}
-                    placeholder="Enter overall miles for the trip"
-                    required
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td className="data-td">
-                  <label htmlFor="reason">Reason:</label>
-                </td>
-                <td className="data-td">
-                  <input
-                    id="reason"
-                    type="text"
-                    value={reason}
-                    onChange={handleChange}
-                    placeholder="Reason for trip"
-                  />
-                </td>
-              </tr>
+    <div className="main-left-div-b">
+      <form className="form-trip-modal" onSubmit={handleSubmit}>
+        {/* <h2> Car Mileage</h2> */}
+        <table className="trip-table-one">
+          <tbody>
+            <tr>
+              <td className="data-td">
+                <label htmlFor="date">Date:</label>
+              </td>
+              <td className="data-td">
+                <input
+                  value={date}
+                  type="date"
+                  onChange={handleChange}
+                  id="date"
+                  placeholder="date"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td className="data-td">
+                <label htmlFor="amount_spent">Miles:</label>
+              </td>
+              <td className="data-td">
+                <input
+                  id="miles"
+                  type="number"
+                  value={miles}
+                  min="0"
+                  onChange={handleChange}
+                  placeholder="Enter overall miles for the trip"
+                  required
+                />
+              </td>
+            </tr>
+            <tr>
+              <td className="data-td">
+                <label htmlFor="reason">Reason:</label>
+              </td>
+              <td className="data-td">
+                <input
+                  id="reason"
+                  type="text"
+                  value={reason}
+                  onChange={handleChange}
+                  placeholder="Reason for trip"
+                />
+              </td>
+            </tr>
 
-              <tr>
-                <td className="data-td">
-                  <label htmlFor="business_use">Business Use:</label>
-                </td>
-                <td className="data-td">
-                  <input
-                    id="business_use"
-                    type="checkbox"
-                    onChange={businessCheckbox}
-                    checked={business_use}
-                  />
-                </td>
-              </tr>
+            <tr>
+              <td className="data-td">
+                <label htmlFor="business_use">Business Use:</label>
+              </td>
+              <td className="data-td">
+                <input
+                  id="business_use"
+                  type="checkbox"
+                  onChange={businessCheckbox}
+                  checked={business_use}
+                />
+              </td>
+            </tr>
 
-              <tr>
-                <td className="data-td">
-                  <label htmlFor="favorite">Favorite:</label>
-                </td>
-                <td className="data-td">
-                  <input
-                    id="favorite"
-                    type="checkbox"
-                    onChange={favoriteCheckbox}
-                    checked={favorite}
-                  />
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <div className="trip-buttons">
-            <button className="sub" type="submit"></button>
-            <Link to={`/cars/${id}`}>
-            <button onClick={()=>setShowTripForm(!showTripForm)}className="button-can"></button>
-            </Link>
-          </div>
-        </form>
-      </div>
+            <tr>
+              <td className="data-td">
+                <label htmlFor="favorite">Favorite:</label>
+              </td>
+              <td className="data-td">
+                <input
+                  id="favorite"
+                  type="checkbox"
+                  onChange={favoriteCheckbox}
+                  checked={favorite}
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div className="trip-buttons">
+          <button className="sub" type="submit"></button>
+          <Link to={`/cars/${id}`}>
+            <button
+              onClick={() => setShowTripForm(!showTripForm)}
+              className="button-can"
+            ></button>
+          </Link>
+        </div>
+      </form>
+    </div>
   );
 };
 
 export default TripNewForm;
-
-
-
-
-
-
-
-{/* <div className="trips-show-table">
-        <form className="form-trip" onSubmit={handleSubmit}>
-          <h2> Car Mileage</h2>
-          <table className="trip-table-one">
-            <tbody>
-              <tr>
-                <td className="data-td">
-                  <label htmlFor="date">Date:</label>
-                </td>
-                <td className="data-td">
-                  <input
-                    value={date}
-                    type="date"
-                    onChange={handleChange}
-                    id="date"
-                    placeholder="date"
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td className="data-td">
-                  <label htmlFor="amount_spent">Miles:</label>
-                </td>
-                <td className="data-td">
-                  <input
-                    id="miles"
-                    type="number"
-                    value={miles}
-                    min="0"
-                    onChange={handleChange}
-                    placeholder="Enter overall miles for the trip"
-                    required
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td className="data-td">
-                  <label htmlFor="reason">Reason:</label>
-                </td>
-                <td className="data-td">
-                  <input
-                    id="reason"
-                    type="text"
-                    value={reason}
-                    onChange={handleChange}
-                    placeholder="Reason for trip"
-                  />
-                </td>
-              </tr>
-
-              <tr>
-                <td className="data-td">
-                  <label htmlFor="business_use">Business Use:</label>
-                </td>
-                <td className="data-td">
-                  <input
-                    id="business_use"
-                    type="checkbox"
-                    onChange={businessCheckbox}
-                    checked={business_use}
-                  />
-                </td>
-              </tr>
-
-              <tr>
-                <td className="data-td">
-                  <label htmlFor="favorite">Favorite:</label>
-                </td>
-                <td className="data-td">
-                  <input
-                    id="favorite"
-                    type="checkbox"
-                    onChange={favoriteCheckbox}
-                    checked={favorite}
-                  />
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <div className="trip-buttons">
-            <button className="sub" type="submit"></button>
-            <Link to={`/cars/${id}`}>
-              <button className="button-can"></button>
-            </Link>
-          </div>
-        </form>
-      </div> */}

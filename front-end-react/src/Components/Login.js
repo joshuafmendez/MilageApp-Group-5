@@ -7,10 +7,6 @@ import { signInWithGoogle, signup, login } from "../Services/Firebase";
 import "../Components/Style/Login.css";
 import { AiFillLock } from "react-icons/ai";
 import TripLogo from "./Images/giflogo.GIF";
-// import { FaInstagramSquare } from "react-icons/fa";
-// import { GrFacebook } from "react-icons/gr";
-// import { SiTwitter } from "react-icons/si";
-// import { FcKey } from "react-icons/fc";
 
 const Login = () => {
   const entireState = useSelector((state) => state);
@@ -317,12 +313,12 @@ const Login = () => {
             </button>
           </article>
 
-          
-          
-              <img  className="first-image" src="https://cdn.wallethub.com/wallethub/posts/97502/most-and-least-risky-states-for-drivers-wallets-hero.png" />
-       
-        
-        </section>  
+          <img
+            className="first-image"
+            src="https://cdn.wallethub.com/wallethub/posts/97502/most-and-least-risky-states-for-drivers-wallets-hero.png"
+            alt="wallet"
+          />
+        </section>
       </div>
     </div>
   );
