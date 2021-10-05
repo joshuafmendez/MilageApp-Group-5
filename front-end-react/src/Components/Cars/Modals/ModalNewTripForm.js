@@ -6,7 +6,6 @@ import { UserContext } from "../../../Providers/UserProvider";
 import "../Modals/ModalStyle/ModalNewTripForm.css";
 
 const API = apiURL();
-
 const ModalTripNewForm = ({ setShowTripForm, showTripForm }) => {
   const user = useContext(UserContext);
   let history = useHistory();

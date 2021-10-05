@@ -4,7 +4,6 @@ import { useState, useContext, useEffect } from "react";
 import "../Modals/ModalStyle/ModalNewExpenseForm.css";
 import { apiURL } from "../../../util/apiURL";
 import { UserContext } from "../../../Providers/UserProvider";
-// import ExpenseNewForm from '../../Expenses/ExpenseNewForm';
 
 const API = apiURL();
 const ModalNewExpenseForm = ({ setShowEForm, showEForm }) => {
@@ -65,83 +64,83 @@ const ModalNewExpenseForm = ({ setShowEForm, showEForm }) => {
       <form className="form-expense-modal" onSubmit={handleSubmit}>
         {/* Car Expenses */}
         <table className="expense-table-one">
-          {/* <tbody> */}
-          <tr>
-            <td className="data-td">
-              <label htmlFor="date">Date:</label>
-            </td>
-            <td className="data-td">
-              <input
-                value={date}
-                // value="1111-11-11"
-                type="date"
-                onChange={handleChange}
-                id="date"
-                placeholder="Enter date"
-              />
-            </td>
-          </tr>
-          <tr>
-            <td className="data-td">
-              <label> Expense type:</label>
-            </td>
-            <td className="data-td">
-              <select onChange={handleSelectChange}>
-                <option value="" defaultValue></option>
-                <option name="gas" value="Gas">
-                  Gas
-                </option>
-                <option name="repairs" value="Repairs">
-                  Repairs
-                </option>
-                <option name="car_insurance" value="Car Insurance">
-                  Car Insurance
-                </option>
-                <option name="oil_change" value="Oil Change">
-                  Oil Change
-                </option>
-                <option name="registration_fees" value="Registration Fees">
-                  Registration Fees
-                </option>
-                <option name="depreciation" value="Depreciation">
-                  Depreciation
-                </option>
-                <option name="rent" value="Car Rental">
-                  Car Rental
-                </option>
-              </select>
-            </td>
-          </tr>
-          <tr>
-            <td className="data-td">
-              <label htmlFor="amount_spent">Amount:</label>
-            </td>
-            <td className="data-td">
-              <input
-                id="amount_spent"
-                type="number"
-                value={amount_spent}
-                min="1"
-                onChange={handleChange}
-                required
-              />
-            </td>
-          </tr>
+          <tbody>
+            <tr>
+              <td className="data-td">
+                <label htmlFor="date">Date:</label>
+              </td>
+              <td className="data-td">
+                <input
+                  value={date}
+                  // value="1111-11-11"
+                  type="date"
+                  onChange={handleChange}
+                  id="date"
+                  placeholder="Enter date"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td className="data-td">
+                <label> Expense type:</label>
+              </td>
+              <td className="data-td">
+                <select onChange={handleSelectChange}>
+                  <option value="" defaultValue></option>
+                  <option name="gas" value="Gas">
+                    Gas
+                  </option>
+                  <option name="repairs" value="Repairs">
+                    Repairs
+                  </option>
+                  <option name="car_insurance" value="Car Insurance">
+                    Car Insurance
+                  </option>
+                  <option name="oil_change" value="Oil Change">
+                    Oil Change
+                  </option>
+                  <option name="registration_fees" value="Registration Fees">
+                    Registration Fees
+                  </option>
+                  <option name="depreciation" value="Depreciation">
+                    Depreciation
+                  </option>
+                  <option name="rent" value="Car Rental">
+                    Car Rental
+                  </option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td className="data-td">
+                <label htmlFor="amount_spent">Amount:</label>
+              </td>
+              <td className="data-td">
+                <input
+                  id="amount_spent"
+                  type="number"
+                  value={amount_spent}
+                  min="1"
+                  onChange={handleChange}
+                  required
+                />
+              </td>
+            </tr>
 
-          <tr>
-            <td className="data-td">
-              <label htmlFor="business_use">Business Use:</label>
-            </td>
-            <td className="data-td">
-              <input
-                id="business_use"
-                type="checkbox"
-                onChange={handleCheckboxChange}
-                checked={business_use}
-              />
-            </td>
-          </tr>
-          {/* </tbody> */}
+            <tr>
+              <td className="data-td">
+                <label htmlFor="business_use">Business Use:</label>
+              </td>
+              <td className="data-td">
+                <input
+                  id="business_use"
+                  type="checkbox"
+                  onChange={handleCheckboxChange}
+                  checked={business_use}
+                />
+              </td>
+            </tr>
+          </tbody>
         </table>
         <div className="expense-buttons">
           <button className="sub" type="submit"></button>
