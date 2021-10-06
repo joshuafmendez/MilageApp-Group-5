@@ -1,8 +1,8 @@
 const db = require("../db/config");
 
 const getAllTrips = async (car_id, uid) => {
-  const queryOne = "SELECT * FROM cars WHERE uid=$1 AND id=$2"
-  const authCheck = await db.any(queryOne, [uid, car_id])
+  const queryOne = "SELECT * FROM cars WHERE uid=$1 AND id=$2";
+  const authCheck = await db.any(queryOne, [uid, car_id]);
   if (authCheck.length) {
     try {
       const queryTwo = "SELECT * FROM trips WHERE car_id=$1";
@@ -17,8 +17,8 @@ const getAllTrips = async (car_id, uid) => {
 };
 
 const getTrip = async (id, car_id, uid) => {
-  const queryOne = "SELECT * FROM cars WHERE uid=$1 AND id=$2"
-  const authCheck = await db.any(queryOne, [uid, car_id])
+  const queryOne = "SELECT * FROM cars WHERE uid=$1 AND id=$2";
+  const authCheck = await db.any(queryOne, [uid, car_id]);
   if (authCheck.length) {
     try {
       const query = "SELECT * FROM trips WHERE id=$1 AND car_id=$2";
@@ -33,9 +33,9 @@ const getTrip = async (id, car_id, uid) => {
 };
 
 const addTrip = async (body, car_id, uid) => {
-  const { business_use, miles, date, reason, favorite, } = body;
-  const queryOne = "SELECT * FROM cars WHERE uid=$1 AND id=$2"
-  const authCheck = await db.any(queryOne, [uid, car_id])
+  const { business_use, miles, date, reason, favorite } = body;
+  const queryOne = "SELECT * FROM cars WHERE uid=$1 AND id=$2";
+  const authCheck = await db.any(queryOne, [uid, car_id]);
   if (authCheck.length) {
     try {
       const query =
@@ -58,12 +58,12 @@ const addTrip = async (body, car_id, uid) => {
 };
 
 const deleteTrip = async (id, car_id, uid) => {
-  const queryOne = "SELECT * FROM cars WHERE uid=$1 AND id=$2"
-  const authCheck = await db.any(queryOne, [uid, car_id])
+  const queryOne = "SELECT * FROM cars WHERE uid=$1 AND id=$2";
+  const authCheck = await db.any(queryOne, [uid, car_id]);
   if (authCheck.length) {
     try {
       const query = "DELETE FROM trips WHERE id=$1 AND car_id=$2 RETURNING *";
-      const deletedTrip = await db.one(query, [id,car_id]);
+      const deletedTrip = await db.one(query, [id, car_id]);
       return { status: true, payload: deletedTrip };
     } catch (error) {
       return { status: false, payload: error };
@@ -75,8 +75,8 @@ const deleteTrip = async (id, car_id, uid) => {
 
 const updateTrip = async (id, body, uid) => {
   const { car_id, business_use, miles, date, reason, favorite } = body;
-  const queryOne = "SELECT * FROM cars WHERE uid=$1 AND id=$2"
-  const authCheck = await db.any(queryOne, [uid, car_id])
+  const queryOne = "SELECT * FROM cars WHERE uid=$1 AND id=$2";
+  const authCheck = await db.any(queryOne, [uid, car_id]);
   if (authCheck.length) {
     try {
       const query =
