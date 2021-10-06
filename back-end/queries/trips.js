@@ -74,21 +74,19 @@ const deleteTrip = async (id, car_id, uid) => {
 };
 
 const updateTrip = async (id, body, uid) => {
-  const { car_id, business_use, miles, date, reason, start_odometer, stop_odometer, favorite, } = body;
+  const { car_id, business_use, miles, date, reason, favorite, } = body;
   const queryOne = "SELECT * FROM cars WHERE uid=$1 AND id=$2"
   const authCheck = await db.any(queryOne, [uid, car_id])
   if (authCheck.length) {
     try {
       const query =
-        "UPDATE trips SET car_id=$1, business_use=$2, miles=$3, date=$4,reason=$5,start_odometer=$6,stop_odometer=$7,favorite=$8 WHERE id=$9 RETURNING *";
+        "UPDATE trips SET car_id=$1, business_use=$2, miles=$3, date=$4,reason=$5,favorite=$6 WHERE id=$7 RETURNING *";
       const updatedTrip = await db.one(query, [
         car_id,
         business_use,
         miles,
         date,
         reason,
-        start_odometer,
-        stop_odometer,
         favorite,
         id,
       ]);
