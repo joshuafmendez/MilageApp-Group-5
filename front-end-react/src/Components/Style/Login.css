@@ -139,7 +139,7 @@ div.icon-login > button {
 }
 .x-button {
   position: absolute;
-  margin-left: 13vw;
+  margin-left: 13.9vw;
   margin-top: 1.5vw;
 }
 @media only screen and (max-width: 500px) {
@@ -158,5 +158,16 @@ div.icon-login > button {
     top: 40vh;
     left: 30vw;
   }
-
+  .logInForm{
+    width: 84vw;
+    right: 8vw;
+    top: 20vw;
+  }
+  .signUpForm{
+    width: 84vw;
+    right: 8vw;
+  }
+  .x-button{
+    margin-left: 35vw;
+  }
 }
