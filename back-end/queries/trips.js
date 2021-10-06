@@ -33,21 +33,19 @@ const getTrip = async (id, car_id, uid) => {
 };
 
 const addTrip = async (body, car_id, uid) => {
-  const { business_use, miles, date, reason, start_odometer, stop_odometer, favorite, } = body;
+  const { business_use, miles, date, reason, favorite, } = body;
   const queryOne = "SELECT * FROM cars WHERE uid=$1 AND id=$2"
   const authCheck = await db.any(queryOne, [uid, car_id])
   if (authCheck.length) {
     try {
       const query =
-        "INSERT INTO trips ( car_id,business_use,miles,date,reason,start_odometer,stop_odometer,favorite) VALUES ($1, $2, $3, $4,$5,$6,$7,$8) RETURNING *";
+        "INSERT INTO trips ( car_id,business_use,miles,date,reason,favorite) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *";
       const newTrip = await db.one(query, [
         car_id,
         business_use,
         miles,
         date,
         reason,
-        start_odometer,
-        stop_odometer,
         favorite,
       ]);
       return { status: true, payload: newTrip };
