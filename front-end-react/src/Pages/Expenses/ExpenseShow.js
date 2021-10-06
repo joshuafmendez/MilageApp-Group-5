@@ -1,8 +1,10 @@
 import ExpenseDetails from "../../Components/Expenses/ExpenseDetails";
+import "../../Components/Style/Expenses/ExpenseShow.css"
+
 
 function ExpenseShow() {
   return (
-    <div>
+    <div className="expense-show-page">
       <ExpenseDetails />
     </div>
   );

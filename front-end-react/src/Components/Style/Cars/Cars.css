@@ -166,6 +166,7 @@ div.whita {
   padding: 21px;
 }
 
+
 .circle-car {
   height: 150px;
   width: 150px;
@@ -175,6 +176,7 @@ div.whita {
   background-position: center;
   background-size: cover;
   outline: black 2px solid;
+  margin-bottom: 40px;
 }
 .circle-car:hover {
   height: 140px;

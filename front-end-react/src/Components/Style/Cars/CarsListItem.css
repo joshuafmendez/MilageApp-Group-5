@@ -157,8 +157,24 @@ img.car-pic:hover {
 }
 
 @media only screen and (max-width: 800px) {
-  ul.ul-show {
-    display: flex;
-    flex-direction: column;
-  }
+
+
+
+
+ul.ul-show{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  margin-top:5%;
+  margin-right:8%;
 }
+li.li-show{
+  align-self: center;
+}
+.list-cars{
+  margin-top: 8%;
+}
+
+}
+

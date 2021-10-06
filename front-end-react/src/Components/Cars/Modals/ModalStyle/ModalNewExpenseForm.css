@@ -83,6 +83,7 @@ div.expense-buttons > button.sub:hover {
   position: fixed;
   z-index: 10;
   padding-top: 6%;
+  padding-left: 10%;
   
 }
 div.expense-buttons{
@@ -133,7 +134,6 @@ div.expense-buttons{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border: purple solid 3px;
     z-index: 20;
   }
 
