@@ -16,10 +16,6 @@ trips.get("/", async (req, res) => {
   const uid = req.query.uid;
   try {
     const allTrips = await getAllTrips(car_id, uid);
-    console.log(
-      "GET-ALL-GET-ALL-GET-ALL-GET-ALL-GET-ALL-GET-ALL-GET-ALL-GET-ALL-GET-ALL-GET-ALL-GET-ALL-GET-ALL-GET-ALL-GET-ALL-GET-ALL-GET-ALL-GET-ALL-GET-ALL-GET-ALL-GET-ALL-GET-ALL-GET-ALL-GET-ALL-GET-ALL-GET-ALL-GET-ALL-GET-ALL-",
-      allTrips
-    );
     res.json(allTrips);
   } catch (error) {
     return error;
