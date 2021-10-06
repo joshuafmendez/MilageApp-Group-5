@@ -74,7 +74,7 @@ const deleteTrip = async (id, car_id, uid) => {
 };
 
 const updateTrip = async (id, body, uid) => {
-  const { car_id, business_use, miles, date, reason, favorite, } = body;
+  const { car_id, business_use, miles, date, reason, favorite } = body;
   const queryOne = "SELECT * FROM cars WHERE uid=$1 AND id=$2"
   const authCheck = await db.any(queryOne, [uid, car_id])
   if (authCheck.length) {
