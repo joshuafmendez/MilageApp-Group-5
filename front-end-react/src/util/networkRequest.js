@@ -51,7 +51,6 @@ export const updateExpenseById = async (id, expense_id, updatedExpense) => {
 export const getAllTripsFN = async (id, user) => {
   if (id) {
     let { data } = await axios.get(`${API}/cars/${id}/trips?uid=${user.uid}`);
-    console.log(data.payload)
     return data.payload;
   }
 };
