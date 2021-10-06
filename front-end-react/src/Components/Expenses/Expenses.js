@@ -2,11 +2,12 @@ import React from "react";
 import { useEffect, useContext } from "react";
 import ExpenseListItem from "./ExpenseListItem";
 import { Link, useParams, useHistory } from "react-router-dom";
-import { getAllExpensesFN } from "../../util/networkRequest";
+import { getAllExpensesFN, getAllTripsFN } from "../../util/networkRequest";
 import { useDispatch, useSelector } from "react-redux";
 import { addExpenses } from "../../Store/Actions/expenseActions";
 import { UserContext } from "../../Providers/UserProvider";
 import "../Style/Expenses/Expenses.css";
+import { addTrips } from "../../Store/Actions/tripsActions";
 
 const Expenses = () => {
   const user = useContext(UserContext);
@@ -16,7 +17,7 @@ const Expenses = () => {
   const { cars, expenses } = entireState;
   const { id } = useParams();
   const expenseArr = Object.values(expenses);
-  
+
   useEffect(() => {
     const fetchAllExpenses = async () => {
       try {
@@ -63,6 +64,5 @@ const Expenses = () => {
     </div>
   );
 };
-
 
 export default Expenses;
