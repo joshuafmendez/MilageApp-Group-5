@@ -112,9 +112,8 @@ div.whita {
   color: rgb(97, 87, 87);
   padding: 21px;
 }
-li.li-show {
-  width: 100%;
-}
+
+
 
 @media only screen and (max-width: 600px) {
 
@@ -123,3 +122,4 @@ div.corner-fix{
 }
 
 }
+

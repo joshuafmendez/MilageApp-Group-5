@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import { useState } from "react";
 import "../../Components/Style/Cars/CarsListItem.css";
 
 function CarsListItem({ carsArr }) {
@@ -12,7 +11,7 @@ function CarsListItem({ carsArr }) {
         style={
           showElement
             ? { display: "none" }
-            : { display: "flex", justifyContent: "space-between" }
+            : { display: "flex", justifyContent: "space-around" }
         }
         className="ul-show"
       >
