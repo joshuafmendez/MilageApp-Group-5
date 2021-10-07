@@ -40,7 +40,6 @@ const TripNewForm = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    alert(trip.reason);
     try {
       await addTrip(trip);
       history.push(`/cars/${id}/trips`);
