@@ -16,6 +16,7 @@ function CarsListItem({ carsArr }) {
         className="ul-show"
       >
         {carsArr.map((car, i) => {
+          
           return (
             <li key={i} className="li-show">
               <div className="card-center">
@@ -25,7 +26,25 @@ function CarsListItem({ carsArr }) {
                 <br></br>{" "}
                 <img
                   className="car-pic"
-                  src="https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png"
+                  src= {
+                    car.model.toLowerCase()=== "camry"
+                    ? "https://freepngimg.com/thumb/toyota/3-toyota-png-image-car-image.png"
+                    :car.model.toLowerCase()=== "i8"
+                    ?"https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png"
+                    :car.model.toLowerCase()=== "f150"
+                    ?"https://www.pngkey.com/png/full/318-3181722_2016-ford-f-150-ford-f150-2016-one.png"
+                    :car.model.toLowerCase()=== "odyssey"
+                    ?"https://www.pngkey.com/png/full/76-766461_find-limited-time-offers-nearby-honda-odyssey-2018.png"
+                    :car.model.toLowerCase()=== "corolla"
+                    ?"https://www.pngkey.com/png/full/46-465237_the-toyota-corolla-le-eco-is-exactly-what.png"
+                    :car.model.toLowerCase()=== "tundra"
+                    ?"https://www.pngkey.com/png/full/350-3509571_2015-chevy-silverado-2017-ford-f150-blue.png"
+                    :car.model.toLowerCase()=== "silverado"
+                    ?"https://www.pngkey.com/png/full/290-2908552_2017-chevy-silverado-1500-1ls-graphite-metallic-chevy.png"
+                    :car.model.toLowerCase()=== "sienna"
+                    ?"https://www.pngkey.com/png/full/45-459841_2018-toyota-sienna-van-toyota-cars.png"
+                    :"https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png" //i8 default
+                  }
                   alt={"car"}
                 />{" "}
                 <div className="make-model">
