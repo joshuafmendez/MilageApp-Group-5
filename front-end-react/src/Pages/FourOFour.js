@@ -9,7 +9,7 @@ export default function FourOFour() {
       <br></br>
       <br></br>
       <br></br>
-      <h1>Sorry, no page found. Help me</h1>
+      <h1>Sorry, no page found.</h1>
     </div>
   );
 }
