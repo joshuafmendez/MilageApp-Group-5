@@ -7,6 +7,8 @@ import "mdbreact/dist/css/mdb.css";
 import { Provider } from "react-redux";
 import store from "./Store";
 
+
+// Main index file
 ReactDOM.render(
   <React.StrictMode>
     <Router>
