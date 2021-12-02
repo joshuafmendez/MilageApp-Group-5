@@ -8,7 +8,7 @@ import { Provider } from "react-redux";
 import store from "./Store";
 
 
-// Main index file
+// Main index file update
 ReactDOM.render(
   <React.StrictMode>
     <Router>
