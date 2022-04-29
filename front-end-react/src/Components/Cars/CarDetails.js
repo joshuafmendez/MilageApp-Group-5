@@ -209,7 +209,7 @@ function CarDetails() {
       <section className="car-section">
         <LeftNav id={id} handleReport={handleReport}/>
 
-        <CenterPanel id={id} handleDelete={handleDelete} />
+        <CenterPanel car={car} id={id} handleDelete={handleDelete} />
 
         <RightPanel
           id={id}

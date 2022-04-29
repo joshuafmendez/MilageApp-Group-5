@@ -6,7 +6,6 @@ import { UserContext } from "../../../Providers/UserProvider";
 import "../Modals/ModalStyle/ModalNewTripForm.css";
 
 const API = apiURL();
-
 const ModalTripNewForm = ({ setShowTripForm, showTripForm }) => {
   const user = useContext(UserContext);
   let history = useHistory();
@@ -85,7 +84,7 @@ const ModalTripNewForm = ({ setShowTripForm, showTripForm }) => {
                   id="miles"
                   type="number"
                   value={miles}
-                  min="0"
+                  min="1"
                   onChange={handleChange}
                   placeholder="Enter overall miles for the trip"
                   required
@@ -103,6 +102,7 @@ const ModalTripNewForm = ({ setShowTripForm, showTripForm }) => {
                   value={reason}
                   onChange={handleChange}
                   placeholder="Reason for trip"
+                  required
                 />
               </td>
             </tr>

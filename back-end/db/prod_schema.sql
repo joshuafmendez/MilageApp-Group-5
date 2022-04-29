@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS cars;
+DROP TABLE IF EXISTS cars CASCADE;
 DROP TABLE IF EXISTS expenses;
 DROP TABLE IF EXISTS trips;
 
@@ -9,8 +9,8 @@ CREATE TABLE
         model TEXT not null,
         vin TEXT not null,
         year INT not null,
-        odometer INT, 
-        doors INT,
+        odometer INT not null, 
+        doors INT not null,
         is_default BOOLEAN NOT NULL,
         uid TEXT not null,
         driver TEXT not null
@@ -23,7 +23,7 @@ CREATE TABLE
         business_use BOOLEAN NOT NULL,
         car_id INT REFERENCES cars (id) ON DELETE CASCADE,
         amount_spent INT NOT NULL,
-        date TEXT 
+        date TEXT
     );
 
 CREATE TABLE
@@ -33,8 +33,6 @@ CREATE TABLE
         business_use BOOLEAN not null,
         miles INT NOT null,
         date TEXT,
-        reason TEXT,	
-        start_odometer INT,
-        stop_odometer INT,
+        reason TEXT NOT NULL,	
         favorite BOOLEAN NOT NULL
     );

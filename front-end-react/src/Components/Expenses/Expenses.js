@@ -16,7 +16,7 @@ const Expenses = () => {
   const { cars, expenses } = entireState;
   const { id } = useParams();
   const expenseArr = Object.values(expenses);
-  
+
   useEffect(() => {
     const fetchAllExpenses = async () => {
       try {
@@ -63,6 +63,5 @@ const Expenses = () => {
     </div>
   );
 };
-
 
 export default Expenses;

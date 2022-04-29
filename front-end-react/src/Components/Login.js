@@ -306,8 +306,8 @@ const Login = () => {
         <section className="first-section">
           <article className="intro-text">
             <h1 className="b">Experience a New Way </h1>
-            <h1 className="b">To Manage </h1>
-            <h1 className="g">Your Auto Finances</h1>
+            <h1 className="b">To Track </h1>
+            <h1 className="g">Your Mileage and Vehicle Expenses</h1>
             <button onClick={handleDisplayLogin} className="start-up">
               Get Started Now
             </button>
